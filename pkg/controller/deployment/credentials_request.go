@@ -58,6 +58,7 @@ func withCloudCredentials(secretsInformer coreinformersv1.SecretInformer, infraI
 		var volume *corev1.Volume
 		var volumeMount *corev1.VolumeMount
 		var envVar *corev1.EnvVar
+		var additionalEnvVars []corev1.EnvVar
 
 		switch infra.Status.PlatformStatus.Type {
 		// supported cloud platform for mounting secrets
@@ -80,6 +81,15 @@ func withCloudCredentials(secretsInformer coreinformersv1.SecretInformer, infraI
 			envVar = &corev1.EnvVar{
 				Name:  "AWS_SDK_LOAD_CONFIG",
 				Value: "1",
+			}
+
+			// AWS SDK Go v2 requires region to be set for STS operations
+			// including AssumeRoleWithWebIdentity. This fixes the "Missing Region" error.
+			if infra.Status.PlatformStatus.AWS != nil && infra.Status.PlatformStatus.AWS.Region != "" {
+				additionalEnvVars = append(additionalEnvVars, corev1.EnvVar{
+					Name:  "AWS_REGION",
+					Value: infra.Status.PlatformStatus.AWS.Region,
+				})
 			}
 
 		case configv1.GCPPlatformType:
@@ -117,6 +127,13 @@ func withCloudCredentials(secretsInformer coreinformersv1.SecretInformer, infraI
 			deployment.Spec.Template.Spec.Containers[0].Env = append(
 				deployment.Spec.Template.Spec.Containers[0].Env,
 				*envVar,
+			)
+		}
+
+		if len(additionalEnvVars) > 0 {
+			deployment.Spec.Template.Spec.Containers[0].Env = append(
+				deployment.Spec.Template.Spec.Containers[0].Env,
+				additionalEnvVars...,
 			)
 		}
 

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"slices"
+	"strings"
 	"testing"
 
 	appsv1 "k8s.io/api/apps/v1"
@@ -741,9 +742,10 @@ func TestCreateOrApplyDeployments(t *testing.T) {
 
 func TestUpdateArgList(t *testing.T) {
 	tests := []struct {
-		name           string
-		updateIstioCSR func(*v1alpha1.IstioCSR)
-		expectedArgs   map[string]string // key is arg name (without --), value is expected value
+		name            string
+		updateIstioCSR  func(*v1alpha1.IstioCSR)
+		expectedArgs    map[string]string // key is arg name (without --), value is expected value
+		notExpectedArgs []string          // arg names (without --) that should NOT be present
 	}{
 		{
 			name: "clusterID not provided should default to Kubernetes",
@@ -776,6 +778,24 @@ func TestUpdateArgList(t *testing.T) {
 				"cluster-id": "cluster-123_dev.local",
 			},
 		},
+		{
+			name: "configMapNamespaceSelector not provided should not include argument",
+			updateIstioCSR: func(istiocsr *v1alpha1.IstioCSR) {
+				// ConfigMapNamespaceSelector is empty, so argument should not be present
+			},
+			notExpectedArgs: []string{
+				"configmap-namespace-selector",
+			},
+		},
+		{
+			name: "configMapNamespaceSelector provided should include argument",
+			updateIstioCSR: func(istiocsr *v1alpha1.IstioCSR) {
+				istiocsr.Spec.IstioCSRConfig.ConfigMapNamespaceSelector = "maistra.io/member-of=istio-system"
+			},
+			expectedArgs: map[string]string{
+				"configmap-namespace-selector": "maistra.io/member-of=istio-system",
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -806,6 +826,15 @@ func TestUpdateArgList(t *testing.T) {
 				expectedArg := fmt.Sprintf("--%s=%s", argName, expectedValue)
 				if !containsArg(containerArgs, expectedArg) {
 					t.Errorf("Expected to find argument %q in container args, but it was not found. Args: %v", expectedArg, containerArgs)
+				}
+			}
+
+			// Verify arguments that should NOT be present
+			for _, argName := range tt.notExpectedArgs {
+				for _, arg := range containerArgs {
+					if strings.HasPrefix(arg, fmt.Sprintf("--%s=", argName)) {
+						t.Errorf("Expected NOT to find argument with prefix %q in container args, but found %q. Args: %v", fmt.Sprintf("--%s=", argName), arg, containerArgs)
+					}
 				}
 			}
 		})

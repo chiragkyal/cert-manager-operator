@@ -790,10 +790,10 @@ func TestUpdateArgList(t *testing.T) {
 		{
 			name: "configMapNamespaceSelector provided should include argument",
 			updateIstioCSR: func(istiocsr *v1alpha1.IstioCSR) {
-				istiocsr.Spec.IstioCSRConfig.ConfigMapNamespaceSelector = "maistra.io/member-of=istio-system"
+				istiocsr.Spec.IstioCSRConfig.ConfigMapNamespaceSelector = "cert-manager.io/test-ca-injection=enabled"
 			},
 			expectedArgs: map[string]string{
-				"configmap-namespace-selector": "maistra.io/member-of=istio-system",
+				"configmap-namespace-selector": "cert-manager.io/test-ca-injection=enabled",
 			},
 		},
 	}

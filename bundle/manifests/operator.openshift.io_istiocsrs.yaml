@@ -1035,6 +1035,12 @@ spec:
                     - message: issuerRef may only be configured during creation
                       rule: '!has(oldSelf.issuerRef) && !has(self.issuerRef) || has(oldSelf.issuerRef)
                         && has(self.issuerRef)'
+                  configMapNamespaceSelector:
+                    description: |-
+                      configMapNamespaceSelector is a label selector to filter on namespaces where the controller creates
+                      istio-ca-root-cert ConfigMap. Supports '=', '==', and '!='.(e.g. key1=value1,key2=value2).
+                      When not set, the CA certificate is copied to every namespace in the cluster.
+                    type: string
                   istio:
                     description: istio is for configuring the istio specifics.
                     properties:

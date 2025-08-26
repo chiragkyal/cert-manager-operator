@@ -132,6 +132,13 @@ type IstioCSRConfig struct {
 	// +optional
 	// +mapType=atomic
 	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+
+	// configMapNamespaceSelector is a label selector to filter on namespaces where the controller creates
+	// istio-ca-root-cert ConfigMap. Supports '=', '==', and '!='.(e.g. key1=value1,key2=value2).
+	// When not set, the CA certificate is copied to every namespace in the cluster.
+	// +kubebuilder:validation:Optional
+	// +optional
+	ConfigMapNamespaceSelector string `json:"configMapNamespaceSelector,omitempty"`
 }
 
 // CertManagerConfig is for configuring cert-manager specifics.

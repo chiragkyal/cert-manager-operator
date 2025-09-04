@@ -709,6 +709,139 @@ func TestCreateOrApplyDeployments(t *testing.T) {
 			},
 			wantErr: `failed to generate deployment resource for creation in istiocsr-test-ns: failed to update resource requirements: [spec.istioCSRConfig.resources.requests[test]: Invalid value: test: must be a standard resource type or fully qualified, spec.istioCSRConfig.resources.requests[test]: Invalid value: test: must be a standard resource for containers]`,
 		},
+		{
+			name: "deployment reconciliation successful with CA chain ConfigMap",
+			preReq: func(r *Reconciler, m *fakes.FakeCtrlClient) {
+				m.ExistsCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) (bool, error) {
+					switch o := obj.(type) {
+					case *appsv1.Deployment:
+						deployment := testDeployment()
+						deployment.DeepCopyInto(o)
+					}
+					return true, nil
+				})
+				m.GetCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) error {
+					switch o := obj.(type) {
+					case *corev1.ConfigMap:
+						if ns.Name == "ca-chain-test" {
+							configMap := testCAChainConfigMap()
+							configMap.DeepCopyInto(o)
+						}
+					}
+					return nil
+				})
+				m.UpdateWithRetryReturns(nil)
+			},
+			updateIstioCSR: func(i *v1alpha1.IstioCSR) {
+				i.Status.IstioCSRImage = image
+				i.Spec.IstioCSRConfig.CertManager.CAChain = &v1alpha1.CAChainConfig{
+					ConfigMapRef: corev1.LocalObjectReference{
+						Name: "ca-chain-test",
+					},
+					Key: "ca-chain.pem",
+				}
+			},
+		},
+		{
+			name: "deployment reconciliation fails with missing CA chain ConfigMap",
+			preReq: func(r *Reconciler, m *fakes.FakeCtrlClient) {
+				m.ExistsCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) (bool, error) {
+					switch o := obj.(type) {
+					case *appsv1.Deployment:
+						deployment := testDeployment()
+						deployment.DeepCopyInto(o)
+					}
+					return true, nil
+				})
+				m.GetCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) error {
+					switch obj.(type) {
+					case *corev1.ConfigMap:
+						return apierrors.NewNotFound(corev1.Resource("configmaps"), "ca-chain-test")
+					}
+					return nil
+				})
+			},
+			updateIstioCSR: func(i *v1alpha1.IstioCSR) {
+				i.Status.IstioCSRImage = image
+				i.Spec.IstioCSRConfig.CertManager.CAChain = &v1alpha1.CAChainConfig{
+					ConfigMapRef: corev1.LocalObjectReference{
+						Name: "ca-chain-test",
+					},
+					Key: "ca-chain.pem",
+				}
+			},
+			wantErr: `failed to generate deployment resource for creation in istiocsr-test-ns: failed to update volume istiocsr-test-ns/istiocsr-test-resource: failed to validate and mount CA chain ConfigMap: failed to fetch CA chain ConfigMap ca-chain-test - ensure the ConfigMap exists in namespace istio-test-ns: configmaps "ca-chain-test" not found`,
+		},
+		{
+			name: "deployment reconciliation fails with missing key in CA chain ConfigMap",
+			preReq: func(r *Reconciler, m *fakes.FakeCtrlClient) {
+				m.ExistsCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) (bool, error) {
+					switch o := obj.(type) {
+					case *appsv1.Deployment:
+						deployment := testDeployment()
+						deployment.DeepCopyInto(o)
+					}
+					return true, nil
+				})
+				m.GetCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) error {
+					switch o := obj.(type) {
+					case *corev1.ConfigMap:
+						if ns.Name == "ca-chain-test" {
+							configMap := testCAChainConfigMap()
+							// Remove the expected key
+							delete(configMap.Data, "ca-chain.pem")
+							configMap.DeepCopyInto(o)
+						}
+					}
+					return nil
+				})
+			},
+			updateIstioCSR: func(i *v1alpha1.IstioCSR) {
+				i.Status.IstioCSRImage = image
+				i.Spec.IstioCSRConfig.CertManager.CAChain = &v1alpha1.CAChainConfig{
+					ConfigMapRef: corev1.LocalObjectReference{
+						Name: "ca-chain-test",
+					},
+					Key: "ca-chain.pem",
+				}
+			},
+			wantErr: `failed to generate deployment resource for creation in istiocsr-test-ns: failed to update volume istiocsr-test-ns/istiocsr-test-resource: failed to validate and mount CA chain ConfigMap: CA chain ConfigMap ca-chain-test does not contain required key "ca-chain.pem": key "ca-chain.pem" not found in ConfigMap`,
+		},
+		{
+			name: "deployment reconciliation fails with invalid PEM data in CA chain ConfigMap",
+			preReq: func(r *Reconciler, m *fakes.FakeCtrlClient) {
+				m.ExistsCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) (bool, error) {
+					switch o := obj.(type) {
+					case *appsv1.Deployment:
+						deployment := testDeployment()
+						deployment.DeepCopyInto(o)
+					}
+					return true, nil
+				})
+				m.GetCalls(func(ctx context.Context, ns types.NamespacedName, obj client.Object) error {
+					switch o := obj.(type) {
+					case *corev1.ConfigMap:
+						if ns.Name == "ca-chain-test" {
+							configMap := testCAChainConfigMap()
+							// Set invalid PEM data
+							configMap.Data["ca-chain.pem"] = "invalid-pem-data"
+							configMap.DeepCopyInto(o)
+						}
+					}
+					return nil
+				})
+			},
+			updateIstioCSR: func(i *v1alpha1.IstioCSR) {
+				i.Status.IstioCSRImage = image
+				i.Spec.IstioCSRConfig.CertManager.CAChain = &v1alpha1.CAChainConfig{
+					ConfigMapRef: corev1.LocalObjectReference{
+						Name: "ca-chain-test",
+					},
+					Key: "ca-chain.pem",
+				}
+			},
+			wantErr: `failed to generate deployment resource for creation in istiocsr-test-ns: failed to update volume istiocsr-test-ns/istiocsr-test-resource: failed to validate and mount CA chain ConfigMap: invalid PEM data in CA chain ConfigMap ca-chain-test key "ca-chain.pem" - ensure the key contains valid PEM-formatted certificate chain: no valid PEM data found`,
+		},
 	}
 
 	for _, tt := range tests {

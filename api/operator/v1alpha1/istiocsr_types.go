@@ -146,6 +146,28 @@ type CertManagerConfig struct {
 	// +kubebuilder:validation:Required
 	// +required
 	IssuerRef certmanagerv1.ObjectReference `json:"issuerRef,omitempty"`
+
+	// caChain is an optional reference to a ConfigMap containing the CA certificate chain
+	// in PEM format. This is useful for providing CAs issued by Vault, Venafi and other issuers
+	// to avoid "Trust on first use" scenarios. When configured, this takes precedence over
+	// the CA certificate extracted from the issuer's secret.
+	// +kubebuilder:validation:Optional
+	// +optional
+	CAChain *CAChainConfig `json:"caChain,omitempty"`
+}
+
+// CAChainConfig is for configuring the CA certificate chain reference.
+type CAChainConfig struct {
+	// configMapRef references a ConfigMap containing the CA certificate chain.
+	// The ConfigMap must exist in the istio namespace.
+	// +kubebuilder:validation:Required
+	// +required
+	ConfigMapRef corev1.LocalObjectReference `json:"configMapRef"`
+
+	// key is the key in the ConfigMap that contains the CA certificate chain in PEM format.
+	// +kubebuilder:validation:Required
+	// +required
+	Key string `json:"key"`
 }
 
 // IstiodTLSConfig is for configuring istiod certificate specifics.

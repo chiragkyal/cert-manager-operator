@@ -232,3 +232,22 @@ func testConfigMap() *corev1.ConfigMap {
 		},
 	}
 }
+
+func testCAChainConfigMap() *corev1.ConfigMap {
+	return &corev1.ConfigMap{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      "ca-chain-test",
+			Namespace: testIstiodNamespace,
+		},
+		Data: map[string]string{
+			"ca-chain.pem": `-----BEGIN CERTIFICATE-----
+MIIDXTCCAkWgAwIBAgIJAKoK/heBjcOuMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
+BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
+aWRnaXRzIFB0eSBMdGQwHhcNMTcwMTEyMTU1NjA4WhcNMjcwMTEwMTU1NjA4WjBF
+MQswCQYDVQQGEwJBVTETMBEGA1UECAwKU29tZS1TdGF0ZTEhMB8GA1UECgwYSW50
+ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEAuuExKQFJbOPJ9C1vhiuJdVobpRqNNKBtHjOIqHuXUcSLYrxNU0EhLaVV
+-----END CERTIFICATE-----`,
+		},
+	}
+}

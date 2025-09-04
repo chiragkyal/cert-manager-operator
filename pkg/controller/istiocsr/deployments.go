@@ -1,6 +1,7 @@
 package istiocsr
 
 import (
+	"encoding/pem"
 	"fmt"
 	"os"
 	"reflect"
@@ -262,6 +263,15 @@ func (r *Reconciler) assertIssuerRefExists(istiocsr *v1alpha1.IstioCSR) error {
 }
 
 func (r *Reconciler) updateVolumes(deployment *appsv1.Deployment, istiocsr *v1alpha1.IstioCSR, resourceLabels map[string]string) error {
+	// Priority 1: Use user-configured CA chain if provided
+	if istiocsr.Spec.IstioCSRConfig.CertManager.CAChain != nil {
+		if err := r.validateAndMountCAChain(deployment, istiocsr); err != nil {
+			return FromClientError(err, "failed to validate and mount CA chain ConfigMap")
+		}
+		return nil
+	}
+
+	// Priority 2: Fall back to issuer-based CA certificate if CA chain is not configured
 	var (
 		issuerConfig certmanagerv1.IssuerConfig
 	)
@@ -317,6 +327,90 @@ func updateVolumeWithIssuerCA(deployment *appsv1.Deployment) {
 						{
 							Key:  istiocsrCAKeyName,
 							Path: istiocsrCAKeyName,
+							Mode: &defaultMode,
+						},
+					},
+					DefaultMode: &defaultMode,
+				},
+			},
+		},
+	}
+
+	for i, container := range deployment.Spec.Template.Spec.Containers {
+		if container.Name == istiocsrContainerName {
+			deployment.Spec.Template.Spec.Containers[i].VolumeMounts = volumeMounts
+		}
+	}
+	deployment.Spec.Template.Spec.Volumes = volumes
+}
+
+func (r *Reconciler) validateAndMountCAChain(deployment *appsv1.Deployment, istiocsr *v1alpha1.IstioCSR) error {
+	caChain := istiocsr.Spec.IstioCSRConfig.CertManager.CAChain
+	if caChain == nil {
+		return NewIrrecoverableError(fmt.Errorf("CA chain configuration is nil"), "CA chain validation failed")
+	}
+
+	// Validate that the ConfigMap exists and contains the specified key
+	configMapKey := types.NamespacedName{
+		Name:      caChain.ConfigMapRef.Name,
+		Namespace: istiocsr.Spec.IstioCSRConfig.Istio.Namespace,
+	}
+
+	configMap := &corev1.ConfigMap{}
+	if err := r.Get(r.ctx, configMapKey, configMap); err != nil {
+		return NewIrrecoverableError(err, "failed to fetch CA chain ConfigMap %s - ensure the ConfigMap exists in namespace %s", configMapKey.Name, configMapKey.Namespace)
+	}
+
+	// Validate that the specified key exists in the ConfigMap
+	if _, exists := configMap.Data[caChain.Key]; !exists {
+		return NewIrrecoverableError(fmt.Errorf("key %q not found in ConfigMap", caChain.Key), "CA chain ConfigMap %s does not contain required key %q", configMapKey.Name, caChain.Key)
+	}
+
+	// Validate that the key contains PEM-formatted content
+	pemData := configMap.Data[caChain.Key]
+	if err := r.validatePEMData(pemData); err != nil {
+		return NewIrrecoverableError(err, "invalid PEM data in CA chain ConfigMap %s key %q - ensure the key contains valid PEM-formatted certificate chain", configMapKey.Name, caChain.Key)
+	}
+
+	// Add watch label to the ConfigMap for tracking
+	if err := r.updateWatchLabelOnConfigMap(configMap, istiocsr); err != nil {
+		return FromClientError(err, "failed to update watch label on CA chain ConfigMap")
+	}
+
+	// Mount the user-provided CA chain ConfigMap
+	updateVolumeWithCAChain(deployment, caChain)
+
+	return nil
+}
+
+func updateVolumeWithCAChain(deployment *appsv1.Deployment, caChain *v1alpha1.CAChainConfig) {
+	const (
+		caVolumeName = "root-ca"
+	)
+	var (
+		defaultMode = int32(420)
+	)
+
+	volumeMounts := []corev1.VolumeMount{
+		{
+			Name:      caVolumeName,
+			MountPath: caVolumeMountPath,
+			ReadOnly:  true,
+		},
+	}
+
+	volumes := []corev1.Volume{
+		{
+			Name: caVolumeName,
+			VolumeSource: corev1.VolumeSource{
+				ConfigMap: &corev1.ConfigMapVolumeSource{
+					LocalObjectReference: corev1.LocalObjectReference{
+						Name: caChain.ConfigMapRef.Name,
+					},
+					Items: []corev1.KeyToPath{
+						{
+							Key:  caChain.Key,
+							Path: istiocsrCAKeyName, // Always mount as ca.crt for consistency
 							Mode: &defaultMode,
 						},
 					},
@@ -406,6 +500,42 @@ func (r *Reconciler) createCAConfigMap(istiocsr *v1alpha1.IstioCSR, issuerConfig
 			return fmt.Errorf("failed to create %s configmap resource: %w", configmapKey, err)
 		}
 		r.eventRecorder.Eventf(istiocsr, corev1.EventTypeNormal, "Reconciled", "configmap resource %s created", configmapKey)
+	}
+	return nil
+}
+
+func (r *Reconciler) validatePEMData(pemData string) error {
+	if pemData == "" {
+		return fmt.Errorf("PEM data is empty")
+	}
+
+	// Try to decode the PEM data to ensure it's valid
+	block, rest := pem.Decode([]byte(pemData))
+	if block == nil {
+		return fmt.Errorf("no valid PEM data found")
+	}
+
+	// Check if there are multiple PEM blocks (certificate chain)
+	for len(rest) > 0 {
+		block, rest = pem.Decode(rest)
+		if block == nil {
+			return fmt.Errorf("invalid PEM block found in certificate chain")
+		}
+	}
+
+	return nil
+}
+
+func (r *Reconciler) updateWatchLabelOnConfigMap(configMap *corev1.ConfigMap, istiocsr *v1alpha1.IstioCSR) error {
+	labels := configMap.GetLabels()
+	if labels == nil {
+		labels = make(map[string]string)
+	}
+	labels[istiocsrResourceWatchLabelName] = fmt.Sprintf(istiocsrResourceWatchLabelValueFmt, istiocsr.GetNamespace(), istiocsr.GetName())
+	configMap.SetLabels(labels)
+
+	if err := r.UpdateWithRetry(r.ctx, configMap); err != nil {
+		return fmt.Errorf("failed to update ConfigMap with watch label: %w", err)
 	}
 	return nil
 }

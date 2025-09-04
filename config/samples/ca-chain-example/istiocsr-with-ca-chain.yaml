@@ -1,0 +1,28 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: IstioCSR
+metadata:
+  name: default
+  namespace: cert-manager-operator
+spec:
+  istioCSRConfig:
+    certManager:
+      issuerRef:
+        name: vault-issuer
+        kind: Issuer
+        group: cert-manager.io
+      # CA chain configuration for Vault, Venafi, or other external CA issuers
+      # This takes precedence over the CA certificate extracted from the issuer's secret
+      caChain:
+        configMapRef:
+          name: vault-ca-chain
+        key: ca-chain.pem
+    istiodTLSConfig:
+      trustDomain: cluster.local
+      certificateDuration: 1h
+      certificateRenewBefore: 30m
+    istio:
+      namespace: istio-system
+      revisions:
+        - default
+    logLevel: 1
+    logFormat: text

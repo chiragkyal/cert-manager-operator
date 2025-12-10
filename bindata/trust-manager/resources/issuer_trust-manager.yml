@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: trust-manager
+  namespace: trust-manager
+  labels:
+    app.kubernetes.io/name: trust-manager
+    app.kubernetes.io/instance: trust-manager
+    app.kubernetes.io/version: "v0.20.2"
+    app.kubernetes.io/managed-by: cert-manager-operator
+spec:
+  selfSigned: {}

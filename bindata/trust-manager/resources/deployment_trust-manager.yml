@@ -1,0 +1,105 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trust-manager
+  namespace: trust-manager
+  labels:
+    app.kubernetes.io/name: trust-manager
+    app.kubernetes.io/instance: trust-manager
+    app.kubernetes.io/version: "v0.20.2"
+    app.kubernetes.io/managed-by: cert-manager-operator
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: trust-manager
+  template:
+    metadata:
+      labels:
+        app: trust-manager
+        app.kubernetes.io/name: trust-manager
+        app.kubernetes.io/instance: trust-manager
+        app.kubernetes.io/version: "v0.20.2"
+        app.kubernetes.io/managed-by: cert-manager-operator
+    spec:
+      serviceAccountName: trust-manager
+      automountServiceAccountToken: true
+      initContainers:
+        - name: cert-manager-package-debian
+          image: "quay.io/jetstack/trust-pkg-debian-bookworm:20230311-deb12u1.2"
+          imagePullPolicy: IfNotPresent
+          args:
+            - "/copyandmaybepause"
+            - "/debian-package"
+            - "/packages"
+          volumeMounts:
+            - mountPath: /packages
+              name: packages
+              readOnly: false
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+      containers:
+        - name: trust-manager
+          image: "quay.io/jetstack/trust-manager:v0.20.2"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6443
+              name: webhook
+            - containerPort: 9402
+              name: metrics
+          readinessProbe:
+            httpGet:
+              port: 6060
+              path: /readyz
+            initialDelaySeconds: 3
+            periodSeconds: 7
+          args:
+            - "--log-format=text"
+            - "--log-level=1"
+            - "--metrics-port=9402"
+            - "--readiness-probe-port=6060"
+            - "--readiness-probe-path=/readyz"
+            - "--leader-elect=true"
+            - "--leader-election-lease-duration=15s"
+            - "--leader-election-renew-deadline=10s"
+            - "--trust-namespace=cert-manager"
+            - "--webhook-host=0.0.0.0"
+            - "--webhook-port=6443"
+            - "--webhook-certificate-dir=/tls"
+            - "--default-package-location=/packages/cert-manager-package-debian.json"
+          volumeMounts:
+            - mountPath: /tls
+              name: tls
+              readOnly: true
+            - mountPath: /packages
+              name: packages
+              readOnly: true
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+      nodeSelector:
+        kubernetes.io/os: linux
+      volumes:
+        - name: packages
+          emptyDir:
+            sizeLimit: 50M
+        - name: tls
+          secret:
+            defaultMode: 420
+            secretName: trust-manager-tls

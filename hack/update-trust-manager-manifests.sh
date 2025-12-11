@@ -10,7 +10,11 @@ mkdir -p ${MANIFESTS_PATH}
 echo "---- Downloading trust-manager manifests ${TRUST_MANAGER_VERSION} ----"
 
 helm repo add cert-manager https://charts.jetstack.io --force-update
-helm template trust-manager cert-manager/trust-manager -n trust-manager --version "${TRUST_MANAGER_VERSION}" > ${MANIFESTS_PATH}/manifests.yaml
+helm template trust-manager cert-manager/trust-manager -n trust-manager \
+  --version "${TRUST_MANAGER_VERSION}" \
+  --set secretTargets.enabled=true \
+  --set secretTargets.authorizedSecrets="{dev,prod}" \
+  > ${MANIFESTS_PATH}/manifests.yaml
 
 echo "---- Patching manifest ----"
 

@@ -76,6 +76,7 @@ spec:
             - "--webhook-port=6443"
             - "--webhook-certificate-dir=/tls"
             - "--default-package-location=/packages/cert-manager-package-debian.json"
+            - "--secret-targets-enabled=true"
           volumeMounts:
             - mountPath: /tls
               name: tls

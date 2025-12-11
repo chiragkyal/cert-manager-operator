@@ -39,3 +39,16 @@ rules:
     resources:
       - "events"
     verbs: ["create", "patch"]
+  - apiGroups:
+      - ""
+    resources:
+      - "secrets"
+    verbs: ["get", "list", "watch"]
+  - apiGroups:
+      - ""
+    resources:
+      - "secrets"
+    verbs: ["create", "patch", "delete"]
+    resourceNames:
+      - dev
+      - prod

@@ -591,51 +591,11 @@ func (r *Reconciler) removeFinalizer(ctx context.Context, trustManager *v1alpha1
 	return nil
 }
 
-// =============================================================================
-// PLACEHOLDER METHODS - TO BE IMPLEMENTED
-// =============================================================================
-// These methods need to be implemented in separate files:
-// - serviceaccounts.go
-// - rbacs.go
-// - services.go
-// - certificates.go
-// - deployments.go
-// - webhooks.go
-
-func (r *Reconciler) createOrApplyServiceAccount(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - load from bindata, apply labels, create/update
-	r.log.V(2).Info("createOrApplyServiceAccount - not yet implemented")
-	return nil
-}
-
-func (r *Reconciler) createOrApplyRBACResources(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - ClusterRole, ClusterRoleBinding, Roles, RoleBindings
-	// Note: ClusterRole rules need to be dynamic based on secretTargets config
-	r.log.V(2).Info("createOrApplyRBACResources - not yet implemented")
-	return nil
-}
-
-func (r *Reconciler) createOrApplyServices(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - webhook service, metrics service
-	r.log.V(2).Info("createOrApplyServices - not yet implemented")
-	return nil
-}
-
-func (r *Reconciler) createOrApplyCertificates(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - self-signed Issuer, Certificate for webhook
-	r.log.V(2).Info("createOrApplyCertificates - not yet implemented")
-	return nil
-}
-
-func (r *Reconciler) createOrApplyDeployment(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - load deployment from bindata, update image/args/resources
-	r.log.V(2).Info("createOrApplyDeployment - not yet implemented")
-	return nil
-}
-
-func (r *Reconciler) createOrApplyWebhook(trustManager *v1alpha1.TrustManager, labels map[string]string, isNew bool) error {
-	// TODO: Implement - ValidatingWebhookConfiguration
-	r.log.V(2).Info("createOrApplyWebhook - not yet implemented")
-	return nil
-}
+// Note: The actual implementation of these methods is in separate files:
+// - serviceaccounts.go: createOrApplyServiceAccount()
+// - rbacs.go: createOrApplyRBACResources()
+// - services.go: createOrApplyServices()
+// - certificates.go: createOrApplyCertificates()
+// - deployments.go: createOrApplyDeployment()
+// - webhooks.go: createOrApplyWebhook()
 

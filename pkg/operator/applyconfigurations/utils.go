@@ -50,8 +50,20 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &operatorv1alpha1.IstiodTLSConfigApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("NetworkPolicy"):
 		return &operatorv1alpha1.NetworkPolicyApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("SecretTargetsConfig"):
+		return &operatorv1alpha1.SecretTargetsConfigApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ServerConfig"):
 		return &operatorv1alpha1.ServerConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("TrustManager"):
+		return &operatorv1alpha1.TrustManagerApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("TrustManagerConfig"):
+		return &operatorv1alpha1.TrustManagerConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("TrustManagerControllerConfig"):
+		return &operatorv1alpha1.TrustManagerControllerConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("TrustManagerSpec"):
+		return &operatorv1alpha1.TrustManagerSpecApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("TrustManagerStatus"):
+		return &operatorv1alpha1.TrustManagerStatusApplyConfiguration{}
 
 	}
 	return nil

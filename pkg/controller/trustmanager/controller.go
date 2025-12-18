@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
+	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
@@ -116,15 +117,16 @@ func NewCacheBuilder(config *rest.Config, opts cache.Options) (cache.Cache, erro
 		&v1alpha1.TrustManager{}: {},
 
 		// Managed resources: Only cache those with our label
-		&appsv1.Deployment{}:                         {Label: selector},
-		&corev1.ServiceAccount{}:                     {Label: selector},
-		&corev1.Service{}:                            {Label: selector},
-		&rbacv1.ClusterRole{}:                        {Label: selector},
-		&rbacv1.ClusterRoleBinding{}:                 {Label: selector},
-		&rbacv1.Role{}:                               {Label: selector},
-		&rbacv1.RoleBinding{}:                        {Label: selector},
-		&certmanagerv1.Certificate{}:                 {Label: selector},
-		&certmanagerv1.Issuer{}:                      {Label: selector},
+		&appsv1.Deployment{}:         {Label: selector},
+		&corev1.ServiceAccount{}:     {Label: selector},
+		&corev1.Service{}:            {Label: selector},
+		&rbacv1.ClusterRole{}:        {Label: selector},
+		&rbacv1.ClusterRoleBinding{}: {Label: selector},
+		&rbacv1.Role{}:               {Label: selector},
+		&rbacv1.RoleBinding{}:        {Label: selector},
+		&certmanagerv1.Certificate{}: {Label: selector},
+		&certmanagerv1.Issuer{}:      {Label: selector},
+		&admissionregistrationv1.ValidatingWebhookConfiguration{}: {Label: selector},
 	}
 
 	return cache.New(config, opts)
@@ -245,6 +247,9 @@ func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 			handler.EnqueueRequestsFromMapFunc(mapFunc),
 			withIgnoreStatusUpdate).
 		Watches(&certmanagerv1.Issuer{},
+			handler.EnqueueRequestsFromMapFunc(mapFunc),
+			withManagedResourcesOnly).
+		Watches(&admissionregistrationv1.ValidatingWebhookConfiguration{},
 			handler.EnqueueRequestsFromMapFunc(mapFunc),
 			withManagedResourcesOnly).
 		Complete(r)
@@ -475,6 +480,10 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 // =============================================================================
 // cleanUp removes all resources created for trust-manager.
 // Called when TrustManager CR is being deleted.
+//
+// Returns (true, nil) if cleanup is in progress and we should requeue.
+// Returns (false, nil) if cleanup is complete.
+// Returns (false, err) if cleanup failed.
 func (r *Reconciler) cleanUp(trustManager *v1alpha1.TrustManager) (bool, error) {
 	r.log.Info("cleaning up trust-manager resources",
 		"name", trustManager.GetName())
@@ -483,14 +492,188 @@ func (r *Reconciler) cleanUp(trustManager *v1alpha1.TrustManager) (bool, error) 
 		"TrustManager marked for deletion, cleaning up resources in %s namespace",
 		operandNamespace)
 
-	// TODO: Implement actual cleanup
-	// For now, we rely on owner references for cleanup
-	// In the future, we may need to:
-	// 1. Delete ClusterRole/ClusterRoleBinding (cluster-scoped, no owner refs)
-	// 2. Delete ValidatingWebhookConfiguration (cluster-scoped)
-	// 3. Wait for all resources to be deleted before returning false
+	// Get labels to identify resources we created
+	resourceLabels := r.getResourceLabels(trustManager)
 
+	// List of cluster-scoped resources to delete (no owner references)
+	// Order matters - delete dependents first
+	clusterScopedResources := []client.Object{
+		&admissionregistrationv1.ValidatingWebhookConfiguration{},
+		&rbacv1.ClusterRoleBinding{},
+		&rbacv1.ClusterRole{},
+	}
+
+	// Delete cluster-scoped resources by label
+	for _, obj := range clusterScopedResources {
+		if err := r.deleteByLabel(obj, resourceLabels); err != nil {
+			return false, err
+		}
+	}
+
+	// Namespace-scoped resources will be garbage collected when namespace resources are deleted
+	// But we explicitly delete them for faster cleanup
+	namespacedResources := []client.Object{
+		&appsv1.Deployment{},
+		&corev1.Service{},
+		&certmanagerv1.Certificate{},
+		&certmanagerv1.Issuer{},
+		&rbacv1.RoleBinding{},
+		&rbacv1.Role{},
+		&corev1.ServiceAccount{},
+	}
+
+	for _, obj := range namespacedResources {
+		if err := r.deleteByLabelInNamespace(obj, operandNamespace, resourceLabels); err != nil {
+			return false, err
+		}
+	}
+
+	r.log.Info("cleanup complete", "name", trustManager.GetName())
 	return false, nil
+}
+
+// deleteByLabel deletes all cluster-scoped resources matching the given labels.
+func (r *Reconciler) deleteByLabel(obj client.Object, resourceLabels map[string]string) error {
+	listOpts := []client.ListOption{
+		client.MatchingLabels{
+			requestEnqueueLabelKey: requestEnqueueLabelValue,
+		},
+	}
+
+	// Get the list type for this object
+	list := getListType(obj)
+	if list == nil {
+		return nil // Skip if we don't have a list type
+	}
+
+	if err := r.List(r.ctx, list, listOpts...); err != nil {
+		if errors.IsNotFound(err) {
+			return nil
+		}
+		return FromClientError(err, "failed to list %T for cleanup", obj)
+	}
+
+	// Delete each item
+	items := getItemsFromList(list)
+	for _, item := range items {
+		r.log.V(2).Info("deleting resource", "type", fmt.Sprintf("%T", item), "name", item.GetName())
+		if err := r.Delete(r.ctx, item); err != nil && !errors.IsNotFound(err) {
+			return FromClientError(err, "failed to delete %T %s", item, item.GetName())
+		}
+	}
+
+	return nil
+}
+
+// deleteByLabelInNamespace deletes all namespace-scoped resources matching the given labels.
+func (r *Reconciler) deleteByLabelInNamespace(obj client.Object, namespace string, resourceLabels map[string]string) error {
+	listOpts := []client.ListOption{
+		client.InNamespace(namespace),
+		client.MatchingLabels{
+			requestEnqueueLabelKey: requestEnqueueLabelValue,
+		},
+	}
+
+	list := getListType(obj)
+	if list == nil {
+		return nil
+	}
+
+	if err := r.List(r.ctx, list, listOpts...); err != nil {
+		if errors.IsNotFound(err) {
+			return nil
+		}
+		return FromClientError(err, "failed to list %T in namespace %s for cleanup", obj, namespace)
+	}
+
+	items := getItemsFromList(list)
+	for _, item := range items {
+		r.log.V(2).Info("deleting resource", "type", fmt.Sprintf("%T", item),
+			"name", item.GetName(), "namespace", item.GetNamespace())
+		if err := r.Delete(r.ctx, item); err != nil && !errors.IsNotFound(err) {
+			return FromClientError(err, "failed to delete %T %s/%s", item, item.GetNamespace(), item.GetName())
+		}
+	}
+
+	return nil
+}
+
+// getListType returns the appropriate list type for a given object.
+func getListType(obj client.Object) client.ObjectList {
+	switch obj.(type) {
+	case *appsv1.Deployment:
+		return &appsv1.DeploymentList{}
+	case *corev1.ServiceAccount:
+		return &corev1.ServiceAccountList{}
+	case *corev1.Service:
+		return &corev1.ServiceList{}
+	case *rbacv1.ClusterRole:
+		return &rbacv1.ClusterRoleList{}
+	case *rbacv1.ClusterRoleBinding:
+		return &rbacv1.ClusterRoleBindingList{}
+	case *rbacv1.Role:
+		return &rbacv1.RoleList{}
+	case *rbacv1.RoleBinding:
+		return &rbacv1.RoleBindingList{}
+	case *certmanagerv1.Certificate:
+		return &certmanagerv1.CertificateList{}
+	case *certmanagerv1.Issuer:
+		return &certmanagerv1.IssuerList{}
+	case *admissionregistrationv1.ValidatingWebhookConfiguration:
+		return &admissionregistrationv1.ValidatingWebhookConfigurationList{}
+	default:
+		return nil
+	}
+}
+
+// getItemsFromList extracts items from a list object as client.Objects.
+func getItemsFromList(list client.ObjectList) []client.Object {
+	var items []client.Object
+
+	switch l := list.(type) {
+	case *appsv1.DeploymentList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *corev1.ServiceAccountList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *corev1.ServiceList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *rbacv1.ClusterRoleList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *rbacv1.ClusterRoleBindingList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *rbacv1.RoleList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *rbacv1.RoleBindingList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *certmanagerv1.CertificateList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *certmanagerv1.IssuerList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *admissionregistrationv1.ValidatingWebhookConfigurationList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	}
+
+	return items
 }
 
 // =============================================================================
@@ -598,4 +781,3 @@ func (r *Reconciler) removeFinalizer(ctx context.Context, trustManager *v1alpha1
 // - certificates.go: createOrApplyCertificates()
 // - deployments.go: createOrApplyDeployment()
 // - webhooks.go: createOrApplyWebhook()
-

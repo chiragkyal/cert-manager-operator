@@ -39,17 +39,17 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                - key: kubernetes.io/arch
-                  operator: In
-                  values:
-                    - amd64
-                    - arm64
-                    - ppc64le
-                    - s390x
-                - key: kubernetes.io/os
-                  operator: In
-                  values:
-                    - linux
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
+                      - arm64
+                      - ppc64le
+                      - s390x
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                      - linux
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -59,10 +59,10 @@ spec:
             - /usr/bin/cert-manager-operator
           args:
             - start
-            - '--v=$(OPERATOR_LOG_LEVEL)'
-            - '--trusted-ca-configmap=$(TRUSTED_CA_CONFIGMAP_NAME)'
-            - '--cloud-credentials-secret=$(CLOUD_CREDENTIALS_SECRET_NAME)'
-            - '--unsupported-addon-features=$(UNSUPPORTED_ADDON_FEATURES)'
+            - "--v=$(OPERATOR_LOG_LEVEL)"
+            - "--trusted-ca-configmap=$(TRUSTED_CA_CONFIGMAP_NAME)"
+            - "--cloud-credentials-secret=$(CLOUD_CREDENTIALS_SECRET_NAME)"
+            - "--unsupported-addon-features=$(UNSUPPORTED_ADDON_FEATURES)"
           env:
             - name: WATCH_NAMESPACE
               valueFrom:
@@ -84,6 +84,10 @@ spec:
               value: quay.io/jetstack/cert-manager-acmesolver:v1.18.3
             - name: RELATED_IMAGE_CERT_MANAGER_ISTIOCSR
               value: quay.io/jetstack/cert-manager-istio-csr:v0.14.2
+            - name: RELATED_IMAGE_TRUST_MANAGER
+              value: quay.io/jetstack/trust-manager:v0.20.2
+            - name: TRUST_MANAGER_OPERAND_IMAGE_VERSION
+              value: 0.20.2
             - name: OPERAND_IMAGE_VERSION
               value: 1.18.3
             - name: ISTIOCSR_OPERAND_IMAGE_VERSION
@@ -91,7 +95,7 @@ spec:
             - name: OPERATOR_IMAGE_VERSION
               value: 1.18.0
             - name: OPERATOR_LOG_LEVEL
-              value: '2'
+              value: "2"
             - name: TRUSTED_CA_CONFIGMAP_NAME
             - name: CLOUD_CREDENTIALS_SECRET_NAME
             - name: UNSUPPORTED_ADDON_FEATURES
@@ -102,16 +106,16 @@ spec:
             allowPrivilegeEscalation: false
             capabilities:
               drop:
-                - 'ALL'
+                - "ALL"
             privileged: false
             runAsNonRoot: true
             readOnlyRootFilesystem: true
             seccompProfile:
-              type: 'RuntimeDefault'
+              type: "RuntimeDefault"
           ports:
-          - containerPort: 8443
-            name: https
-            protocol: TCP
+            - containerPort: 8443
+              name: https
+              protocol: TCP
           resources:
             requests:
               cpu: 10m

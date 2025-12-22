@@ -75,8 +75,8 @@ type Reconciler struct {
 // +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=clusterroles;clusterrolebindings,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=roles;rolebindings,verbs=get;list;watch;create;update;patch;delete
 
-// ServiceAccount and Service management
-// +kubebuilder:rbac:groups="",resources=serviceaccounts;services,verbs=get;list;watch;create;update;patch;delete
+// ServiceAccount, Service, and ConfigMap management
+// +kubebuilder:rbac:groups="",resources=serviceaccounts;services;configmaps,verbs=get;list;watch;create;update;patch;delete
 
 // Certificate management (for webhook TLS)
 // +kubebuilder:rbac:groups=cert-manager.io,resources=certificates;issuers,verbs=get;list;watch;create;update;patch;delete
@@ -120,6 +120,7 @@ func NewCacheBuilder(config *rest.Config, opts cache.Options) (cache.Cache, erro
 		&appsv1.Deployment{}:         {Label: selector},
 		&corev1.ServiceAccount{}:     {Label: selector},
 		&corev1.Service{}:            {Label: selector},
+		&corev1.ConfigMap{}:          {Label: selector}, // For DefaultCAPackage ConfigMaps
 		&rbacv1.ClusterRole{}:        {Label: selector},
 		&rbacv1.ClusterRoleBinding{}: {Label: selector},
 		&rbacv1.Role{}:               {Label: selector},
@@ -229,6 +230,11 @@ func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 			handler.EnqueueRequestsFromMapFunc(mapFunc),
 			withManagedResourcesOnly).
 		Watches(&corev1.Service{},
+			handler.EnqueueRequestsFromMapFunc(mapFunc),
+			withManagedResourcesOnly).
+		// ConfigMaps are watched for DefaultCAPackage feature
+		// CNO updates the injection ConfigMap, which should trigger reconciliation
+		Watches(&corev1.ConfigMap{},
 			handler.EnqueueRequestsFromMapFunc(mapFunc),
 			withManagedResourcesOnly).
 		Watches(&rbacv1.ClusterRole{},
@@ -354,7 +360,8 @@ func (r *Reconciler) processReconcileRequest(trustManager *v1alpha1.TrustManager
 	// ==========================================================================
 	// Reconcile all trust-manager resources
 	// ==========================================================================
-	if err := r.reconcileTrustManagerDeployment(trustManager, isNewReconcile); err != nil {
+	requeue, err := r.reconcileTrustManagerDeployment(trustManager, isNewReconcile)
+	if err != nil {
 		r.log.Error(err, "failed to reconcile trust-manager deployment")
 
 		if IsIrrecoverableError(err) {
@@ -394,6 +401,27 @@ func (r *Reconciler) processReconcileRequest(trustManager *v1alpha1.TrustManager
 		return ctrl.Result{RequeueAfter: defaultRequeueTime}, nil
 	}
 
+	// If requeue is requested (e.g., waiting for CNO to inject CA bundle)
+	if requeue {
+		r.log.V(1).Info("reconciliation requires requeue")
+
+		// Set status to indicate we're waiting
+		degradedChanged := trustManager.Status.SetCondition(
+			v1alpha1.Degraded, metav1.ConditionFalse,
+			v1alpha1.ReasonReady, "")
+		readyChanged := trustManager.Status.SetCondition(
+			v1alpha1.Ready, metav1.ConditionFalse,
+			v1alpha1.ReasonInProgress,
+			"waiting for OpenShift CNO to inject trusted CA bundle")
+
+		if degradedChanged || readyChanged {
+			if updateErr := r.updateCondition(trustManager); updateErr != nil {
+				return ctrl.Result{}, updateErr
+			}
+		}
+		return ctrl.Result{RequeueAfter: defaultRequeueTime}, nil
+	}
+
 	// ==========================================================================
 	// Success - update status
 	// ==========================================================================
@@ -423,7 +451,12 @@ func (r *Reconciler) processReconcileRequest(trustManager *v1alpha1.TrustManager
 // =============================================================================
 // reconcileTrustManagerDeployment creates/updates all resources needed for trust-manager.
 // The order matters: some resources depend on others.
-func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.TrustManager, isNewReconcile bool) error {
+//
+// Returns:
+// - (true, nil) if reconciliation requires requeue (e.g., waiting for CNO to inject CA bundle)
+// - (false, nil) if reconciliation was successful
+// - (false, error) if there was an error
+func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.TrustManager, isNewReconcile bool) (bool, error) {
 	// Get labels to apply to all resources
 	resourceLabels := r.getResourceLabels(trustManager)
 
@@ -432,7 +465,7 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 	// ==========================================================================
 	// Must exist before Deployment references it
 	if err := r.createOrApplyServiceAccount(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
@@ -441,7 +474,7 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 	// ClusterRole/Binding: Cluster-wide permissions
 	// Role/Binding: Namespace-scoped permissions (leader election, etc.)
 	if err := r.createOrApplyRBACResources(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
@@ -449,7 +482,7 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 	// ==========================================================================
 	// Webhook service and metrics service
 	if err := r.createOrApplyServices(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
@@ -457,27 +490,56 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 	// ==========================================================================
 	// Issuer (self-signed) and Certificate for webhook server
 	if err := r.createOrApplyCertificates(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
-	// 5. Deployment - The trust-manager pod
+	// 5. Default CA Package (OpenShift-specific)
+	// ==========================================================================
+	// If enabled, create ConfigMaps for CNO to inject trusted CA bundle.
+	// This must be done BEFORE the Deployment so the ConfigMap can be mounted.
+	if isDefaultCAPackageEnabled(trustManager) {
+		requeue, err := r.createOrApplyDefaultCAPackage(trustManager, resourceLabels, isNewReconcile)
+		if err != nil {
+			return false, err
+		}
+		if requeue {
+			// CNO hasn't injected the CA bundle yet, requeue to check later
+			r.log.V(1).Info("waiting for CNO to inject CA bundle, will requeue")
+			return true, nil
+		}
+	} else {
+		// If DefaultCAPackage is disabled, clean up any existing ConfigMaps
+		if err := r.deleteDefaultCAPackageConfigMaps(); err != nil {
+			r.log.Error(err, "failed to clean up DefaultCAPackage ConfigMaps")
+			// Don't fail reconciliation for cleanup errors
+		}
+		// Clear status if it was previously enabled
+		if trustManager.Status.DefaultCAPackage != nil && trustManager.Status.DefaultCAPackage.Enabled {
+			if err := r.updateDefaultCAPackageStatus(trustManager, false); err != nil {
+				return false, err
+			}
+		}
+	}
+
+	// ==========================================================================
+	// 6. Deployment - The trust-manager pod
 	// ==========================================================================
 	if err := r.createOrApplyDeployment(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
-	// 6. ValidatingWebhookConfiguration - Bundle validation
+	// 7. ValidatingWebhookConfiguration - Bundle validation
 	// ==========================================================================
 	if err := r.createOrApplyWebhook(trustManager, resourceLabels, isNewReconcile); err != nil {
-		return err
+		return false, err
 	}
 
 	// ==========================================================================
-	// 7. Mark as processed
+	// 8. Mark as processed
 	// ==========================================================================
-	return r.addProcessedAnnotation(trustManager)
+	return false, r.addProcessedAnnotation(trustManager)
 }
 
 // =============================================================================
@@ -520,6 +582,7 @@ func (r *Reconciler) cleanUp(trustManager *v1alpha1.TrustManager) (bool, error) 
 	namespacedResources := []client.Object{
 		&appsv1.Deployment{},
 		&corev1.Service{},
+		&corev1.ConfigMap{}, // DefaultCAPackage ConfigMaps
 		&certmanagerv1.Certificate{},
 		&certmanagerv1.Issuer{},
 		&rbacv1.RoleBinding{},
@@ -612,6 +675,8 @@ func getListType(obj client.Object) client.ObjectList {
 		return &corev1.ServiceAccountList{}
 	case *corev1.Service:
 		return &corev1.ServiceList{}
+	case *corev1.ConfigMap:
+		return &corev1.ConfigMapList{}
 	case *rbacv1.ClusterRole:
 		return &rbacv1.ClusterRoleList{}
 	case *rbacv1.ClusterRoleBinding:
@@ -645,6 +710,10 @@ func getItemsFromList(list client.ObjectList) []client.Object {
 			items = append(items, &l.Items[i])
 		}
 	case *corev1.ServiceList:
+		for i := range l.Items {
+			items = append(items, &l.Items[i])
+		}
+	case *corev1.ConfigMapList:
 		for i := range l.Items {
 			items = append(items, &l.Items[i])
 		}

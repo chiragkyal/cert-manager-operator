@@ -201,4 +201,47 @@ const (
 
 	// argFilterExpiredCertificates enables filtering of expired certs from bundles
 	argFilterExpiredCertificates = "--filter-expired-certificates"
+
+	// argDefaultPackageLocation sets the path to the default CA package JSON file
+	argDefaultPackageLocation = "--default-package-location"
+)
+
+// =============================================================================
+// DEFAULT CA PACKAGE CONSTANTS
+// =============================================================================
+// These constants are used for the OpenShift-specific default CA package feature.
+// Instead of using the upstream Debian init container, we use OpenShift's
+// trusted CA bundle injection mechanism via CNO (Cluster Network Operator).
+const (
+	// defaultCAPackageName is the name of the default CA package for OpenShift.
+	// This is used in the JSON package file.
+	defaultCAPackageName = "cert-manager-package-openshift"
+
+	// defaultCAPackageJSONFile is the filename of the JSON package file.
+	defaultCAPackageJSONFile = defaultCAPackageName + ".json"
+
+	// defaultCAPackageLocation is the path where the package is mounted in the container.
+	defaultCAPackageLocation = "/packages/" + defaultCAPackageJSONFile
+
+	// defaultCAInjectionConfigMapName is the name of the ConfigMap that CNO will
+	// inject the trusted CA bundle into. This ConfigMap has the annotation
+	// "config.openshift.io/inject-trusted-cabundle: true".
+	defaultCAInjectionConfigMapName = "trust-manager-default-ca-injection"
+
+	// defaultCAPackageConfigMapName is the name of the ConfigMap containing the
+	// formatted JSON package that is mounted to trust-manager.
+	defaultCAPackageConfigMapName = "trust-manager-default-ca-package"
+
+	// cnoInjectTrustedCABundleAnnotation is the OpenShift annotation that triggers
+	// the Cluster Network Operator to inject the cluster's trusted CA bundle.
+	cnoInjectTrustedCABundleAnnotation = "config.openshift.io/inject-trusted-cabundle"
+
+	// cnoInjectedCABundleKey is the key in the ConfigMap where CNO injects the CA bundle.
+	cnoInjectedCABundleKey = "ca-bundle.crt"
+
+	// defaultCAPackageVolumeMount is the mount path for the default CA package volume.
+	defaultCAPackageVolumeMountPath = "/packages"
+
+	// defaultCAPackageVolumeName is the name of the volume for the default CA package.
+	defaultCAPackageVolumeName = "default-ca-package"
 )

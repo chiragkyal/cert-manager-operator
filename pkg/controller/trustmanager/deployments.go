@@ -139,6 +139,87 @@ func (r *Reconciler) updateContainerConfig(deploy *appsv1.Deployment, trustManag
 	if config.Resources.Limits != nil || config.Resources.Requests != nil {
 		container.Resources = config.Resources
 	}
+
+	// Configure DefaultCAPackage volume mount if enabled
+	r.configureDefaultCAPackageVolume(deploy, container, config)
+}
+
+// configureDefaultCAPackageVolume adds or removes the DefaultCAPackage volume and volume mount.
+func (r *Reconciler) configureDefaultCAPackageVolume(
+	deploy *appsv1.Deployment,
+	container *corev1.Container,
+	config v1alpha1.TrustManagerConfig,
+) {
+	defaultCAEnabled := config.DefaultCAPackage != nil && config.DefaultCAPackage.Enabled
+
+	// Check if volume already exists
+	volumeExists := false
+	volumeIndex := -1
+	for i, vol := range deploy.Spec.Template.Spec.Volumes {
+		if vol.Name == defaultCAPackageVolumeName {
+			volumeExists = true
+			volumeIndex = i
+			break
+		}
+	}
+
+	// Check if volume mount already exists
+	mountExists := false
+	mountIndex := -1
+	for i, mount := range container.VolumeMounts {
+		if mount.Name == defaultCAPackageVolumeName {
+			mountExists = true
+			mountIndex = i
+			break
+		}
+	}
+
+	if defaultCAEnabled {
+		// Add volume if not exists
+		if !volumeExists {
+			volume := corev1.Volume{
+				Name: defaultCAPackageVolumeName,
+				VolumeSource: corev1.VolumeSource{
+					ConfigMap: &corev1.ConfigMapVolumeSource{
+						LocalObjectReference: corev1.LocalObjectReference{
+							Name: defaultCAPackageConfigMapName,
+						},
+					},
+				},
+			}
+			deploy.Spec.Template.Spec.Volumes = append(deploy.Spec.Template.Spec.Volumes, volume)
+			r.log.V(4).Info("added DefaultCAPackage volume to deployment")
+		}
+
+		// Add volume mount if not exists
+		if !mountExists {
+			volumeMount := corev1.VolumeMount{
+				Name:      defaultCAPackageVolumeName,
+				MountPath: defaultCAPackageVolumeMountPath,
+				ReadOnly:  true,
+			}
+			container.VolumeMounts = append(container.VolumeMounts, volumeMount)
+			r.log.V(4).Info("added DefaultCAPackage volume mount to container")
+		}
+	} else {
+		// Remove volume if exists
+		if volumeExists && volumeIndex >= 0 {
+			deploy.Spec.Template.Spec.Volumes = append(
+				deploy.Spec.Template.Spec.Volumes[:volumeIndex],
+				deploy.Spec.Template.Spec.Volumes[volumeIndex+1:]...,
+			)
+			r.log.V(4).Info("removed DefaultCAPackage volume from deployment")
+		}
+
+		// Remove volume mount if exists
+		if mountExists && mountIndex >= 0 {
+			container.VolumeMounts = append(
+				container.VolumeMounts[:mountIndex],
+				container.VolumeMounts[mountIndex+1:]...,
+			)
+			r.log.V(4).Info("removed DefaultCAPackage volume mount from container")
+		}
+	}
 }
 
 // buildContainerArgs builds the command line arguments for trust-manager.
@@ -158,11 +239,20 @@ func (r *Reconciler) buildContainerArgs(config v1alpha1.TrustManagerConfig) []st
 		"--webhook-host=0.0.0.0",
 		"--webhook-port=6443",
 		"--webhook-certificate-dir=/tls",
-		"--default-package-location=/packages/cert-manager-package-debian.json",
 
 		// Trust namespace
 		fmt.Sprintf("%s=%s", argTrustNamespace, getTrustNamespace(config.TrustNamespace)),
 	}
+
+	// Default CA package location
+	// If DefaultCAPackage is enabled, use the OpenShift package location
+	// Otherwise, don't set the argument (no default package)
+	if config.DefaultCAPackage != nil && config.DefaultCAPackage.Enabled {
+		args = append(args, fmt.Sprintf("%s=%s", argDefaultPackageLocation, defaultCAPackageLocation))
+	}
+	// Note: If DefaultCAPackage is not enabled, we don't set --default-package-location
+	// This means trust-manager won't have a default package and Bundles using
+	// useDefaultCAs: true will fail validation
 
 	// Secret targets configuration
 	secretTargetsEnabled := false

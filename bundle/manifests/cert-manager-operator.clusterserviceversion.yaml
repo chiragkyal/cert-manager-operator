@@ -251,6 +251,29 @@ metadata:
               "trustNamespace": "cert-manager"
             }
           }
+        },
+        {
+          "apiVersion": "trust.cert-manager.io/v1alpha1",
+          "kind": "Bundle",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/name": "bundle",
+              "app.kubernetes.io/part-of": "trust-manager"
+            },
+            "name": "example-bundle"
+          },
+          "spec": {
+            "sources": [
+              {
+                "useDefaultCAs": true
+              }
+            ],
+            "target": {
+              "configMap": {
+                "key": "ca-certificates.crt"
+              }
+            }
+          }
         }
       ]
     capabilities: Seamless Upgrades
@@ -295,6 +318,14 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
+    - description: |-
+        Bundle is the Schema for the trust-manager Bundle API.
+        A Bundle represents a collection of CA certificates that are distributed
+        to all namespaces in the cluster as ConfigMaps or Secrets.
+      displayName: Bundle
+      kind: Bundle
+      name: bundles.trust.cert-manager.io
+      version: v1alpha1
     - description: |-
         A CertificateRequest is used to request a signed certificate from one of the
         configured issuers.

@@ -115,6 +115,14 @@ spec:
       kind: TrustManager
       name: trustmanagers.operator.openshift.io
       version: v1alpha1
+    - description: |-
+        Bundle is the Schema for the trust-manager Bundle API.
+        A Bundle represents a collection of CA certificates that are distributed
+        to all namespaces in the cluster as ConfigMaps or Secrets.
+      displayName: Bundle
+      kind: Bundle
+      name: bundles.trust.cert-manager.io
+      version: v1alpha1
     - description: CertManager is the Schema for the certmanagers API
       displayName: CertManager
       kind: CertManager

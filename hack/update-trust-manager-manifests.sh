@@ -14,6 +14,7 @@ helm template trust-manager cert-manager/trust-manager -n trust-manager \
   --version "${TRUST_MANAGER_VERSION}" \
   --set secretTargets.enabled=true \
   --set secretTargets.authorizedSecrets="{dev,prod}" \
+  --set defaultPackage.enabled=false \
   > ${MANIFESTS_PATH}/manifests.yaml
 
 echo "---- Patching manifest ----"

@@ -6,6 +6,7 @@
 BUNDLE_VERSION ?= 1.18.0
 CERT_MANAGER_VERSION ?= "v1.18.3"
 ISTIO_CSR_VERSION ?= "v0.14.2"
+TRUST_MANAGER_VERSION ?= "v0.20.2"
 
 # CHANNELS define the bundle channels used in the bundle.
 # Add a new line here if you would like to change its default config. (E.g CHANNELS = "candidate,fast,stable")
@@ -147,6 +148,7 @@ test: manifests generate fmt vet ## Run tests.
 update-manifests: $(HELM_BIN)
 	hack/update-cert-manager-manifests.sh $(MANIFEST_SOURCE)
 	hack/update-istio-csr-manifests.sh $(ISTIO_CSR_VERSION)
+	hack/update-trust-manager-manifests.sh $(TRUST_MANAGER_VERSION)
 .PHONY: update-manifests
 
 .PHONY: update

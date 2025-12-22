@@ -5,10 +5,22 @@ import (
 	"fmt"
 	"time"
 
+	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
+	appsv1 "k8s.io/api/apps/v1"
+	corev1 "k8s.io/api/core/v1"
+	rbacv1 "k8s.io/api/rbac/v1"
 	apiextensionsclient "k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset"
+	"k8s.io/apimachinery/pkg/runtime"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/kubernetes"
+	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
+	"k8s.io/klog/v2"
 
 	ctrl "sigs.k8s.io/controller-runtime"
+	ctrllog "sigs.k8s.io/controller-runtime/pkg/log"
+	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
+
+	certmanagerv1 "github.com/cert-manager/cert-manager/pkg/apis/certmanager/v1"
 
 	configv1 "github.com/openshift/api/config/v1"
 	configv1client "github.com/openshift/client-go/config/clientset/versioned"
@@ -30,6 +42,25 @@ import (
 const (
 	resyncInterval = 10 * time.Minute
 )
+
+var (
+	// scheme for controller-runtime manager
+	scheme = runtime.NewScheme()
+)
+
+func init() {
+	// Set controller-runtime logger to use klog (same as the rest of the operator)
+	// This must be called before any controller-runtime code uses ctrl.Log
+	ctrllog.SetLogger(klog.NewKlogr())
+
+	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
+	utilruntime.Must(admissionregistrationv1.AddToScheme(scheme))
+	utilruntime.Must(appsv1.AddToScheme(scheme))
+	utilruntime.Must(corev1.AddToScheme(scheme))
+	utilruntime.Must(rbacv1.AddToScheme(scheme))
+	utilruntime.Must(certmanagerv1.AddToScheme(scheme))
+	utilruntime.Must(v1alpha1.AddToScheme(scheme))
+}
 
 // TrustedCAConfigMapName is the trusted ca configmap name
 // provided as a runtime arg.
@@ -148,13 +179,37 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 	trustManagerEnabled := features.DefaultFeatureGate.Enabled(v1alpha1.FeatureTrustManager)
 
 	if istioCSREnabled || trustManagerEnabled {
-		manager, err := NewControllerManager()
+		// Create the cache builder (following ESO pattern)
+		cacheBuilder := NewCacheBuilder(cc.KubeConfig)
+
+		// Create the manager with the cache builder
+		mgr, err := ctrl.NewManager(cc.KubeConfig, ctrl.Options{
+			Scheme: scheme,
+			Logger: ctrl.Log.WithName("operand-manager"),
+			// Use dedicated ports that don't conflict with the main operator
+			Metrics:                metricsserver.Options{BindAddress: ":8081"},
+			HealthProbeBindAddress: ":9081",
+			// Don't use leader election - the main operator handles that
+			LeaderElection: false,
+			// Configure manager's cache with the cache builder
+			NewCache: cacheBuilder,
+		})
 		if err != nil {
-			return fmt.Errorf("failed to create controller manager: %w", err)
+			return fmt.Errorf("failed to create operand controller manager: %w", err)
 		}
-		if err := manager.Start(ctrl.SetupSignalHandler()); err != nil {
-			return fmt.Errorf("failed to start operand controllers: %w", err)
+
+		// Setup controllers with the manager
+		if err := StartControllers(ctx, mgr); err != nil {
+			return fmt.Errorf("failed to setup operand controllers: %w", err)
 		}
+
+		// Start the manager in a goroutine (non-blocking)
+		go func() {
+			ctrl.Log.WithName("operand-manager").Info("starting operand controller manager")
+			if err := mgr.Start(ctx); err != nil {
+				ctrl.Log.WithName("operand-manager").Error(err, "operand controller manager failed")
+			}
+		}()
 	}
 
 	<-ctx.Done()

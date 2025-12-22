@@ -168,7 +168,7 @@ func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 	//
 	// For trust-manager, this is simple: we only have one singleton named "cluster"
 	mapFunc := func(ctx context.Context, obj client.Object) []reconcile.Request {
-		r.log.V(4).Info("received event for managed resource",
+		r.log.Info("received event for managed resource",
 			"type", fmt.Sprintf("%T", obj),
 			"name", obj.GetName(),
 			"namespace", obj.GetNamespace())

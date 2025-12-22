@@ -10,9 +10,10 @@ import (
 // with apply.
 type TrustManagerStatusApplyConfiguration struct {
 	ConditionalStatusApplyConfiguration `json:",omitempty,inline"`
-	TrustManagerImage                   *string `json:"trustManagerImage,omitempty"`
-	TrustNamespace                      *string `json:"trustNamespace,omitempty"`
-	SecretTargetsEnabled                *bool   `json:"secretTargetsEnabled,omitempty"`
+	TrustManagerImage                   *string                                   `json:"trustManagerImage,omitempty"`
+	TrustNamespace                      *string                                   `json:"trustNamespace,omitempty"`
+	SecretTargetsEnabled                *bool                                     `json:"secretTargetsEnabled,omitempty"`
+	DefaultCAPackage                    *DefaultCAPackageStatusApplyConfiguration `json:"defaultCAPackage,omitempty"`
 }
 
 // TrustManagerStatusApplyConfiguration constructs a declarative configuration of the TrustManagerStatus type for use with
@@ -55,5 +56,13 @@ func (b *TrustManagerStatusApplyConfiguration) WithTrustNamespace(value string) 
 // If called multiple times, the SecretTargetsEnabled field is set to the value of the last call.
 func (b *TrustManagerStatusApplyConfiguration) WithSecretTargetsEnabled(value bool) *TrustManagerStatusApplyConfiguration {
 	b.SecretTargetsEnabled = &value
+	return b
+}
+
+// WithDefaultCAPackage sets the DefaultCAPackage field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the DefaultCAPackage field is set to the value of the last call.
+func (b *TrustManagerStatusApplyConfiguration) WithDefaultCAPackage(value *DefaultCAPackageStatusApplyConfiguration) *TrustManagerStatusApplyConfiguration {
+	b.DefaultCAPackage = value
 	return b
 }

@@ -139,6 +139,24 @@ type TrustManagerConfig struct {
 	// +optional
 	FilterExpiredCertificates bool `json:"filterExpiredCertificates,omitempty"`
 
+	// defaultCAPackage configures the default CA package for trust-manager.
+	// When enabled, the operator will use OpenShift's trusted CA bundle injection
+	// mechanism instead of the upstream Debian-based init container approach.
+	//
+	// ## How it works (OpenShift-specific):
+	// 1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
+	// 2. Cluster Network Operator (CNO) injects the cluster's trusted CA bundle
+	// 3. Operator reads the injected CA bundle and formats it into trust-manager's expected JSON format
+	// 4. Operator creates a ConfigMap containing the formatted JSON package
+	// 5. This ConfigMap is mounted to trust-manager at /packages
+	// 6. trust-manager uses --default-package-location to load the package
+	//
+	// This approach ensures trust-manager uses CA certificates that OpenShift trusts,
+	// rather than the upstream Debian package which may not be appropriate for the cluster.
+	// +kubebuilder:validation:Optional
+	// +optional
+	DefaultCAPackage *DefaultCAPackageConfig `json:"defaultCAPackage,omitempty"`
+
 	// resources defines the compute resource requirements for the trust-manager pod.
 	// ref: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 	// +kubebuilder:validation:Optional
@@ -220,6 +238,47 @@ type SecretTargetsConfig struct {
 }
 
 // =============================================================================
+// DEFAULT CA PACKAGE CONFIG - OpenShift trusted CA integration
+// =============================================================================
+// DefaultCAPackageConfig configures the default CA package feature for trust-manager.
+//
+// On OpenShift, instead of using the upstream Debian-based init container to provide
+// the default CA bundle, this feature leverages OpenShift's native trusted CA bundle
+// injection mechanism via the Cluster Network Operator (CNO).
+//
+// ## Workflow:
+// 1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
+// 2. CNO detects this annotation and injects the cluster's trusted CA bundle into the ConfigMap
+// 3. Operator reads the injected bundle from the "ca-bundle.crt" key
+// 4. Operator formats the bundle into trust-manager's expected JSON format:
+//
+//	{
+//	  "name": "cert-manager-package-openshift",
+//	  "bundle": "-----BEGIN CERTIFICATE-----\n...",
+//	  "version": "<configmap-resource-version>.0"
+//	}
+//
+// 5. Operator creates a second ConfigMap containing this JSON package
+// 6. This package ConfigMap is mounted to trust-manager at /packages
+// 7. trust-manager is started with --default-package-location=/packages/cert-manager-package-openshift.json
+//
+// ## Benefits:
+// - Uses CA certificates that OpenShift explicitly trusts
+// - Automatically updates when cluster CA bundle changes
+// - No dependency on external Debian package images
+// - Works in air-gapped environments
+type DefaultCAPackageConfig struct {
+	// enabled controls whether the default CA package feature is enabled.
+	// When true, the operator will inject OpenShift's trusted CA bundle
+	// into trust-manager, enabling the "useDefaultCAs: true" source in Bundle resources.
+	// When false, no default CA package is configured and Bundles cannot use useDefaultCAs.
+	// +kubebuilder:default:=false
+	// +kubebuilder:validation:Optional
+	// +optional
+	Enabled bool `json:"enabled,omitempty"`
+}
+
+// =============================================================================
 // CONTROLLER CONFIG - Operator behavior settings
 // =============================================================================
 // TrustManagerControllerConfig configures the operator's behavior for
@@ -269,4 +328,19 @@ type TrustManagerStatus struct {
 	// secretTargetsEnabled indicates whether secret targets feature is currently enabled.
 	// This reflects the actual state of the deployment, not just the spec.
 	SecretTargetsEnabled bool `json:"secretTargetsEnabled,omitempty"`
+
+	// defaultCAPackage contains the status of the default CA package feature.
+	// +kubebuilder:validation:Optional
+	// +optional
+	DefaultCAPackage *DefaultCAPackageStatus `json:"defaultCAPackage,omitempty"`
+}
+
+// =============================================================================
+// DEFAULT CA PACKAGE STATUS - Tracks the state of OpenShift CA injection
+// =============================================================================
+// DefaultCAPackageStatus reports the observed state of the default CA package feature.
+type DefaultCAPackageStatus struct {
+	// enabled indicates whether the default CA package feature is currently enabled.
+	// This reflects the actual state based on the spec configuration.
+	Enabled bool `json:"enabled,omitempty"`
 }

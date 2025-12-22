@@ -1015,6 +1015,32 @@ spec:
                             x-kubernetes-list-type: atomic
                         type: object
                     type: object
+                  defaultCAPackage:
+                    description: |-
+                      defaultCAPackage configures the default CA package for trust-manager.
+                      When enabled, the operator will use OpenShift's trusted CA bundle injection
+                      mechanism instead of the upstream Debian-based init container approach.
+
+                      ## How it works (OpenShift-specific):
+                      1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
+                      2. Cluster Network Operator (CNO) injects the cluster's trusted CA bundle
+                      3. Operator reads the injected CA bundle and formats it into trust-manager's expected JSON format
+                      4. Operator creates a ConfigMap containing the formatted JSON package
+                      5. This ConfigMap is mounted to trust-manager at /packages
+                      6. trust-manager uses --default-package-location to load the package
+
+                      This approach ensures trust-manager uses CA certificates that OpenShift trusts,
+                      rather than the upstream Debian package which may not be appropriate for the cluster.
+                    properties:
+                      enabled:
+                        default: false
+                        description: |-
+                          enabled controls whether the default CA package feature is enabled.
+                          When true, the operator will inject OpenShift's trusted CA bundle
+                          into trust-manager, enabling the "useDefaultCAs: true" source in Bundle resources.
+                          When false, no default CA package is configured and Bundles cannot use useDefaultCAs.
+                        type: boolean
+                    type: object
                   filterExpiredCertificates:
                     default: false
                     description: |-
@@ -1276,6 +1302,16 @@ spec:
                 x-kubernetes-list-map-keys:
                 - type
                 x-kubernetes-list-type: map
+              defaultCAPackage:
+                description: defaultCAPackage contains the status of the default CA
+                  package feature.
+                properties:
+                  enabled:
+                    description: |-
+                      enabled indicates whether the default CA package feature is currently enabled.
+                      This reflects the actual state based on the spec configuration.
+                    type: boolean
+                type: object
               secretTargetsEnabled:
                 description: |-
                   secretTargetsEnabled indicates whether secret targets feature is currently enabled.

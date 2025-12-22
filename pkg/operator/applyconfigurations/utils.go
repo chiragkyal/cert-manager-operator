@@ -34,6 +34,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &operatorv1alpha1.ConfigMapReferenceApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ControllerConfig"):
 		return &operatorv1alpha1.ControllerConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("DefaultCAPackageConfig"):
+		return &operatorv1alpha1.DefaultCAPackageConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("DefaultCAPackageStatus"):
+		return &operatorv1alpha1.DefaultCAPackageStatusApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("DeploymentConfig"):
 		return &operatorv1alpha1.DeploymentConfigApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("IstioConfig"):

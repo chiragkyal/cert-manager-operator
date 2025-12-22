@@ -9,15 +9,16 @@ import (
 // TrustManagerConfigApplyConfiguration represents a declarative configuration of the TrustManagerConfig type for use
 // with apply.
 type TrustManagerConfigApplyConfiguration struct {
-	LogLevel                  *int32                                 `json:"logLevel,omitempty"`
-	LogFormat                 *string                                `json:"logFormat,omitempty"`
-	TrustNamespace            *string                                `json:"trustNamespace,omitempty"`
-	SecretTargets             *SecretTargetsConfigApplyConfiguration `json:"secretTargets,omitempty"`
-	FilterExpiredCertificates *bool                                  `json:"filterExpiredCertificates,omitempty"`
-	Resources                 *v1.ResourceRequirements               `json:"resources,omitempty"`
-	Affinity                  *v1.Affinity                           `json:"affinity,omitempty"`
-	Tolerations               []v1.Toleration                        `json:"tolerations,omitempty"`
-	NodeSelector              map[string]string                      `json:"nodeSelector,omitempty"`
+	LogLevel                  *int32                                    `json:"logLevel,omitempty"`
+	LogFormat                 *string                                   `json:"logFormat,omitempty"`
+	TrustNamespace            *string                                   `json:"trustNamespace,omitempty"`
+	SecretTargets             *SecretTargetsConfigApplyConfiguration    `json:"secretTargets,omitempty"`
+	FilterExpiredCertificates *bool                                     `json:"filterExpiredCertificates,omitempty"`
+	DefaultCAPackage          *DefaultCAPackageConfigApplyConfiguration `json:"defaultCAPackage,omitempty"`
+	Resources                 *v1.ResourceRequirements                  `json:"resources,omitempty"`
+	Affinity                  *v1.Affinity                              `json:"affinity,omitempty"`
+	Tolerations               []v1.Toleration                           `json:"tolerations,omitempty"`
+	NodeSelector              map[string]string                         `json:"nodeSelector,omitempty"`
 }
 
 // TrustManagerConfigApplyConfiguration constructs a declarative configuration of the TrustManagerConfig type for use with
@@ -63,6 +64,14 @@ func (b *TrustManagerConfigApplyConfiguration) WithSecretTargets(value *SecretTa
 // If called multiple times, the FilterExpiredCertificates field is set to the value of the last call.
 func (b *TrustManagerConfigApplyConfiguration) WithFilterExpiredCertificates(value bool) *TrustManagerConfigApplyConfiguration {
 	b.FilterExpiredCertificates = &value
+	return b
+}
+
+// WithDefaultCAPackage sets the DefaultCAPackage field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the DefaultCAPackage field is set to the value of the last call.
+func (b *TrustManagerConfigApplyConfiguration) WithDefaultCAPackage(value *DefaultCAPackageConfigApplyConfiguration) *TrustManagerConfigApplyConfiguration {
+	b.DefaultCAPackage = value
 	return b
 }
 

@@ -116,4 +116,3 @@ func (r *Reconciler) getServiceObject(
 
 	return svc
 }
-

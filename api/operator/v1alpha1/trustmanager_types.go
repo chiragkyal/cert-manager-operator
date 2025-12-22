@@ -262,17 +262,11 @@ type TrustManagerStatus struct {
 	// This is populated from the RELATED_IMAGE_TRUST_MANAGER environment variable.
 	TrustManagerImage string `json:"trustManagerImage,omitempty"`
 
-	// serviceAccount is the name of the ServiceAccount created for trust-manager.
-	ServiceAccount string `json:"serviceAccount,omitempty"`
-
-	// clusterRole is the name of the ClusterRole created for trust-manager.
-	ClusterRole string `json:"clusterRole,omitempty"`
-
-	// clusterRoleBinding is the name of the ClusterRoleBinding created for trust-manager.
-	ClusterRoleBinding string `json:"clusterRoleBinding,omitempty"`
+	// trustNamespace is the namespace where trust-manager looks for trust sources.
+	// This reflects the actual configured trust namespace from the spec.
+	TrustNamespace string `json:"trustNamespace,omitempty"`
 
 	// secretTargetsEnabled indicates whether secret targets feature is currently enabled.
 	// This reflects the actual state of the deployment, not just the spec.
 	SecretTargetsEnabled bool `json:"secretTargetsEnabled,omitempty"`
 }
-

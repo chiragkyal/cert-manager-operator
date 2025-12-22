@@ -1215,14 +1215,6 @@ spec:
           status:
             description: status is the most recently observed status of the TrustManager.
             properties:
-              clusterRole:
-                description: clusterRole is the name of the ClusterRole created for
-                  trust-manager.
-                type: string
-              clusterRoleBinding:
-                description: clusterRoleBinding is the name of the ClusterRoleBinding
-                  created for trust-manager.
-                type: string
               conditions:
                 description: conditions holds information about the current state
                   of the istio-csr agent deployment.
@@ -1289,14 +1281,15 @@ spec:
                   secretTargetsEnabled indicates whether secret targets feature is currently enabled.
                   This reflects the actual state of the deployment, not just the spec.
                 type: boolean
-              serviceAccount:
-                description: serviceAccount is the name of the ServiceAccount created
-                  for trust-manager.
-                type: string
               trustManagerImage:
                 description: |-
                   trustManagerImage is the container image (name:tag) used for trust-manager.
                   This is populated from the RELATED_IMAGE_TRUST_MANAGER environment variable.
+                type: string
+              trustNamespace:
+                description: |-
+                  trustNamespace is the namespace where trust-manager looks for trust sources.
+                  This reflects the actual configured trust namespace from the spec.
                 type: string
             type: object
         required:

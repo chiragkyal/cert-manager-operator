@@ -56,10 +56,10 @@ func testTrustManager() *v1alpha1.TrustManager {
 		},
 		Spec: v1alpha1.TrustManagerSpec{
 			TrustManagerConfig: v1alpha1.TrustManagerConfig{
-				LogLevel:        1,
-				LogFormat:       "text",
-				TrustNamespace:  "cert-manager",
-				SecretTargets:   nil,
+				LogLevel:                  1,
+				LogFormat:                 "text",
+				TrustNamespace:            "cert-manager",
+				SecretTargets:             nil,
 				FilterExpiredCertificates: false,
 			},
 			ControllerConfig: &v1alpha1.TrustManagerControllerConfig{
@@ -259,4 +259,3 @@ func testResourceLabelsWithUser() map[string]string {
 	labels["user-label2"] = "test-value2"
 	return labels
 }
-

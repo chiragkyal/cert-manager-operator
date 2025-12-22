@@ -164,9 +164,9 @@ const (
 	clusterRoleBindingAssetName = "trust-manager/resources/clusterrolebinding_trust-manager.yml"
 
 	// RBAC - Namespace-scoped
-	roleAssetName               = "trust-manager/resources/role_trust-manager.yml"
-	roleLeaderElectionAssetName = "trust-manager/resources/role_trust-manager:leaderelection.yml"
-	roleBindingAssetName        = "trust-manager/resources/rolebinding_trust-manager.yml"
+	roleAssetName                      = "trust-manager/resources/role_trust-manager.yml"
+	roleLeaderElectionAssetName        = "trust-manager/resources/role_trust-manager:leaderelection.yml"
+	roleBindingAssetName               = "trust-manager/resources/rolebinding_trust-manager.yml"
 	roleBindingLeaderElectionAssetName = "trust-manager/resources/rolebinding_trust-manager:leaderelection.yml"
 
 	// Services
@@ -202,4 +202,3 @@ const (
 	// argFilterExpiredCertificates enables filtering of expired certs from bundles
 	argFilterExpiredCertificates = "--filter-expired-certificates"
 )
-

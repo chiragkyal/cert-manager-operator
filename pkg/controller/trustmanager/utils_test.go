@@ -288,4 +288,3 @@ func TestServiceSpecChanged(t *testing.T) {
 		})
 	}
 }
-

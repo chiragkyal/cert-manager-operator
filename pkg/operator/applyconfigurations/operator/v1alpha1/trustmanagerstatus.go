@@ -11,9 +11,7 @@ import (
 type TrustManagerStatusApplyConfiguration struct {
 	ConditionalStatusApplyConfiguration `json:",omitempty,inline"`
 	TrustManagerImage                   *string `json:"trustManagerImage,omitempty"`
-	ServiceAccount                      *string `json:"serviceAccount,omitempty"`
-	ClusterRole                         *string `json:"clusterRole,omitempty"`
-	ClusterRoleBinding                  *string `json:"clusterRoleBinding,omitempty"`
+	TrustNamespace                      *string `json:"trustNamespace,omitempty"`
 	SecretTargetsEnabled                *bool   `json:"secretTargetsEnabled,omitempty"`
 }
 
@@ -44,27 +42,11 @@ func (b *TrustManagerStatusApplyConfiguration) WithTrustManagerImage(value strin
 	return b
 }
 
-// WithServiceAccount sets the ServiceAccount field in the declarative configuration to the given value
+// WithTrustNamespace sets the TrustNamespace field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the ServiceAccount field is set to the value of the last call.
-func (b *TrustManagerStatusApplyConfiguration) WithServiceAccount(value string) *TrustManagerStatusApplyConfiguration {
-	b.ServiceAccount = &value
-	return b
-}
-
-// WithClusterRole sets the ClusterRole field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the ClusterRole field is set to the value of the last call.
-func (b *TrustManagerStatusApplyConfiguration) WithClusterRole(value string) *TrustManagerStatusApplyConfiguration {
-	b.ClusterRole = &value
-	return b
-}
-
-// WithClusterRoleBinding sets the ClusterRoleBinding field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the ClusterRoleBinding field is set to the value of the last call.
-func (b *TrustManagerStatusApplyConfiguration) WithClusterRoleBinding(value string) *TrustManagerStatusApplyConfiguration {
-	b.ClusterRoleBinding = &value
+// If called multiple times, the TrustNamespace field is set to the value of the last call.
+func (b *TrustManagerStatusApplyConfiguration) WithTrustNamespace(value string) *TrustManagerStatusApplyConfiguration {
+	b.TrustNamespace = &value
 	return b
 }
 

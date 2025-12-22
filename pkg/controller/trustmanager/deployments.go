@@ -266,4 +266,3 @@ func getTrustNamespace(ns string) string {
 	}
 	return ns
 }
-

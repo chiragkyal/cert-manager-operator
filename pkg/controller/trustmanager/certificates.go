@@ -185,4 +185,3 @@ func (r *Reconciler) getCertificateObject(
 
 	return cert
 }
-

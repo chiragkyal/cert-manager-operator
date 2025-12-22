@@ -397,6 +397,11 @@ func (r *Reconciler) processReconcileRequest(trustManager *v1alpha1.TrustManager
 	// ==========================================================================
 	// Success - update status
 	// ==========================================================================
+	// Update status fields to reflect actual configuration
+	trustManager.Status.TrustNamespace = getTrustNamespace(trustManager.Spec.TrustManagerConfig.TrustNamespace)
+	trustManager.Status.SecretTargetsEnabled = trustManager.Spec.TrustManagerConfig.SecretTargets != nil &&
+		trustManager.Spec.TrustManagerConfig.SecretTargets.Enabled
+
 	degradedChanged := trustManager.Status.SetCondition(
 		v1alpha1.Degraded, metav1.ConditionFalse,
 		v1alpha1.ReasonReady, "")

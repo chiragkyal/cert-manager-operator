@@ -118,4 +118,3 @@ func (r *Reconciler) getValidatingWebhookObject(
 
 	return webhook
 }
-

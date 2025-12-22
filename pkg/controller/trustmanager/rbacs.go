@@ -112,14 +112,6 @@ func (r *Reconciler) createOrApplyClusterRole(
 			"ClusterRole %s created", crName)
 	}
 
-	// Update status
-	if trustManager.Status.ClusterRole != crName {
-		trustManager.Status.ClusterRole = crName
-		if err := r.updateStatus(r.ctx, trustManager); err != nil {
-			return FromClientError(err, "failed to update status with ClusterRole name")
-		}
-	}
-
 	return nil
 }
 
@@ -280,14 +272,6 @@ func (r *Reconciler) createOrApplyClusterRoleBinding(
 			"ClusterRoleBinding %s created", crbName)
 	}
 
-	// Update status
-	if trustManager.Status.ClusterRoleBinding != crbName {
-		trustManager.Status.ClusterRoleBinding = crbName
-		if err := r.updateStatus(r.ctx, trustManager); err != nil {
-			return FromClientError(err, "failed to update status with ClusterRoleBinding name")
-		}
-	}
-
 	return nil
 }
 
@@ -442,4 +426,3 @@ func (r *Reconciler) getRoleBindingObject(
 
 	return rb
 }
-

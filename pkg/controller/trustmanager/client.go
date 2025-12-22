@@ -233,4 +233,3 @@ func (c *ctrlClientImpl) Exists(ctx context.Context, key client.ObjectKey, obj c
 	// Resource exists and obj is now populated with its data
 	return true, nil
 }
-

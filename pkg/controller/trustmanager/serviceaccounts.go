@@ -67,11 +67,6 @@ func (r *Reconciler) createOrApplyServiceAccount(
 			"ServiceAccount %s created", saName)
 	}
 
-	// Update status with ServiceAccount name
-	if err := r.updateServiceAccountInStatus(trustManager, desired); err != nil {
-		return FromClientError(err, "failed to update status with ServiceAccount name")
-	}
-
 	return nil
 }
 
@@ -96,17 +91,3 @@ func (r *Reconciler) getServiceAccountObject(
 
 	return sa
 }
-
-// updateServiceAccountInStatus updates the TrustManager status with the SA name.
-func (r *Reconciler) updateServiceAccountInStatus(
-	trustManager *v1alpha1.TrustManager,
-	sa *corev1.ServiceAccount,
-) error {
-	if trustManager.Status.ServiceAccount == sa.GetName() {
-		return nil // Already up to date
-	}
-
-	trustManager.Status.ServiceAccount = sa.GetName()
-	return r.updateStatus(r.ctx, trustManager)
-}
-

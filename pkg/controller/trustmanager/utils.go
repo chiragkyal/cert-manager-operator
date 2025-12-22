@@ -301,4 +301,3 @@ func serviceSpecChanged(desired, fetched *corev1.Service) bool {
 		!reflect.DeepEqual(desired.Spec.Ports, fetched.Spec.Ports) ||
 		!reflect.DeepEqual(desired.Spec.Selector, fetched.Spec.Selector)
 }
-

@@ -20,10 +20,14 @@ import (
 // - ClusterRole: Permissions to manage Bundles, ConfigMaps, Secrets across cluster
 // - ClusterRoleBinding: Binds ClusterRole to ServiceAccount
 //
-// Namespace-scoped (in cert-manager namespace):
-// - Role (trust-manager): Read secrets in trust namespace
-// - Role (trust-manager:leaderelection): Leader election
-// - RoleBinding for each Role
+// Namespace-scoped:
+// - Role (trust-manager): Read secrets in TRUST NAMESPACE (configurable via spec.trustManagerConfig.trustNamespace)
+// - RoleBinding (trust-manager): Binds Role to ServiceAccount in trust namespace
+// - Role (trust-manager:leaderelection): Leader election in OPERAND NAMESPACE (always cert-manager)
+// - RoleBinding (trust-manager:leaderelection): Binds Role to ServiceAccount in operand namespace
+//
+// NOTE: The trust namespace may be different from the operand namespace. The operator will
+// create the trust namespace if it doesn't exist.
 //
 // The ClusterRole rules are DYNAMIC based on secretTargets configuration:
 // - If secretTargets.enabled=false: No secret write permissions
@@ -36,34 +40,76 @@ func (r *Reconciler) createOrApplyRBACResources(
 	resourceLabels map[string]string,
 	isNewReconcile bool,
 ) error {
-	// 1. ClusterRole (with dynamic rules based on secretTargets)
+	// Get the configured trust namespace (defaults to cert-manager)
+	trustNamespace := getTrustNamespace(trustManager.Spec.TrustManagerConfig.TrustNamespace)
+
+	// 1. Ensure trust namespace exists (create if it doesn't)
+	if err := r.ensureNamespaceExists(trustManager, trustNamespace, resourceLabels); err != nil {
+		return err
+	}
+
+	// 2. ClusterRole (with dynamic rules based on secretTargets)
 	if err := r.createOrApplyClusterRole(trustManager, resourceLabels, isNewReconcile); err != nil {
 		return err
 	}
 
-	// 2. ClusterRoleBinding
+	// 3. ClusterRoleBinding
 	if err := r.createOrApplyClusterRoleBinding(trustManager, resourceLabels, isNewReconcile); err != nil {
 		return err
 	}
 
-	// 3. Role (trust-manager) - for reading secrets in trust namespace
-	if err := r.createOrApplyRole(trustManager, resourceLabels, isNewReconcile, roleAssetName); err != nil {
+	// 4. Role (trust-manager) - for reading secrets in TRUST NAMESPACE
+	if err := r.createOrApplyRoleInNamespace(trustManager, resourceLabels, isNewReconcile, roleAssetName, trustNamespace); err != nil {
 		return err
 	}
 
-	// 4. Role (trust-manager:leaderelection) - for leader election
-	if err := r.createOrApplyRole(trustManager, resourceLabels, isNewReconcile, roleLeaderElectionAssetName); err != nil {
+	// 5. RoleBinding (trust-manager) - in TRUST NAMESPACE
+	if err := r.createOrApplyRoleBindingInNamespace(trustManager, resourceLabels, isNewReconcile, roleBindingAssetName, trustNamespace); err != nil {
 		return err
 	}
 
-	// 5. RoleBinding (trust-manager)
-	if err := r.createOrApplyRoleBinding(trustManager, resourceLabels, isNewReconcile, roleBindingAssetName); err != nil {
+	// 6. Role (trust-manager:leaderelection) - for leader election in OPERAND NAMESPACE
+	if err := r.createOrApplyRoleInNamespace(trustManager, resourceLabels, isNewReconcile, roleLeaderElectionAssetName, operandNamespace); err != nil {
 		return err
 	}
 
-	// 6. RoleBinding (trust-manager:leaderelection)
-	if err := r.createOrApplyRoleBinding(trustManager, resourceLabels, isNewReconcile, roleBindingLeaderElectionAssetName); err != nil {
+	// 7. RoleBinding (trust-manager:leaderelection) - in OPERAND NAMESPACE
+	if err := r.createOrApplyRoleBindingInNamespace(trustManager, resourceLabels, isNewReconcile, roleBindingLeaderElectionAssetName, operandNamespace); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ensureNamespaceExists creates the namespace if it doesn't exist.
+// This is needed when trustNamespace is different from operandNamespace.
+func (r *Reconciler) ensureNamespaceExists(
+	trustManager *v1alpha1.TrustManager,
+	namespace string,
+	resourceLabels map[string]string,
+) error {
+	// Skip if it's the operand namespace (cert-manager) - it should already exist
+	if namespace == operandNamespace {
+		return nil
+	}
+
+	ns := &corev1.Namespace{}
+	exists, err := r.Exists(r.ctx, client.ObjectKey{Name: namespace}, ns)
+	if err != nil {
+		return FromClientError(err, "failed to check if namespace %s exists", namespace)
+	}
+
+	if !exists {
+		r.log.V(2).Info("creating trust namespace", "namespace", namespace)
+		newNS := &corev1.Namespace{}
+		newNS.SetName(namespace)
+		newNS.SetLabels(resourceLabels)
+
+		if err := r.Create(r.ctx, newNS); err != nil {
+			return FromClientError(err, "failed to create trust namespace %s", namespace)
+		}
+		r.eventRecorder.Eventf(trustManager, corev1.EventTypeNormal, "Reconciled",
+			"Trust namespace %s created", namespace)
 	}
 
 	return nil
@@ -298,13 +344,16 @@ func (r *Reconciler) getClusterRoleBindingObject(
 // ROLE
 // =============================================================================
 
-func (r *Reconciler) createOrApplyRole(
+// createOrApplyRoleInNamespace reconciles a Role in the specified namespace.
+// This is used for both trust namespace (for secret access) and operand namespace (for leader election).
+func (r *Reconciler) createOrApplyRoleInNamespace(
 	trustManager *v1alpha1.TrustManager,
 	resourceLabels map[string]string,
 	isNewReconcile bool,
 	assetName string,
+	namespace string,
 ) error {
-	desired := r.getRoleObject(trustManager, resourceLabels, assetName)
+	desired := r.getRoleObject(trustManager, resourceLabels, assetName, namespace)
 	roleName := fmt.Sprintf("%s/%s", desired.GetNamespace(), desired.GetName())
 
 	r.log.V(4).Info("reconciling Role", "name", roleName)
@@ -345,11 +394,12 @@ func (r *Reconciler) getRoleObject(
 	trustManager *v1alpha1.TrustManager,
 	resourceLabels map[string]string,
 	assetName string,
+	namespace string,
 ) *rbacv1.Role {
 	role := decodeRoleObjBytes(assets.MustAsset(assetName))
 
-	// Set namespace to cert-manager
-	updateNamespace(role, operandNamespace)
+	// Set namespace to the specified namespace (trust namespace or operand namespace)
+	updateNamespace(role, namespace)
 
 	// Apply labels
 	updateResourceLabels(role, resourceLabels)
@@ -361,13 +411,16 @@ func (r *Reconciler) getRoleObject(
 // ROLE BINDING
 // =============================================================================
 
-func (r *Reconciler) createOrApplyRoleBinding(
+// createOrApplyRoleBindingInNamespace reconciles a RoleBinding in the specified namespace.
+// This is used for both trust namespace (for secret access) and operand namespace (for leader election).
+func (r *Reconciler) createOrApplyRoleBindingInNamespace(
 	trustManager *v1alpha1.TrustManager,
 	resourceLabels map[string]string,
 	isNewReconcile bool,
 	assetName string,
+	namespace string,
 ) error {
-	desired := r.getRoleBindingObject(trustManager, resourceLabels, assetName)
+	desired := r.getRoleBindingObject(trustManager, resourceLabels, assetName, namespace)
 	rbName := fmt.Sprintf("%s/%s", desired.GetNamespace(), desired.GetName())
 
 	r.log.V(4).Info("reconciling RoleBinding", "name", rbName)
@@ -408,16 +461,18 @@ func (r *Reconciler) getRoleBindingObject(
 	trustManager *v1alpha1.TrustManager,
 	resourceLabels map[string]string,
 	assetName string,
+	namespace string,
 ) *rbacv1.RoleBinding {
 	rb := decodeRoleBindingObjBytes(assets.MustAsset(assetName))
 
-	// Set namespace to cert-manager
-	updateNamespace(rb, operandNamespace)
+	// Set namespace to the specified namespace (trust namespace or operand namespace)
+	updateNamespace(rb, namespace)
 
 	// Apply labels
 	updateResourceLabels(rb, resourceLabels)
 
-	// Fix the subject namespace to cert-manager (where SA lives)
+	// Fix the subject namespace to operand namespace (where SA lives)
+	// The ServiceAccount is always in cert-manager namespace
 	for i := range rb.Subjects {
 		if rb.Subjects[i].Kind == "ServiceAccount" {
 			rb.Subjects[i].Namespace = operandNamespace

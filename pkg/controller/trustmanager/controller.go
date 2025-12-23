@@ -78,6 +78,9 @@ type Reconciler struct {
 // ServiceAccount, Service, and ConfigMap management
 // +kubebuilder:rbac:groups="",resources=serviceaccounts;services;configmaps,verbs=get;list;watch;create;update;patch;delete
 
+// Namespace management (for creating trust namespace if different from operand namespace)
+// +kubebuilder:rbac:groups="",resources=namespaces,verbs=get;list;watch;create
+
 // Certificate management (for webhook TLS)
 // +kubebuilder:rbac:groups=cert-manager.io,resources=certificates;issuers,verbs=get;list;watch;create;update;patch;delete
 
@@ -555,9 +558,16 @@ func (r *Reconciler) cleanUp(trustManager *v1alpha1.TrustManager) (bool, error) 
 	r.log.Info("cleaning up trust-manager resources",
 		"name", trustManager.GetName())
 
-	r.eventRecorder.Eventf(trustManager, corev1.EventTypeWarning, "Cleanup",
-		"TrustManager marked for deletion, cleaning up resources in %s namespace",
-		operandNamespace)
+	trustNamespace := getTrustNamespace(trustManager.Spec.TrustManagerConfig.TrustNamespace)
+	if trustNamespace != operandNamespace {
+		r.eventRecorder.Eventf(trustManager, corev1.EventTypeWarning, "Cleanup",
+			"TrustManager marked for deletion, cleaning up resources in %s and %s namespaces",
+			operandNamespace, trustNamespace)
+	} else {
+		r.eventRecorder.Eventf(trustManager, corev1.EventTypeWarning, "Cleanup",
+			"TrustManager marked for deletion, cleaning up resources in %s namespace",
+			operandNamespace)
+	}
 
 	// Get labels to identify resources we created
 	resourceLabels := r.getResourceLabels(trustManager)
@@ -590,10 +600,26 @@ func (r *Reconciler) cleanUp(trustManager *v1alpha1.TrustManager) (bool, error) 
 		&corev1.ServiceAccount{},
 	}
 
+	// Delete resources in the operand namespace (cert-manager)
 	for _, obj := range namespacedResources {
 		if err := r.deleteByLabelInNamespace(obj, operandNamespace, resourceLabels); err != nil {
 			return false, err
 		}
+	}
+
+	// Also clean up Role and RoleBinding in the trust namespace if different from operand namespace
+	if trustNamespace != operandNamespace {
+		r.log.V(2).Info("cleaning up RBAC resources in trust namespace", "namespace", trustNamespace)
+		rbacResources := []client.Object{
+			&rbacv1.RoleBinding{},
+			&rbacv1.Role{},
+		}
+		for _, obj := range rbacResources {
+			if err := r.deleteByLabelInNamespace(obj, trustNamespace, resourceLabels); err != nil {
+				return false, err
+			}
+		}
+		// Note: We don't delete the trust namespace itself as it may contain user resources
 	}
 
 	r.log.Info("cleanup complete", "name", trustManager.GetName())

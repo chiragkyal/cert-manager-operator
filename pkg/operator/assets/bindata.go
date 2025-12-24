@@ -3257,27 +3257,6 @@ spec:
     spec:
       serviceAccountName: trust-manager
       automountServiceAccountToken: true
-      initContainers:
-        - name: cert-manager-package-debian
-          image: "quay.io/jetstack/trust-pkg-debian-bookworm:20230311-deb12u1.2"
-          imagePullPolicy: IfNotPresent
-          args:
-            - "/copyandmaybepause"
-            - "/debian-package"
-            - "/packages"
-          volumeMounts:
-            - mountPath: /packages
-              name: packages
-              readOnly: false
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            seccompProfile:
-              type: RuntimeDefault
       containers:
         - name: trust-manager
           image: "quay.io/jetstack/trust-manager:v0.20.2"
@@ -3306,7 +3285,6 @@ spec:
             - "--webhook-host=0.0.0.0"
             - "--webhook-port=6443"
             - "--webhook-certificate-dir=/tls"
-            - "--default-package-location=/packages/cert-manager-package-debian.json"
             - "--secret-targets-enabled=true"
           volumeMounts:
             - mountPath: /tls

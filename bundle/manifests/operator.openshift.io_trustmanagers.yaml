@@ -1018,36 +1018,31 @@ spec:
                   defaultCAPackage:
                     description: |-
                       defaultCAPackage configures the default CA package for trust-manager.
-                      When enabled, the operator will use OpenShift's trusted CA bundle injection
-                      mechanism instead of the upstream Debian-based init container approach.
-
-                      ## How it works (OpenShift-specific):
-                      1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
-                      2. Cluster Network Operator (CNO) injects the cluster's trusted CA bundle
-                      3. Operator reads the injected CA bundle and formats it into trust-manager's expected JSON format
-                      4. Operator creates a ConfigMap containing the formatted JSON package
-                      5. This ConfigMap is mounted to trust-manager at /packages
-                      6. trust-manager uses --default-package-location to load the package
-
-                      This approach ensures trust-manager uses CA certificates that OpenShift trusts,
-                      rather than the upstream Debian package which may not be appropriate for the cluster.
+                      When enabled, the operator will use OpenShift's trusted CA bundle injection mechanism.
                     properties:
-                      enabled:
-                        default: false
+                      policy:
+                        default: Disabled
                         description: |-
-                          enabled controls whether the default CA package feature is enabled.
-                          When true, the operator will inject OpenShift's trusted CA bundle
+                          policy controls whether the default CA package feature is enabled.
+                          When set to "Enabled", the operator will inject OpenShift's trusted CA bundle
                           into trust-manager, enabling the "useDefaultCAs: true" source in Bundle resources.
-                          When false, no default CA package is configured and Bundles cannot use useDefaultCAs.
-                        type: boolean
+                          When set to "Disabled", no default CA package is configured and Bundles cannot use useDefaultCAs (default behavior).
+                        enum:
+                        - Enabled
+                        - Disabled
+                        type: string
                     type: object
                   filterExpiredCertificates:
-                    default: false
+                    default: Disabled
                     description: |-
                       filterExpiredCertificates controls whether trust-manager filters out
                       expired certificates from trust bundles before distributing them.
-                      When enabled, only valid (non-expired) certificates are included.
-                    type: boolean
+                      When set to "Enabled", expired certificates are removed from bundles.
+                      When set to "Disabled", expired certificates are included (default behavior).
+                    enum:
+                    - Enabled
+                    - Disabled
+                    type: string
                   logFormat:
                     default: text
                     description: |-
@@ -1140,15 +1135,13 @@ spec:
                         type: object
                     type: object
                   secretTargets:
-                    description: |-
-                      secretTargets configures whether trust-manager can write trust bundles
-                      to Secrets in addition to ConfigMaps.
+                    description: secretTargets configures whether trust-manager can
+                      write trust bundles to Secrets.
                     properties:
                       authorizedSecrets:
                         description: |-
                           authorizedSecrets is a list of specific secret names that trust-manager
-                          is authorized to create and update. When non-empty, trust-manager can
-                          read all secrets but can only write to secrets in this list.
+                          is authorized to create and update. This field is only valid when policy is "Specific".
                           This field can have a maximum of 100 entries.
                           Each entry must be a valid secret name (1-253 characters).
                         items:
@@ -1159,26 +1152,29 @@ spec:
                         minItems: 0
                         type: array
                         x-kubernetes-list-type: set
-                      authorizedSecretsAll:
-                        default: false
+                      policy:
+                        default: Disabled
                         description: |-
-                          authorizedSecretsAll when true, grants trust-manager permission to create
-                          and update ALL secrets across all namespaces.
-                          ⚠️ WARNING: This is a powerful permission. Use with caution!
-                          Only enable this when you need to write to dynamically-named secrets.
-                        type: boolean
-                      enabled:
-                        default: false
-                        description: |-
-                          enabled controls whether trust-manager can write trust bundles to Secrets.
-                          When false, trust-manager only writes to ConfigMaps.
-                        type: boolean
+                          policy controls whether and how trust-manager can write trust bundles to Secrets.
+                          Allowed values are "Disabled", "All", or "Specific".
+                          "Disabled" means trust-manager cannot write trust bundles to Secrets (default behavior).
+                          "All" grants trust-manager permission to create and update ALL secrets across all namespaces.
+                          "Specific" grants trust-manager permission to create and update only the secrets listed in authorizedSecrets.
+                        enum:
+                        - Disabled
+                        - All
+                        - Specific
+                        type: string
                     type: object
                     x-kubernetes-validations:
-                    - message: authorizedSecrets must be empty when authorizedSecretsAll
-                        is true
-                      rule: '!self.authorizedSecretsAll || size(self.authorizedSecrets)
-                        == 0'
+                    - message: authorizedSecrets must not be empty when policy is
+                        Specific
+                      rule: self.policy != 'Specific' || (has(self.authorizedSecrets)
+                        && size(self.authorizedSecrets) > 0)
+                    - message: authorizedSecrets must be empty when policy is not
+                        Specific
+                      rule: self.policy == 'Specific' || !has(self.authorizedSecrets)
+                        || size(self.authorizedSecrets) == 0
                   tolerations:
                     description: |-
                       tolerations allows the trust-manager pod to be scheduled on tainted nodes.
@@ -1302,21 +1298,21 @@ spec:
                 x-kubernetes-list-map-keys:
                 - type
                 x-kubernetes-list-type: map
-              defaultCAPackage:
-                description: defaultCAPackage contains the status of the default CA
-                  package feature.
-                properties:
-                  enabled:
-                    description: |-
-                      enabled indicates whether the default CA package feature is currently enabled.
-                      This reflects the actual state based on the spec configuration.
-                    type: boolean
-                type: object
-              secretTargetsEnabled:
-                description: |-
-                  secretTargetsEnabled indicates whether secret targets feature is currently enabled.
-                  This reflects the actual state of the deployment, not just the spec.
-                type: boolean
+              defaultCAPackagePolicy:
+                description: defaultCAPackagePolicy indicates the current policy for
+                  the default CA package feature.
+                enum:
+                - Enabled
+                - Disabled
+                type: string
+              secretTargetsPolicy:
+                description: secretTargetsPolicy indicates the current policy for
+                  secret targets.
+                enum:
+                - Disabled
+                - All
+                - Specific
+                type: string
               trustManagerImage:
                 description: |-
                   trustManagerImage is the container image (name:tag) used for trust-manager.

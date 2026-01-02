@@ -88,7 +88,7 @@ type TrustManagerSpec struct {
 	// controllerConfig configures the operator's behavior for resource creation.
 	// +kubebuilder:validation:Optional
 	// +optional
-	ControllerConfig *TrustManagerControllerConfig `json:"controllerConfig,omitempty"`
+	ControllerConfig TrustManagerControllerConfig `json:"controllerConfig,omitempty"`
 }
 
 // =============================================================================
@@ -125,37 +125,25 @@ type TrustManagerConfig struct {
 	// +optional
 	TrustNamespace string `json:"trustNamespace,omitempty"`
 
-	// secretTargets configures whether trust-manager can write trust bundles
-	// to Secrets in addition to ConfigMaps.
+	// secretTargets configures whether trust-manager can write trust bundles to Secrets.
 	// +kubebuilder:validation:Optional
 	// +optional
-	SecretTargets *SecretTargetsConfig `json:"secretTargets,omitempty"`
+	SecretTargets SecretTargetsConfig `json:"secretTargets,omitempty"`
 
 	// filterExpiredCertificates controls whether trust-manager filters out
 	// expired certificates from trust bundles before distributing them.
-	// When enabled, only valid (non-expired) certificates are included.
-	// +kubebuilder:default:=false
+	// When set to "Enabled", expired certificates are removed from bundles.
+	// When set to "Disabled", expired certificates are included (default behavior).
+	// +kubebuilder:default:="Disabled"
 	// +kubebuilder:validation:Optional
 	// +optional
-	FilterExpiredCertificates bool `json:"filterExpiredCertificates,omitempty"`
+	FilterExpiredCertificates FilterExpiredCertificatesPolicy `json:"filterExpiredCertificates,omitempty"`
 
 	// defaultCAPackage configures the default CA package for trust-manager.
-	// When enabled, the operator will use OpenShift's trusted CA bundle injection
-	// mechanism instead of the upstream Debian-based init container approach.
-	//
-	// ## How it works (OpenShift-specific):
-	// 1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
-	// 2. Cluster Network Operator (CNO) injects the cluster's trusted CA bundle
-	// 3. Operator reads the injected CA bundle and formats it into trust-manager's expected JSON format
-	// 4. Operator creates a ConfigMap containing the formatted JSON package
-	// 5. This ConfigMap is mounted to trust-manager at /packages
-	// 6. trust-manager uses --default-package-location to load the package
-	//
-	// This approach ensures trust-manager uses CA certificates that OpenShift trusts,
-	// rather than the upstream Debian package which may not be appropriate for the cluster.
+	// When enabled, the operator will use OpenShift's trusted CA bundle injection mechanism.
 	// +kubebuilder:validation:Optional
 	// +optional
-	DefaultCAPackage *DefaultCAPackageConfig `json:"defaultCAPackage,omitempty"`
+	DefaultCAPackage DefaultCAPackageConfig `json:"defaultCAPackage,omitempty"`
 
 	// resources defines the compute resource requirements for the trust-manager pod.
 	// ref: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
@@ -196,35 +184,21 @@ type TrustManagerConfig struct {
 // SecretTargetsConfig configures whether and how trust-manager can write
 // trust bundles to Secrets.
 //
-// ## Security Implications:
-// - enabled: false → trust-manager only writes to ConfigMaps (safest)
-// - authorizedSecretsAll: true → trust-manager can write to ANY secret (least safe)
-// - authorizedSecrets: ["a","b"] → trust-manager can only write to specific secrets
-//
-// The XValidation rule ensures authorizedSecrets is empty when authorizedSecretsAll is true
-// to prevent confusion.
-//
-// +kubebuilder:validation:XValidation:rule="!self.authorizedSecretsAll || size(self.authorizedSecrets) == 0",message="authorizedSecrets must be empty when authorizedSecretsAll is true"
+// +kubebuilder:validation:XValidation:rule="self.policy != 'Specific' || (has(self.authorizedSecrets) && size(self.authorizedSecrets) > 0)",message="authorizedSecrets must not be empty when policy is Specific"
+// +kubebuilder:validation:XValidation:rule="self.policy == 'Specific' || !has(self.authorizedSecrets) || size(self.authorizedSecrets) == 0",message="authorizedSecrets must be empty when policy is not Specific"
 type SecretTargetsConfig struct {
-	// enabled controls whether trust-manager can write trust bundles to Secrets.
-	// When false, trust-manager only writes to ConfigMaps.
-	// +kubebuilder:default:=false
+	// policy controls whether and how trust-manager can write trust bundles to Secrets.
+	// Allowed values are "Disabled", "All", or "Specific".
+	// "Disabled" means trust-manager cannot write trust bundles to Secrets (default behavior).
+	// "All" grants trust-manager permission to create and update ALL secrets across all namespaces.
+	// "Specific" grants trust-manager permission to create and update only the secrets listed in authorizedSecrets.
+	// +kubebuilder:default:="Disabled"
 	// +kubebuilder:validation:Optional
 	// +optional
-	Enabled bool `json:"enabled,omitempty"`
-
-	// authorizedSecretsAll when true, grants trust-manager permission to create
-	// and update ALL secrets across all namespaces.
-	// ⚠️ WARNING: This is a powerful permission. Use with caution!
-	// Only enable this when you need to write to dynamically-named secrets.
-	// +kubebuilder:default:=false
-	// +kubebuilder:validation:Optional
-	// +optional
-	AuthorizedSecretsAll bool `json:"authorizedSecretsAll,omitempty"`
+	Policy SecretTargetsPolicy `json:"policy,omitempty"`
 
 	// authorizedSecrets is a list of specific secret names that trust-manager
-	// is authorized to create and update. When non-empty, trust-manager can
-	// read all secrets but can only write to secrets in this list.
+	// is authorized to create and update. This field is only valid when policy is "Specific".
 	// This field can have a maximum of 100 entries.
 	// Each entry must be a valid secret name (1-253 characters).
 	// +listType=set
@@ -241,41 +215,15 @@ type SecretTargetsConfig struct {
 // DEFAULT CA PACKAGE CONFIG - OpenShift trusted CA integration
 // =============================================================================
 // DefaultCAPackageConfig configures the default CA package feature for trust-manager.
-//
-// On OpenShift, instead of using the upstream Debian-based init container to provide
-// the default CA bundle, this feature leverages OpenShift's native trusted CA bundle
-// injection mechanism via the Cluster Network Operator (CNO).
-//
-// ## Workflow:
-// 1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
-// 2. CNO detects this annotation and injects the cluster's trusted CA bundle into the ConfigMap
-// 3. Operator reads the injected bundle from the "ca-bundle.crt" key
-// 4. Operator formats the bundle into trust-manager's expected JSON format:
-//
-//	{
-//	  "name": "cert-manager-package-openshift",
-//	  "bundle": "-----BEGIN CERTIFICATE-----\n...",
-//	  "version": "<configmap-resource-version>.0"
-//	}
-//
-// 5. Operator creates a second ConfigMap containing this JSON package
-// 6. This package ConfigMap is mounted to trust-manager at /packages
-// 7. trust-manager is started with --default-package-location=/packages/cert-manager-package-openshift.json
-//
-// ## Benefits:
-// - Uses CA certificates that OpenShift explicitly trusts
-// - Automatically updates when cluster CA bundle changes
-// - No dependency on external Debian package images
-// - Works in air-gapped environments
 type DefaultCAPackageConfig struct {
-	// enabled controls whether the default CA package feature is enabled.
-	// When true, the operator will inject OpenShift's trusted CA bundle
+	// policy controls whether the default CA package feature is enabled.
+	// When set to "Enabled", the operator will inject OpenShift's trusted CA bundle
 	// into trust-manager, enabling the "useDefaultCAs: true" source in Bundle resources.
-	// When false, no default CA package is configured and Bundles cannot use useDefaultCAs.
-	// +kubebuilder:default:=false
+	// When set to "Disabled", no default CA package is configured and Bundles cannot use useDefaultCAs (default behavior).
+	// +kubebuilder:default:="Disabled"
 	// +kubebuilder:validation:Optional
 	// +optional
-	Enabled bool `json:"enabled,omitempty"`
+	Policy DefaultCAPackagePolicy `json:"policy,omitempty"`
 }
 
 // =============================================================================
@@ -305,6 +253,45 @@ type TrustManagerControllerConfig struct {
 }
 
 // =============================================================================
+// ENUM TYPE DEFINITIONS
+// =============================================================================
+
+// FilterExpiredCertificatesPolicy defines the policy for filtering expired certificates.
+// +kubebuilder:validation:Enum:=Enabled;Disabled
+type FilterExpiredCertificatesPolicy string
+
+const (
+	// FilterExpiredCertificatesPolicyEnabled filters out expired certificates from bundles.
+	FilterExpiredCertificatesPolicyEnabled FilterExpiredCertificatesPolicy = "Enabled"
+	// FilterExpiredCertificatesPolicyDisabled includes expired certificates in bundles.
+	FilterExpiredCertificatesPolicyDisabled FilterExpiredCertificatesPolicy = "Disabled"
+)
+
+// SecretTargetsPolicy defines the policy for writing trust bundles to Secrets.
+// +kubebuilder:validation:Enum:=Disabled;All;Specific
+type SecretTargetsPolicy string
+
+const (
+	// SecretTargetsPolicyDisabled means trust-manager cannot write trust bundles to Secrets.
+	SecretTargetsPolicyDisabled SecretTargetsPolicy = "Disabled"
+	// SecretTargetsPolicyAll grants trust-manager permission to write to ALL secrets.
+	SecretTargetsPolicyAll SecretTargetsPolicy = "All"
+	// SecretTargetsPolicySpecific grants trust-manager permission to write to specific secrets only.
+	SecretTargetsPolicySpecific SecretTargetsPolicy = "Specific"
+)
+
+// DefaultCAPackagePolicy defines the policy for the default CA package feature.
+// +kubebuilder:validation:Enum:=Enabled;Disabled
+type DefaultCAPackagePolicy string
+
+const (
+	// DefaultCAPackagePolicyEnabled enables the default CA package feature.
+	DefaultCAPackagePolicyEnabled DefaultCAPackagePolicy = "Enabled"
+	// DefaultCAPackagePolicyDisabled disables the default CA package feature.
+	DefaultCAPackagePolicyDisabled DefaultCAPackagePolicy = "Disabled"
+)
+
+// =============================================================================
 // STATUS - What the operator reports back
 // =============================================================================
 // TrustManagerStatus defines the observed state of TrustManager.
@@ -325,22 +312,9 @@ type TrustManagerStatus struct {
 	// This reflects the actual configured trust namespace from the spec.
 	TrustNamespace string `json:"trustNamespace,omitempty"`
 
-	// secretTargetsEnabled indicates whether secret targets feature is currently enabled.
-	// This reflects the actual state of the deployment, not just the spec.
-	SecretTargetsEnabled bool `json:"secretTargetsEnabled,omitempty"`
+	// secretTargetsPolicy indicates the current policy for secret targets.
+	SecretTargetsPolicy SecretTargetsPolicy `json:"secretTargetsPolicy,omitempty"`
 
-	// defaultCAPackage contains the status of the default CA package feature.
-	// +kubebuilder:validation:Optional
-	// +optional
-	DefaultCAPackage *DefaultCAPackageStatus `json:"defaultCAPackage,omitempty"`
-}
-
-// =============================================================================
-// DEFAULT CA PACKAGE STATUS - Tracks the state of OpenShift CA injection
-// =============================================================================
-// DefaultCAPackageStatus reports the observed state of the default CA package feature.
-type DefaultCAPackageStatus struct {
-	// enabled indicates whether the default CA package feature is currently enabled.
-	// This reflects the actual state based on the spec configuration.
-	Enabled bool `json:"enabled,omitempty"`
+	// defaultCAPackagePolicy indicates the current policy for the default CA package feature.
+	DefaultCAPackagePolicy DefaultCAPackagePolicy `json:"defaultCAPackagePolicy,omitempty"`
 }

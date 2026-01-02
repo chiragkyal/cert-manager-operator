@@ -430,8 +430,7 @@ func (r *Reconciler) processReconcileRequest(trustManager *v1alpha1.TrustManager
 	// ==========================================================================
 	// Update status fields to reflect actual configuration
 	trustManager.Status.TrustNamespace = getTrustNamespace(trustManager.Spec.TrustManagerConfig.TrustNamespace)
-	trustManager.Status.SecretTargetsEnabled = trustManager.Spec.TrustManagerConfig.SecretTargets != nil &&
-		trustManager.Spec.TrustManagerConfig.SecretTargets.Enabled
+	trustManager.Status.SecretTargetsPolicy = trustManager.Spec.TrustManagerConfig.SecretTargets.Policy
 
 	degradedChanged := trustManager.Status.SetCondition(
 		v1alpha1.Degraded, metav1.ConditionFalse,
@@ -518,8 +517,8 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 			// Don't fail reconciliation for cleanup errors
 		}
 		// Clear status if it was previously enabled
-		if trustManager.Status.DefaultCAPackage != nil && trustManager.Status.DefaultCAPackage.Enabled {
-			if err := r.updateDefaultCAPackageStatus(trustManager, false); err != nil {
+		if trustManager.Status.DefaultCAPackagePolicy == v1alpha1.DefaultCAPackagePolicyEnabled {
+			if err := r.updateDefaultCAPackageStatus(trustManager, v1alpha1.DefaultCAPackagePolicyDisabled); err != nil {
 				return false, err
 			}
 		}
@@ -791,7 +790,7 @@ func (r *Reconciler) getResourceLabels(trustManager *v1alpha1.TrustManager) map[
 	}
 
 	// Add user-specified labels
-	if trustManager.Spec.ControllerConfig != nil {
+	if len(trustManager.Spec.ControllerConfig.Labels) > 0 {
 		for k, v := range trustManager.Spec.ControllerConfig.Labels {
 			labels[k] = v
 		}

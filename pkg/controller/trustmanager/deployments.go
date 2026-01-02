@@ -95,7 +95,7 @@ func (r *Reconciler) getDeploymentObject(
 	}
 
 	// Apply user-specified annotations if any
-	if trustManager.Spec.ControllerConfig != nil && trustManager.Spec.ControllerConfig.Annotations != nil {
+	if len(trustManager.Spec.ControllerConfig.Annotations) > 0 {
 		updateResourceAnnotations(deploy, trustManager.Spec.ControllerConfig.Annotations)
 	}
 
@@ -150,7 +150,7 @@ func (r *Reconciler) configureDefaultCAPackageVolume(
 	container *corev1.Container,
 	config v1alpha1.TrustManagerConfig,
 ) {
-	defaultCAEnabled := config.DefaultCAPackage != nil && config.DefaultCAPackage.Enabled
+	defaultCAEnabled := config.DefaultCAPackage.Policy == v1alpha1.DefaultCAPackagePolicyEnabled
 
 	// Check if volume already exists
 	volumeExists := false
@@ -247,7 +247,7 @@ func (r *Reconciler) buildContainerArgs(config v1alpha1.TrustManagerConfig) []st
 	// Default CA package location
 	// If DefaultCAPackage is enabled, use the OpenShift package location
 	// Otherwise, don't set the argument (no default package)
-	if config.DefaultCAPackage != nil && config.DefaultCAPackage.Enabled {
+	if config.DefaultCAPackage.Policy == v1alpha1.DefaultCAPackagePolicyEnabled {
 		args = append(args, fmt.Sprintf("%s=%s", argDefaultPackageLocation, defaultCAPackageLocation))
 	}
 	// Note: If DefaultCAPackage is not enabled, we don't set --default-package-location
@@ -255,14 +255,11 @@ func (r *Reconciler) buildContainerArgs(config v1alpha1.TrustManagerConfig) []st
 	// useDefaultCAs: true will fail validation
 
 	// Secret targets configuration
-	secretTargetsEnabled := false
-	if config.SecretTargets != nil && config.SecretTargets.Enabled {
-		secretTargetsEnabled = true
-	}
+	secretTargetsEnabled := isSecretTargetsEnabled(config.SecretTargets.Policy)
 	args = append(args, fmt.Sprintf("%s=%s", argSecretTargetsEnabled, strconv.FormatBool(secretTargetsEnabled)))
 
 	// Filter expired certificates
-	if config.FilterExpiredCertificates {
+	if config.FilterExpiredCertificates == v1alpha1.FilterExpiredCertificatesPolicyEnabled {
 		args = append(args, fmt.Sprintf("%s=%s", argFilterExpiredCertificates, "true"))
 	}
 
@@ -312,13 +309,10 @@ func (r *Reconciler) updateDeploymentStatus(trustManager *v1alpha1.TrustManager,
 		changed = true
 	}
 
-	// Update secretTargetsEnabled status
-	secretTargetsEnabled := false
-	if trustManager.Spec.TrustManagerConfig.SecretTargets != nil {
-		secretTargetsEnabled = trustManager.Spec.TrustManagerConfig.SecretTargets.Enabled
-	}
-	if trustManager.Status.SecretTargetsEnabled != secretTargetsEnabled {
-		trustManager.Status.SecretTargetsEnabled = secretTargetsEnabled
+	// Update secretTargetsPolicy status
+	secretTargetsPolicy := trustManager.Spec.TrustManagerConfig.SecretTargets.Policy
+	if trustManager.Status.SecretTargetsPolicy != secretTargetsPolicy {
+		trustManager.Status.SecretTargetsPolicy = secretTargetsPolicy
 		changed = true
 	}
 
@@ -355,4 +349,9 @@ func getTrustNamespace(ns string) string {
 		return "cert-manager"
 	}
 	return ns
+}
+
+// isSecretTargetsEnabled returns true if secretTargets policy allows writing to secrets.
+func isSecretTargetsEnabled(policy v1alpha1.SecretTargetsPolicy) bool {
+	return policy == v1alpha1.SecretTargetsPolicyAll || policy == v1alpha1.SecretTargetsPolicySpecific
 }

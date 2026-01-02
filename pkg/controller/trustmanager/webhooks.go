@@ -98,7 +98,7 @@ func (r *Reconciler) getValidatingWebhookObject(
 	webhook.SetAnnotations(annotations)
 
 	// Apply user-specified annotations (but don't override inject-ca-from)
-	if trustManager.Spec.ControllerConfig != nil && trustManager.Spec.ControllerConfig.Annotations != nil {
+	if len(trustManager.Spec.ControllerConfig.Annotations) > 0 {
 		currentAnnotations := webhook.GetAnnotations()
 		for k, v := range trustManager.Spec.ControllerConfig.Annotations {
 			// Don't override the CA injection annotation

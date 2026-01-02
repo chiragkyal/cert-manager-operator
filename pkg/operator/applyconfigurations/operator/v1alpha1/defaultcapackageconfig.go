@@ -2,10 +2,14 @@
 
 package v1alpha1
 
+import (
+	operatorv1alpha1 "github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
+)
+
 // DefaultCAPackageConfigApplyConfiguration represents a declarative configuration of the DefaultCAPackageConfig type for use
 // with apply.
 type DefaultCAPackageConfigApplyConfiguration struct {
-	Enabled *bool `json:"enabled,omitempty"`
+	Policy *operatorv1alpha1.DefaultCAPackagePolicy `json:"policy,omitempty"`
 }
 
 // DefaultCAPackageConfigApplyConfiguration constructs a declarative configuration of the DefaultCAPackageConfig type for use with
@@ -14,10 +18,10 @@ func DefaultCAPackageConfig() *DefaultCAPackageConfigApplyConfiguration {
 	return &DefaultCAPackageConfigApplyConfiguration{}
 }
 
-// WithEnabled sets the Enabled field in the declarative configuration to the given value
+// WithPolicy sets the Policy field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Enabled field is set to the value of the last call.
-func (b *DefaultCAPackageConfigApplyConfiguration) WithEnabled(value bool) *DefaultCAPackageConfigApplyConfiguration {
-	b.Enabled = &value
+// If called multiple times, the Policy field is set to the value of the last call.
+func (b *DefaultCAPackageConfigApplyConfiguration) WithPolicy(value operatorv1alpha1.DefaultCAPackagePolicy) *DefaultCAPackageConfigApplyConfiguration {
+	b.Policy = &value
 	return b
 }

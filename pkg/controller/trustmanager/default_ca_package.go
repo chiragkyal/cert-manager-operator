@@ -66,7 +66,7 @@ type trustPackage struct {
 }
 
 // createOrApplyDefaultCAPackage reconciles the default CA package ConfigMaps.
-// This is only called when DefaultCAPackage.Enabled is true.
+// This is only called when DefaultCAPackage.Policy is Enabled.
 //
 // Returns:
 // - (true, nil) if the CA bundle is not yet injected by CNO (should requeue)
@@ -115,7 +115,7 @@ func (r *Reconciler) createOrApplyDefaultCAPackage(
 	}
 
 	// Step 5: Update status
-	if err := r.updateDefaultCAPackageStatus(trustManager, true); err != nil {
+	if err := r.updateDefaultCAPackageStatus(trustManager, v1alpha1.DefaultCAPackagePolicyEnabled); err != nil {
 		return false, err
 	}
 
@@ -314,13 +314,9 @@ func (r *Reconciler) createOrApplyPackageConfigMap(
 }
 
 // updateDefaultCAPackageStatus updates the TrustManager status with DefaultCAPackage info.
-func (r *Reconciler) updateDefaultCAPackageStatus(trustManager *v1alpha1.TrustManager, enabled bool) error {
-	if trustManager.Status.DefaultCAPackage == nil {
-		trustManager.Status.DefaultCAPackage = &v1alpha1.DefaultCAPackageStatus{}
-	}
-
-	if trustManager.Status.DefaultCAPackage.Enabled != enabled {
-		trustManager.Status.DefaultCAPackage.Enabled = enabled
+func (r *Reconciler) updateDefaultCAPackageStatus(trustManager *v1alpha1.TrustManager, policy v1alpha1.DefaultCAPackagePolicy) error {
+	if trustManager.Status.DefaultCAPackagePolicy != policy {
+		trustManager.Status.DefaultCAPackagePolicy = policy
 		return r.updateStatus(r.ctx, trustManager)
 	}
 
@@ -363,6 +359,5 @@ func (r *Reconciler) deleteDefaultCAPackageConfigMaps() error {
 
 // isDefaultCAPackageEnabled checks if the default CA package feature is enabled.
 func isDefaultCAPackageEnabled(trustManager *v1alpha1.TrustManager) bool {
-	return trustManager.Spec.TrustManagerConfig.DefaultCAPackage != nil &&
-		trustManager.Spec.TrustManagerConfig.DefaultCAPackage.Enabled
+	return trustManager.Spec.TrustManagerConfig.DefaultCAPackage.Policy == v1alpha1.DefaultCAPackagePolicyEnabled
 }

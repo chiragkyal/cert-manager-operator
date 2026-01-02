@@ -229,22 +229,25 @@ func (r *Reconciler) buildSecretRules(trustManager *v1alpha1.TrustManager) []rba
 	var rules []rbacv1.PolicyRule
 
 	secretTargets := trustManager.Spec.TrustManagerConfig.SecretTargets
-	if secretTargets == nil || !secretTargets.Enabled {
+	policy := secretTargets.Policy
+
+	// Check if secret targets is disabled
+	if policy == v1alpha1.SecretTargetsPolicyDisabled {
 		// Secret targets disabled - no secret rules needed
 		r.log.V(4).Info("secretTargets disabled, no secret rules added")
 		return rules
 	}
 
 	// Secret targets enabled
-	if secretTargets.AuthorizedSecretsAll {
+	if policy == v1alpha1.SecretTargetsPolicyAll {
 		// Full access to ALL secrets (dangerous but sometimes needed)
-		r.log.V(2).Info("secretTargets.authorizedSecretsAll=true, granting full secret access")
+		r.log.V(2).Info("secretTargets.policy=All, granting full secret access")
 		rules = append(rules, rbacv1.PolicyRule{
 			APIGroups: []string{""},
 			Resources: []string{"secrets"},
 			Verbs:     []string{"get", "list", "watch", "create", "patch", "delete"},
 		})
-	} else if len(secretTargets.AuthorizedSecrets) > 0 {
+	} else if policy == v1alpha1.SecretTargetsPolicySpecific && len(secretTargets.AuthorizedSecrets) > 0 {
 		// Restricted access - read all, write only to specific secrets
 		r.log.V(2).Info("secretTargets with specific secrets", "count", len(secretTargets.AuthorizedSecrets))
 

@@ -104,7 +104,7 @@ func (r *Reconciler) getIssuerObject(
 	updateResourceLabels(issuer, resourceLabels)
 
 	// Apply user-specified annotations if any
-	if trustManager.Spec.ControllerConfig != nil && trustManager.Spec.ControllerConfig.Annotations != nil {
+	if len(trustManager.Spec.ControllerConfig.Annotations) > 0 {
 		updateResourceAnnotations(issuer, trustManager.Spec.ControllerConfig.Annotations)
 	}
 
@@ -179,7 +179,7 @@ func (r *Reconciler) getCertificateObject(
 	}
 
 	// Apply user-specified annotations if any
-	if trustManager.Spec.ControllerConfig != nil && trustManager.Spec.ControllerConfig.Annotations != nil {
+	if len(trustManager.Spec.ControllerConfig.Annotations) > 0 {
 		updateResourceAnnotations(cert, trustManager.Spec.ControllerConfig.Annotations)
 	}
 

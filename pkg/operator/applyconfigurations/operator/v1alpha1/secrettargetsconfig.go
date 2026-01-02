@@ -2,12 +2,15 @@
 
 package v1alpha1
 
+import (
+	operatorv1alpha1 "github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
+)
+
 // SecretTargetsConfigApplyConfiguration represents a declarative configuration of the SecretTargetsConfig type for use
 // with apply.
 type SecretTargetsConfigApplyConfiguration struct {
-	Enabled              *bool    `json:"enabled,omitempty"`
-	AuthorizedSecretsAll *bool    `json:"authorizedSecretsAll,omitempty"`
-	AuthorizedSecrets    []string `json:"authorizedSecrets,omitempty"`
+	Policy            *operatorv1alpha1.SecretTargetsPolicy `json:"policy,omitempty"`
+	AuthorizedSecrets []string                              `json:"authorizedSecrets,omitempty"`
 }
 
 // SecretTargetsConfigApplyConfiguration constructs a declarative configuration of the SecretTargetsConfig type for use with
@@ -16,19 +19,11 @@ func SecretTargetsConfig() *SecretTargetsConfigApplyConfiguration {
 	return &SecretTargetsConfigApplyConfiguration{}
 }
 
-// WithEnabled sets the Enabled field in the declarative configuration to the given value
+// WithPolicy sets the Policy field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Enabled field is set to the value of the last call.
-func (b *SecretTargetsConfigApplyConfiguration) WithEnabled(value bool) *SecretTargetsConfigApplyConfiguration {
-	b.Enabled = &value
-	return b
-}
-
-// WithAuthorizedSecretsAll sets the AuthorizedSecretsAll field in the declarative configuration to the given value
-// and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the AuthorizedSecretsAll field is set to the value of the last call.
-func (b *SecretTargetsConfigApplyConfiguration) WithAuthorizedSecretsAll(value bool) *SecretTargetsConfigApplyConfiguration {
-	b.AuthorizedSecretsAll = &value
+// If called multiple times, the Policy field is set to the value of the last call.
+func (b *SecretTargetsConfigApplyConfiguration) WithPolicy(value operatorv1alpha1.SecretTargetsPolicy) *SecretTargetsConfigApplyConfiguration {
+	b.Policy = &value
 	return b
 }
 

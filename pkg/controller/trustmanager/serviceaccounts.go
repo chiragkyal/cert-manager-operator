@@ -85,7 +85,7 @@ func (r *Reconciler) getServiceAccountObject(
 	updateResourceLabels(sa, resourceLabels)
 
 	// Apply user-specified annotations if any
-	if trustManager.Spec.ControllerConfig != nil && trustManager.Spec.ControllerConfig.Annotations != nil {
+	if len(trustManager.Spec.ControllerConfig.Annotations) > 0 {
 		updateResourceAnnotations(sa, trustManager.Spec.ControllerConfig.Annotations)
 	}
 

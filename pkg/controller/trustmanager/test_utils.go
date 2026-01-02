@@ -56,13 +56,12 @@ func testTrustManager() *v1alpha1.TrustManager {
 		},
 		Spec: v1alpha1.TrustManagerSpec{
 			TrustManagerConfig: v1alpha1.TrustManagerConfig{
-				LogLevel:                  1,
-				LogFormat:                 "text",
-				TrustNamespace:            "cert-manager",
-				SecretTargets:             nil,
-				FilterExpiredCertificates: false,
+				LogLevel:       1,
+				LogFormat:      "text",
+				TrustNamespace: "cert-manager",
+				// SecretTargets and FilterExpiredCertificates use default policy (Disabled)
 			},
-			ControllerConfig: &v1alpha1.TrustManagerControllerConfig{
+			ControllerConfig: v1alpha1.TrustManagerControllerConfig{
 				Labels: map[string]string{
 					"user-label1": "test-value1",
 					"user-label2": "test-value2",
@@ -75,8 +74,8 @@ func testTrustManager() *v1alpha1.TrustManager {
 // testTrustManagerWithSecretTargets creates a TrustManager with secretTargets enabled.
 func testTrustManagerWithSecretTargets() *v1alpha1.TrustManager {
 	tm := testTrustManager()
-	tm.Spec.TrustManagerConfig.SecretTargets = &v1alpha1.SecretTargetsConfig{
-		Enabled:           true,
+	tm.Spec.TrustManagerConfig.SecretTargets = v1alpha1.SecretTargetsConfig{
+		Policy:            v1alpha1.SecretTargetsPolicySpecific,
 		AuthorizedSecrets: []string{"my-secret-1", "my-secret-2"},
 	}
 	return tm
@@ -85,9 +84,8 @@ func testTrustManagerWithSecretTargets() *v1alpha1.TrustManager {
 // testTrustManagerWithSecretTargetsAll creates a TrustManager with all secrets access.
 func testTrustManagerWithSecretTargetsAll() *v1alpha1.TrustManager {
 	tm := testTrustManager()
-	tm.Spec.TrustManagerConfig.SecretTargets = &v1alpha1.SecretTargetsConfig{
-		Enabled:              true,
-		AuthorizedSecretsAll: true,
+	tm.Spec.TrustManagerConfig.SecretTargets = v1alpha1.SecretTargetsConfig{
+		Policy: v1alpha1.SecretTargetsPolicyAll,
 	}
 	return tm
 }

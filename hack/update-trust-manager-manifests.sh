@@ -31,6 +31,11 @@ yq e \
 # add custom label to all CRDs
 yq e 'select(.kind == "CustomResourceDefinition").metadata.labels."app" = "trust-manager"' -i ${MANIFESTS_PATH}/manifests.yaml
 
+# remove "packages" volume and volumeMount from Deployment
+# (controller will add these dynamically when defaultCAPackage is enabled)
+yq e 'select(.kind == "Deployment").spec.template.spec.volumes |= map(select(.name != "packages"))' -i ${MANIFESTS_PATH}/manifests.yaml
+yq e 'select(.kind == "Deployment").spec.template.spec.containers[0].volumeMounts |= map(select(.name != "packages"))' -i ${MANIFESTS_PATH}/manifests.yaml
+
 # regenerate all bindata
 rm -rf bindata/trust-manager/resources
 rm -f config/crd/bases/customresourcedefinition_bundles.trust.cert-manager.io.yml

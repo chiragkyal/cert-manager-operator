@@ -224,7 +224,7 @@ const (
 	defaultCAPackageLocation = "/packages/" + defaultCAPackageJSONFile
 
 	// defaultCAInjectionConfigMapName is the name of the ConfigMap that CNO will
-	// inject the trusted CA bundle into. This ConfigMap has the annotation
+	// inject the trusted CA bundle into. This ConfigMap has the label
 	// "config.openshift.io/inject-trusted-cabundle: true".
 	defaultCAInjectionConfigMapName = "trust-manager-default-ca-injection"
 
@@ -232,16 +232,17 @@ const (
 	// formatted JSON package that is mounted to trust-manager.
 	defaultCAPackageConfigMapName = "trust-manager-default-ca-package"
 
-	// cnoInjectTrustedCABundleAnnotation is the OpenShift annotation that triggers
+	// cnoInjectTrustedCABundleLabel is the OpenShift label that triggers
 	// the Cluster Network Operator to inject the cluster's trusted CA bundle.
-	cnoInjectTrustedCABundleAnnotation = "config.openshift.io/inject-trusted-cabundle"
+	cnoInjectTrustedCABundleLabel = "config.openshift.io/inject-trusted-cabundle"
 
 	// cnoInjectedCABundleKey is the key in the ConfigMap where CNO injects the CA bundle.
 	cnoInjectedCABundleKey = "ca-bundle.crt"
 
-	// defaultCAPackageVolumeMount is the mount path for the default CA package volume.
+	// defaultCAPackageVolumeMountPath is the mount path for the default CA package volume.
 	defaultCAPackageVolumeMountPath = "/packages"
 
 	// defaultCAPackageVolumeName is the name of the volume for the default CA package.
-	defaultCAPackageVolumeName = "default-ca-package"
+	// This matches the existing "packages" volume in the bindata deployment template.
+	defaultCAPackageVolumeName = "packages"
 )

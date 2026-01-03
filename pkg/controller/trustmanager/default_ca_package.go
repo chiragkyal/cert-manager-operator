@@ -22,8 +22,8 @@ import (
 // mechanism via the Cluster Network Operator (CNO).
 //
 // ## Workflow:
-// 1. Operator creates a ConfigMap with annotation "config.openshift.io/inject-trusted-cabundle: true"
-// 2. CNO detects this annotation and injects the cluster's trusted CA bundle into the ConfigMap
+// 1. Operator creates a ConfigMap with label "config.openshift.io/inject-trusted-cabundle: true"
+// 2. CNO detects this label and injects the cluster's trusted CA bundle into the ConfigMap
 // 3. Operator reads the injected bundle from the "ca-bundle.crt" key
 // 4. Operator formats the bundle into trust-manager's expected JSON format
 // 5. Operator creates a second ConfigMap containing this JSON package
@@ -131,15 +131,19 @@ func (r *Reconciler) createOrApplyInjectionConfigMap(
 ) error {
 	configMapName := fmt.Sprintf("%s/%s", operandNamespace, defaultCAInjectionConfigMapName)
 
+	// Merge resource labels with the CNO injection label
+	labels := make(map[string]string)
+	for k, v := range resourceLabels {
+		labels[k] = v
+	}
+	// This label triggers CNO to inject the trusted CA bundle
+	labels[cnoInjectTrustedCABundleLabel] = "true"
+
 	desired := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      defaultCAInjectionConfigMapName,
 			Namespace: operandNamespace,
-			Labels:    resourceLabels,
-			Annotations: map[string]string{
-				// This annotation triggers CNO to inject the trusted CA bundle
-				cnoInjectTrustedCABundleAnnotation: "true",
-			},
+			Labels:    labels,
 		},
 		// Data will be populated by CNO with the ca-bundle.crt key
 		Data: map[string]string{},
@@ -159,20 +163,11 @@ func (r *Reconciler) createOrApplyInjectionConfigMap(
 				"Injection ConfigMap %s already exists", configMapName)
 		}
 
-		// Check if labels and annotation are correct
+		// Check if labels are correct (including the CNO injection label)
 		needsUpdate := false
 
-		// Ensure annotation is present
-		if fetched.Annotations == nil || fetched.Annotations[cnoInjectTrustedCABundleAnnotation] != "true" {
-			if fetched.Annotations == nil {
-				fetched.Annotations = make(map[string]string)
-			}
-			fetched.Annotations[cnoInjectTrustedCABundleAnnotation] = "true"
-			needsUpdate = true
-		}
-
-		// Ensure labels are present
-		for k, v := range resourceLabels {
+		// Ensure all required labels are present
+		for k, v := range labels {
 			if fetched.Labels == nil || fetched.Labels[k] != v {
 				if fetched.Labels == nil {
 					fetched.Labels = make(map[string]string)
@@ -290,15 +285,21 @@ func (r *Reconciler) createOrApplyPackageConfigMap(
 				"Package ConfigMap %s already exists", configMapName)
 		}
 
-		// Check if data has changed
-		if fetched.Data[defaultCAPackageJSONFile] != packageJSON {
-			r.log.V(2).Info("package ConfigMap data has changed, updating", "name", configMapName)
+		// Check if data or labels have changed
+		dataChanged := fetched.Data[defaultCAPackageJSONFile] != packageJSON
+		labelsChanged := !labelsMatch(fetched.Labels, resourceLabels)
+
+		if dataChanged || labelsChanged {
+			r.log.V(2).Info("package ConfigMap needs update",
+				"name", configMapName,
+				"dataChanged", dataChanged,
+				"labelsChanged", labelsChanged)
 			desired.SetResourceVersion(fetched.GetResourceVersion())
 			if err := r.Update(r.ctx, desired); err != nil {
 				return FromClientError(err, "failed to update package ConfigMap %s", configMapName)
 			}
 			r.eventRecorder.Eventf(trustManager, corev1.EventTypeNormal, "Reconciled",
-				"Package ConfigMap %s updated with new CA bundle", configMapName)
+				"Package ConfigMap %s updated", configMapName)
 		} else {
 			r.log.V(4).Info("package ConfigMap is in expected state", "name", configMapName)
 		}
@@ -360,4 +361,14 @@ func (r *Reconciler) deleteDefaultCAPackageConfigMaps() error {
 // isDefaultCAPackageEnabled checks if the default CA package feature is enabled.
 func isDefaultCAPackageEnabled(trustManager *v1alpha1.TrustManager) bool {
 	return trustManager.Spec.TrustManagerConfig.DefaultCAPackage.Policy == v1alpha1.DefaultCAPackagePolicyEnabled
+}
+
+// labelsMatch checks if all required labels are present in the actual labels with correct values.
+func labelsMatch(actual, required map[string]string) bool {
+	for k, v := range required {
+		if actual[k] != v {
+			return false
+		}
+	}
+	return true
 }

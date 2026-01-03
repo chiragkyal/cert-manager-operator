@@ -829,12 +829,10 @@ func (r *Reconciler) addProcessedAnnotation(trustManager *v1alpha1.TrustManager)
 	return nil
 }
 
-// updateCondition updates the TrustManager status conditions.
+// updateCondition updates the TrustManager status conditions with retry on conflict.
+// Uses the same retry pattern as updateStatus in utils.go.
 func (r *Reconciler) updateCondition(trustManager *v1alpha1.TrustManager) error {
-	if err := r.StatusUpdate(r.ctx, trustManager); err != nil {
-		return FromClientError(err, "failed to update TrustManager status")
-	}
-	return nil
+	return r.updateStatus(r.ctx, trustManager)
 }
 
 // addFinalizer adds the controller finalizer if not present.

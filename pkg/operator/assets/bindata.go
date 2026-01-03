@@ -3290,9 +3290,6 @@ spec:
             - mountPath: /tls
               name: tls
               readOnly: true
-            - mountPath: /packages
-              name: packages
-              readOnly: true
           resources: {}
           securityContext:
             allowPrivilegeEscalation: false
@@ -3306,9 +3303,6 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       volumes:
-        - name: packages
-          emptyDir:
-            sizeLimit: 50M
         - name: tls
           secret:
             defaultMode: 420

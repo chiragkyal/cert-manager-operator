@@ -144,7 +144,9 @@ func (r *Reconciler) updateContainerConfig(deploy *appsv1.Deployment, trustManag
 	r.configureDefaultCAPackageVolume(deploy, container, config)
 }
 
-// configureDefaultCAPackageVolume adds or removes the DefaultCAPackage volume and volume mount.
+// configureDefaultCAPackageVolume adds or removes the "packages" volume based on DefaultCAPackage policy.
+// When enabled: adds volume (ConfigMap) and mount (/packages)
+// When disabled: removes volume and mount entirely (not needed without --default-package-location)
 func (r *Reconciler) configureDefaultCAPackageVolume(
 	deploy *appsv1.Deployment,
 	container *corev1.Container,
@@ -152,72 +154,76 @@ func (r *Reconciler) configureDefaultCAPackageVolume(
 ) {
 	defaultCAEnabled := config.DefaultCAPackage.Policy == v1alpha1.DefaultCAPackagePolicyEnabled
 
-	// Check if volume already exists
-	volumeExists := false
+	// Find existing volume index
 	volumeIndex := -1
 	for i, vol := range deploy.Spec.Template.Spec.Volumes {
 		if vol.Name == defaultCAPackageVolumeName {
-			volumeExists = true
 			volumeIndex = i
 			break
 		}
 	}
 
-	// Check if volume mount already exists
-	mountExists := false
+	// Find existing mount index
 	mountIndex := -1
 	for i, mount := range container.VolumeMounts {
 		if mount.Name == defaultCAPackageVolumeName {
-			mountExists = true
 			mountIndex = i
 			break
 		}
 	}
 
 	if defaultCAEnabled {
-		// Add volume if not exists
-		if !volumeExists {
-			volume := corev1.Volume{
-				Name: defaultCAPackageVolumeName,
-				VolumeSource: corev1.VolumeSource{
-					ConfigMap: &corev1.ConfigMapVolumeSource{
-						LocalObjectReference: corev1.LocalObjectReference{
-							Name: defaultCAPackageConfigMapName,
-						},
+		// Add or update volume
+		configMapVolume := corev1.Volume{
+			Name: defaultCAPackageVolumeName,
+			VolumeSource: corev1.VolumeSource{
+				ConfigMap: &corev1.ConfigMapVolumeSource{
+					LocalObjectReference: corev1.LocalObjectReference{
+						Name: defaultCAPackageConfigMapName,
 					},
 				},
-			}
-			deploy.Spec.Template.Spec.Volumes = append(deploy.Spec.Template.Spec.Volumes, volume)
-			r.log.V(4).Info("added DefaultCAPackage volume to deployment")
+			},
 		}
 
-		// Add volume mount if not exists
-		if !mountExists {
-			volumeMount := corev1.VolumeMount{
-				Name:      defaultCAPackageVolumeName,
-				MountPath: defaultCAPackageVolumeMountPath,
-				ReadOnly:  true,
-			}
+		if volumeIndex >= 0 {
+			deploy.Spec.Template.Spec.Volumes[volumeIndex] = configMapVolume
+			r.log.V(4).Info("updated packages volume to use ConfigMap")
+		} else {
+			deploy.Spec.Template.Spec.Volumes = append(deploy.Spec.Template.Spec.Volumes, configMapVolume)
+			r.log.V(4).Info("added packages volume with ConfigMap")
+		}
+
+		// Add or update mount
+		volumeMount := corev1.VolumeMount{
+			Name:      defaultCAPackageVolumeName,
+			MountPath: defaultCAPackageVolumeMountPath,
+			ReadOnly:  true,
+		}
+
+		if mountIndex >= 0 {
+			container.VolumeMounts[mountIndex] = volumeMount
+			r.log.V(4).Info("updated packages volume mount")
+		} else {
 			container.VolumeMounts = append(container.VolumeMounts, volumeMount)
-			r.log.V(4).Info("added DefaultCAPackage volume mount to container")
+			r.log.V(4).Info("added packages volume mount")
 		}
 	} else {
 		// Remove volume if exists
-		if volumeExists && volumeIndex >= 0 {
+		if volumeIndex >= 0 {
 			deploy.Spec.Template.Spec.Volumes = append(
 				deploy.Spec.Template.Spec.Volumes[:volumeIndex],
 				deploy.Spec.Template.Spec.Volumes[volumeIndex+1:]...,
 			)
-			r.log.V(4).Info("removed DefaultCAPackage volume from deployment")
+			r.log.V(4).Info("removed packages volume")
 		}
 
-		// Remove volume mount if exists
-		if mountExists && mountIndex >= 0 {
+		// Remove mount if exists
+		if mountIndex >= 0 {
 			container.VolumeMounts = append(
 				container.VolumeMounts[:mountIndex],
 				container.VolumeMounts[mountIndex+1:]...,
 			)
-			r.log.V(4).Info("removed DefaultCAPackage volume mount from container")
+			r.log.V(4).Info("removed packages volume mount")
 		}
 	}
 }

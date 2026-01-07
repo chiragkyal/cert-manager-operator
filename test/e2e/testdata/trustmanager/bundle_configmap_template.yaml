@@ -1,0 +1,25 @@
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
+metadata:
+  name: {{.Name}}
+spec:
+  sources:
+{{- if eq .SourceType "configMap"}}
+    - configMap:
+        name: {{.SourceName}}
+        key: {{.SourceKey}}
+{{- else if eq .SourceType "useDefaultCAs"}}
+    - useDefaultCAs: true
+{{- else if eq .SourceType "inLine"}}
+    - inLine: |
+        {{.InlineCA}}
+{{- end}}
+  target:
+    configMap:
+      key: {{.TargetKey}}
+{{- if .NamespaceLabel}}
+    namespaceSelector:
+      matchLabels:
+        {{.NamespaceLabel}}: {{.NamespaceValue}}
+{{- end}}
+

@@ -125,9 +125,13 @@ manifests: ## Generate WebhookConfiguration, ClusterRole and CustomResourceDefin
 	$(CONTROLLER_GEN) rbac:roleName=manager-role crd webhook paths="$(PROJECT_ROOT)/..." output:crd:artifacts:config=$(PROJECT_ROOT)/config/crd/bases output:rbac:artifacts:config=$(PROJECT_ROOT)/config/rbac
 
 .PHONY: generate
-generate: ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
+generate: generate-fakes ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
 	$(CONTROLLER_GEN) object:headerFile="$(PROJECT_ROOT)/hack/boilerplate.go.txt" paths="$(PROJECT_ROOT)/api/..."
 	hack/update-clientgen.sh
+
+.PHONY: generate-fakes
+generate-fakes: ## Generate fake implementations for testing using counterfeiter.
+	go generate ./...
 
 .PHONY: fmt
 fmt: ## Run go fmt against code.

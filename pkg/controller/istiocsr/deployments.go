@@ -78,8 +78,8 @@ func (r *Reconciler) getDeploymentObject(istiocsr *v1alpha1.IstioCSR, resourceLa
 
 	deployment := decodeDeploymentObjBytes(assets.MustAsset(deploymentAssetName))
 
-	updateNamespace(deployment, istiocsr.GetNamespace())
-	updateResourceLabels(deployment, resourceLabels)
+	common.UpdateNamespace(deployment, istiocsr.GetNamespace())
+	common.UpdateResourceLabels(deployment, resourceLabels)
 	updatePodTemplateLabels(deployment, resourceLabels)
 
 	updateArgList(deployment, istiocsr)

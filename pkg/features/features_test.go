@@ -23,7 +23,9 @@ var expectedDefaultFeatureState = map[bool][]featuregate.Feature{
 
 	// features DISABLED by default,
 	// list of features which are expected to be disabled at runtime.
-	false: {},
+	false: {
+		featuregate.Feature("TrustManager"),
+	},
 }
 
 func TestFeatureGates(t *testing.T) {

@@ -23,7 +23,7 @@ import (
 	certmanoperatorclient "github.com/openshift/cert-manager-operator/pkg/operator/clientset/versioned"
 	certmanoperatorinformers "github.com/openshift/cert-manager-operator/pkg/operator/informers/externalversions"
 	"github.com/openshift/cert-manager-operator/pkg/operator/operatorclient"
-	"github.com/openshift/cert-manager-operator/pkg/operator/optionalinformer"
+	"github.com/openshift/cert-manager-operator/pkg/operator/platformutil"
 )
 
 const (
@@ -84,7 +84,7 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 	}
 
 	infraGVR := configv1.GroupVersion.WithResource("infrastructures")
-	optInfraInformer, err := optionalinformer.NewOptionalInformer(
+	optInfraInformer, err := platformutil.NewOptionalInformer(
 		ctx, infraGVR, configClient.Discovery(),
 		func() configinformers.SharedInformerFactory {
 			return configinformers.NewSharedInformerFactory(configClient, resyncInterval)
@@ -142,6 +142,23 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 	// Check if any operand controllers are enabled
 	istioCSREnabled := features.DefaultFeatureGate.Enabled(v1alpha1.FeatureIstioCSR)
 	trustManagerEnabled := features.DefaultFeatureGate.Enabled(v1alpha1.FeatureTrustManager)
+
+	// For TrustManager, also check platform-specific requirements:
+	// - On OpenShift: requires TechPreview-compatible FeatureSet (TechPreviewNoUpgrade, DevPreviewNoUpgrade, or CustomNoUpgrade)
+	// - On MicroShift: FeatureSet gating is not enforced
+	if trustManagerEnabled {
+		platformChecker := platformutil.NewPlatformChecker(configClient.Discovery(), configClient.ConfigV1())
+		techPreviewAllowed, reason, err := platformChecker.IsTechPreviewAllowed(ctx)
+		if err != nil {
+			ctrl.Log.Error(err, "failed to check platform feature requirements for TrustManager", "reason", reason)
+			trustManagerEnabled = false
+		} else if !techPreviewAllowed {
+			ctrl.Log.Info("TrustManager feature gate is enabled but platform does not allow TechPreview features", "reason", reason)
+			trustManagerEnabled = false
+		} else {
+			ctrl.Log.Info("TrustManager feature gate enabled", "reason", reason)
+		}
+	}
 
 	if istioCSREnabled || trustManagerEnabled {
 		// Create unified manager for all enabled operand controllers

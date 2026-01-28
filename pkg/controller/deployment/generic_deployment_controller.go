@@ -14,14 +14,14 @@ import (
 
 	"github.com/openshift/cert-manager-operator/pkg/operator/assets"
 	certmanoperatorinformers "github.com/openshift/cert-manager-operator/pkg/operator/informers/externalversions"
-	"github.com/openshift/cert-manager-operator/pkg/operator/optionalinformer"
+	"github.com/openshift/cert-manager-operator/pkg/operator/platformutil"
 )
 
 func newGenericDeploymentController(
 	controllerName, targetVersion, deploymentFile string,
 	operatorClient v1helpers.OperatorClientWithFinalizers,
 	certManagerOperatorInformers certmanoperatorinformers.SharedInformerFactory,
-	infraInformers optionalinformer.OptionalInformer[configinformers.SharedInformerFactory],
+	infraInformers platformutil.OptionalInformer[configinformers.SharedInformerFactory],
 	kubeClient kubernetes.Interface,
 	kubeInformersForTargetNamespace informers.SharedInformerFactory,
 	eventsRecorder events.Recorder,

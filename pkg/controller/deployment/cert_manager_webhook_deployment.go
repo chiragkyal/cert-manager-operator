@@ -14,7 +14,7 @@ import (
 
 	"github.com/openshift/cert-manager-operator/pkg/operator/assets"
 	certmanoperatorinformers "github.com/openshift/cert-manager-operator/pkg/operator/informers/externalversions"
-	"github.com/openshift/cert-manager-operator/pkg/operator/optionalinformer"
+	"github.com/openshift/cert-manager-operator/pkg/operator/platformutil"
 )
 
 const (
@@ -52,7 +52,7 @@ func NewCertManagerWebhookStaticResourcesController(operatorClient v1helpers.Ope
 
 func NewCertManagerWebhookDeploymentController(operatorClient v1helpers.OperatorClientWithFinalizers,
 	certManagerOperatorInformers certmanoperatorinformers.SharedInformerFactory,
-	infraInformers optionalinformer.OptionalInformer[configinformers.SharedInformerFactory],
+	infraInformers platformutil.OptionalInformer[configinformers.SharedInformerFactory],
 	kubeclient kubernetes.Interface,
 	kubeInformersForTargetNamespace informers.SharedInformerFactory,
 	eventsRecorder events.Recorder, targetVersion string, versionRecorder status.VersionGetter, trustedCAConfigmapName, cloudCredentialsSecretName string) factory.Controller {

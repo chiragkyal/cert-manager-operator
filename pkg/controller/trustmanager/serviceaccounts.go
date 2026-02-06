@@ -11,43 +11,18 @@ import (
 	"github.com/openshift/cert-manager-operator/pkg/operator/assets"
 )
 
-func (r *Reconciler) createOrApplyServiceAccounts(trustManager *v1alpha1.TrustManager, resourceLabels map[string]string, createRecon bool) error {
-	// get serviceaccount object
-	serviceAccount := r.getServiceAccountObject(resourceLabels)
-
-	serviceAccountName := fmt.Sprintf("%s/%s", serviceAccount.GetNamespace(), serviceAccount.GetName())
+func (r *Reconciler) createOrApplyServiceAccounts(trustManager *v1alpha1.TrustManager, resourceLabels map[string]string) error {
+	desired := r.getServiceAccountObject(resourceLabels)
+	serviceAccountName := fmt.Sprintf("%s/%s", desired.GetNamespace(), desired.GetName())
 	r.log.V(4).Info("reconciling serviceaccount resource", "name", serviceAccountName)
 
-	// check if serviceaccount resource already exists
-	fetched := &corev1.ServiceAccount{}
-	exist, err := r.Exists(r.ctx, client.ObjectKeyFromObject(serviceAccount), fetched)
-	if err != nil {
-		return common.FromClientError(err, "failed to check %s serviceaccount resource already exists", serviceAccountName)
+	// Server-Side Apply: patches only our fields, handles race conditions automatically
+	if err := r.Patch(r.ctx, desired, client.Apply, client.FieldOwner(fieldOwner), client.ForceOwnership); err != nil {
+		return common.FromClientError(err, "failed to apply serviceaccount %q", serviceAccountName)
 	}
 
-	if !exist {
-		r.log.V(4).Info("creating serviceaccount", "name", serviceAccountName)
-		if err := r.Create(r.ctx, serviceAccount); err != nil {
-			return common.FromClientError(err, "failed to create serviceaccount %q", serviceAccountName)
-		}
-		r.log.V(2).Info("created serviceaccount", "name", serviceAccountName)
-		r.eventRecorder.Eventf(trustManager, corev1.EventTypeNormal, "Reconciled", "serviceaccount resource %s created", serviceAccountName)
-		return nil
-	}
-
-	// Resource exists - check if update is needed
-	if createRecon {
-		r.eventRecorder.Eventf(trustManager, corev1.EventTypeWarning, "ResourceAlreadyExists", "%s serviceaccount resource already exists, maybe from previous installation", serviceAccountName)
-	}
-
-	if common.HasObjectChanged(serviceAccount, fetched) {
-		r.log.V(4).Info("updating serviceaccount", "name", serviceAccountName)
-		if err := r.UpdateWithRetry(r.ctx, serviceAccount); err != nil {
-			return common.FromClientError(err, "failed to update serviceaccount %q", serviceAccountName)
-		}
-		r.log.V(2).Info("updated serviceaccount", "name", serviceAccountName)
-	}
-
+	r.eventRecorder.Eventf(trustManager, corev1.EventTypeNormal, "Reconciled", "serviceaccount resource %s applied", serviceAccountName)
+	r.log.V(2).Info("applied serviceaccount", "name", serviceAccountName)
 	return nil
 }
 

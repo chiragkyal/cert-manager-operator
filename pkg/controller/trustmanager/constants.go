@@ -43,6 +43,10 @@ const (
 
 	// operandNamespace is the namespace where trust-manager operand is deployed.
 	operandNamespace = "cert-manager"
+
+	// fieldOwner is the field manager name used for Server-Side Apply operations.
+	// All resource reconcilers should use this to identify ownership of fields.
+	fieldOwner = "trust-manager-controller"
 )
 
 var (

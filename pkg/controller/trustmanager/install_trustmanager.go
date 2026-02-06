@@ -23,13 +23,15 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 
 	// TODO: Reconcile all trust-manager resources
 	// For now, just reconcile ServiceAccount to verify controller is working
-	if err := r.createOrApplyServiceAccounts(trustManager, resourceLabels, trustManagerCreateRecon); err != nil {
+	if err := r.createOrApplyServiceAccounts(trustManager, resourceLabels); err != nil {
 		r.log.Error(err, "failed to reconcile serviceaccount resource")
 		return err
 	}
 
-	// Set status observed state fields (not persisted until updateCondition is called)
-	r.setStatusObservedState(trustManager)
+	// TODO: As implementation extends, move status field updates inline within each resource reconciler
+	if err := r.updateStatusObservedState(trustManager); err != nil {
+		return fmt.Errorf("failed to update status observed state: %w", err)
+	}
 
 	if addProcessedAnnotation(trustManager) {
 		if err := r.UpdateWithRetry(r.ctx, trustManager); err != nil {
@@ -53,13 +55,34 @@ func (r *Reconciler) validateTrustNamespace(namespace string) error {
 	return nil
 }
 
-// setStatusObservedState populates the TrustManager status with the observed state.
-// This only sets the in-memory fields; actual persistence happens via updateCondition().
-// TODO: As the implementation extends, move status field updates inline within each
-// resource reconciler
-func (r *Reconciler) setStatusObservedState(trustManager *v1alpha1.TrustManager) {
-	trustManager.Status.TrustManagerImage = os.Getenv(trustManagerImageNameEnvVarName)
-	trustManager.Status.TrustNamespace = getTrustNamespace(trustManager)
-	trustManager.Status.SecretTargetsPolicy = trustManager.Spec.TrustManagerConfig.SecretTargets.Policy
-	trustManager.Status.DefaultCAPackagePolicy = trustManager.Spec.TrustManagerConfig.DefaultCAPackage.Policy
+// updateStatusObservedState populates and persists the TrustManager status with the observed state.
+// Returns nil if no changes were needed, otherwise returns an error if the update fails.
+func (r *Reconciler) updateStatusObservedState(trustManager *v1alpha1.TrustManager) error {
+	changed := false
+
+	if image := os.Getenv(trustManagerImageNameEnvVarName); trustManager.Status.TrustManagerImage != image {
+		trustManager.Status.TrustManagerImage = image
+		changed = true
+	}
+
+	if ns := getTrustNamespace(trustManager); trustManager.Status.TrustNamespace != ns {
+		trustManager.Status.TrustNamespace = ns
+		changed = true
+	}
+
+	if policy := trustManager.Spec.TrustManagerConfig.SecretTargets.Policy; trustManager.Status.SecretTargetsPolicy != policy {
+		trustManager.Status.SecretTargetsPolicy = policy
+		changed = true
+	}
+
+	if policy := trustManager.Spec.TrustManagerConfig.DefaultCAPackage.Policy; trustManager.Status.DefaultCAPackagePolicy != policy {
+		trustManager.Status.DefaultCAPackagePolicy = policy
+		changed = true
+	}
+
+	if !changed {
+		return nil
+	}
+
+	return r.updateStatus(r.ctx, trustManager)
 }

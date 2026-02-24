@@ -46,10 +46,14 @@ var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() 
 		clientset, err = kubernetes.NewForConfig(cfg)
 		Expect(err).Should(BeNil())
 
-		// By("increase operator log verbosity")
-		// err = patchSubscriptionWithEnvVars(ctx, loader, map[string]string{
-		// 	"OPERATOR_LOG_LEVEL": "5",
-		// })
+		By("enabling TrustManager feature gate via subscription")
+		err = patchSubscriptionWithEnvVars(ctx, loader, map[string]string{
+			"UNSUPPORTED_ADDON_FEATURES": "TrustManager=true",
+		})
+		Expect(err).NotTo(HaveOccurred())
+
+		By("waiting for operator deployment to rollout with TrustManager feature enabled")
+		err = waitForDeploymentEnvVarAndRollout(ctx, operatorNamespace, operatorDeploymentName, "UNSUPPORTED_ADDON_FEATURES", "TrustManager=true", lowTimeout)
 		Expect(err).NotTo(HaveOccurred())
 	})
 

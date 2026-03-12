@@ -5,6 +5,7 @@ package e2e
 
 import (
 	"context"
+	"fmt"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
@@ -12,8 +13,9 @@ import (
 	"github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
 	operatorclientv1alpha1 "github.com/openshift/cert-manager-operator/pkg/operator/clientset/versioned/typed/operator/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
-	apierrors "k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/meta"
+	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/kubernetes"
@@ -23,6 +25,24 @@ const (
 	trustManagerNamespace          = "cert-manager"
 	trustManagerServiceAccountName = "trust-manager"
 	trustManagerCommonName         = "cert-manager-trust-manager"
+
+	trustManagerDeploymentName     = "trust-manager"
+	trustManagerServiceName        = "trust-manager"
+	trustManagerMetricsServiceName = "trust-manager-metrics"
+
+	trustManagerClusterRoleName        = "trust-manager"
+	trustManagerClusterRoleBindingName = "trust-manager"
+	trustManagerRoleName               = "trust-manager"
+	trustManagerRoleBindingName        = "trust-manager"
+
+	trustManagerLeaderElectionRoleName        = "trust-manager:leaderelection"
+	trustManagerLeaderElectionRoleBindingName = "trust-manager:leaderelection"
+
+	trustManagerIssuerName      = "trust-manager"
+	trustManagerCertificateName = "trust-manager"
+	trustManagerTLSSecretName   = "trust-manager-tls"
+
+	trustManagerWebhookConfigName = "trust-manager"
 )
 
 var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() {
@@ -37,8 +57,13 @@ var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() 
 		By("waiting for TrustManager CR to be ready")
 		status, err := pollTillTrustManagerAvailable(ctx, trustManagerClient(), "cluster")
 		Expect(err).Should(BeNil())
-
 		return status
+	}
+
+	createTrustManager := func(b *trustManagerCRBuilder) {
+		_, err := trustManagerClient().Create(ctx, b.Build(), metav1.CreateOptions{})
+		Expect(err).ShouldNot(HaveOccurred())
+		waitForTrustManagerReady()
 	}
 
 	BeforeAll(func() {
@@ -70,100 +95,683 @@ var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() 
 		By("waiting for TrustManager CR to be deleted")
 		Eventually(func() bool {
 			_, err := trustManagerClient().Get(ctx, "cluster", metav1.GetOptions{})
-			return apierrors.IsNotFound(err)
+			return errors.IsNotFound(err)
 		}, lowTimeout, fastPollInterval).Should(BeTrue())
 	})
 
-	// Note: Currently, the TrustManager controller only reconciles ServiceAccounts.
-	// Additional tests for Deployments, RBAC, ConfigMaps, etc. should be added
-	// as those resources are implemented.
+	// -------------------------------------------------------------------------
+	// Resource creation and verification
+	// -------------------------------------------------------------------------
 
-	Context("basic reconciliation", func() {
-		It("should create TrustManager CR and reconcile ServiceAccount", func() {
-			By("creating TrustManager CR with default settings")
-			_, err := trustManagerClient().Create(ctx, &v1alpha1.TrustManager{
-				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
-				Spec: v1alpha1.TrustManagerSpec{
-					TrustManagerConfig: v1alpha1.TrustManagerConfig{},
-				},
-			}, metav1.CreateOptions{})
-			Expect(err).ShouldNot(HaveOccurred())
+	Context("resource creation", func() {
+		It("should create all resources managed by the controller with correct labels", func() {
+			createTrustManager(newTrustManagerCR())
 
-			status := waitForTrustManagerReady()
-			Expect(status.TrustNamespace).Should(Equal("cert-manager"))
+			// Namespace-scoped resources
+			By("verifying ServiceAccount")
+			Eventually(func(g Gomega) {
+				sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(sa.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
 
-			By("verifying ServiceAccount is created with correct labels")
-			sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
-			Expect(err).ShouldNot(HaveOccurred())
-			verifyTrustManagerManagedLabels(sa.Labels)
+			By("verifying Deployment")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(dep.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying webhook Service")
+			Eventually(func(g Gomega) {
+				svc, err := clientset.CoreV1().Services(trustManagerNamespace).Get(ctx, trustManagerServiceName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(svc.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying metrics Service")
+			Eventually(func(g Gomega) {
+				svc, err := clientset.CoreV1().Services(trustManagerNamespace).Get(ctx, trustManagerMetricsServiceName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(svc.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying trust namespace Role")
+			Eventually(func(g Gomega) {
+				role, err := clientset.RbacV1().Roles(trustManagerNamespace).Get(ctx, trustManagerRoleName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(role.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying trust namespace RoleBinding")
+			Eventually(func(g Gomega) {
+				rb, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(rb.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying leader election Role")
+			Eventually(func(g Gomega) {
+				role, err := clientset.RbacV1().Roles(trustManagerNamespace).Get(ctx, trustManagerLeaderElectionRoleName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(role.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying leader election RoleBinding")
+			Eventually(func(g Gomega) {
+				rb, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerLeaderElectionRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(rb.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying Issuer")
+			Eventually(func(g Gomega) {
+				issuer, err := certmanagerClient.CertmanagerV1().Issuers(trustManagerNamespace).Get(ctx, trustManagerIssuerName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(issuer.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying Certificate")
+			Eventually(func(g Gomega) {
+				cert, err := certmanagerClient.CertmanagerV1().Certificates(trustManagerNamespace).Get(ctx, trustManagerCertificateName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(cert.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			// Cluster-scoped resources
+			By("verifying ClusterRole")
+			Eventually(func(g Gomega) {
+				cr, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerClusterRoleName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(cr.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying ClusterRoleBinding")
+			Eventually(func(g Gomega) {
+				crb, err := clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerClusterRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(crb.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying ValidatingWebhookConfiguration")
+			Eventually(func(g Gomega) {
+				vwc, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				verifyTrustManagerManagedLabels(vwc.Labels)
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// Resource deletion and recreation (reconciliation)
+	// -------------------------------------------------------------------------
+
+	Context("resource deletion and recreation", func() {
+		It("should recreate resources managed by the controller when deleted externally", func() {
+			createTrustManager(newTrustManagerCR())
+
+			// Namespace-scoped resources
+			By("deleting and verifying recreation of ServiceAccount")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Delete(ctx, trustManagerServiceAccountName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of webhook Service")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.CoreV1().Services(trustManagerNamespace).Delete(ctx, trustManagerServiceName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.CoreV1().Services(trustManagerNamespace).Get(ctx, trustManagerServiceName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of metrics Service")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.CoreV1().Services(trustManagerNamespace).Delete(ctx, trustManagerMetricsServiceName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.CoreV1().Services(trustManagerNamespace).Get(ctx, trustManagerMetricsServiceName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of trust namespace Role")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().Roles(trustManagerNamespace).Delete(ctx, trustManagerRoleName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().Roles(trustManagerNamespace).Get(ctx, trustManagerRoleName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of trust namespace RoleBinding")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().RoleBindings(trustManagerNamespace).Delete(ctx, trustManagerRoleBindingName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerRoleBindingName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of leader election Role")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().Roles(trustManagerNamespace).Delete(ctx, trustManagerLeaderElectionRoleName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().Roles(trustManagerNamespace).Get(ctx, trustManagerLeaderElectionRoleName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of leader election RoleBinding")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().RoleBindings(trustManagerNamespace).Delete(ctx, trustManagerLeaderElectionRoleBindingName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerLeaderElectionRoleBindingName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of Issuer")
+			verifyTrustManagerResourceRecreation(func() error {
+				return certmanagerClient.CertmanagerV1().Issuers(trustManagerNamespace).Delete(ctx, trustManagerIssuerName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := certmanagerClient.CertmanagerV1().Issuers(trustManagerNamespace).Get(ctx, trustManagerIssuerName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of Certificate")
+			verifyTrustManagerResourceRecreation(func() error {
+				return certmanagerClient.CertmanagerV1().Certificates(trustManagerNamespace).Delete(ctx, trustManagerCertificateName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := certmanagerClient.CertmanagerV1().Certificates(trustManagerNamespace).Get(ctx, trustManagerCertificateName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of Deployment")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.AppsV1().Deployments(trustManagerNamespace).Delete(ctx, trustManagerDeploymentName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				return err
+			})
+
+			// Cluster-scoped resources
+			By("deleting and verifying recreation of ClusterRole")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().ClusterRoles().Delete(ctx, trustManagerClusterRoleName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerClusterRoleName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of ClusterRoleBinding")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.RbacV1().ClusterRoleBindings().Delete(ctx, trustManagerClusterRoleBindingName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerClusterRoleBindingName, metav1.GetOptions{})
+				return err
+			})
+
+			By("deleting and verifying recreation of ValidatingWebhookConfiguration")
+			verifyTrustManagerResourceRecreation(func() error {
+				return clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Delete(ctx, trustManagerWebhookConfigName, metav1.DeleteOptions{})
+			}, func() error {
+				_, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				return err
+			})
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// Label drift reconciliation
+	// -------------------------------------------------------------------------
+
+	Context("label drift reconciliation", func() {
+		It("should restore labels when modified externally on managed resources", func() {
+			createTrustManager(newTrustManagerCR())
 
 			By("modifying ServiceAccount labels externally")
+			sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+			Expect(err).ShouldNot(HaveOccurred())
 			sa.Labels["app.kubernetes.io/instance"] = "modified-value"
 			_, err = clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Update(ctx, sa, metav1.UpdateOptions{})
 			Expect(err).ShouldNot(HaveOccurred())
 
-			By("verifying controller reconciles and restores correct labels")
+			By("verifying controller restores ServiceAccount labels")
 			Eventually(func(g Gomega) {
 				sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
 				g.Expect(err).ShouldNot(HaveOccurred())
 				g.Expect(sa.Labels).Should(HaveKeyWithValue("app.kubernetes.io/instance", trustManagerCommonName))
 			}, lowTimeout, fastPollInterval).Should(Succeed())
 
-			By("deleting ServiceAccount externally")
-			err = clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Delete(ctx, trustManagerServiceAccountName, metav1.DeleteOptions{})
+			By("modifying ClusterRole labels externally")
+			cr, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerClusterRoleName, metav1.GetOptions{})
+			Expect(err).ShouldNot(HaveOccurred())
+			cr.Labels["app"] = "tampered"
+			_, err = clientset.RbacV1().ClusterRoles().Update(ctx, cr, metav1.UpdateOptions{})
 			Expect(err).ShouldNot(HaveOccurred())
 
-			By("verifying controller reconciles and recreates ServiceAccount")
+			By("verifying controller restores ClusterRole labels")
 			Eventually(func(g Gomega) {
-				sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+				cr, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerClusterRoleName, metav1.GetOptions{})
 				g.Expect(err).ShouldNot(HaveOccurred())
-				verifyTrustManagerManagedLabels(sa.Labels)
+				g.Expect(cr.Labels).Should(HaveKeyWithValue("app", trustManagerCommonName))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("modifying Deployment pod template labels externally")
+			dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+			Expect(err).ShouldNot(HaveOccurred())
+			dep.Spec.Template.Labels["app.kubernetes.io/name"] = "tampered"
+			_, err = clientset.AppsV1().Deployments(trustManagerNamespace).Update(ctx, dep, metav1.UpdateOptions{})
+			Expect(err).ShouldNot(HaveOccurred())
+
+			By("verifying controller restores Deployment pod template labels")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Spec.Template.Labels).Should(HaveKeyWithValue("app.kubernetes.io/name", trustManagerCommonName))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// Deployment configuration
+	// -------------------------------------------------------------------------
+
+	Context("deployment configuration", func() {
+		It("should have deployment available with correct configuration", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("waiting for trust-manager deployment to become available")
+			err := pollTillDeploymentAvailable(ctx, clientset, trustManagerNamespace, trustManagerDeploymentName)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+			Expect(err).ShouldNot(HaveOccurred())
+			Expect(dep.Spec.Template.Spec.Containers).ShouldNot(BeEmpty())
+
+			By("verifying deployment container args contain expected flags")
+			verifyTrustManagerDefaultContainerArgs(dep.Spec.Template.Spec.Containers[0].Args)
+
+			By("verifying deployment references correct ServiceAccount")
+			Expect(dep.Spec.Template.Spec.ServiceAccountName).Should(Equal(trustManagerServiceAccountName))
+
+			By("verifying TLS secret volume references the correct secret")
+			verifyTrustManagerTLSVolume(dep.Spec.Template.Spec.Volumes)
+		})
+
+		It("should update deployment args when log level changes", func() {
+			createTrustManager(newTrustManagerCR())
+
+			err := pollTillDeploymentAvailable(ctx, clientset, trustManagerNamespace, trustManagerDeploymentName)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			By("updating TrustManager CR with new log level")
+			Eventually(func() error {
+				tm, err := trustManagerClient().Get(ctx, "cluster", metav1.GetOptions{})
+				if err != nil {
+					return err
+				}
+				tm.Spec.TrustManagerConfig.LogLevel = 3
+				_, err = trustManagerClient().Update(ctx, tm, metav1.UpdateOptions{})
+				return err
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying deployment args are updated with new log level")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Spec.Template.Spec.Containers).ShouldNot(BeEmpty())
+				g.Expect(dep.Spec.Template.Spec.Containers[0].Args).Should(ContainElement("--log-level=3"))
 			}, lowTimeout, fastPollInterval).Should(Succeed())
 		})
 
-		It("should reflect spec values in status", func() {
-			customNamespace := "custom-trust-ns"
+		It("should apply custom resource requirements to deployment", func() {
+			createTrustManager(newTrustManagerCR().WithResources(corev1.ResourceRequirements{
+				Requests: corev1.ResourceList{
+					corev1.ResourceCPU:    resource.MustParse("50m"),
+					corev1.ResourceMemory: resource.MustParse("64Mi"),
+				},
+				Limits: corev1.ResourceList{
+					corev1.ResourceCPU:    resource.MustParse("200m"),
+					corev1.ResourceMemory: resource.MustParse("256Mi"),
+				},
+			}))
 
-			By("creating custom trust namespace")
-			_, err := clientset.CoreV1().Namespaces().Create(ctx, &corev1.Namespace{
-				ObjectMeta: metav1.ObjectMeta{Name: customNamespace},
-			}, metav1.CreateOptions{})
-			Expect(err).ShouldNot(HaveOccurred())
+			By("verifying deployment has custom resource requirements")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Spec.Template.Spec.Containers).ShouldNot(BeEmpty())
+				container := dep.Spec.Template.Spec.Containers[0]
+				g.Expect(container.Resources.Requests.Cpu().String()).Should(Equal("50m"))
+				g.Expect(container.Resources.Requests.Memory().String()).Should(Equal("64Mi"))
+				g.Expect(container.Resources.Limits.Cpu().String()).Should(Equal("200m"))
+				g.Expect(container.Resources.Limits.Memory().String()).Should(Equal("256Mi"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
 
-			defer func() {
-				By("cleaning up custom trust namespace")
-				_ = clientset.CoreV1().Namespaces().Delete(ctx, customNamespace, metav1.DeleteOptions{})
-			}()
+		It("should apply custom tolerations to deployment", func() {
+			createTrustManager(newTrustManagerCR().WithTolerations([]corev1.Toleration{
+				{
+					Key:      "test-key",
+					Operator: corev1.TolerationOpEqual,
+					Value:    "test-value",
+					Effect:   corev1.TaintEffectNoSchedule,
+				},
+			}))
 
-			By("creating TrustManager CR with custom configuration")
-			_, err = trustManagerClient().Create(ctx, &v1alpha1.TrustManager{
-				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
-				Spec: v1alpha1.TrustManagerSpec{
-					TrustManagerConfig: v1alpha1.TrustManagerConfig{
-						TrustNamespace: customNamespace,
-						SecretTargets: v1alpha1.SecretTargetsConfig{
-							Policy:            v1alpha1.SecretTargetsPolicyCustom,
-							AuthorizedSecrets: []string{"secret1", "secret2"},
+			By("verifying deployment has custom tolerations")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+
+				var found bool
+				for _, t := range dep.Spec.Template.Spec.Tolerations {
+					if t.Key == "test-key" && t.Value == "test-value" && t.Effect == corev1.TaintEffectNoSchedule {
+						found = true
+						break
+					}
+				}
+				g.Expect(found).Should(BeTrue(), "custom toleration not found on deployment")
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should apply custom nodeSelector to deployment", func() {
+			createTrustManager(newTrustManagerCR().WithNodeSelector(map[string]string{
+				"test-node-label": "test-value",
+			}))
+
+			By("verifying deployment has custom nodeSelector")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Spec.Template.Spec.NodeSelector).Should(HaveKeyWithValue("test-node-label", "test-value"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should apply custom affinity to deployment", func() {
+			createTrustManager(newTrustManagerCR().WithAffinity(&corev1.Affinity{
+				PodAntiAffinity: &corev1.PodAntiAffinity{
+					PreferredDuringSchedulingIgnoredDuringExecution: []corev1.WeightedPodAffinityTerm{
+						{
+							Weight: 100,
+							PodAffinityTerm: corev1.PodAffinityTerm{
+								LabelSelector: &metav1.LabelSelector{
+									MatchLabels: map[string]string{
+										"app": trustManagerCommonName,
+									},
+								},
+								TopologyKey: "kubernetes.io/hostname",
+							},
 						},
-						DefaultCAPackage: v1alpha1.DefaultCAPackageConfig{
-							Policy: v1alpha1.DefaultCAPackagePolicyEnabled,
-						},
-						FilterExpiredCertificates: v1alpha1.FilterExpiredCertificatesPolicyEnabled,
 					},
 				},
-			}, metav1.CreateOptions{})
-			Expect(err).ShouldNot(HaveOccurred())
+			}))
 
-			status := waitForTrustManagerReady()
+			By("verifying deployment has custom affinity")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Spec.Template.Spec.Affinity).ShouldNot(BeNil())
+				g.Expect(dep.Spec.Template.Spec.Affinity.PodAntiAffinity).ShouldNot(BeNil())
+				terms := dep.Spec.Template.Spec.Affinity.PodAntiAffinity.PreferredDuringSchedulingIgnoredDuringExecution
+				g.Expect(terms).Should(HaveLen(1))
+				g.Expect(terms[0].Weight).Should(Equal(int32(100)))
+				g.Expect(terms[0].PodAffinityTerm.TopologyKey).Should(Equal("kubernetes.io/hostname"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
 
-			By("verifying spec values are reflected in status")
-			// Expect(status.TrustManagerImage).ShouldNot(BeEmpty()) // TODO: uncomment this when we will implement deployment resource
-			Expect(status.TrustNamespace).Should(Equal(customNamespace))
-			Expect(status.SecretTargetsPolicy).Should(Equal(v1alpha1.SecretTargetsPolicyCustom))
-			Expect(status.DefaultCAPackagePolicy).Should(Equal(v1alpha1.DefaultCAPackagePolicyEnabled))
-			Expect(status.FilterExpiredCertificatesPolicy).Should(Equal(v1alpha1.FilterExpiredCertificatesPolicyEnabled))
+		// TODO: Add test for other deployment configuration options
+		// (i.e. custom trust namespace, secret targets policy, default CA package policy, filter expired certificates policy)
+	})
+
+	// -------------------------------------------------------------------------
+	// RBAC configuration
+	// -------------------------------------------------------------------------
+
+	Context("RBAC configuration", func() {
+		It("should configure ClusterRoleBinding with correct subjects and roleRef", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("verifying ClusterRoleBinding references correct ClusterRole and ServiceAccount")
+			Eventually(func(g Gomega) {
+				crb, err := clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerClusterRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(crb.RoleRef.Name).Should(Equal(trustManagerClusterRoleName))
+				g.Expect(crb.RoleRef.Kind).Should(Equal("ClusterRole"))
+
+				g.Expect(crb.Subjects).ShouldNot(BeEmpty())
+				g.Expect(crb.Subjects[0].Kind).Should(Equal("ServiceAccount"))
+				g.Expect(crb.Subjects[0].Name).Should(Equal(trustManagerServiceAccountName))
+				g.Expect(crb.Subjects[0].Namespace).Should(Equal(trustManagerNamespace))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should configure trust namespace RoleBinding with correct subjects and roleRef", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("verifying trust namespace RoleBinding references correct Role and ServiceAccount")
+			Eventually(func(g Gomega) {
+				rb, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(rb.RoleRef.Name).Should(Equal(trustManagerRoleName))
+				g.Expect(rb.RoleRef.Kind).Should(Equal("Role"))
+
+				g.Expect(rb.Subjects).ShouldNot(BeEmpty())
+				g.Expect(rb.Subjects[0].Kind).Should(Equal("ServiceAccount"))
+				g.Expect(rb.Subjects[0].Name).Should(Equal(trustManagerServiceAccountName))
+				g.Expect(rb.Subjects[0].Namespace).Should(Equal(trustManagerNamespace))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should configure leader election RoleBinding with correct subjects and roleRef", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("verifying leader election RoleBinding references correct Role and ServiceAccount")
+			Eventually(func(g Gomega) {
+				rb, err := clientset.RbacV1().RoleBindings(trustManagerNamespace).Get(ctx, trustManagerLeaderElectionRoleBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(rb.RoleRef.Name).Should(Equal(trustManagerLeaderElectionRoleName))
+				g.Expect(rb.RoleRef.Kind).Should(Equal("Role"))
+
+				g.Expect(rb.Subjects).ShouldNot(BeEmpty())
+				g.Expect(rb.Subjects[0].Kind).Should(Equal("ServiceAccount"))
+				g.Expect(rb.Subjects[0].Name).Should(Equal(trustManagerServiceAccountName))
+				g.Expect(rb.Subjects[0].Namespace).Should(Equal(trustManagerNamespace))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
 		})
 	})
+
+	// -------------------------------------------------------------------------
+	// Webhook and certificate configuration
+	// -------------------------------------------------------------------------
+
+	Context("webhook and certificate configuration", func() {
+		It("should configure webhook with cert-manager CA injection annotation", func() {
+			createTrustManager(newTrustManagerCR())
+
+			expectedAnnotation := fmt.Sprintf("%s/%s", trustManagerNamespace, trustManagerCertificateName)
+
+			By("verifying ValidatingWebhookConfiguration has correct CA injection annotation")
+			Eventually(func(g Gomega) {
+				vwc, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(vwc.Annotations).Should(HaveKeyWithValue("cert-manager.io/inject-ca-from", expectedAnnotation))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should configure webhook service reference correctly", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("verifying webhook service references are correct")
+			Eventually(func(g Gomega) {
+				vwc, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(vwc.Webhooks).ShouldNot(BeEmpty())
+
+				for _, wh := range vwc.Webhooks {
+					g.Expect(wh.ClientConfig.Service).ShouldNot(BeNil())
+					g.Expect(wh.ClientConfig.Service.Name).Should(Equal(trustManagerServiceName))
+					g.Expect(wh.ClientConfig.Service.Namespace).Should(Equal(trustManagerNamespace))
+				}
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should have Issuer become ready", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("waiting for trust-manager Issuer to become ready")
+			err := waitForIssuerReadiness(ctx, trustManagerIssuerName, trustManagerNamespace)
+			Expect(err).ShouldNot(HaveOccurred())
+		})
+
+		It("should have Certificate become ready and create TLS secret", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("waiting for trust-manager Certificate to become ready")
+			err := waitForCertificateReadiness(ctx, trustManagerCertificateName, trustManagerNamespace)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			By("verifying TLS secret is created with expected keys")
+			Eventually(func(g Gomega) {
+				secret, err := clientset.CoreV1().Secrets(trustManagerNamespace).Get(ctx, trustManagerTLSSecretName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(secret.Data).Should(HaveKey("tls.crt"))
+				g.Expect(secret.Data).Should(HaveKey("tls.key"))
+				g.Expect(secret.Data).Should(HaveKey("ca.crt"))
+			}, highTimeout, slowPollInterval).Should(Succeed())
+		})
+
+		It("should configure Certificate with correct spec fields", func() {
+			createTrustManager(newTrustManagerCR())
+
+			expectedDNSName := fmt.Sprintf("%s.%s.svc", trustManagerServiceName, trustManagerNamespace)
+
+			By("verifying Certificate spec fields")
+			Eventually(func(g Gomega) {
+				cert, err := certmanagerClient.CertmanagerV1().Certificates(trustManagerNamespace).Get(ctx, trustManagerCertificateName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(cert.Spec.SecretName).Should(Equal(trustManagerTLSSecretName))
+				g.Expect(cert.Spec.CommonName).Should(Equal(expectedDNSName))
+				g.Expect(cert.Spec.DNSNames).Should(ContainElement(expectedDNSName))
+				g.Expect(cert.Spec.IssuerRef.Name).Should(Equal(trustManagerIssuerName))
+				g.Expect(cert.Spec.IssuerRef.Kind).Should(Equal("Issuer"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// Status reporting
+	// -------------------------------------------------------------------------
+
+	Context("status reporting", func() {
+		It("should report trust-manager image in status", func() {
+			createTrustManager(newTrustManagerCR())
+
+			By("verifying TrustManager status has image set")
+			Eventually(func(g Gomega) {
+				tm, err := trustManagerClient().Get(ctx, "cluster", metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(tm.Status.TrustManagerImage).ShouldNot(BeEmpty())
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		// TODO: Add test for status reporting when custom configuration is applied
+		// (i.e. custom trust namespace, secret targets policy, default CA package policy, filter expired certificates policy)
+	})
+
+	// -------------------------------------------------------------------------
+	// Custom labels and annotations
+	// -------------------------------------------------------------------------
+
+	Context("custom labels and annotations", func() {
+		It("should apply custom labels from controllerConfig to all managed resources", func() {
+			By("creating TrustManager CR with custom labels")
+			createTrustManager(newTrustManagerCR().WithLabels(map[string]string{
+				"custom-label": "custom-value",
+			}))
+
+			verifyCustomLabelOnResource := func(name string, getLabels func() (map[string]string, error)) {
+				By(fmt.Sprintf("verifying custom label on %s", name))
+				Eventually(func(g Gomega) {
+					labels, err := getLabels()
+					g.Expect(err).ShouldNot(HaveOccurred())
+					g.Expect(labels).Should(HaveKeyWithValue("custom-label", "custom-value"))
+				}, lowTimeout, fastPollInterval).Should(Succeed())
+			}
+
+			verifyCustomLabelOnResource("ServiceAccount", func() (map[string]string, error) {
+				sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+				if err != nil {
+					return nil, err
+				}
+				return sa.Labels, nil
+			})
+
+			verifyCustomLabelOnResource("Deployment", func() (map[string]string, error) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				if err != nil {
+					return nil, err
+				}
+				return dep.Labels, nil
+			})
+
+			verifyCustomLabelOnResource("ClusterRole", func() (map[string]string, error) {
+				cr, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerClusterRoleName, metav1.GetOptions{})
+				if err != nil {
+					return nil, err
+				}
+				return cr.Labels, nil
+			})
+
+			verifyCustomLabelOnResource("webhook Service", func() (map[string]string, error) {
+				svc, err := clientset.CoreV1().Services(trustManagerNamespace).Get(ctx, trustManagerServiceName, metav1.GetOptions{})
+				if err != nil {
+					return nil, err
+				}
+				return svc.Labels, nil
+			})
+
+			verifyCustomLabelOnResource("ValidatingWebhookConfiguration", func() (map[string]string, error) {
+				vwc, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				if err != nil {
+					return nil, err
+				}
+				return vwc.Labels, nil
+			})
+		})
+
+		It("should apply custom annotations from controllerConfig to managed resources", func() {
+			By("creating TrustManager CR with custom annotations")
+			createTrustManager(newTrustManagerCR().WithAnnotations(map[string]string{
+				"custom-annotation": "annotation-value",
+			}))
+
+			By("verifying custom annotation on ServiceAccount")
+			Eventually(func(g Gomega) {
+				sa, err := clientset.CoreV1().ServiceAccounts(trustManagerNamespace).Get(ctx, trustManagerServiceAccountName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(sa.Annotations).Should(HaveKeyWithValue("custom-annotation", "annotation-value"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying custom annotation on Deployment")
+			Eventually(func(g Gomega) {
+				dep, err := clientset.AppsV1().Deployments(trustManagerNamespace).Get(ctx, trustManagerDeploymentName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(dep.Annotations).Should(HaveKeyWithValue("custom-annotation", "annotation-value"))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying custom annotation on webhook does not override cert-manager CA injection annotation")
+			Eventually(func(g Gomega) {
+				vwc, err := clientset.AdmissionregistrationV1().ValidatingWebhookConfigurations().Get(ctx, trustManagerWebhookConfigName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(vwc.Annotations).Should(HaveKeyWithValue("custom-annotation", "annotation-value"))
+				expectedCAAnnotation := fmt.Sprintf("%s/%s", trustManagerNamespace, trustManagerCertificateName)
+				g.Expect(vwc.Annotations).Should(HaveKeyWithValue("cert-manager.io/inject-ca-from", expectedCAAnnotation))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// Singleton validation
+	// -------------------------------------------------------------------------
 
 	Context("singleton validation", func() {
 		It("should reject TrustManager with name other than 'cluster'", func() {
@@ -175,7 +783,6 @@ var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() 
 				},
 			}, metav1.CreateOptions{})
 			Expect(err).Should(HaveOccurred())
-			// CEL validation error: TrustManager is a singleton, .metadata.name must be 'cluster'
 			Expect(err.Error()).Should(ContainSubstring("TrustManager is a singleton"))
 			Expect(err.Error()).Should(ContainSubstring(".metadata.name must be 'cluster'"))
 		})
@@ -183,30 +790,28 @@ var _ = Describe("TrustManager", Ordered, Label("Feature:TrustManager"), func() 
 })
 
 // pollTillTrustManagerAvailable polls the TrustManager object and returns its status
-// once the TrustManager is available, otherwise returns a time-out error
+// once the TrustManager is available, otherwise returns a time-out error.
 func pollTillTrustManagerAvailable(ctx context.Context, client operatorclientv1alpha1.TrustManagerInterface, trustManagerName string) (v1alpha1.TrustManagerStatus, error) {
 	var trustManagerStatus v1alpha1.TrustManagerStatus
 
 	err := wait.PollUntilContextTimeout(ctx, slowPollInterval, highTimeout, true, func(context.Context) (bool, error) {
 		trustManager, err := client.Get(ctx, trustManagerName, metav1.GetOptions{})
 		if err != nil {
-			if apierrors.IsNotFound(err) {
+			if errors.IsNotFound(err) {
 				return false, nil
 			}
 			return false, err
 		}
 		trustManagerStatus = trustManager.Status
 
-		// Check ready condition
 		readyCondition := meta.FindStatusCondition(trustManagerStatus.Conditions, v1alpha1.Ready)
 		if readyCondition == nil {
 			return false, nil
 		}
 
-		// Check for degraded condition
 		degradedCondition := meta.FindStatusCondition(trustManagerStatus.Conditions, v1alpha1.Degraded)
 		if degradedCondition != nil && degradedCondition.Status == metav1.ConditionTrue {
-			return false, nil // Return false to keep polling, not an error
+			return false, nil
 		}
 
 		return readyCondition.Status == metav1.ConditionTrue, nil
@@ -223,5 +828,47 @@ func verifyTrustManagerManagedLabels(labels map[string]string) {
 	Expect(labels).Should(HaveKeyWithValue("app.kubernetes.io/instance", trustManagerCommonName))
 	Expect(labels).Should(HaveKeyWithValue("app.kubernetes.io/managed-by", "cert-manager-operator"))
 	Expect(labels).Should(HaveKeyWithValue("app.kubernetes.io/part-of", "cert-manager-operator"))
-	Expect(labels).Should(HaveKey("app.kubernetes.io/version")) // Version comes from env var
+	Expect(labels).Should(HaveKey("app.kubernetes.io/version"))
+}
+
+// verifyTrustManagerTLSVolume verifies that the volumes contain a "tls" volume
+// referencing the expected TLS secret.
+func verifyTrustManagerTLSVolume(volumes []corev1.Volume) {
+	var found bool
+	for _, vol := range volumes {
+		if vol.Name == "tls" && vol.Secret != nil {
+			Expect(vol.Secret.SecretName).Should(Equal(trustManagerTLSSecretName))
+			found = true
+			break
+		}
+	}
+	Expect(found).Should(BeTrue(), "TLS volume with correct secret name not found")
+}
+
+// verifyTrustManagerDefaultContainerArgs verifies that the deployment container args
+// contain all the expected default flags for a trust-manager deployment.
+func verifyTrustManagerDefaultContainerArgs(args []string) {
+	Expect(args).Should(ContainElement("--log-format=text"))
+	Expect(args).Should(ContainElement("--log-level=1"))
+	Expect(args).Should(ContainElement("--metrics-port=9402"))
+	Expect(args).Should(ContainElement("--readiness-probe-port=6060"))
+	Expect(args).Should(ContainElement("--readiness-probe-path=/readyz"))
+	Expect(args).Should(ContainElement("--leader-elect=true"))
+	Expect(args).Should(ContainElement("--leader-election-lease-duration=15s"))
+	Expect(args).Should(ContainElement("--leader-election-renew-deadline=10s"))
+	Expect(args).Should(ContainElement("--trust-namespace=cert-manager"))
+	Expect(args).Should(ContainElement("--webhook-host=0.0.0.0"))
+	Expect(args).Should(ContainElement("--webhook-port=6443"))
+	Expect(args).Should(ContainElement("--webhook-certificate-dir=/tls"))
+}
+
+// verifyTrustManagerResourceRecreation deletes a resource and verifies it is recreated
+// by the controller within the timeout period.
+func verifyTrustManagerResourceRecreation(deleteFunc func() error, getFunc func() error) {
+	err := deleteFunc()
+	Expect(err).ShouldNot(HaveOccurred())
+
+	Eventually(func() error {
+		return getFunc()
+	}, lowTimeout, fastPollInterval).Should(Succeed())
 }

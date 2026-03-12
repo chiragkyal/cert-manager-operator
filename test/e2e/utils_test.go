@@ -99,6 +99,55 @@ var serviceMonitorGVR = schema.GroupVersionResource{
 	Resource: "servicemonitors",
 }
 
+type trustManagerCRBuilder struct {
+	tm *v1alpha1.TrustManager
+}
+
+func newTrustManagerCR() *trustManagerCRBuilder {
+	return &trustManagerCRBuilder{
+		tm: &v1alpha1.TrustManager{
+			ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
+			Spec: v1alpha1.TrustManagerSpec{
+				TrustManagerConfig: v1alpha1.TrustManagerConfig{},
+			},
+		},
+	}
+}
+
+func (b *trustManagerCRBuilder) WithResources(resources corev1.ResourceRequirements) *trustManagerCRBuilder {
+	b.tm.Spec.TrustManagerConfig.Resources = resources
+	return b
+}
+
+func (b *trustManagerCRBuilder) WithTolerations(tolerations []corev1.Toleration) *trustManagerCRBuilder {
+	b.tm.Spec.TrustManagerConfig.Tolerations = tolerations
+	return b
+}
+
+func (b *trustManagerCRBuilder) WithNodeSelector(nodeSelector map[string]string) *trustManagerCRBuilder {
+	b.tm.Spec.TrustManagerConfig.NodeSelector = nodeSelector
+	return b
+}
+
+func (b *trustManagerCRBuilder) WithAffinity(affinity *corev1.Affinity) *trustManagerCRBuilder {
+	b.tm.Spec.TrustManagerConfig.Affinity = affinity
+	return b
+}
+
+func (b *trustManagerCRBuilder) WithLabels(labels map[string]string) *trustManagerCRBuilder {
+	b.tm.Spec.ControllerConfig.Labels = labels
+	return b
+}
+
+func (b *trustManagerCRBuilder) WithAnnotations(annotations map[string]string) *trustManagerCRBuilder {
+	b.tm.Spec.ControllerConfig.Annotations = annotations
+	return b
+}
+
+func (b *trustManagerCRBuilder) Build() *v1alpha1.TrustManager {
+	return b.tm
+}
+
 func verifyDeploymentGenerationIsNotEmpty(client *certmanoperatorclient.Clientset, deployments []metav1.ObjectMeta) error {
 	var wg sync.WaitGroup
 	var lastFetchedGenerationStatus []opv1.GenerationStatus

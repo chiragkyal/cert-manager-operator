@@ -1,0 +1,1150 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0001
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0001
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0001.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0002
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0002
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0002.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0003
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0003
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0003.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0004
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0004
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0004.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0005
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0005
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0005.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0006
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0006
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0006.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0007
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0007
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0007.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0008
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0008
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0008.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0009
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0009
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0009.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0010
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0010
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0010.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0011
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0011
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0011.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0012
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0012
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0012.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0013
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0013
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0013.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0014
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0014
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0014.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0015
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0015
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0015.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0016
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0016
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0016.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0017
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0017
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0017.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0018
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0018
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0018.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0019
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0019
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0019.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0020
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0020
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0020.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0021
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0021
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0021.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0022
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0022
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0022.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0023
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0023
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0023.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0024
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0024
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0024.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0025
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0025
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0025.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0026
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0026
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0026.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0027
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0027
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0027.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0028
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0028
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0028.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0029
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0029
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0029.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0030
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0030
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0030.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0031
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0031
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0031.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0032
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0032
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0032.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0033
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0033
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0033.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0034
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0034
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0034.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0035
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0035
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0035.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0036
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0036
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0036.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0037
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0037
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0037.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0038
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0038
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0038.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0039
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0039
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0039.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0040
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0040
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0040.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0041
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0041
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0041.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0042
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0042
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0042.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0043
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0043
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0043.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0044
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0044
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0044.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0045
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0045
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0045.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0046
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0046
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0046.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0047
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0047
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0047.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0048
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0048
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0048.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0049
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0049
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0049.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-renewal-cert-0050
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "renewal"
+spec:
+  secretName: perf-renewal-secret-0050
+  duration: 1h1m
+  renewBefore: 1h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-renewal-0050.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---

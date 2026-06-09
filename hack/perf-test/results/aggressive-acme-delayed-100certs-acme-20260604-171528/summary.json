@@ -1,0 +1,23 @@
+{
+  "scenario": "aggressive-acme-delayed",
+  "test_type": "acme_scale_http01",
+  "issuer": "perf-test-acme-pebble-delayed",
+  "with_validation_delay": true,
+  "num_certificates": 100,
+  "submit_duration_seconds": 74,
+  "total_duration_seconds": 2530,
+  "issuance_duration_seconds": 2456,
+  "certificates_ready": 0,
+  "certificates_failed": 100,
+  "controller_restarts": 0,
+  "peak_concurrent_challenges": 100,
+  "peak_solver_pods": 13,
+  "rate_certs_per_minute": 0,
+  "timing": {
+    "min_seconds": "N/A",
+    "p50_seconds": "N/A",
+    "p90_seconds": "N/A",
+    "p99_seconds": "N/A",
+    "max_seconds": "N/A"
+  }
+}

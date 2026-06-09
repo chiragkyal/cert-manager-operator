@@ -1,0 +1,4 @@
+elapsed_seconds,ready_count,total,challenges_active,orders_pending,solver_pods
+0,479,500,18,200,13
+10,499,500,1,200,0
+20,500,500,0,200,0

@@ -1,0 +1,19 @@
+{
+  "scenario": "aggressive",
+  "test_type": "renewal_storm",
+  "num_certificates": 50,
+  "certificates_renewed": 50,
+  "total_monitoring_duration_seconds": 66,
+  "first_renewal_at_seconds": 5,
+  "burst_duration_seconds": 50,
+  "issuance_duration_seconds": 50,
+  "rate_certs_per_minute": 58.82,
+  "controller_restarts": 0,
+  "timing": {
+    "min_seconds": "N/A",
+    "p50_seconds": "N/A",
+    "p90_seconds": "N/A",
+    "p99_seconds": "N/A",
+    "max_seconds": "50"
+  }
+}

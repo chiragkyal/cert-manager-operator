@@ -1,0 +1,2300 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0001
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0001.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0002
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0002.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0003
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0003.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0004
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0004.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0005
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0005.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0006
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0006.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0007
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0007.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0008
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0008.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0009
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0009.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0010
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0010.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0011
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0011.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0012
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0012.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0013
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0013.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0014
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0014.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0015
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0015.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0016
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0016.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0017
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0017.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0018
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0018.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0019
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0019.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0020
+  namespace: perf-fairness-01
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-01"
+spec:
+  secretName: fairness-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns01-cert0020.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0001
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0001.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0002
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0002.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0003
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0003.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0004
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0004.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0005
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0005.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0006
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0006.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0007
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0007.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0008
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0008.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0009
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0009.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0010
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0010.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0011
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0011.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0012
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0012.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0013
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0013.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0014
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0014.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0015
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0015.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0016
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0016.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0017
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0017.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0018
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0018.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0019
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0019.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0020
+  namespace: perf-fairness-02
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-02"
+spec:
+  secretName: fairness-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns02-cert0020.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0001
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0001.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0002
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0002.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0003
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0003.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0004
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0004.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0005
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0005.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0006
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0006.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0007
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0007.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0008
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0008.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0009
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0009.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0010
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0010.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0011
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0011.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0012
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0012.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0013
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0013.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0014
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0014.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0015
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0015.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0016
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0016.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0017
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0017.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0018
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0018.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0019
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0019.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0020
+  namespace: perf-fairness-03
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-03"
+spec:
+  secretName: fairness-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns03-cert0020.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0001
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0001.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0002
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0002.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0003
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0003.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0004
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0004.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0005
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0005.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0006
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0006.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0007
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0007.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0008
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0008.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0009
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0009.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0010
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0010.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0011
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0011.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0012
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0012.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0013
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0013.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0014
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0014.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0015
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0015.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0016
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0016.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0017
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0017.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0018
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0018.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0019
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0019.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0020
+  namespace: perf-fairness-04
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-04"
+spec:
+  secretName: fairness-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns04-cert0020.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0001
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0001.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0002
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0002.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0003
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0003.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0004
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0004.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0005
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0005.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0006
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0006.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0007
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0007.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0008
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0008.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0009
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0009.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0010
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0010.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0011
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0011.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0012
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0012.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0013
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0013.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0014
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0014.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0015
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0015.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0016
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0016.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0017
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0017.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0018
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0018.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0019
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0019.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: fairness-cert-0020
+  namespace: perf-fairness-05
+  labels:
+    perf-test: "true"
+    fairness-test: "true"
+    test-namespace: "perf-fairness-05"
+spec:
+  secretName: fairness-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "fairness-ns05-cert0020.example.com"
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---

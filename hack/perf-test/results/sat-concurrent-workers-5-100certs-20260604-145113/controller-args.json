@@ -1,0 +1,9 @@
+[
+  "--acme-http01-solver-image=registry.redhat.io/cert-manager/jetstack-cert-manager-acmesolver-rhel9@sha256:2118a138033fa32afb314d697dc29d2690277a978c8a84b1eba4f152a6d59c1a",
+  "--cluster-resource-namespace=$(POD_NAMESPACE)",
+  "--concurrent-workers=5",
+  "--feature-gates=ACMEHTTP01IngressPathTypeExact=false",
+  "--leader-election-namespace=kube-system",
+  "--max-concurrent-challenges=60",
+  "--v=2"
+]

@@ -1,0 +1,16 @@
+{
+  "scenario": "aggressive",
+  "test_type": "progressive_load",
+  "num_certificates": 1600,
+  "issuance_duration_seconds": 276,
+  "rate_certs_per_minute": 347.82,
+  "overall_status": "COMPLETED",
+  "steps_completed": 5,
+  "timing": {
+    "min_seconds": "N/A",
+    "p50_seconds": "1",
+    "p90_seconds": "226",
+    "p99_seconds": "262",
+    "max_seconds": "266"
+  }
+}

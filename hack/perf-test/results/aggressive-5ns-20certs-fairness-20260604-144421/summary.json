@@ -1,0 +1,25 @@
+{
+  "scenario": "aggressive",
+  "test_type": "multi_namespace_fairness",
+  "num_namespaces": 5,
+  "certs_per_namespace": 20,
+  "num_certificates": 100,
+  "issuance_duration_seconds": 173,
+  "certificates_ready": 100,
+  "certificates_failed": 0,
+  "fairness": {
+    "mean_last_ready_s": "67.6",
+    "stddev_last_ready_s": "23.6",
+    "min_namespace_completion_s": "34",
+    "max_namespace_completion_s": "101",
+    "spread_s": "67"
+  },
+  "rate_certs_per_minute": 34.68,
+  "timing": {
+    "min_seconds": "34",
+    "p50_seconds": "67.6",
+    "p90_seconds": "N/A",
+    "p99_seconds": "N/A",
+    "max_seconds": "101"
+  }
+}

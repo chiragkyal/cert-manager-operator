@@ -1,0 +1,20 @@
+{
+  "scenario": "moderate",
+  "num_certificates": 100,
+  "issuer_type": "ca",
+  "start_time": "2026-06-04T08:46:15Z",
+  "end_time": "2026-06-04T08:47:26Z",
+  "submit_duration_seconds": 69,
+  "total_duration_seconds": 71,
+  "issuance_duration_seconds": 2,
+  "certificates_ready": 100,
+  "certificates_failed": 0,
+  "rate_certs_per_minute": 3000.00,
+  "timing": {
+    "min_seconds": "0",
+    "p50_seconds": "0",
+    "p90_seconds": "0",
+    "p99_seconds": "0",
+    "max_seconds": "1"
+  }
+}

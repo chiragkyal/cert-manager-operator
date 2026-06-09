@@ -1,0 +1,2694 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0001\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0001.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0001\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:36Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0001",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47498",
+                "uid": "68992f0a-3eda-4908-b6b0-6ecbb344b017"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0001.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0001"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:36Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:36Z",
+                        "message": "Renewing certificate as renewal was scheduled at 2026-06-04 09:12:36 +0000 UTC",
+                        "observedGeneration": 1,
+                        "reason": "Renewing",
+                        "status": "True",
+                        "type": "Issuing"
+                    }
+                ],
+                "nextPrivateKeySecretName": "perf-renewal-cert-0001-pprzb",
+                "notAfter": "2026-06-04T10:12:36Z",
+                "notBefore": "2026-06-04T09:11:36Z",
+                "renewalTime": "2026-06-04T09:12:36Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0002\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0002.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0002\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:37Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0002",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47521",
+                "uid": "ad5acb86-c5e4-465e-b215-1c75bcfcc487"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0002.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0002"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:37Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:37Z",
+                        "message": "Renewing certificate as renewal was scheduled at 2026-06-04 09:12:37 +0000 UTC",
+                        "observedGeneration": 1,
+                        "reason": "Renewing",
+                        "status": "True",
+                        "type": "Issuing"
+                    }
+                ],
+                "nextPrivateKeySecretName": "perf-renewal-cert-0002-wpr6s",
+                "notAfter": "2026-06-04T10:12:37Z",
+                "notBefore": "2026-06-04T09:11:37Z",
+                "renewalTime": "2026-06-04T09:12:37Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0003\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0003.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0003\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:37Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0003",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47524",
+                "uid": "298608c8-5d6e-40f2-a9ea-1d5652e5a827"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0003.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0003"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:37Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:37Z",
+                        "message": "Renewing certificate as renewal was scheduled at 2026-06-04 09:12:37 +0000 UTC",
+                        "observedGeneration": 1,
+                        "reason": "Renewing",
+                        "status": "True",
+                        "type": "Issuing"
+                    }
+                ],
+                "nextPrivateKeySecretName": "perf-renewal-cert-0003-8nlfk",
+                "notAfter": "2026-06-04T10:12:37Z",
+                "notBefore": "2026-06-04T09:11:37Z",
+                "renewalTime": "2026-06-04T09:12:37Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0004\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0004.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0004\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:38Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0004",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47515",
+                "uid": "8f9011a9-a5f2-4b73-8fc8-85da05eea741"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0004.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0004"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:39Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:38Z",
+                        "message": "Renewing certificate as renewal was scheduled at 2026-06-04 09:12:38 +0000 UTC",
+                        "observedGeneration": 1,
+                        "reason": "Renewing",
+                        "status": "True",
+                        "type": "Issuing"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:38Z",
+                "notBefore": "2026-06-04T09:11:38Z",
+                "renewalTime": "2026-06-04T09:12:38Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0005\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0005.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0005\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:39Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0005",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46262",
+                "uid": "d6a24bb9-492b-4531-9f9f-c0cb36047522"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0005.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0005"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:41Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:40Z",
+                "notBefore": "2026-06-04T09:11:40Z",
+                "renewalTime": "2026-06-04T09:12:40Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0006\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0006.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0006\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:39Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0006",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46321",
+                "uid": "b95cb964-1077-47fa-b871-f495d22b194c"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0006.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0006"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:43Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:41Z",
+                "notBefore": "2026-06-04T09:11:41Z",
+                "renewalTime": "2026-06-04T09:12:41Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0007\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0007.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0007\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:40Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0007",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46387",
+                "uid": "88df0cce-77ed-4e07-91a4-55589a989344"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0007.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0007"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:44Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:42Z",
+                "notBefore": "2026-06-04T09:11:42Z",
+                "renewalTime": "2026-06-04T09:12:42Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0008\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0008.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0008\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:41Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0008",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46500",
+                "uid": "e04c58d4-527b-4243-a367-f9400db6787a"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0008.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0008"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:47Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:44Z",
+                "notBefore": "2026-06-04T09:11:44Z",
+                "renewalTime": "2026-06-04T09:12:44Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0009\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0009.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0009\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:41Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0009",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46530",
+                "uid": "851bb43a-fa57-496e-bb45-c57adfd2d39b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0009.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0009"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:48Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:45Z",
+                "notBefore": "2026-06-04T09:11:45Z",
+                "renewalTime": "2026-06-04T09:12:45Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0010\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0010.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0010\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:42Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0010",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46701",
+                "uid": "15b16efd-ea44-4d24-aaf1-9ac8dadd5b40"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0010.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0010"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:52Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:47Z",
+                "notBefore": "2026-06-04T09:11:47Z",
+                "renewalTime": "2026-06-04T09:12:47Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0011\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0011.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0011\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:43Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0011",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46599",
+                "uid": "288eafe9-83d3-4164-b1ae-eaf9d93fc4b2"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0011.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0011"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:53Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:48Z",
+                "notBefore": "2026-06-04T09:11:48Z",
+                "renewalTime": "2026-06-04T09:12:48Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0012\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0012.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0012\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:43Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0012",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46783",
+                "uid": "c3be882b-ae11-4769-bae2-27db3711174e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0012.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0012"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:54Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:49Z",
+                "notBefore": "2026-06-04T09:11:49Z",
+                "renewalTime": "2026-06-04T09:12:49Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0013\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0013.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0013\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:44Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0013",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46685",
+                "uid": "f7d7babc-d9cc-4c8c-b024-9e2d75b0fa90"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0013.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0013"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:57Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:51Z",
+                "notBefore": "2026-06-04T09:11:51Z",
+                "renewalTime": "2026-06-04T09:12:51Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0014\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0014.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0014\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:45Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0014",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46747",
+                "uid": "34e370bb-e07e-4b98-b922-1b9796e572a2"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0014.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0014"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:58Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:52Z",
+                "notBefore": "2026-06-04T09:11:52Z",
+                "renewalTime": "2026-06-04T09:12:52Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0015\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0015.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0015\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:45Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0015",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46775",
+                "uid": "cef687d2-780b-4f64-bfde-3114a414884f"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0015.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0015"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:00Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:53Z",
+                "notBefore": "2026-06-04T09:11:53Z",
+                "renewalTime": "2026-06-04T09:12:53Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0016\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0016.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0016\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:46Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0016",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46834",
+                "uid": "4e37dacf-49d7-4fc2-b093-59050651a0b2"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0016.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0016"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:11:59Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:55Z",
+                "notBefore": "2026-06-04T09:11:55Z",
+                "renewalTime": "2026-06-04T09:12:55Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0017\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0017.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0017\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:47Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0017",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46862",
+                "uid": "c734ed66-4a40-4f5d-8a9f-c3a99c87c4e2"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0017.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0017"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:01Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:56Z",
+                "notBefore": "2026-06-04T09:11:56Z",
+                "renewalTime": "2026-06-04T09:12:56Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0018\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0018.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0018\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:47Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0018",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47088",
+                "uid": "4b86aad2-87be-4b74-b301-6457f13f76db"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0018.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0018"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:05Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:59Z",
+                "notBefore": "2026-06-04T09:11:59Z",
+                "renewalTime": "2026-06-04T09:12:59Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0019\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0019.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0019\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:48Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0019",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47016",
+                "uid": "7d358a90-d05c-4a45-886b-ebc9a6634985"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0019.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0019"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:14Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:02Z",
+                "notBefore": "2026-06-04T09:12:02Z",
+                "renewalTime": "2026-06-04T09:13:02Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0020\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0020.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0020\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:49Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0020",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47073",
+                "uid": "a7cda6a8-e85a-4221-bc50-0bc511ea6cdd"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0020.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0020"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:04Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:12:59Z",
+                "notBefore": "2026-06-04T09:11:59Z",
+                "renewalTime": "2026-06-04T09:12:59Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0021\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0021.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0021\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:49Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0021",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47288",
+                "uid": "76f57abd-07c6-475f-b23d-10e7f59b501b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0021.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0021"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:11Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:03Z",
+                "notBefore": "2026-06-04T09:12:03Z",
+                "renewalTime": "2026-06-04T09:13:03Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0022\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0022.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0022\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:50Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0022",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47084",
+                "uid": "8f83e4ab-1363-4e22-b975-d55b846ddedf"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0022.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0022"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:13Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:06Z",
+                "notBefore": "2026-06-04T09:12:06Z",
+                "renewalTime": "2026-06-04T09:13:06Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0023\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0023.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0023\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:51Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0023",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47002",
+                "uid": "921de102-ac73-4516-8a21-2e84cb74cd7b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0023.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0023"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:13Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:01Z",
+                "notBefore": "2026-06-04T09:12:01Z",
+                "renewalTime": "2026-06-04T09:13:01Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0024\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0024.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0024\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:51Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0024",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "46939",
+                "uid": "24059303-978d-46fe-a2fd-7ccbdb15cf83"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0024.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0024"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:07Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:02Z",
+                "notBefore": "2026-06-04T09:12:02Z",
+                "renewalTime": "2026-06-04T09:13:02Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0025\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0025.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0025\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:52Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0025",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47258",
+                "uid": "be9ffcd9-4845-47f5-b7c9-035fc44b6898"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0025.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0025"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:17Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:12Z",
+                "notBefore": "2026-06-04T09:12:12Z",
+                "renewalTime": "2026-06-04T09:13:12Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0026\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0026.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0026\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:53Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0026",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47281",
+                "uid": "da76abed-b790-4a28-9e18-003df195035a"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0026.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0026"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:17Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:13Z",
+                "notBefore": "2026-06-04T09:12:13Z",
+                "renewalTime": "2026-06-04T09:13:13Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0027\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0027.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0027\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:53Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0027",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47317",
+                "uid": "efd6ee51-32af-4923-a3b0-1f7043a68bdd"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0027.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0027"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:12Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:04Z",
+                "notBefore": "2026-06-04T09:12:04Z",
+                "renewalTime": "2026-06-04T09:13:04Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0028\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0028.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0028\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:54Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0028",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47343",
+                "uid": "7ac10ce9-4641-426c-8a92-314ae404c2cf"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0028.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0028"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:13Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:05Z",
+                "notBefore": "2026-06-04T09:12:05Z",
+                "renewalTime": "2026-06-04T09:13:05Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0029\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0029.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0029\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:55Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0029",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47360",
+                "uid": "8931cfef-a074-43cf-9434-0014010c0eb5"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0029.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0029"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:23Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:18Z",
+                "notBefore": "2026-06-04T09:12:18Z",
+                "renewalTime": "2026-06-04T09:13:18Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0030\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0030.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0030\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:55Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0030",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47131",
+                "uid": "58f661b8-6d8d-4711-8fc8-dc7828f18add"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0030.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0030"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:12Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:07Z",
+                "notBefore": "2026-06-04T09:12:07Z",
+                "renewalTime": "2026-06-04T09:13:07Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0031\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0031.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0031\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:56Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0031",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47143",
+                "uid": "74339e29-8f76-4b6a-890d-ec627e6ef9ed"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0031.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0031"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:14Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:08Z",
+                "notBefore": "2026-06-04T09:12:08Z",
+                "renewalTime": "2026-06-04T09:13:08Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0032\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0032.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0032\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:57Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0032",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47177",
+                "uid": "4d1bace8-bac6-4d9e-8561-b243bc859e6a"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0032.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0032"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:15Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:09Z",
+                "notBefore": "2026-06-04T09:12:09Z",
+                "renewalTime": "2026-06-04T09:13:09Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0033\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0033.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0033\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:57Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0033",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47220",
+                "uid": "d7d621bb-8401-4b42-9816-6276c3980ebb"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0033.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0033"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:16Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:11Z",
+                "notBefore": "2026-06-04T09:12:11Z",
+                "renewalTime": "2026-06-04T09:13:11Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0034\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0034.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0034\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:58Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0034",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47249",
+                "uid": "a9d31eb8-576f-49cb-a92e-8b46feec5fb3"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0034.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0034"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:16Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:11Z",
+                "notBefore": "2026-06-04T09:12:11Z",
+                "renewalTime": "2026-06-04T09:13:11Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0035\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0035.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0035\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:59Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0035",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47295",
+                "uid": "a9a974a4-45b6-4295-a473-491b701d97df"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0035.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0035"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:19Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:14Z",
+                "notBefore": "2026-06-04T09:12:14Z",
+                "renewalTime": "2026-06-04T09:13:14Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0036\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0036.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0036\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:11:59Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0036",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47308",
+                "uid": "03005327-cac1-44a5-91f3-bf351f39c56c"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0036.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0036"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:18Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:15Z",
+                "notBefore": "2026-06-04T09:12:15Z",
+                "renewalTime": "2026-06-04T09:13:15Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0037\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0037.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0037\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:00Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0037",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47316",
+                "uid": "69d55fac-8d6b-4cbe-8e68-4c7e85bc4adf"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0037.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0037"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:20Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:16Z",
+                "notBefore": "2026-06-04T09:12:16Z",
+                "renewalTime": "2026-06-04T09:13:16Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0038\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0038.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0038\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:01Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0038",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47337",
+                "uid": "6ca44abf-6d49-4432-913a-c93584fe9dd5"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0038.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0038"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:21Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:17Z",
+                "notBefore": "2026-06-04T09:12:17Z",
+                "renewalTime": "2026-06-04T09:13:17Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0039\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0039.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0039\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:01Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0039",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47349",
+                "uid": "a3224801-685f-4c23-a450-cb5a9f93315f"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0039.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0039"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:22Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:18Z",
+                "notBefore": "2026-06-04T09:12:18Z",
+                "renewalTime": "2026-06-04T09:13:18Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0040\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0040.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0040\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:02Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0040",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47371",
+                "uid": "c8cf1981-f4a8-4832-afb1-03c919ff139a"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0040.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0040"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:24Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:20Z",
+                "notBefore": "2026-06-04T09:12:20Z",
+                "renewalTime": "2026-06-04T09:13:20Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0041\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0041.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0041\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:03Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0041",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47390",
+                "uid": "3b453376-0341-4fa9-9150-00122b12ef56"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0041.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0041"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:24Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:20Z",
+                "notBefore": "2026-06-04T09:12:20Z",
+                "renewalTime": "2026-06-04T09:13:20Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0042\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0042.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0042\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:03Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0042",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47394",
+                "uid": "d3a26333-a12b-4d5a-a180-00fcab3ddeef"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0042.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0042"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:26Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:22Z",
+                "notBefore": "2026-06-04T09:12:22Z",
+                "renewalTime": "2026-06-04T09:13:22Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0043\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0043.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0043\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:04Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0043",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47399",
+                "uid": "1818587d-f390-414a-9bbd-025d8b702467"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0043.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0043"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:27Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:23Z",
+                "notBefore": "2026-06-04T09:12:23Z",
+                "renewalTime": "2026-06-04T09:13:23Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0044\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0044.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0044\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:05Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0044",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47410",
+                "uid": "c1f4af2e-7b68-40af-816d-7572ed406966"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0044.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0044"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:28Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:24Z",
+                "notBefore": "2026-06-04T09:12:24Z",
+                "renewalTime": "2026-06-04T09:13:24Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0045\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0045.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0045\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:05Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0045",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47416",
+                "uid": "52f47f59-2e06-4485-9032-6534ca9fd226"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0045.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0045"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:29Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:25Z",
+                "notBefore": "2026-06-04T09:12:25Z",
+                "renewalTime": "2026-06-04T09:13:25Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0046\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0046.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0046\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:06Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0046",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47434",
+                "uid": "b0582a65-51b1-4d83-9c5b-1714991fcbd3"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0046.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0046"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:30Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:26Z",
+                "notBefore": "2026-06-04T09:12:26Z",
+                "renewalTime": "2026-06-04T09:13:26Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0047\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0047.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0047\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:07Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0047",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47437",
+                "uid": "af687e94-2944-45a8-88dd-668909b967bf"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0047.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0047"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:30Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:27Z",
+                "notBefore": "2026-06-04T09:12:27Z",
+                "renewalTime": "2026-06-04T09:13:27Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0048\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0048.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0048\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:07Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0048",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47442",
+                "uid": "71a38b9a-dfae-4c54-8bdd-a99a3aa0b956"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0048.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0048"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:31Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:27Z",
+                "notBefore": "2026-06-04T09:12:27Z",
+                "renewalTime": "2026-06-04T09:13:27Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0049\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0049.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0049\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:08Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0049",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47453",
+                "uid": "1e625937-a43a-4d69-9a90-201f4205c5d3"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0049.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0049"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:32Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:28Z",
+                "notBefore": "2026-06-04T09:12:28Z",
+                "renewalTime": "2026-06-04T09:13:28Z",
+                "revision": 1
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"labels\":{\"perf-test\":\"true\",\"scenario\":\"aggressive\",\"test-type\":\"renewal\"},\"name\":\"perf-renewal-cert-0050\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"perf-renewal-0050.example.com\"],\"duration\":\"1h1m\",\"issuerRef\":{\"group\":\"cert-manager.io\",\"kind\":\"Issuer\",\"name\":\"perf-test-ca-issuer\"},\"privateKey\":{\"algorithm\":\"ECDSA\",\"size\":256},\"renewBefore\":\"1h\",\"secretName\":\"perf-renewal-secret-0050\"}}\n"
+                },
+                "creationTimestamp": "2026-06-04T09:12:09Z",
+                "generation": 1,
+                "labels": {
+                    "perf-test": "true",
+                    "scenario": "aggressive",
+                    "test-type": "renewal"
+                },
+                "name": "perf-renewal-cert-0050",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "47469",
+                "uid": "fe85a9d5-107e-4314-bbd0-3d1377d09677"
+            },
+            "spec": {
+                "dnsNames": [
+                    "perf-renewal-0050.example.com"
+                ],
+                "duration": "1h1m",
+                "issuerRef": {
+                    "group": "cert-manager.io",
+                    "kind": "Issuer",
+                    "name": "perf-test-ca-issuer"
+                },
+                "privateKey": {
+                    "algorithm": "ECDSA",
+                    "size": 256
+                },
+                "renewBefore": "1h",
+                "secretName": "perf-renewal-secret-0050"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-04T09:12:33Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-06-04T10:13:29Z",
+                "notBefore": "2026-06-04T09:12:29Z",
+                "renewalTime": "2026-06-04T09:13:29Z",
+                "revision": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

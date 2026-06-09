@@ -1,0 +1,15 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: CertManager
+metadata:
+  name: cluster
+spec:
+  managementState: Managed
+  logLevel: Normal
+  unsupportedConfigOverrides:
+    controller:
+      args:
+        - "--max-concurrent-challenges=200"
+    webhook:
+      args: []
+    cainjector:
+      args: []

@@ -1,0 +1,269 @@
+--- Cluster Info ---
+Server: https://api.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com:443
+Timestamp: 2026-06-04T09:23:58Z
+
+--- CertManager CR ---
+apiVersion: operator.openshift.io/v1alpha1
+kind: CertManager
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"operator.openshift.io/v1alpha1","kind":"CertManager","metadata":{"annotations":{},"name":"cluster"},"spec":{"controllerConfig":{"overrideResources":{"limits":{"cpu":"4000m","memory":"2Gi"},"requests":{"cpu":"1000m","memory":"512Mi"}}},"logLevel":"Normal","managementState":"Managed","unsupportedConfigOverrides":{"cainjector":{"args":[]},"controller":{"args":["--concurrent-workers=10"]},"webhook":{"args":[]}}}}
+  creationTimestamp: "2026-06-04T08:38:52Z"
+  finalizers:
+  - cert-manager-operator.operator.openshift.io/cert-manager-cainjector-deployment
+  - cert-manager-operator.operator.openshift.io/cert-manager-controller-deployment
+  - cert-manager-operator.operator.openshift.io/cert-manager-webhook-deployment
+  generation: 3
+  name: cluster
+  resourceVersion: "58844"
+  uid: 646d01d9-2cb4-4cf7-b1fe-e25edc9d32d4
+spec:
+  controllerConfig:
+    overrideResources:
+      limits:
+        cpu: 4000m
+        memory: 2Gi
+      requests:
+        cpu: 1000m
+        memory: 512Mi
+  logLevel: Normal
+  managementState: Managed
+  observedConfig: null
+  operatorLogLevel: Normal
+  unsupportedConfigOverrides:
+    cainjector:
+      args: []
+    controller:
+      args:
+      - --concurrent-workers=10
+    webhook:
+      args: []
+status:
+  conditions:
+  - lastTransitionTime: "2026-06-04T08:38:52Z"
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-controller-deploymentDegraded
+  - lastTransitionTime: "2026-06-04T08:39:03Z"
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-webhook-deploymentDegraded
+  - lastTransitionTime: "2026-06-04T08:38:52Z"
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-cainjector-deploymentDegraded
+  - lastTransitionTime: "2026-06-04T08:38:52Z"
+    message: ""
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-networkpolicy-static-resources-Degraded
+  - lastTransitionTime: "2026-06-04T08:39:08Z"
+    message: Deployment is available
+    reason: AsExpected
+    status: "True"
+    type: cert-manager-cainjector-deploymentAvailable
+  - lastTransitionTime: "2026-06-04T08:39:08Z"
+    message: Deployment is not progressing
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-cainjector-deploymentProgressing
+  - lastTransitionTime: "2026-06-04T08:39:09Z"
+    message: Deployment is available
+    reason: AsExpected
+    status: "True"
+    type: cert-manager-controller-deploymentAvailable
+  - lastTransitionTime: "2026-06-04T09:22:54Z"
+    message: Deployment is not progressing
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-controller-deploymentProgressing
+  - lastTransitionTime: "2026-06-04T08:39:01Z"
+    message: ""
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-cainjector-static-resources-Degraded
+  - lastTransitionTime: "2026-06-04T08:39:02Z"
+    message: ""
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-webhook-static-resources-Degraded
+  - lastTransitionTime: "2026-06-04T08:39:13Z"
+    message: Deployment is available
+    reason: AsExpected
+    status: "True"
+    type: cert-manager-webhook-deploymentAvailable
+  - lastTransitionTime: "2026-06-04T08:39:13Z"
+    message: Deployment is not progressing
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-webhook-deploymentProgressing
+  - lastTransitionTime: "2026-06-04T08:39:18Z"
+    message: ""
+    reason: AsExpected
+    status: "False"
+    type: cert-manager-controller-static-resources-Degraded
+  generations:
+  - group: apps
+    lastGeneration: 1
+    name: cert-manager-cainjector
+    namespace: cert-manager
+    resource: deployments
+  - group: apps
+    lastGeneration: 3
+    name: cert-manager
+    namespace: cert-manager
+    resource: deployments
+  - group: apps
+    lastGeneration: 1
+    name: cert-manager-webhook
+    namespace: cert-manager
+    resource: deployments
+
+--- Controller Deployment ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "3"
+    operator.openshift.io/spec-hash: 87416854e970be55052ff0faa7c2020e1f6e7e4b477aed7fc42c002f92d69f98
+  creationTimestamp: "2026-06-04T08:38:53Z"
+  generation: 3
+  labels:
+    app: cert-manager
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: cert-manager
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/version: v1.19.4
+  name: cert-manager
+  namespace: cert-manager
+  resourceVersion: "58828"
+  uid: 9593ed4b-599e-4893-8612-64085b87a42a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: cert-manager
+      app.kubernetes.io/name: cert-manager
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9402"
+        prometheus.io/scrape: "true"
+      labels:
+        app: cert-manager
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/instance: cert-manager
+        app.kubernetes.io/name: cert-manager
+        app.kubernetes.io/version: v1.19.4
+    spec:
+      containers:
+      - args:
+        - --acme-http01-solver-image=registry.redhat.io/cert-manager/jetstack-cert-manager-acmesolver-rhel9@sha256:2118a138033fa32afb314d697dc29d2690277a978c8a84b1eba4f152a6d59c1a
+        - --cluster-resource-namespace=$(POD_NAMESPACE)
+        - --concurrent-workers=10
+        - --feature-gates=ACMEHTTP01IngressPathTypeExact=false
+        - --leader-election-namespace=kube-system
+        - --max-concurrent-challenges=60
+        - --v=2
+        command:
+        - /app/cmd/controller/controller
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: registry.redhat.io/cert-manager/jetstack-cert-manager-rhel9@sha256:f0467f589027c52288f2707bab33d0ccd1c15410dcbc9010d0f948feb4e50dd0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 8
+          httpGet:
+            path: /livez
+            port: http-healthz
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 15
+        name: cert-manager-controller
+        ports:
+        - containerPort: 9402
+          name: http-metrics
+          protocol: TCP
+        - containerPort: 9403
+          name: http-healthz
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "4"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run/secrets/openshift/serviceaccount
+          name: bound-sa-token
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccount: cert-manager
+      serviceAccountName: cert-manager
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: bound-sa-token
+        projected:
+          defaultMode: 420
+          sources:
+          - serviceAccountToken:
+              audience: openshift
+              expirationSeconds: 3600
+              path: token
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2026-06-04T08:39:05Z"
+    lastUpdateTime: "2026-06-04T08:39:05Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-06-04T08:38:53Z"
+    lastUpdateTime: "2026-06-04T09:22:53Z"
+    message: ReplicaSet "cert-manager-5844778ddd" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
+
+--- Controller Pod Status ---
+NAME                            READY   STATUS    RESTARTS   AGE   IP            NODE                         NOMINATED NODE   READINESS GATES
+cert-manager-5844778ddd-h7m8k   1/1     Running   0          69s   10.128.0.51   ip-10-0-1-139.ec2.internal   <none>           <none>

@@ -1,0 +1,27 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: CertManager
+metadata:
+  name: cluster
+spec:
+  managementState: Managed
+  logLevel: Normal
+  unsupportedConfigOverrides:
+    controller:
+      args:
+        - "--concurrent-workers=20"
+        - "--kube-api-qps=150"
+        - "--kube-api-burst=300"
+        - "--max-concurrent-challenges=300"
+        - "--dns01-check-retry-period=2s"
+    webhook:
+      args: []
+    cainjector:
+      args: []
+  controllerConfig:
+    overrideResources:
+      requests:
+        cpu: "1000m"
+        memory: "512Mi"
+      limits:
+        cpu: "4000m"
+        memory: "2Gi"

@@ -1,0 +1,33 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: perf-test-selfsigned
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-ca
+  namespace: cert-perf-test
+spec:
+  isCA: true
+  commonName: perf-test-ca
+  secretName: perf-test-ca-secret
+  duration: 87600h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: perf-test-selfsigned
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: perf-test-ca-issuer
+  namespace: cert-perf-test
+spec:
+  ca:
+    secretName: perf-test-ca-secret

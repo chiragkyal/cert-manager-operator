@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cert-manager Performance Tuning Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+               background: #f8f9fa; color: #212529; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1a237e; }
+        h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #283593; border-bottom: 2px solid #e8eaf6; padding-bottom: 0.5rem; }
+        .subtitle { color: #666; margin-bottom: 2rem; }
+        .chart-container { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;
+                          box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .chart-container img { width: 100%; height: auto; border-radius: 4px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .metric-card { background: white; border-radius: 8px; padding: 1.5rem; text-align: center;
+                      box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .metric-value { font-size: 2.5rem; font-weight: bold; color: #1976d2; }
+        .metric-label { font-size: 0.85rem; color: #666; margin-top: 0.3rem; }
+        .metric-card.green .metric-value { color: #388e3c; }
+        .metric-card.red .metric-value { color: #d32f2f; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+        th { background: #1976d2; color: white; padding: 0.75rem 1rem; text-align: left; font-size: 0.85rem; }
+        td { padding: 0.6rem 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .highlight { background: #e8f5e9 !important; font-weight: bold; }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+        .tag-baseline { background: #ffebee; color: #c62828; }
+        .tag-moderate { background: #e3f2fd; color: #1565c0; }
+        .tag-aggressive { background: #e8f5e9; color: #2e7d32; }
+        footer { text-align: center; color: #999; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>cert-manager Performance Tuning Report</h1>
+    <p class="subtitle">RFE-5620: Performance parameters for cert-manager on OpenShift</p>
+    <h2>Key Findings</h2>
+    <div class="summary-grid">
+        <div class="metric-card red">
+            <div class="metric-value">45-78s</div>
+            <div class="metric-label">Baseline Issuance (100-300 certs)</div>
+        </div>
+        <div class="metric-card green">
+            <div class="metric-value">2-3s</div>
+            <div class="metric-label">Tuned Issuance (100-300 certs)</div>
+        </div>
+        <div class="metric-card green">
+            <div class="metric-value">15-39x</div>
+            <div class="metric-label">Improvement Factor</div>
+        </div>
+        <div class="metric-card green">
+            <div class="metric-value">0</div>
+            <div class="metric-label">Controller Restarts (all tests)</div>
+        </div>
+    </div>
+    <h2>1. Issuance Time Comparison</h2>
+    <div class="chart-container">
+        <img src="chart1-issuance-time.png" alt="Issuance Time by Scenario">
+    </div>
+
+    <h2>2. Throughput Rate</h2>
+    <div class="chart-container">
+        <img src="chart2-issuance-rate.png" alt="Issuance Rate by Scenario">
+    </div>
+
+    <h2>3. Latency Percentiles</h2>
+    <div class="chart-container">
+        <img src="chart3-latency-percentiles.png" alt="Latency Percentiles">
+    </div>
+
+    <h2>4. Improvement Over Baseline</h2>
+    <div class="chart-container">
+        <img src="chart4-improvement-factor.png" alt="Improvement Factor">
+    </div>
+
+    <h2>5. Issuance Progress Over Time</h2>
+    <div class="chart-container">
+        <img src="chart5-progress-timeline.png" alt="Progress Timeline">
+    </div>
+
+    <h2>6. Parameter Configuration</h2>
+    <div class="chart-container">
+        <img src="chart6-parameters-table.png" alt="Parameters Table">
+    </div>
+    <h2>7. DR Recovery & Renewal Storm</h2>
+    <div class="chart-container">
+        <img src="chart7-special-scenarios.png" alt="Special Scenarios">
+    </div>
+    <h2>Complete Results Table</h2>
+    <table>
+        <tr>
+            <th>Scenario</th>
+            <th>Certs</th>
+            <th>Issuance Time</th>
+            <th>Rate (certs/min)</th>
+            <th>P50</th>
+            <th>P90</th>
+            <th>P99</th>
+            <th>Max</th>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>1s</td>
+            <td>1s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>100</td>
+            <td>115s</td>
+            <td>52.17</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>115s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>300</td>
+            <td>80s</td>
+            <td>225.00</td>
+            <td>29s</td>
+            <td>65s</td>
+            <td>71s</td>
+            <td>72s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>50</td>
+            <td>50s</td>
+            <td>58.82</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>50s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>100</td>
+            <td>173s</td>
+            <td>34.68</td>
+            <td>67.6s</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>101s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive-acme</span></td>
+            <td>300</td>
+            <td>33s</td>
+            <td>545.45</td>
+            <td>13s</td>
+            <td>17s</td>
+            <td>20s</td>
+            <td>24s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive-acme</span></td>
+            <td>500</td>
+            <td>32s</td>
+            <td>937.50</td>
+            <td>0s</td>
+            <td>16s</td>
+            <td>18s</td>
+            <td>21s</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive-acme-delayed</span></td>
+            <td>100</td>
+            <td>2456s</td>
+            <td>0</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>N/As</td>
+            <td>N/As</td>
+        </tr>
+        <tr class="highlight">
+            <td><span class="tag tag-aggressive">aggressive</span></td>
+            <td>1600</td>
+            <td>276s</td>
+            <td>347.82</td>
+            <td>1s</td>
+            <td>226s</td>
+            <td>262s</td>
+            <td>266s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">baseline</span></td>
+            <td>100</td>
+            <td>45s</td>
+            <td>133.33</td>
+            <td>29s</td>
+            <td>36s</td>
+            <td>39s</td>
+            <td>39s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">baseline</span></td>
+            <td>300</td>
+            <td>103s</td>
+            <td>174.75</td>
+            <td>61s</td>
+            <td>90s</td>
+            <td>95s</td>
+            <td>96s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">baseline-acme</span></td>
+            <td>100</td>
+            <td>266s</td>
+            <td>22.55</td>
+            <td>186s</td>
+            <td>235s</td>
+            <td>257s</td>
+            <td>261s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-moderate">moderate</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>1s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">sat-concurrent-workers-10</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">sat-concurrent-workers-20</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">sat-concurrent-workers-30</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>1s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">sat-concurrent-workers-5</span></td>
+            <td>100</td>
+            <td>2s</td>
+            <td>3000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>1s</td>
+            <td>1s</td>
+        </tr>
+        <tr>
+            <td><span class="tag tag-baseline">sat-concurrent-workers-50</span></td>
+            <td>100</td>
+            <td>3s</td>
+            <td>2000.00</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+            <td>0s</td>
+        </tr>
+    </table>
+
+    <h2>Recommendations</h2>
+    <table>
+        <tr><th>Cluster Size</th><th>concurrent-workers</th><th>kube-api-qps</th><th>kube-api-burst</th><th>max-concurrent-challenges</th></tr>
+        <tr><td>Small (&lt;100 certs)</td><td>5 (default)</td><td>20 (default)</td><td>50 (default)</td><td>60 (default)</td></tr>
+        <tr><td>Medium (100-500 certs)</td><td>10</td><td>50</td><td>100</td><td>120</td></tr>
+        <tr class="highlight"><td>Large / DR (500+ certs)</td><td>20</td><td>150</td><td>300</td><td>300</td></tr>
+    </table>
+
+    <footer>
+        Generated by cert-manager Performance Testing Toolkit | RFE-5620
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,4800 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00001
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00001.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00002
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00002.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00003
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00003.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00004
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00004.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00005
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00005.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00006
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00006.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00007
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00007.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00008
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00008.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00009
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00009.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00010
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00010.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00011
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00011.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00012
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00012.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00013
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00013.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00014
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00014.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00015
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00015.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00016
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00016.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00017
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00017.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00018
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00018.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00019
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00019.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00020
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00020.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00021
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00021
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00021.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00022
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00022
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00022.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00023
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00023
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00023.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00024
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00024
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00024.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00025
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00025
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00025.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00026
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00026
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00026.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00027
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00027
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00027.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00028
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00028
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00028.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00029
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00029
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00029.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00030
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00030
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00030.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00031
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00031
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00031.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00032
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00032
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00032.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00033
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00033
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00033.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00034
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00034
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00034.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00035
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00035
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00035.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00036
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00036
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00036.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00037
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00037
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00037.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00038
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00038
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00038.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00039
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00039
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00039.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00040
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00040
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00040.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00041
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00041
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00041.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00042
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00042
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00042.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00043
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00043
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00043.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00044
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00044
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00044.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00045
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00045
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00045.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00046
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00046
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00046.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00047
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00047
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00047.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00048
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00048
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00048.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00049
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00049
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00049.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00050
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00050
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00050.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00051
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00051
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00051.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00052
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00052
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00052.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00053
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00053
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00053.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00054
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00054
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00054.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00055
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00055
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00055.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00056
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00056
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00056.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00057
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00057
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00057.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00058
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00058
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00058.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00059
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00059
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00059.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00060
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00060
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00060.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00061
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00061
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00061.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00062
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00062
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00062.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00063
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00063
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00063.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00064
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00064
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00064.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00065
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00065
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00065.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00066
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00066
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00066.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00067
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00067
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00067.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00068
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00068
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00068.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00069
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00069
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00069.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00070
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00070
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00070.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00071
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00071
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00071.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00072
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00072
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00072.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00073
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00073
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00073.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00074
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00074
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00074.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00075
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00075
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00075.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00076
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00076
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00076.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00077
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00077
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00077.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00078
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00078
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00078.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00079
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00079
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00079.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00080
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00080
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00080.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00081
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00081
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00081.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00082
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00082
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00082.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00083
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00083
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00083.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00084
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00084
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00084.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00085
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00085
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00085.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00086
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00086
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00086.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00087
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00087
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00087.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00088
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00088
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00088.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00089
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00089
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00089.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00090
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00090
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00090.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00091
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00091
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00091.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00092
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00092
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00092.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00093
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00093
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00093.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00094
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00094
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00094.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00095
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00095
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00095.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00096
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00096
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00096.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00097
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00097
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00097.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00098
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00098
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00098.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00099
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00099
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00099.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00100
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00100
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00100.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00101
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00101
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00101.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00102
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00102
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00102.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00103
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00103
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00103.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00104
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00104
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00104.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00105
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00105
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00105.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00106
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00106
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00106.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00107
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00107
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00107.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00108
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00108
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00108.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00109
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00109
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00109.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00110
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00110
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00110.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00111
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00111
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00111.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00112
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00112
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00112.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00113
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00113
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00113.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00114
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00114
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00114.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00115
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00115
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00115.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00116
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00116
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00116.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00117
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00117
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00117.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00118
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00118
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00118.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00119
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00119
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00119.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00120
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00120
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00120.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00121
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00121
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00121.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00122
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00122
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00122.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00123
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00123
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00123.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00124
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00124
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00124.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00125
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00125
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00125.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00126
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00126
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00126.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00127
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00127
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00127.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00128
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00128
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00128.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00129
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00129
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00129.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00130
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00130
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00130.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00131
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00131
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00131.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00132
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00132
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00132.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00133
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00133
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00133.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00134
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00134
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00134.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00135
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00135
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00135.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00136
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00136
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00136.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00137
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00137
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00137.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00138
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00138
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00138.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00139
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00139
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00139.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00140
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00140
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00140.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00141
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00141
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00141.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00142
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00142
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00142.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00143
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00143
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00143.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00144
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00144
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00144.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00145
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00145
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00145.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00146
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00146
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00146.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00147
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00147
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00147.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00148
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00148
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00148.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00149
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00149
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00149.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00150
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00150
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00150.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00151
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00151
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00151.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00152
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00152
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00152.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00153
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00153
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00153.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00154
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00154
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00154.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00155
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00155
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00155.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00156
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00156
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00156.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00157
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00157
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00157.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00158
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00158
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00158.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00159
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00159
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00159.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00160
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00160
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00160.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00161
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00161
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00161.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00162
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00162
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00162.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00163
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00163
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00163.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00164
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00164
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00164.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00165
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00165
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00165.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00166
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00166
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00166.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00167
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00167
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00167.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00168
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00168
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00168.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00169
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00169
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00169.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00170
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00170
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00170.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00171
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00171
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00171.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00172
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00172
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00172.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00173
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00173
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00173.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00174
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00174
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00174.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00175
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00175
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00175.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00176
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00176
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00176.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00177
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00177
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00177.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00178
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00178
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00178.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00179
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00179
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00179.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00180
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00180
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00180.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00181
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00181
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00181.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00182
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00182
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00182.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00183
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00183
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00183.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00184
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00184
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00184.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00185
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00185
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00185.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00186
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00186
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00186.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00187
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00187
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00187.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00188
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00188
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00188.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00189
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00189
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00189.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00190
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00190
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00190.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00191
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00191
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00191.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00192
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00192
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00192.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00193
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00193
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00193.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00194
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00194
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00194.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00195
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00195
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00195.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00196
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00196
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00196.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00197
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00197
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00197.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00198
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00198
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00198.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00199
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00199
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00199.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-prog-cert-00200
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "aggressive"
+    test-type: "progressive"
+    step: "2"
+spec:
+  secretName: perf-prog-secret-00200
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-prog-00200.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---

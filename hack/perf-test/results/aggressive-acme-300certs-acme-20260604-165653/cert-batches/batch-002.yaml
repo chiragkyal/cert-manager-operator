@@ -1,0 +1,1150 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00101
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00101
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00101.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00102
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00102
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00102.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00103
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00103
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00103.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00104
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00104
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00104.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00105
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00105
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00105.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00106
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00106
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00106.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00107
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00107
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00107.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00108
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00108
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00108.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00109
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00109
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00109.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00110
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00110
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00110.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00111
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00111
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00111.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00112
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00112
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00112.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00113
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00113
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00113.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00114
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00114
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00114.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00115
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00115
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00115.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00116
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00116
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00116.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00117
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00117
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00117.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00118
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00118
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00118.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00119
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00119
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00119.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00120
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00120
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00120.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00121
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00121
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00121.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00122
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00122
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00122.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00123
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00123
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00123.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00124
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00124
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00124.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00125
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00125
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00125.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00126
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00126
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00126.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00127
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00127
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00127.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00128
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00128
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00128.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00129
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00129
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00129.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00130
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00130
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00130.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00131
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00131
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00131.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00132
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00132
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00132.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00133
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00133
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00133.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00134
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00134
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00134.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00135
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00135
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00135.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00136
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00136
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00136.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00137
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00137
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00137.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00138
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00138
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00138.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00139
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00139
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00139.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00140
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00140
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00140.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00141
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00141
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00141.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00142
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00142
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00142.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00143
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00143
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00143.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00144
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00144
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00144.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00145
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00145
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00145.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00146
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00146
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00146.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00147
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00147
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00147.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00148
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00148
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00148.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00149
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00149
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00149.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00150
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "aggressive-acme"
+spec:
+  secretName: perf-acme-scale-secret-00150
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00150.apps.rosa.xh3jj-9ot93-9a5.vapc.p3.openshiftapps.com"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---

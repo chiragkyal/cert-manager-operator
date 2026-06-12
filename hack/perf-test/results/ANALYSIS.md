@@ -15,6 +15,64 @@
 
 ---
 
+## Glossary: Metrics and Terminology
+
+### Latency Percentiles
+
+When we issue 100 certificates, each one takes a different amount of time. If we sort them fastest→slowest:
+
+| Metric | Meaning | Example (100 certs sorted by time) |
+|--------|---------|-------------------------------------|
+| **P50** (Median) | 50% of certificates were issued faster than this | The 50th cert in the sorted list took this long |
+| **P90** | 90% of certs were faster; only 10% were slower | The 90th cert — represents "most users' experience" |
+| **P99** | 99% of certs were faster; only 1% were slower | The 99th cert — the worst case excluding true outliers |
+| **Max** | The absolute slowest certificate | The very last cert to become ready |
+| **Min** | The absolute fastest certificate | The very first cert to become ready |
+| **Avg** | Average time across all certificates | Total time of all certs ÷ number of certs |
+
+**Why percentiles matter more than averages**: If 90 certs take 5s but 10 certs take 300s, the average (34s) hides the fact that 10% of your users wait 5 minutes. P90=300s reveals that problem clearly.
+
+### Other Metrics
+
+| Metric | Meaning |
+|--------|---------|
+| **Rate (certs/min)** | How many certificates became Ready per minute (higher = better) |
+| **Wall Clock** | Total real-world time from first cert submitted to last cert ready |
+| **Issuance Time** | Same as wall clock — the total elapsed time for the batch |
+| **Per-cert latency** | Time from when ONE certificate was created to when it became Ready |
+| **Peak Challenges** | Maximum number of ACME challenges that were "in progress" at the same time |
+| **Restarts** | Number of times the cert-manager controller pod crashed and restarted (0 = stable) |
+
+### Test Configurations
+
+| Config Name | What it means |
+|-------------|---------------|
+| **Baseline** | cert-manager with all default settings (workers=5, QPS=20, Burst=50) — this is what ships out of the box |
+| **Moderate** | Lightly tuned (workers=10, QPS=50, Burst=100) |
+| **Aggressive** | Heavily tuned for maximum throughput (workers=20, QPS=150, Burst=300) |
+
+### Test Scenarios Explained
+
+| Scenario | What it simulates | Why it matters |
+|----------|-------------------|----------------|
+| **CA Issuer Throughput** | Issue many certificates using a local self-signed CA (no network calls) | Measures pure controller speed — how fast can cert-manager talk to the Kubernetes API |
+| **Progressive Load** | Start with 100 certs, double each round (100→200→400→...→6400) | Finds the point where performance degrades — the "breaking point" |
+| **Disaster Recovery (DR)** | Create certs, delete all their TLS secrets, measure how long re-issuance takes | Simulates etcd restore or mass secret loss — how fast does the cluster recover? |
+| **Renewal Storm** | Create short-lived certs that all renew at the same time | Simulates periodic mass renewal (e.g., all certs expire on the same day) |
+| **Multi-Namespace Fairness** | Issue certs across 5 different namespaces simultaneously | Tests if cert-manager favors one namespace over another |
+| **ACME HTTP01** | Full ACME workflow with a local Pebble server (mimics Let's Encrypt) | Tests the complete chain: Order → Challenge → Solver Pod → Validation → Certificate |
+| **ACME with Validation Delay** | Same as ACME but with realistic 0-5s random delay per validation | Tests whether faster polling (`--dns01-check-retry-period`) helps in real-world ACME |
+| **Saturation Test** | Increase one parameter (workers, QPS) until something breaks | Finds safe maximum values for each parameter |
+
+### Issuer Types
+
+| Issuer | What it is | Speed characteristic |
+|--------|-----------|---------------------|
+| **Self-Signed CA** | cert-manager signs certs locally using a CA key stored in-cluster | Very fast — no network calls, bottleneck is purely API rate |
+| **ACME (HTTP01)** | Like Let's Encrypt — requires creating solver pods, DNS/HTTP validation | Slower — involves pod scheduling, external validation, multiple API objects (Order, Challenge) |
+
+---
+
 ## 1. Executive Summary
 
 Performance tuning of cert-manager's controller parameters yields **dramatic improvements** in certificate issuance throughput — up to **22x faster** for CA issuers and **63x faster** for ACME HTTP01 issuers compared to default (baseline) configuration. The cluster remained stable throughout all tests with **zero controller restarts** across every scenario on **6 clusters**.

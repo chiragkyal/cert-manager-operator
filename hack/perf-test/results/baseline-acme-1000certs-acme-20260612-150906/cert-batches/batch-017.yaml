@@ -1,0 +1,1150 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00851
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00851
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00851.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00852
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00852
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00852.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00853
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00853
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00853.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00854
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00854
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00854.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00855
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00855
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00855.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00856
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00856
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00856.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00857
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00857
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00857.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00858
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00858
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00858.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00859
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00859
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00859.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00860
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00860
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00860.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00861
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00861
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00861.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00862
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00862
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00862.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00863
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00863
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00863.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00864
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00864
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00864.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00865
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00865
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00865.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00866
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00866
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00866.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00867
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00867
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00867.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00868
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00868
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00868.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00869
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00869
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00869.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00870
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00870
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00870.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00871
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00871
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00871.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00872
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00872
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00872.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00873
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00873
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00873.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00874
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00874
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00874.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00875
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00875
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00875.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00876
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00876
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00876.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00877
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00877
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00877.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00878
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00878
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00878.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00879
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00879
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00879.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00880
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00880
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00880.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00881
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00881
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00881.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00882
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00882
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00882.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00883
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00883
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00883.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00884
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00884
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00884.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00885
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00885
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00885.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00886
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00886
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00886.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00887
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00887
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00887.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00888
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00888
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00888.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00889
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00889
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00889.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00890
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00890
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00890.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00891
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00891
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00891.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00892
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00892
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00892.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00893
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00893
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00893.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00894
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00894
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00894.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00895
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00895
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00895.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00896
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00896
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00896.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00897
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00897
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00897.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00898
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00898
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00898.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00899
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00899
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00899.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-acme-scale-00900
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    test-type: "acme-scale"
+    scenario: "baseline-acme"
+spec:
+  secretName: perf-acme-scale-secret-00900
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-acme-scale-00900.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+  issuerRef:
+    name: perf-test-acme-pebble
+    kind: ClusterIssuer
+    group: cert-manager.io
+---

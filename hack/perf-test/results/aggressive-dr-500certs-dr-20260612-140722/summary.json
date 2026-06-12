@@ -1,0 +1,18 @@
+{
+  "scenario": "aggressive-dr",
+  "test_type": "disaster_recovery",
+  "num_certificates": 500,
+  "dr_start_time": "2026-06-12T08:43:22Z",
+  "dr_end_time": "2026-06-12T08:44:24Z",
+  "issuance_duration_seconds": 62,
+  "certificates_ready": 500,
+  "certificates_failed": 0,
+  "rate_certs_per_minute": 483.87,
+  "timing": {
+    "min_seconds": "N/A",
+    "p50_seconds": "N/A",
+    "p90_seconds": "N/A",
+    "p99_seconds": "N/A",
+    "max_seconds": "62"
+  }
+}

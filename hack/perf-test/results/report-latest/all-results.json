@@ -111,6 +111,30 @@
     "test_type": "acme_scale_http01",
     "issuer": "perf-test-acme-pebble",
     "with_validation_delay": false,
+    "num_certificates": 1000,
+    "submit_duration_seconds": 698,
+    "total_duration_seconds": 735,
+    "issuance_duration_seconds": 37,
+    "certificates_ready": 1000,
+    "certificates_failed": 0,
+    "controller_restarts": 0,
+    "peak_concurrent_challenges": 18,
+    "peak_solver_pods": 14,
+    "rate_certs_per_minute": 1621.62,
+    "timing": {
+      "min_seconds": "11",
+      "p50_seconds": "15",
+      "p90_seconds": "18",
+      "p99_seconds": "21",
+      "max_seconds": "25"
+    },
+    "run_name": "aggressive-acme-1000certs-acme-20260609-185754"
+  },
+  {
+    "scenario": "aggressive-acme",
+    "test_type": "acme_scale_http01",
+    "issuer": "perf-test-acme-pebble",
+    "with_validation_delay": false,
     "num_certificates": 300,
     "submit_duration_seconds": 209,
     "total_duration_seconds": 242,
@@ -179,6 +203,25 @@
     "run_name": "aggressive-acme-delayed-100certs-acme-20260604-171528"
   },
   {
+    "scenario": "aggressive-dr",
+    "test_type": "disaster_recovery",
+    "num_certificates": 500,
+    "dr_start_time": "2026-06-12T08:43:22Z",
+    "dr_end_time": "2026-06-12T08:44:24Z",
+    "issuance_duration_seconds": 62,
+    "certificates_ready": 500,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 483.87,
+    "timing": {
+      "min_seconds": "N/A",
+      "p50_seconds": "N/A",
+      "p90_seconds": "N/A",
+      "p99_seconds": "N/A",
+      "max_seconds": "62"
+    },
+    "run_name": "aggressive-dr-500certs-dr-20260612-140722"
+  },
+  {
     "scenario": "aggressive",
     "test_type": "progressive_load",
     "num_certificates": 1600,
@@ -194,6 +237,26 @@
       "max_seconds": "266"
     },
     "run_name": "aggressive-progressive-20260604-150729"
+  },
+  {
+    "scenario": "aggressive-renewal",
+    "test_type": "renewal_storm",
+    "num_certificates": 200,
+    "certificates_renewed": 212,
+    "total_monitoring_duration_seconds": 62,
+    "first_renewal_at_seconds": 0,
+    "burst_duration_seconds": 50,
+    "issuance_duration_seconds": 50,
+    "rate_certs_per_minute": 249.41,
+    "controller_restarts": 0,
+    "timing": {
+      "min_seconds": "N/A",
+      "p50_seconds": "N/A",
+      "p90_seconds": "N/A",
+      "p99_seconds": "N/A",
+      "max_seconds": "50"
+    },
+    "run_name": "aggressive-renewal-200certs-renewal-20260612-145319"
   },
   {
     "scenario": "baseline",
@@ -242,6 +305,30 @@
     "test_type": "acme_scale_http01",
     "issuer": "perf-test-acme-pebble",
     "with_validation_delay": false,
+    "num_certificates": 1000,
+    "submit_duration_seconds": 720,
+    "total_duration_seconds": 3059,
+    "issuance_duration_seconds": 2339,
+    "certificates_ready": 1000,
+    "certificates_failed": 0,
+    "controller_restarts": 0,
+    "peak_concurrent_challenges": 866,
+    "peak_solver_pods": 39,
+    "rate_certs_per_minute": 25.65,
+    "timing": {
+      "min_seconds": "35",
+      "p50_seconds": "1703",
+      "p90_seconds": "2206",
+      "p99_seconds": "2311",
+      "max_seconds": "2333"
+    },
+    "run_name": "baseline-acme-1000certs-acme-20260612-150906"
+  },
+  {
+    "scenario": "baseline-acme",
+    "test_type": "acme_scale_http01",
+    "issuer": "perf-test-acme-pebble",
+    "with_validation_delay": false,
     "num_certificates": 100,
     "submit_duration_seconds": 74,
     "total_duration_seconds": 340,
@@ -260,6 +347,93 @@
       "max_seconds": "261"
     },
     "run_name": "baseline-acme-100certs-acme-20260604-164650"
+  },
+  {
+    "scenario": "baseline-acme",
+    "test_type": "acme_scale_http01",
+    "issuer": "perf-test-acme-pebble",
+    "with_validation_delay": false,
+    "num_certificates": 300,
+    "submit_duration_seconds": 213,
+    "total_duration_seconds": 928,
+    "issuance_duration_seconds": 715,
+    "certificates_ready": 300,
+    "certificates_failed": 0,
+    "controller_restarts": 0,
+    "peak_concurrent_challenges": 268,
+    "peak_solver_pods": 43,
+    "rate_certs_per_minute": 25.17,
+    "timing": {
+      "min_seconds": "40",
+      "p50_seconds": "525",
+      "p90_seconds": "668",
+      "p99_seconds": "698",
+      "max_seconds": "703"
+    },
+    "run_name": "baseline-acme-300certs-acme-20260611-141905"
+  },
+  {
+    "scenario": "baseline-acme",
+    "test_type": "acme_scale_http01",
+    "issuer": "perf-test-acme-pebble",
+    "with_validation_delay": false,
+    "num_certificates": 500,
+    "submit_duration_seconds": 357,
+    "total_duration_seconds": 1326,
+    "issuance_duration_seconds": 969,
+    "certificates_ready": 500,
+    "certificates_failed": 0,
+    "controller_restarts": 0,
+    "peak_concurrent_challenges": 288,
+    "peak_solver_pods": 36,
+    "rate_certs_per_minute": 30.95,
+    "timing": {
+      "min_seconds": "1",
+      "p50_seconds": "669",
+      "p90_seconds": "898",
+      "p99_seconds": "950",
+      "max_seconds": "957"
+    },
+    "run_name": "baseline-acme-500certs-acme-20260611-143940"
+  },
+  {
+    "scenario": "baseline-dr",
+    "test_type": "disaster_recovery",
+    "num_certificates": 500,
+    "dr_start_time": "2026-06-12T08:15:56Z",
+    "dr_end_time": "2026-06-12T08:24:20Z",
+    "issuance_duration_seconds": 504,
+    "certificates_ready": 500,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 59.52,
+    "timing": {
+      "min_seconds": "N/A",
+      "p50_seconds": "N/A",
+      "p90_seconds": "N/A",
+      "p99_seconds": "N/A",
+      "max_seconds": "504"
+    },
+    "run_name": "baseline-dr-500certs-dr-20260612-133700"
+  },
+  {
+    "scenario": "baseline-renewal",
+    "test_type": "renewal_storm",
+    "num_certificates": 200,
+    "certificates_renewed": 205,
+    "total_monitoring_duration_seconds": 181,
+    "first_renewal_at_seconds": 5,
+    "burst_duration_seconds": 135,
+    "issuance_duration_seconds": 135,
+    "rate_certs_per_minute": 90.44,
+    "controller_restarts": 0,
+    "timing": {
+      "min_seconds": "N/A",
+      "p50_seconds": "N/A",
+      "p90_seconds": "N/A",
+      "p99_seconds": "N/A",
+      "max_seconds": "135"
+    },
+    "run_name": "baseline-renewal-200certs-renewal-20260612-143759"
   },
   {
     "scenario": "moderate",
@@ -386,5 +560,89 @@
       "max_seconds": "0"
     },
     "run_name": "sat-concurrent-workers-50-100certs-20260604-150213"
+  },
+  {
+    "scenario": "sat-qps-1000",
+    "num_certificates": 100,
+    "issuer_type": "ca",
+    "start_time": "2026-06-09T12:42:45Z",
+    "end_time": "2026-06-09T12:43:58Z",
+    "submit_duration_seconds": 71,
+    "total_duration_seconds": 73,
+    "issuance_duration_seconds": 2,
+    "certificates_ready": 100,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 3000.00,
+    "timing": {
+      "min_seconds": "0",
+      "p50_seconds": "0",
+      "p90_seconds": "0",
+      "p99_seconds": "0",
+      "max_seconds": "1"
+    },
+    "run_name": "sat-qps-1000-100certs-20260609-181206"
+  },
+  {
+    "scenario": "sat-qps-500",
+    "num_certificates": 100,
+    "issuer_type": "ca",
+    "start_time": "2026-06-09T12:40:17Z",
+    "end_time": "2026-06-09T12:41:30Z",
+    "submit_duration_seconds": 71,
+    "total_duration_seconds": 73,
+    "issuance_duration_seconds": 2,
+    "certificates_ready": 100,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 3000.00,
+    "timing": {
+      "min_seconds": "0",
+      "p50_seconds": "0",
+      "p90_seconds": "1",
+      "p99_seconds": "1",
+      "max_seconds": "1"
+    },
+    "run_name": "sat-qps-500-100certs-20260609-181001"
+  },
+  {
+    "scenario": "sat-workers-100",
+    "num_certificates": 100,
+    "issuer_type": "ca",
+    "start_time": "2026-06-09T12:45:19Z",
+    "end_time": "2026-06-09T12:46:28Z",
+    "submit_duration_seconds": 67,
+    "total_duration_seconds": 69,
+    "issuance_duration_seconds": 2,
+    "certificates_ready": 100,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 3000.00,
+    "timing": {
+      "min_seconds": "0",
+      "p50_seconds": "0",
+      "p90_seconds": "0",
+      "p99_seconds": "0",
+      "max_seconds": "0"
+    },
+    "run_name": "sat-workers-100-100certs-20260609-181439"
+  },
+  {
+    "scenario": "sat-workers-200",
+    "num_certificates": 100,
+    "issuer_type": "ca",
+    "start_time": "2026-06-09T13:25:58Z",
+    "end_time": "2026-06-09T13:27:09Z",
+    "submit_duration_seconds": 69,
+    "total_duration_seconds": 71,
+    "issuance_duration_seconds": 2,
+    "certificates_ready": 100,
+    "certificates_failed": 0,
+    "rate_certs_per_minute": 3000.00,
+    "timing": {
+      "min_seconds": "0",
+      "p50_seconds": "0",
+      "p90_seconds": "0",
+      "p99_seconds": "0",
+      "max_seconds": "1"
+    },
+    "run_name": "sat-workers-200-100certs-20260609-185520"
   }
 ]

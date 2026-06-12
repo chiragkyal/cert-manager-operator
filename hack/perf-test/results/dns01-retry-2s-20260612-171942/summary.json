@@ -1,0 +1,12 @@
+{
+  "test": "dns01-check-retry-period=2s (real validation)",
+  "num_certs": 100,
+  "wall_clock_s": 384,
+  "avg_issuance_s": 209.11,
+  "p50_s": 229.0,
+  "p90_s": 290.0,
+  "p99_s": 316.0,
+  "min_s": 44.0,
+  "max_s": 316.0,
+  "rate_certs_per_min": 15.62
+}

@@ -1,0 +1,35 @@
+=== Baseline Throttling Evidence (6400 certs) ===
+Config: baseline (workers=5, QPS=20, Burst=50)
+Date: 2026-06-10
+
+Total throttling events (last 5000 log lines): 545
+Average delay: ~1.1-1.3s per throttled request
+
+Throttle delay distribution:
+   1 delay="1.59696249s"
+   1 delay="1.59249347s"
+   1 delay="1.589961239s"
+   1 delay="1.58382662s"
+   1 delay="1.58343608s"
+   1 delay="1.58315845s"
+   1 delay="1.58246771s"
+   1 delay="1.582263909s"
+   1 delay="1.57945571s"
+   1 delay="1.57660724s"
+   1 delay="1.551354057s"
+   1 delay="1.550282448s"
+   1 delay="1.549383688s"
+   1 delay="1.546660538s"
+   1 delay="1.545057187s"
+   1 delay="1.542571787s"
+   1 delay="1.542380618s"
+   1 delay="1.542245358s"
+   1 delay="1.540924367s"
+   1 delay="1.540814757s"
+
+Sample earliest throttling:
+I0610 11:48:59.402430       1 request.go:752] "Waited before sending request" logger="cert-manager.controller" key="cert-perf-test/perf-prog-cert-05869" delay="1.418130641s" reason="client-side throttling, not priority and fairness" verb="POST" URL="https://172.30.0.1:443/apis/cert-manager.io/v1/namespaces/cert-perf-test/certificaterequests?fieldManager=cert-manager-certificates-request-manager"
+I0610 11:49:00.450912       1 request.go:752] "Waited before sending request" logger="cert-manager.controller" key="cert-perf-test/perf-prog-cert-05871" delay="1.490558975s" reason="client-side throttling, not priority and fairness" verb="PUT" URL="https://172.30.0.1:443/apis/cert-manager.io/v1/namespaces/cert-perf-test/certificates/perf-prog-cert-05871/status"
+I0610 11:49:01.499543       1 request.go:752] "Waited before sending request" delay="1.390837819s" reason="client-side throttling, not priority and fairness" verb="POST" URL="https://172.30.0.1:443/api/v1/namespaces/cert-perf-test/events"
+I0610 11:49:02.500021       1 request.go:752] "Waited before sending request" logger="cert-manager.controller" key="cert-perf-test/perf-prog-cert-05864" delay="1.470311983s" reason="client-side throttling, not priority and fairness" verb="PUT" URL="https://172.30.0.1:443/apis/cert-manager.io/v1/namespaces/cert-perf-test/certificates/perf-prog-cert-05864/status"
+I0610 11:49:03.558450       1 request.go:752] "Waited before sending request" delay="1.540924367s" reason="client-side throttling, not priority and fairness" verb="POST" URL="https://172.30.0.1:443/api/v1/namespaces/cert-perf-test/events"

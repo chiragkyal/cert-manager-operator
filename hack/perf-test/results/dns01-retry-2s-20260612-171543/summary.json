@@ -1,0 +1,13 @@
+{
+  "test": "dns01-check-retry-period=2s",
+  "num_certs": 100,
+  "total_time_s": 68,
+  "wall_clock_s": 68,
+  "avg_issuance_s": 0.0,
+  "p50_s": 0.0,
+  "p90_s": 0.0,
+  "p99_s": 0.0,
+  "min_s": 0.0,
+  "max_s": 0.0,
+  "rate_certs_per_min": 88.24
+}

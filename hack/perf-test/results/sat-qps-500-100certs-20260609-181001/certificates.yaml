@@ -1,0 +1,2200 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0001
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0001
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0001.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0002
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0002
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0002.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0003
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0003
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0003.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0004
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0004
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0004.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0005
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0005
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0005.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0006
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0006
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0006.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0007
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0007
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0007.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0008
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0008
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0008.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0009
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0009
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0009.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0010
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0010
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0010.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0011
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0011
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0011.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0012
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0012
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0012.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0013
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0013
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0013.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0014
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0014
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0014.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0015
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0015
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0015.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0016
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0016
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0016.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0017
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0017
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0017.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0018
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0018
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0018.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0019
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0019
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0019.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0020
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0020
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0020.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0021
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0021
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0021.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0022
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0022
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0022.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0023
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0023
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0023.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0024
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0024
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0024.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0025
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0025
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0025.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0026
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0026
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0026.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0027
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0027
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0027.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0028
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0028
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0028.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0029
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0029
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0029.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0030
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0030
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0030.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0031
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0031
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0031.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0032
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0032
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0032.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0033
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0033
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0033.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0034
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0034
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0034.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0035
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0035
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0035.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0036
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0036
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0036.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0037
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0037
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0037.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0038
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0038
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0038.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0039
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0039
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0039.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0040
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0040
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0040.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0041
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0041
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0041.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0042
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0042
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0042.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0043
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0043
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0043.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0044
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0044
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0044.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0045
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0045
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0045.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0046
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0046
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0046.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0047
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0047
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0047.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0048
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0048
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0048.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0049
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0049
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0049.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0050
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0050
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0050.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0051
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0051
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0051.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0052
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0052
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0052.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0053
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0053
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0053.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0054
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0054
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0054.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0055
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0055
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0055.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0056
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0056
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0056.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0057
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0057
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0057.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0058
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0058
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0058.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0059
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0059
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0059.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0060
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0060
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0060.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0061
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0061
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0061.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0062
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0062
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0062.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0063
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0063
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0063.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0064
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0064
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0064.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0065
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0065
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0065.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0066
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0066
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0066.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0067
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0067
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0067.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0068
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0068
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0068.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0069
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0069
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0069.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0070
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0070
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0070.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0071
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0071
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0071.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0072
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0072
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0072.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0073
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0073
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0073.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0074
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0074
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0074.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0075
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0075
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0075.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0076
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0076
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0076.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0077
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0077
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0077.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0078
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0078
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0078.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0079
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0079
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0079.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0080
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0080
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0080.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0081
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0081
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0081.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0082
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0082
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0082.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0083
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0083
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0083.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0084
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0084
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0084.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0085
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0085
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0085.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0086
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0086
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0086.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0087
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0087
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0087.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0088
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0088
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0088.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0089
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0089
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0089.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0090
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0090
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0090.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0091
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0091
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0091.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0092
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0092
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0092.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0093
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0093
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0093.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0094
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0094
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0094.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0095
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0095
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0095.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0096
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0096
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0096.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0097
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0097
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0097.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0098
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0098
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0098.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0099
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0099
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0099.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: perf-test-cert-0100
+  namespace: cert-perf-test
+  labels:
+    perf-test: "true"
+    scenario: "sat-qps-500"
+spec:
+  secretName: perf-test-secret-0100
+  duration: 2160h
+  renewBefore: 360h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "perf-test-0100.example.com"
+  issuerRef:
+    name: perf-test-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---

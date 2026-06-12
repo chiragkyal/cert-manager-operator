@@ -1,0 +1,23 @@
+{
+  "scenario": "baseline-acme",
+  "test_type": "acme_scale_http01",
+  "issuer": "perf-test-acme-pebble",
+  "with_validation_delay": false,
+  "num_certificates": 1000,
+  "submit_duration_seconds": 720,
+  "total_duration_seconds": 3059,
+  "issuance_duration_seconds": 2339,
+  "certificates_ready": 1000,
+  "certificates_failed": 0,
+  "controller_restarts": 0,
+  "peak_concurrent_challenges": 866,
+  "peak_solver_pods": 39,
+  "rate_certs_per_minute": 25.65,
+  "timing": {
+    "min_seconds": "35",
+    "p50_seconds": "1703",
+    "p90_seconds": "2206",
+    "p99_seconds": "2311",
+    "max_seconds": "2333"
+  }
+}

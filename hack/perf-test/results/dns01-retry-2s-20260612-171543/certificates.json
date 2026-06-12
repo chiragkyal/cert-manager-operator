@@ -1,0 +1,4009 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00001\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00001.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00001-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:44Z",
+                "generation": 1,
+                "name": "retry-test-00001",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395967",
+                "uid": "57845f82-da29-42fa-8364-b0860dd3fc0e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00001.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00001-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:44Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:37:42Z",
+                "notBefore": "2026-06-12T11:37:43Z",
+                "renewalTime": "2026-08-11T11:37:42Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00002\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00002.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00002-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:45Z",
+                "generation": 1,
+                "name": "retry-test-00002",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395972",
+                "uid": "0d40b58b-07a7-4a8f-bf8d-6aa7536fd4e6"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00002.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00002-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:45Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:37:47Z",
+                "notBefore": "2026-06-12T11:37:48Z",
+                "renewalTime": "2026-08-11T11:37:47Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00003\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00003.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00003-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:46Z",
+                "generation": 1,
+                "name": "retry-test-00003",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395978",
+                "uid": "32920ab4-092c-40b2-b9b4-ddfd6843253e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00003.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00003-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:46Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:37:34Z",
+                "notBefore": "2026-06-12T11:37:35Z",
+                "renewalTime": "2026-08-11T11:37:34Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00004\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00004.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00004-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:47Z",
+                "generation": 1,
+                "name": "retry-test-00004",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395985",
+                "uid": "672a90a5-169a-4115-8b4c-0f5a9124c095"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00004.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00004-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:47Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:37:43Z",
+                "notBefore": "2026-06-12T11:37:44Z",
+                "renewalTime": "2026-08-11T11:37:43Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00005\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00005.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00005-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:48Z",
+                "generation": 1,
+                "name": "retry-test-00005",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395989",
+                "uid": "9fc111b8-015e-4864-8ed4-b537a1581443"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00005.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00005-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:48Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:02Z",
+                "notBefore": "2026-06-12T11:38:03Z",
+                "renewalTime": "2026-08-11T11:38:02Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00006\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00006.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00006-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:48Z",
+                "generation": 1,
+                "name": "retry-test-00006",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395992",
+                "uid": "de6c02d3-7512-4d1b-af2f-d2e92af8193d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00006.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00006-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:48Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:21Z",
+                "notBefore": "2026-06-12T11:38:22Z",
+                "renewalTime": "2026-08-11T11:38:21Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00007\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00007.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00007-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:49Z",
+                "generation": 1,
+                "name": "retry-test-00007",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "395996",
+                "uid": "4e73de47-41db-4591-ba94-707bbc0e6e3d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00007.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00007-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:49Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:40Z",
+                "notBefore": "2026-06-12T11:38:41Z",
+                "renewalTime": "2026-08-11T11:38:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00008\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00008.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00008-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:50Z",
+                "generation": 1,
+                "name": "retry-test-00008",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396004",
+                "uid": "df16dead-0830-47ee-acf9-3499f0fd4ea6"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00008.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00008-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:50Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:45Z",
+                "notBefore": "2026-06-12T11:38:46Z",
+                "renewalTime": "2026-08-11T11:38:45Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00009\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00009.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00009-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:50Z",
+                "generation": 1,
+                "name": "retry-test-00009",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396010",
+                "uid": "c7f10c8d-dfc8-4ae3-8527-c25b1b0fed64"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00009.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00009-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:50Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:55Z",
+                "notBefore": "2026-06-12T11:38:56Z",
+                "renewalTime": "2026-08-11T11:38:55Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00010\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00010.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00010-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:51Z",
+                "generation": 1,
+                "name": "retry-test-00010",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396015",
+                "uid": "ee096f47-2752-4320-b128-b8fb93b9d4be"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00010.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00010-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:51Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:38:57Z",
+                "notBefore": "2026-06-12T11:38:58Z",
+                "renewalTime": "2026-08-11T11:38:57Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00011\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00011.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00011-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:52Z",
+                "generation": 1,
+                "name": "retry-test-00011",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396022",
+                "uid": "43de4590-df76-49f6-b150-7676567c9040"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00011.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00011-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:52Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:02Z",
+                "notBefore": "2026-06-12T11:39:03Z",
+                "renewalTime": "2026-08-11T11:39:02Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00012\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00012.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00012-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:52Z",
+                "generation": 1,
+                "name": "retry-test-00012",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396024",
+                "uid": "a7da9ed2-5786-495d-a0d1-8d793420763e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00012.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00012-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:52Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:14Z",
+                "notBefore": "2026-06-12T11:39:15Z",
+                "renewalTime": "2026-08-11T11:39:14Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00013\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00013.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00013-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:53Z",
+                "generation": 1,
+                "name": "retry-test-00013",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396027",
+                "uid": "8f0ed436-2fd0-44a0-a898-d803071cdcce"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00013.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00013-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:53Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:18Z",
+                "notBefore": "2026-06-12T11:39:19Z",
+                "renewalTime": "2026-08-11T11:39:18Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00014\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00014.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00014-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:54Z",
+                "generation": 1,
+                "name": "retry-test-00014",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396037",
+                "uid": "a30429e5-2322-49fe-b1b5-ff72e58747e6"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00014.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00014-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:54Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:31Z",
+                "notBefore": "2026-06-12T11:39:32Z",
+                "renewalTime": "2026-08-11T11:39:31Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00015\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00015.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00015-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:54Z",
+                "generation": 1,
+                "name": "retry-test-00015",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396042",
+                "uid": "d49ded72-d3e7-4bbd-b386-a8a4eac053ed"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00015.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00015-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:54Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:37Z",
+                "notBefore": "2026-06-12T11:39:38Z",
+                "renewalTime": "2026-08-11T11:39:37Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00016\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00016.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00016-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:55Z",
+                "generation": 1,
+                "name": "retry-test-00016",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396051",
+                "uid": "d345cc9a-059f-41d6-8b23-4ec79bd524c7"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00016.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00016-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:55Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:32Z",
+                "notBefore": "2026-06-12T11:39:33Z",
+                "renewalTime": "2026-08-11T11:39:32Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00017\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00017.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00017-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:56Z",
+                "generation": 1,
+                "name": "retry-test-00017",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396058",
+                "uid": "55417f7a-1866-4bc4-a252-1ddfe6faee86"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00017.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00017-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:56Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:29Z",
+                "notBefore": "2026-06-12T11:39:30Z",
+                "renewalTime": "2026-08-11T11:39:29Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00018\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00018.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00018-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:56Z",
+                "generation": 1,
+                "name": "retry-test-00018",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396065",
+                "uid": "81929567-3e04-4380-ba1d-3b2ff95cc018"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00018.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00018-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:56Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:46Z",
+                "notBefore": "2026-06-12T11:39:47Z",
+                "renewalTime": "2026-08-11T11:39:46Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00019\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00019.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00019-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:57Z",
+                "generation": 1,
+                "name": "retry-test-00019",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396069",
+                "uid": "97ffb2a4-996b-4b28-be1f-80129b4ee584"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00019.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00019-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:57Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:36Z",
+                "notBefore": "2026-06-12T11:39:37Z",
+                "renewalTime": "2026-08-11T11:39:36Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00020\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00020.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00020-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:58Z",
+                "generation": 1,
+                "name": "retry-test-00020",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396075",
+                "uid": "593da2d6-dfb4-40c3-8989-48c5ce07404b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00020.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00020-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:58Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:57Z",
+                "notBefore": "2026-06-12T11:39:58Z",
+                "renewalTime": "2026-08-11T11:39:57Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00021\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00021.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00021-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:58Z",
+                "generation": 1,
+                "name": "retry-test-00021",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396079",
+                "uid": "8b861ae5-c186-42ca-af5a-b98faa9b94e8"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00021.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00021-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:58Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:39:53Z",
+                "notBefore": "2026-06-12T11:39:54Z",
+                "renewalTime": "2026-08-11T11:39:53Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00022\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00022.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00022-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:45:59Z",
+                "generation": 1,
+                "name": "retry-test-00022",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396085",
+                "uid": "cce07700-2d72-412d-a81e-bd3c5738a79d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00022.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00022-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:45:59Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:01Z",
+                "notBefore": "2026-06-12T11:40:02Z",
+                "renewalTime": "2026-08-11T11:40:01Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00023\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00023.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00023-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:00Z",
+                "generation": 1,
+                "name": "retry-test-00023",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396092",
+                "uid": "2cf2f646-196d-43ca-a871-4a1d55c4828c"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00023.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00023-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:00Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:06Z",
+                "notBefore": "2026-06-12T11:40:07Z",
+                "renewalTime": "2026-08-11T11:40:06Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00024\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00024.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00024-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:00Z",
+                "generation": 1,
+                "name": "retry-test-00024",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396099",
+                "uid": "07c0f51e-ce1b-44f7-9d18-df267fe79d18"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00024.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00024-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:00Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:19Z",
+                "notBefore": "2026-06-12T11:40:20Z",
+                "renewalTime": "2026-08-11T11:40:19Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00025\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00025.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00025-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:01Z",
+                "generation": 1,
+                "name": "retry-test-00025",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396105",
+                "uid": "daece15a-7cc0-49e6-bc96-7ee1d8edc632"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00025.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00025-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:01Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:16Z",
+                "notBefore": "2026-06-12T11:40:17Z",
+                "renewalTime": "2026-08-11T11:40:16Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00026\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00026.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00026-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:02Z",
+                "generation": 1,
+                "name": "retry-test-00026",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396111",
+                "uid": "69752a98-8807-469a-872f-92a3a4c93246"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00026.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00026-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:02Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:11Z",
+                "notBefore": "2026-06-12T11:40:12Z",
+                "renewalTime": "2026-08-11T11:40:11Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00027\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00027.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00027-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:02Z",
+                "generation": 1,
+                "name": "retry-test-00027",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396118",
+                "uid": "4f9a02bd-22d0-4589-b6d2-741ab0ba3e9d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00027.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00027-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:02Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:02Z",
+                "notBefore": "2026-06-12T11:40:03Z",
+                "renewalTime": "2026-08-11T11:40:02Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00028\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00028.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00028-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:03Z",
+                "generation": 1,
+                "name": "retry-test-00028",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396121",
+                "uid": "97bd1eee-e30b-492c-995e-ef282b80c65f"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00028.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00028-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:03Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:24Z",
+                "notBefore": "2026-06-12T11:40:25Z",
+                "renewalTime": "2026-08-11T11:40:24Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00029\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00029.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00029-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:04Z",
+                "generation": 1,
+                "name": "retry-test-00029",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396126",
+                "uid": "d5ea80f6-ce5f-49b0-83d7-9c5bf4b0168e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00029.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00029-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:04Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:36Z",
+                "notBefore": "2026-06-12T11:40:37Z",
+                "renewalTime": "2026-08-11T11:40:36Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00030\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00030.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00030-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:04Z",
+                "generation": 1,
+                "name": "retry-test-00030",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396132",
+                "uid": "0868e987-2fe5-4e48-92ed-ab779d5975cf"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00030.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00030-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:04Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:36Z",
+                "notBefore": "2026-06-12T11:40:37Z",
+                "renewalTime": "2026-08-11T11:40:36Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00031\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00031.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00031-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:05Z",
+                "generation": 1,
+                "name": "retry-test-00031",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396139",
+                "uid": "16f3f91a-532a-4187-b62a-0daa2a8252fe"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00031.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00031-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:05Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:12Z",
+                "notBefore": "2026-06-12T11:40:13Z",
+                "renewalTime": "2026-08-11T11:40:12Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00032\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00032.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00032-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:06Z",
+                "generation": 1,
+                "name": "retry-test-00032",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396146",
+                "uid": "6ab1dd58-ef6c-4fe1-b64b-924de8186c2b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00032.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00032-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:06Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:14Z",
+                "notBefore": "2026-06-12T11:40:15Z",
+                "renewalTime": "2026-08-11T11:40:14Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00033\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00033.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00033-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:06Z",
+                "generation": 1,
+                "name": "retry-test-00033",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396149",
+                "uid": "19d9e7a3-763b-48c0-a543-7b2ae716d3b7"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00033.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00033-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:06Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:51Z",
+                "notBefore": "2026-06-12T11:40:52Z",
+                "renewalTime": "2026-08-11T11:40:51Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00034\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00034.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00034-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:07Z",
+                "generation": 1,
+                "name": "retry-test-00034",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396153",
+                "uid": "73751d0e-a4d2-433c-8069-9458b7722c87"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00034.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00034-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:07Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:51Z",
+                "notBefore": "2026-06-12T11:40:52Z",
+                "renewalTime": "2026-08-11T11:40:51Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00035\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00035.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00035-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:08Z",
+                "generation": 1,
+                "name": "retry-test-00035",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396157",
+                "uid": "73725aba-d25d-4575-a407-b2bf89c11532"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00035.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00035-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:08Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:26Z",
+                "notBefore": "2026-06-12T11:40:27Z",
+                "renewalTime": "2026-08-11T11:40:26Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00036\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00036.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00036-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:09Z",
+                "generation": 1,
+                "name": "retry-test-00036",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396163",
+                "uid": "e8141868-96b5-4af4-90d7-42f9b4c6f37d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00036.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00036-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:09Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:25Z",
+                "notBefore": "2026-06-12T11:40:26Z",
+                "renewalTime": "2026-08-11T11:40:25Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00037\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00037.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00037-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:09Z",
+                "generation": 1,
+                "name": "retry-test-00037",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396169",
+                "uid": "3cac8c81-9170-419c-ac12-a4c18972eb43"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00037.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00037-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:09Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:28Z",
+                "notBefore": "2026-06-12T11:40:29Z",
+                "renewalTime": "2026-08-11T11:40:28Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00038\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00038.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00038-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:10Z",
+                "generation": 1,
+                "name": "retry-test-00038",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396176",
+                "uid": "8463a4ac-81e5-4143-b517-58e2e16479f0"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00038.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00038-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:10Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:28Z",
+                "notBefore": "2026-06-12T11:40:29Z",
+                "renewalTime": "2026-08-11T11:40:28Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00039\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00039.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00039-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:11Z",
+                "generation": 1,
+                "name": "retry-test-00039",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396184",
+                "uid": "9e575f34-a7ca-49e3-8162-61d728e50466"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00039.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00039-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:11Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:38Z",
+                "notBefore": "2026-06-12T11:40:39Z",
+                "renewalTime": "2026-08-11T11:40:38Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00040\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00040.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00040-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:11Z",
+                "generation": 1,
+                "name": "retry-test-00040",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396189",
+                "uid": "3a2b6751-fdad-41bc-bc15-c2bf49adfc17"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00040.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00040-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:11Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:42Z",
+                "notBefore": "2026-06-12T11:40:43Z",
+                "renewalTime": "2026-08-11T11:40:42Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00041\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00041.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00041-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:12Z",
+                "generation": 1,
+                "name": "retry-test-00041",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396193",
+                "uid": "57f8bdaf-9728-42d2-9bcc-98c4182703ca"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00041.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00041-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:12Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:40Z",
+                "notBefore": "2026-06-12T11:40:41Z",
+                "renewalTime": "2026-08-11T11:40:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00042\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00042.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00042-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:13Z",
+                "generation": 1,
+                "name": "retry-test-00042",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396197",
+                "uid": "74454daf-b313-4b2d-b0ba-f5508640699c"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00042.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00042-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:13Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:49Z",
+                "notBefore": "2026-06-12T11:40:50Z",
+                "renewalTime": "2026-08-11T11:40:49Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00043\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00043.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00043-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:13Z",
+                "generation": 1,
+                "name": "retry-test-00043",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396201",
+                "uid": "27be9f05-8340-4b1d-afe6-b04d74a39e5b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00043.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00043-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:13Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:49Z",
+                "notBefore": "2026-06-12T11:40:50Z",
+                "renewalTime": "2026-08-11T11:40:49Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00044\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00044.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00044-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:14Z",
+                "generation": 1,
+                "name": "retry-test-00044",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396205",
+                "uid": "6e08fabd-0cbf-42f4-9ded-21ca3af0b486"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00044.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00044-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:14Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:55Z",
+                "notBefore": "2026-06-12T11:41:56Z",
+                "renewalTime": "2026-08-11T11:41:55Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00045\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00045.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00045-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:15Z",
+                "generation": 1,
+                "name": "retry-test-00045",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396210",
+                "uid": "9a299727-68f3-4f70-83b0-5147f1badaf8"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00045.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00045-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:15Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:55Z",
+                "notBefore": "2026-06-12T11:40:56Z",
+                "renewalTime": "2026-08-11T11:40:55Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00046\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00046.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00046-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:15Z",
+                "generation": 1,
+                "name": "retry-test-00046",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396216",
+                "uid": "b1a8d47a-f6dc-46ea-a8b4-3d5b2f101b24"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00046.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00046-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:15Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:00Z",
+                "notBefore": "2026-06-12T11:41:01Z",
+                "renewalTime": "2026-08-11T11:41:00Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00047\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00047.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00047-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:16Z",
+                "generation": 1,
+                "name": "retry-test-00047",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396220",
+                "uid": "4a972f20-8d87-46a6-862c-a1e7dde1a835"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00047.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00047-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:16Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:40:59Z",
+                "notBefore": "2026-06-12T11:41:00Z",
+                "renewalTime": "2026-08-11T11:40:59Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00048\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00048.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00048-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:17Z",
+                "generation": 1,
+                "name": "retry-test-00048",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396226",
+                "uid": "132b1956-f112-4f99-9b61-ebcce253b4ed"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00048.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00048-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:17Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:03Z",
+                "notBefore": "2026-06-12T11:41:04Z",
+                "renewalTime": "2026-08-11T11:41:03Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00049\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00049.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00049-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:17Z",
+                "generation": 1,
+                "name": "retry-test-00049",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396229",
+                "uid": "759404a1-f410-4dca-92ba-40fc7f3f2d85"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00049.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00049-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:17Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:03Z",
+                "notBefore": "2026-06-12T11:41:04Z",
+                "renewalTime": "2026-08-11T11:41:03Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00050\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00050.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00050-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:18Z",
+                "generation": 1,
+                "name": "retry-test-00050",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396233",
+                "uid": "ebbc1aca-5ac8-4335-bb24-a1ccbed99679"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00050.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00050-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:18Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:00Z",
+                "notBefore": "2026-06-12T11:42:01Z",
+                "renewalTime": "2026-08-11T11:42:00Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00051\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00051.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00051-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:19Z",
+                "generation": 1,
+                "name": "retry-test-00051",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396236",
+                "uid": "990a6fc5-aeb3-45c4-a2cf-e5ac9d3236b6"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00051.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00051-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:19Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:06Z",
+                "notBefore": "2026-06-12T11:41:07Z",
+                "renewalTime": "2026-08-11T11:41:06Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00052\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00052.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00052-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:19Z",
+                "generation": 1,
+                "name": "retry-test-00052",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396245",
+                "uid": "6962ebef-ca57-4a55-96f8-cdc3462acaef"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00052.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00052-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:19Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:12Z",
+                "notBefore": "2026-06-12T11:41:13Z",
+                "renewalTime": "2026-08-11T11:41:12Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00053\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00053.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00053-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:20Z",
+                "generation": 1,
+                "name": "retry-test-00053",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396254",
+                "uid": "a12ca5dd-343b-4d32-b6d0-8ed424cee716"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00053.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00053-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:20Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:10Z",
+                "notBefore": "2026-06-12T11:41:11Z",
+                "renewalTime": "2026-08-11T11:41:10Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00054\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00054.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00054-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:21Z",
+                "generation": 1,
+                "name": "retry-test-00054",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396259",
+                "uid": "38c0778a-4e93-4a0f-b662-f1a732f5da38"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00054.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00054-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:21Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:04Z",
+                "notBefore": "2026-06-12T11:42:05Z",
+                "renewalTime": "2026-08-11T11:42:04Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00055\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00055.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00055-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:21Z",
+                "generation": 1,
+                "name": "retry-test-00055",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396269",
+                "uid": "25b75336-a681-4995-8dde-9498d220d658"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00055.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00055-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:21Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:16Z",
+                "notBefore": "2026-06-12T11:41:17Z",
+                "renewalTime": "2026-08-11T11:41:16Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00056\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00056.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00056-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:22Z",
+                "generation": 1,
+                "name": "retry-test-00056",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396275",
+                "uid": "e4ea8e77-2a22-467f-81e6-336b878643a5"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00056.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00056-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:22Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:15Z",
+                "notBefore": "2026-06-12T11:41:16Z",
+                "renewalTime": "2026-08-11T11:41:15Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00057\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00057.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00057-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:23Z",
+                "generation": 1,
+                "name": "retry-test-00057",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396282",
+                "uid": "4b0c8447-a6ce-447f-83dc-a13736087a78"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00057.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00057-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:23Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:21Z",
+                "notBefore": "2026-06-12T11:41:22Z",
+                "renewalTime": "2026-08-11T11:41:21Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00058\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00058.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00058-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:23Z",
+                "generation": 1,
+                "name": "retry-test-00058",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396287",
+                "uid": "e5cf9b72-c7bf-4d20-99ca-3ec3a3ac46b9"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00058.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00058-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:23Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:04Z",
+                "notBefore": "2026-06-12T11:42:05Z",
+                "renewalTime": "2026-08-11T11:42:04Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00059\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00059.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00059-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:24Z",
+                "generation": 1,
+                "name": "retry-test-00059",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396292",
+                "uid": "251d5d66-3034-4878-8031-362014aec358"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00059.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00059-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:24Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:16Z",
+                "notBefore": "2026-06-12T11:41:17Z",
+                "renewalTime": "2026-08-11T11:41:16Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00060\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00060.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00060-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:25Z",
+                "generation": 1,
+                "name": "retry-test-00060",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396296",
+                "uid": "cabb7fb0-3398-4c13-a6a5-98d29006aef2"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00060.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00060-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:25Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:25Z",
+                "notBefore": "2026-06-12T11:41:26Z",
+                "renewalTime": "2026-08-11T11:41:25Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00061\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00061.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00061-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:25Z",
+                "generation": 1,
+                "name": "retry-test-00061",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396304",
+                "uid": "ba87d878-a88c-4dec-841b-a18f4e9698fb"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00061.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00061-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:25Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:29Z",
+                "notBefore": "2026-06-12T11:41:30Z",
+                "renewalTime": "2026-08-11T11:41:29Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00062\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00062.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00062-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:26Z",
+                "generation": 1,
+                "name": "retry-test-00062",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396309",
+                "uid": "6ecc580f-de2b-4c31-b67a-c853985a2499"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00062.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00062-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:26Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:30Z",
+                "notBefore": "2026-06-12T11:41:31Z",
+                "renewalTime": "2026-08-11T11:41:30Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00063\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00063.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00063-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:27Z",
+                "generation": 1,
+                "name": "retry-test-00063",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396314",
+                "uid": "6f98ecc1-63ea-434a-8b52-3a224a65ef9d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00063.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00063-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:27Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:27Z",
+                "notBefore": "2026-06-12T11:41:28Z",
+                "renewalTime": "2026-08-11T11:41:27Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00064\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00064.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00064-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:27Z",
+                "generation": 1,
+                "name": "retry-test-00064",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396319",
+                "uid": "6b6ba77c-819e-48a0-8c69-17849a5cec74"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00064.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00064-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:27Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:36Z",
+                "notBefore": "2026-06-12T11:41:37Z",
+                "renewalTime": "2026-08-11T11:41:36Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00065\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00065.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00065-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:28Z",
+                "generation": 1,
+                "name": "retry-test-00065",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396325",
+                "uid": "97f74341-f744-4347-a310-3655fdf2155a"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00065.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00065-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:28Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:34Z",
+                "notBefore": "2026-06-12T11:41:35Z",
+                "renewalTime": "2026-08-11T11:41:34Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00066\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00066.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00066-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:29Z",
+                "generation": 1,
+                "name": "retry-test-00066",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396332",
+                "uid": "eeac2298-d473-4ba4-a1da-4c0b058bc52b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00066.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00066-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:29Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:40Z",
+                "notBefore": "2026-06-12T11:41:41Z",
+                "renewalTime": "2026-08-11T11:41:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00067\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00067.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00067-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:29Z",
+                "generation": 1,
+                "name": "retry-test-00067",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396336",
+                "uid": "547331cb-8f90-441a-80e9-d63767683879"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00067.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00067-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:29Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:40Z",
+                "notBefore": "2026-06-12T11:41:41Z",
+                "renewalTime": "2026-08-11T11:41:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00068\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00068.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00068-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:30Z",
+                "generation": 1,
+                "name": "retry-test-00068",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396345",
+                "uid": "a58c3f8a-6478-43ae-8b14-506a402c86ea"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00068.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00068-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:30Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:43Z",
+                "notBefore": "2026-06-12T11:41:44Z",
+                "renewalTime": "2026-08-11T11:41:43Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00069\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00069.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00069-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:31Z",
+                "generation": 1,
+                "name": "retry-test-00069",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396349",
+                "uid": "63d0e629-aef5-4c33-878b-31e753ff3bb5"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00069.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00069-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:31Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:47Z",
+                "notBefore": "2026-06-12T11:41:48Z",
+                "renewalTime": "2026-08-11T11:41:47Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00070\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00070.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00070-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:31Z",
+                "generation": 1,
+                "name": "retry-test-00070",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396355",
+                "uid": "06e2ef25-aa22-4610-9284-46728399d1f4"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00070.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00070-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:31Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:49Z",
+                "notBefore": "2026-06-12T11:41:50Z",
+                "renewalTime": "2026-08-11T11:41:49Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00071\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00071.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00071-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:32Z",
+                "generation": 1,
+                "name": "retry-test-00071",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396361",
+                "uid": "4ac9a895-6a9b-4e7b-98cd-06ccff67ccb1"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00071.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00071-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:32Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:52Z",
+                "notBefore": "2026-06-12T11:41:53Z",
+                "renewalTime": "2026-08-11T11:41:52Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00072\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00072.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00072-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:33Z",
+                "generation": 1,
+                "name": "retry-test-00072",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396364",
+                "uid": "ea796d86-f84b-4bd3-bc9d-3ea31ae7d9ea"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00072.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00072-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:33Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:41:52Z",
+                "notBefore": "2026-06-12T11:41:53Z",
+                "renewalTime": "2026-08-11T11:41:52Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00073\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00073.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00073-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:33Z",
+                "generation": 1,
+                "name": "retry-test-00073",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396367",
+                "uid": "ba60a245-9ee3-4e5e-a274-79bfeadec60f"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00073.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00073-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:33Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:02Z",
+                "notBefore": "2026-06-12T11:42:03Z",
+                "renewalTime": "2026-08-11T11:42:02Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00074\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00074.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00074-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:34Z",
+                "generation": 1,
+                "name": "retry-test-00074",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396373",
+                "uid": "7acfc938-00d5-4a08-9b69-7f1cc6a6a4c8"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00074.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00074-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:34Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:10Z",
+                "notBefore": "2026-06-12T11:42:11Z",
+                "renewalTime": "2026-08-11T11:42:10Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00075\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00075.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00075-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:35Z",
+                "generation": 1,
+                "name": "retry-test-00075",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396378",
+                "uid": "34ea8667-64c7-4140-acec-e30d03b6513b"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00075.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00075-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:35Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:11Z",
+                "notBefore": "2026-06-12T11:42:12Z",
+                "renewalTime": "2026-08-11T11:42:11Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00076\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00076.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00076-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:36Z",
+                "generation": 1,
+                "name": "retry-test-00076",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396386",
+                "uid": "421101e5-3c33-47d3-9a07-b5f37a220b6d"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00076.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00076-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:36Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:21Z",
+                "notBefore": "2026-06-12T11:42:22Z",
+                "renewalTime": "2026-08-11T11:42:21Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00077\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00077.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00077-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:36Z",
+                "generation": 1,
+                "name": "retry-test-00077",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396393",
+                "uid": "9b3bff16-56b2-48e1-a2e3-8840d79f5d75"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00077.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00077-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:36Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:14Z",
+                "notBefore": "2026-06-12T11:42:15Z",
+                "renewalTime": "2026-08-11T11:42:14Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00078\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00078.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00078-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:37Z",
+                "generation": 1,
+                "name": "retry-test-00078",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396397",
+                "uid": "32089d35-aa9a-4fe4-b130-e220fe68c812"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00078.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00078-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:37Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:16Z",
+                "notBefore": "2026-06-12T11:42:17Z",
+                "renewalTime": "2026-08-11T11:42:16Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00079\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00079.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00079-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:38Z",
+                "generation": 1,
+                "name": "retry-test-00079",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396401",
+                "uid": "ecce7298-a9d4-4c31-a87a-372a91cc0a0e"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00079.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00079-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:38Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:22Z",
+                "notBefore": "2026-06-12T11:42:23Z",
+                "renewalTime": "2026-08-11T11:42:22Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00080\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00080.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00080-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:38Z",
+                "generation": 1,
+                "name": "retry-test-00080",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396404",
+                "uid": "83f5e1f0-33d6-407b-8a97-c7dd9e383ddb"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00080.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00080-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:38Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:05Z",
+                "notBefore": "2026-06-12T11:43:06Z",
+                "renewalTime": "2026-08-11T11:43:05Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00081\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00081.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00081-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:39Z",
+                "generation": 1,
+                "name": "retry-test-00081",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396409",
+                "uid": "1bff5897-56d8-4ff4-bc6a-4cfb0a90b177"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00081.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00081-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:39Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:24Z",
+                "notBefore": "2026-06-12T11:42:25Z",
+                "renewalTime": "2026-08-11T11:42:24Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00082\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00082.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00082-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:40Z",
+                "generation": 1,
+                "name": "retry-test-00082",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396412",
+                "uid": "0c39c72f-e6c4-477f-b1b6-afca6210d552"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00082.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00082-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:40Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:29Z",
+                "notBefore": "2026-06-12T11:42:30Z",
+                "renewalTime": "2026-08-11T11:42:29Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00083\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00083.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00083-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:40Z",
+                "generation": 1,
+                "name": "retry-test-00083",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396418",
+                "uid": "0f4bc5de-7b7e-402d-930e-48a88c456c21"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00083.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00083-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:40Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:28Z",
+                "notBefore": "2026-06-12T11:42:29Z",
+                "renewalTime": "2026-08-11T11:42:28Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00084\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00084.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00084-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:41Z",
+                "generation": 1,
+                "name": "retry-test-00084",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396423",
+                "uid": "7525fec0-37c7-4501-bc23-9c7f102312b9"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00084.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00084-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:41Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:30Z",
+                "notBefore": "2026-06-12T11:42:31Z",
+                "renewalTime": "2026-08-11T11:42:30Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00085\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00085.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00085-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:42Z",
+                "generation": 1,
+                "name": "retry-test-00085",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396428",
+                "uid": "a2c52353-e186-4d33-80f2-e8fdaaf18511"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00085.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00085-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:42Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:36Z",
+                "notBefore": "2026-06-12T11:42:37Z",
+                "renewalTime": "2026-08-11T11:42:36Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00086\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00086.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00086-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:42Z",
+                "generation": 1,
+                "name": "retry-test-00086",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396433",
+                "uid": "89b81fcf-b3a6-46c5-916c-94f6c2b02980"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00086.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00086-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:42Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:37Z",
+                "notBefore": "2026-06-12T11:42:38Z",
+                "renewalTime": "2026-08-11T11:42:37Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00087\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00087.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00087-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:43Z",
+                "generation": 1,
+                "name": "retry-test-00087",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396436",
+                "uid": "52b13a5b-087b-42fe-9fec-9d7ae9d12cc3"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00087.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00087-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:43Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:40Z",
+                "notBefore": "2026-06-12T11:42:41Z",
+                "renewalTime": "2026-08-11T11:42:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00088\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00088.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00088-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:44Z",
+                "generation": 1,
+                "name": "retry-test-00088",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396441",
+                "uid": "a875eea6-f878-4959-85e3-471c9340ea69"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00088.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00088-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:44Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:40Z",
+                "notBefore": "2026-06-12T11:42:41Z",
+                "renewalTime": "2026-08-11T11:42:40Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00089\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00089.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00089-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:44Z",
+                "generation": 1,
+                "name": "retry-test-00089",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396445",
+                "uid": "4dce1762-8874-487b-a971-0b752cd356b6"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00089.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00089-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:44Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:43Z",
+                "notBefore": "2026-06-12T11:42:44Z",
+                "renewalTime": "2026-08-11T11:42:43Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00090\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00090.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00090-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:45Z",
+                "generation": 1,
+                "name": "retry-test-00090",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396447",
+                "uid": "08288082-e8b8-4b2e-a8ba-c60014d709aa"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00090.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00090-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:45Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:52Z",
+                "notBefore": "2026-06-12T11:42:53Z",
+                "renewalTime": "2026-08-11T11:42:52Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00091\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00091.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00091-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:46Z",
+                "generation": 1,
+                "name": "retry-test-00091",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396461",
+                "uid": "699aaa95-3fbf-4e23-82da-8647af8aef71"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00091.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00091-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:46Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:49Z",
+                "notBefore": "2026-06-12T11:42:50Z",
+                "renewalTime": "2026-08-11T11:42:49Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00092\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00092.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00092-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:46Z",
+                "generation": 1,
+                "name": "retry-test-00092",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396467",
+                "uid": "ddbedf41-2dac-4f90-bcff-c23c7bf00910"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00092.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00092-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:46Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:52Z",
+                "notBefore": "2026-06-12T11:42:53Z",
+                "renewalTime": "2026-08-11T11:42:52Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00093\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00093.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00093-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:47Z",
+                "generation": 1,
+                "name": "retry-test-00093",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396475",
+                "uid": "5496fb9b-37fb-4160-b048-ae75f67f43f9"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00093.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00093-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:47Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:15Z",
+                "notBefore": "2026-06-12T11:43:16Z",
+                "renewalTime": "2026-08-11T11:43:15Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00094\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00094.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00094-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:48Z",
+                "generation": 1,
+                "name": "retry-test-00094",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396480",
+                "uid": "f16ab1c5-8aa9-432c-9843-730d3d6d853c"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00094.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00094-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:48Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:17Z",
+                "notBefore": "2026-06-12T11:43:18Z",
+                "renewalTime": "2026-08-11T11:43:17Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00095\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00095.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00095-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:48Z",
+                "generation": 1,
+                "name": "retry-test-00095",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396487",
+                "uid": "b95989cf-9fec-41d2-a62e-1444899e7f99"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00095.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00095-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:48Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:13Z",
+                "notBefore": "2026-06-12T11:43:14Z",
+                "renewalTime": "2026-08-11T11:43:13Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00096\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00096.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00096-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:49Z",
+                "generation": 1,
+                "name": "retry-test-00096",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396492",
+                "uid": "6fb19501-f1bf-425e-92ab-0708092fbeec"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00096.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00096-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:49Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:51Z",
+                "notBefore": "2026-06-12T11:42:52Z",
+                "renewalTime": "2026-08-11T11:42:51Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00097\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00097.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00097-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:50Z",
+                "generation": 1,
+                "name": "retry-test-00097",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396499",
+                "uid": "90928978-f55e-4635-bc44-f3f0dc4526c1"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00097.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00097-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:50Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:42:56Z",
+                "notBefore": "2026-06-12T11:42:57Z",
+                "renewalTime": "2026-08-11T11:42:56Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00098\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00098.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00098-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:50Z",
+                "generation": 1,
+                "name": "retry-test-00098",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396508",
+                "uid": "65240df6-8675-4363-abea-c70c46b0e3a3"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00098.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00098-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:50Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:00Z",
+                "notBefore": "2026-06-12T11:43:01Z",
+                "renewalTime": "2026-08-11T11:43:00Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00099\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00099.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00099-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:51Z",
+                "generation": 1,
+                "name": "retry-test-00099",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396512",
+                "uid": "eea841a4-8b38-47bf-9af4-3cac8232f6a7"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00099.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00099-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:51Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:11Z",
+                "notBefore": "2026-06-12T11:43:12Z",
+                "renewalTime": "2026-08-11T11:43:11Z"
+            }
+        },
+        {
+            "apiVersion": "cert-manager.io/v1",
+            "kind": "Certificate",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"cert-manager.io/v1\",\"kind\":\"Certificate\",\"metadata\":{\"annotations\":{},\"name\":\"retry-test-00100\",\"namespace\":\"cert-perf-test\"},\"spec\":{\"dnsNames\":[\"retry-test-00100.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org\"],\"issuerRef\":{\"kind\":\"ClusterIssuer\",\"name\":\"perf-test-acme-pebble\"},\"secretName\":\"retry-test-00100-tls\"}}\n"
+                },
+                "creationTimestamp": "2026-06-12T11:46:52Z",
+                "generation": 1,
+                "name": "retry-test-00100",
+                "namespace": "cert-perf-test",
+                "resourceVersion": "396518",
+                "uid": "0dbfc8be-2367-44d2-ba36-d60b5b53a393"
+            },
+            "spec": {
+                "dnsNames": [
+                    "retry-test-00100.apps.ci-op-prnchg3d-ea007.aws-3.ci.openshift.org"
+                ],
+                "issuerRef": {
+                    "kind": "ClusterIssuer",
+                    "name": "perf-test-acme-pebble"
+                },
+                "secretName": "retry-test-00100-tls"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-06-12T11:46:52Z",
+                        "message": "Certificate is up to date and has not expired",
+                        "observedGeneration": 1,
+                        "reason": "Ready",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "notAfter": "2026-09-10T11:43:03Z",
+                "notBefore": "2026-06-12T11:43:04Z",
+                "renewalTime": "2026-08-11T11:43:03Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

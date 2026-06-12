@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pebble
+  namespace: pebble
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pebble
+  template:
+    metadata:
+      labels:
+        app: pebble
+    spec:
+      containers:
+        - name: pebble
+          image: ghcr.io/letsencrypt/pebble:latest
+          command: ["/app"]
+          args:
+            - -config
+            - /etc/pebble/pebble-config.json
+          env:
+            - name: PEBBLE_VA_NOSLEEP
+              value: "0"
+            - name: PEBBLE_VA_SLEEPTIME
+              value: "5"
+          ports:
+            - containerPort: 14000
+              name: acme
+            - containerPort: 15000
+              name: management
+          volumeMounts:
+            - name: config
+              mountPath: /etc/pebble
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+      volumes:
+        - name: config
+          configMap:
+            name: pebble-config

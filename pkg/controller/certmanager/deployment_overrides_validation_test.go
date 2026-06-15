@@ -312,6 +312,54 @@ func TestWithContainerArgsValidateHook(t *testing.T) {
 			wantErrMsg:     `validation failed due to unsupported arg "--totally-unknown-flag"="value"`,
 		},
 		{
+			name: "controller accepts performance tuning flags",
+			certManagerObj: v1alpha1.CertManager{
+				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
+				Spec: v1alpha1.CertManagerSpec{
+					ControllerConfig: &v1alpha1.DeploymentConfig{
+						OverrideArgs: []string{
+							"--concurrent-workers=20",
+							"--kube-api-qps=150",
+							"--kube-api-burst=300",
+							"--max-concurrent-challenges=300",
+						},
+					},
+				},
+			},
+			deploymentName: certmanagerControllerDeployment,
+		},
+		{
+			name: "controller accepts burst equal to qps",
+			certManagerObj: v1alpha1.CertManager{
+				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
+				Spec: v1alpha1.CertManagerSpec{
+					ControllerConfig: &v1alpha1.DeploymentConfig{
+						OverrideArgs: []string{
+							"--kube-api-qps=100",
+							"--kube-api-burst=100",
+						},
+					},
+				},
+			},
+			deploymentName: certmanagerControllerDeployment,
+		},
+		{
+			name: "controller rejects burst less than qps",
+			certManagerObj: v1alpha1.CertManager{
+				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},
+				Spec: v1alpha1.CertManagerSpec{
+					ControllerConfig: &v1alpha1.DeploymentConfig{
+						OverrideArgs: []string{
+							"--kube-api-qps=100",
+							"--kube-api-burst=50",
+						},
+					},
+				},
+			},
+			deploymentName: certmanagerControllerDeployment,
+			wantErrMsg:     `validation failed: --kube-api-burst (50) must be >= --kube-api-qps (100)`,
+		},
+		{
 			name: "controller validates only controllerConfig webhook override args ignored",
 			certManagerObj: v1alpha1.CertManager{
 				ObjectMeta: metav1.ObjectMeta{Name: "cluster"},

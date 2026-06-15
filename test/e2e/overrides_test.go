@@ -68,6 +68,11 @@ var _ = Describe("Overrides test", Ordered, Label("Platform:Generic"), func() {
 				"--v=5",
 
 				"--metrics-listen-address=0.0.0.0:9401",
+
+				"--concurrent-workers=20",
+				"--kube-api-qps=150",
+				"--kube-api-burst=300",
+				"--max-concurrent-challenges=300",
 			}
 			err := addOverrideArgs(certmanageroperatorclient, certmanagerControllerDeployment, args)
 			Expect(err).NotTo(HaveOccurred())
@@ -133,6 +138,27 @@ var _ = Describe("Overrides test", Ordered, Label("Platform:Generic"), func() {
 
 			By("Adding cert-manager controller override args to the cert-manager operator object")
 			args := []string{"--invalid-args=foo"}
+			err := addOverrideArgs(certmanageroperatorclient, certmanagerControllerDeployment, args)
+			Expect(err).NotTo(HaveOccurred())
+
+			By("Waiting for cert-manager controller status to become degraded")
+			err = verifyOperatorStatusCondition(certmanageroperatorclient.OperatorV1alpha1(), GenerateConditionMatchers(
+				[]PrefixAndMatchTypeTuple{{certManagerController, MatchAnyCondition}}, invalidOperatorStatusConditions,
+			))
+			Expect(err).NotTo(HaveOccurred())
+
+			By("Checking if the args are not added to the cert-manager controller deployment")
+			err = verifyDeploymentArgs(k8sClientSet, certmanagerControllerDeployment, args, false)
+			Expect(err).NotTo(HaveOccurred())
+		})
+	})
+
+	Context("When adding kube-api-burst less than kube-api-qps", func() {
+
+		It("should reject the config and degrade the controller", func() {
+
+			By("Adding burst < qps args to the cert-manager operator object")
+			args := []string{"--kube-api-qps=100", "--kube-api-burst=50"}
 			err := addOverrideArgs(certmanageroperatorclient, certmanagerControllerDeployment, args)
 			Expect(err).NotTo(HaveOccurred())
 

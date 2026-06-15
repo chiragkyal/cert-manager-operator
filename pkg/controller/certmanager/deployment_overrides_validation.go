@@ -2,6 +2,7 @@ package certmanager
 
 import (
 	"fmt"
+	"strconv"
 	"unsafe"
 
 	appsv1 "k8s.io/api/apps/v1"
@@ -17,6 +18,13 @@ import (
 
 	"github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
 	certmanagerinformer "github.com/openshift/cert-manager-operator/pkg/operator/informers/externalversions/operator/v1alpha1"
+)
+
+const (
+	argConcurrentWorkers     = "--concurrent-workers"
+	argKubeAPIQPS            = "--kube-api-qps"
+	argKubeAPIBurst          = "--kube-api-burst"
+	argMaxConcurrentChallenges = "--max-concurrent-challenges"
 )
 
 // withContainerArgsValidateHook validates the container args with those that
@@ -64,6 +72,14 @@ func withContainerArgsValidateHook(certmanagerinformer certmanagerinformer.CertM
 		// Duration of the initial certificate request backoff when a certificate request fails. The backoff
 		// duration is exponentially increased based on consecutive failures, up to a maximum of 32 hours.
 		"--certificate-request-minimum-backoff-duration",
+		// The number of concurrent workers for each controller. (default 5)
+		argConcurrentWorkers,
+		// Maximum queries-per-second to the Kubernetes API server. (default 20)
+		argKubeAPIQPS,
+		// Maximum burst queries-per-second to the Kubernetes API server. Must be >= kube-api-qps. (default 50)
+		argKubeAPIBurst,
+		// Maximum number of challenges that can be scheduled as 'processing' at once. (default 60)
+		argMaxConcurrentChallenges,
 	}
 	supportedCertManagerWebhookArgs := []string{
 		// Log Level
@@ -94,7 +110,10 @@ func withContainerArgsValidateHook(certmanagerinformer certmanagerinformer.CertM
 		case certmanagerControllerDeployment:
 			if certmanager.Spec.ControllerConfig != nil {
 				parseArgMap(argMap, certmanager.Spec.ControllerConfig.OverrideArgs)
-				return validateArgs(argMap, supportedCertManagerArgs)
+				if err := validateArgs(argMap, supportedCertManagerArgs); err != nil {
+					return err
+				}
+				return validateBurstQPS(argMap)
 			}
 		case certmanagerWebhookDeployment:
 			if certmanager.Spec.WebhookConfig != nil {
@@ -112,6 +131,25 @@ func withContainerArgsValidateHook(certmanagerinformer certmanagerinformer.CertM
 
 		return nil
 	}
+}
+
+// validateBurstQPS ensures that if both --kube-api-burst and --kube-api-qps are
+// specified, burst is not less than qps (cert-manager crashes if burst < qps).
+func validateBurstQPS(argMap map[string]string) error {
+	qpsStr, qpsOk := argMap[argKubeAPIQPS]
+	burstStr, burstOk := argMap[argKubeAPIBurst]
+	if !qpsOk || !burstOk {
+		return nil
+	}
+	qps, errQ := strconv.ParseFloat(qpsStr, 64)
+	burst, errB := strconv.ParseFloat(burstStr, 64)
+	if errQ != nil || errB != nil {
+		return nil
+	}
+	if burst < qps {
+		return fmt.Errorf("validation failed: --kube-api-burst (%v) must be >= --kube-api-qps (%v)", burst, qps)
+	}
+	return nil
 }
 
 // withContainerEnvValidateHook validates the container env with those that

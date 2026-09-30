@@ -20,8 +20,11 @@ import (
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/kubernetes"
+	crclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 const (
@@ -1184,6 +1187,123 @@ var _ = Describe("TrustManager", Ordered, Label("Platform:Generic", "Feature:Tru
 				g.Expect(cert.Spec.IssuerRef.Name).Should(Equal(trustManagerIssuerName))
 				g.Expect(cert.Spec.IssuerRef.Kind).Should(Equal("Issuer"))
 			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+	})
+
+	// -------------------------------------------------------------------------
+	// approver-policy integration (Story 12)
+	// -------------------------------------------------------------------------
+
+	Context("approver-policy integration", func() {
+		certificateRequestPolicyGVK := schema.GroupVersionKind{
+			Group:   "policy.cert-manager.io",
+			Version: "v1alpha1",
+			Kind:    "CertificateRequestPolicy",
+		}
+		const (
+			trustManagerPolicyName        = "trust-manager-policy"
+			trustManagerPolicyRoleName    = "trust-manager-policy-role"
+			trustManagerPolicyBindingName = "trust-manager-policy-binding"
+		)
+
+		getPolicyObject := func() *unstructured.Unstructured {
+			obj := &unstructured.Unstructured{}
+			obj.SetGroupVersionKind(certificateRequestPolicyGVK)
+			return obj
+		}
+
+		It("should not create policy resources when approverPolicy is disabled (default)", func() {
+			createTrustManager(ctx, newTrustManagerCR())
+
+			By("verifying no CertificateRequestPolicy exists")
+			Consistently(func(g Gomega) {
+				obj := getPolicyObject()
+				err := bundleClient.Get(ctx, crclient.ObjectKey{Name: trustManagerPolicyName}, obj)
+				g.Expect(apierrors.IsNotFound(err)).Should(BeTrue())
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying no policy ClusterRole exists")
+			_, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerPolicyRoleName, metav1.GetOptions{})
+			Expect(apierrors.IsNotFound(err)).Should(BeTrue())
+
+			By("verifying no policy ClusterRoleBinding exists")
+			_, err = clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerPolicyBindingName, metav1.GetOptions{})
+			Expect(apierrors.IsNotFound(err)).Should(BeTrue())
+		})
+
+		It("should create CertificateRequestPolicy, ClusterRole and ClusterRoleBinding when approverPolicy is enabled", func() {
+			createTrustManager(ctx, newTrustManagerCR().WithApproverPolicy(v1alpha1.ApproverPolicyWebhookEnabled))
+
+			By("verifying CertificateRequestPolicy is created")
+			Eventually(func(g Gomega) {
+				obj := getPolicyObject()
+				err := bundleClient.Get(ctx, crclient.ObjectKey{Name: trustManagerPolicyName}, obj)
+				g.Expect(err).ShouldNot(HaveOccurred())
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying policy ClusterRole is created and grants use on the policy")
+			Eventually(func(g Gomega) {
+				cr, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerPolicyRoleName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(cr.Rules).ShouldNot(BeEmpty())
+				g.Expect(cr.Rules[0].APIGroups).Should(ContainElement("policy.cert-manager.io"))
+				g.Expect(cr.Rules[0].Resources).Should(ContainElement("certificaterequestpolicies"))
+				g.Expect(cr.Rules[0].Verbs).Should(ContainElement("use"))
+				g.Expect(cr.Rules[0].ResourceNames).Should(ContainElement(trustManagerPolicyName))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying policy ClusterRoleBinding binds the cert-manager controller ServiceAccount")
+			Eventually(func(g Gomega) {
+				crb, err := clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerPolicyBindingName, metav1.GetOptions{})
+				g.Expect(err).ShouldNot(HaveOccurred())
+				g.Expect(crb.RoleRef.Name).Should(Equal(trustManagerPolicyRoleName))
+				g.Expect(crb.Subjects).Should(ContainElement(rbacv1.Subject{
+					Kind:      "ServiceAccount",
+					Name:      "cert-manager",
+					Namespace: "cert-manager",
+				}))
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+		})
+
+		It("should delete policy resources when approverPolicy is flipped from Enabled to Disabled", func() {
+			createTrustManager(ctx, newTrustManagerCR().WithApproverPolicy(v1alpha1.ApproverPolicyWebhookEnabled))
+
+			By("verifying CertificateRequestPolicy exists while enabled")
+			Eventually(func(g Gomega) {
+				obj := getPolicyObject()
+				err := bundleClient.Get(ctx, crclient.ObjectKey{Name: trustManagerPolicyName}, obj)
+				g.Expect(err).ShouldNot(HaveOccurred())
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("flipping approverPolicy to Disabled")
+			Eventually(func() error {
+				tm, err := trustManagerClient().Get(ctx, "cluster", metav1.GetOptions{})
+				if err != nil {
+					return err
+				}
+				tm.Spec.TrustManagerConfig.ApproverPolicy.Enabled = v1alpha1.ApproverPolicyWebhookDisabled
+				_, err = trustManagerClient().Update(ctx, tm, metav1.UpdateOptions{})
+				return err
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying CertificateRequestPolicy is deleted")
+			Eventually(func(g Gomega) {
+				obj := getPolicyObject()
+				err := bundleClient.Get(ctx, crclient.ObjectKey{Name: trustManagerPolicyName}, obj)
+				g.Expect(apierrors.IsNotFound(err)).Should(BeTrue())
+			}, lowTimeout, fastPollInterval).Should(Succeed())
+
+			By("verifying policy ClusterRole is deleted")
+			Eventually(func() bool {
+				_, err := clientset.RbacV1().ClusterRoles().Get(ctx, trustManagerPolicyRoleName, metav1.GetOptions{})
+				return apierrors.IsNotFound(err)
+			}, lowTimeout, fastPollInterval).Should(BeTrue())
+
+			By("verifying policy ClusterRoleBinding is deleted")
+			Eventually(func() bool {
+				_, err := clientset.RbacV1().ClusterRoleBindings().Get(ctx, trustManagerPolicyBindingName, metav1.GetOptions{})
+				return apierrors.IsNotFound(err)
+			}, lowTimeout, fastPollInterval).Should(BeTrue())
 		})
 	})
 

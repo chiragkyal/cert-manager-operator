@@ -25,6 +25,7 @@ import (
 
 	configv1 "github.com/openshift/api/config/v1"
 	v1alpha1 "github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
+	"github.com/openshift/cert-manager-operator/pkg/controller/approverpolicy"
 	"github.com/openshift/cert-manager-operator/pkg/controller/common"
 	"github.com/openshift/cert-manager-operator/pkg/controller/istiocsr"
 	"github.com/openshift/cert-manager-operator/pkg/controller/trustmanager"
@@ -93,6 +94,20 @@ var trustManagerManagedResources = []client.Object{
 	&admissionregistrationv1.ValidatingWebhookConfiguration{},
 }
 
+// approverPolicyManagedResources defines the resources managed by the ApproverPolicyManager
+// controller. These resources will be watched with a label selector filter.
+var approverPolicyManagedResources = []client.Object{
+	&appsv1.Deployment{},
+	&rbacv1.ClusterRole{},
+	&rbacv1.ClusterRoleBinding{},
+	&rbacv1.Role{},
+	&rbacv1.RoleBinding{},
+	&corev1.Service{},
+	&corev1.ServiceAccount{},
+	&corev1.Secret{},
+	&admissionregistrationv1.ValidatingWebhookConfiguration{},
+}
+
 func init() {
 	utilruntime.Must(clientscheme.AddToScheme(scheme))
 	utilruntime.Must(appsv1.AddToScheme(scheme))
@@ -113,8 +128,9 @@ type Manager struct {
 
 // ControllerConfig specifies which controllers to enable in the unified manager.
 type ControllerConfig struct {
-	EnableIstioCSR     bool
-	EnableTrustManager bool
+	EnableIstioCSR              bool
+	EnableTrustManager          bool
+	EnableApproverPolicyManager bool
 }
 
 // NewControllerManager creates a unified manager for all enabled operand controllers.
@@ -122,7 +138,7 @@ type ControllerConfig struct {
 func NewControllerManager(config ControllerConfig) (*Manager, error) {
 	setupLog.Info("setting up unified operator manager")
 	setupLog.Info("controller", "version", version.Get())
-	setupLog.Info("enabled controllers", "istioCSR", config.EnableIstioCSR, "trustManager", config.EnableTrustManager)
+	setupLog.Info("enabled controllers", "istioCSR", config.EnableIstioCSR, "trustManager", config.EnableTrustManager, "approverPolicyManager", config.EnableApproverPolicyManager)
 
 	cacheBuilder := newUnifiedCacheBuilder(config)
 
@@ -144,6 +160,12 @@ func NewControllerManager(config ControllerConfig) (*Manager, error) {
 
 	if config.EnableTrustManager {
 		if err := setupTrustManagerController(mgr); err != nil {
+			return nil, err
+		}
+	}
+
+	if config.EnableApproverPolicyManager {
+		if err := setupApproverPolicyController(mgr); err != nil {
 			return nil, err
 		}
 	}
@@ -175,6 +197,20 @@ func setupTrustManagerController(mgr ctrl.Manager) error {
 	}
 	if err := r.SetupWithManager(mgr); err != nil {
 		return fmt.Errorf("failed to create %s controller: %w", trustmanager.ControllerName, err)
+	}
+	return nil
+}
+
+// setupApproverPolicyController creates and registers the ApproverPolicyManager controller
+// with the manager.
+func setupApproverPolicyController(mgr ctrl.Manager) error {
+	setupLog.Info("setting up controller", "name", approverpolicy.ControllerName)
+	r, err := approverpolicy.New(mgr)
+	if err != nil {
+		return fmt.Errorf("failed to create %s reconciler object: %w", approverpolicy.ControllerName, err)
+	}
+	if err := r.SetupWithManager(mgr); err != nil {
+		return fmt.Errorf("failed to create %s controller: %w", approverpolicy.ControllerName, err)
 	}
 	return nil
 }
@@ -212,6 +248,14 @@ func buildCacheObjectList(config ControllerConfig) (map[client.Object]cache.ByOb
 		}
 		// TrustManager CR - no label filter needed
 		objectList[&v1alpha1.TrustManager{}] = cache.ByObject{}
+	}
+
+	if config.EnableApproverPolicyManager {
+		if err := addControllerCacheConfig(objectList, approverpolicy.RequestEnqueueLabelValue, approverPolicyManagedResources); err != nil {
+			return nil, fmt.Errorf("failed to configure ApproverPolicyManager cache: %w", err)
+		}
+		// ApproverPolicyManager CR - no label filter needed
+		objectList[&v1alpha1.ApproverPolicyManager{}] = cache.ByObject{}
 	}
 
 	return objectList, nil

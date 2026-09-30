@@ -160,12 +160,14 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 	}
 	istioCSREnabled := features.IsIstioCSRFeatureGateEnabled()
 	trustManagerEnabled := featureStatus.IsTrustManagerFeatureGateEnabled()
+	approverPolicyManagerEnabled := featureStatus.IsApproverPolicyManagerFeatureGateEnabled()
 
-	if istioCSREnabled || trustManagerEnabled {
+	if istioCSREnabled || trustManagerEnabled || approverPolicyManagerEnabled {
 		// Create unified manager for all enabled operand controllers
 		manager, err := NewControllerManager(ControllerConfig{
-			EnableIstioCSR:     istioCSREnabled,
-			EnableTrustManager: trustManagerEnabled,
+			EnableIstioCSR:              istioCSREnabled,
+			EnableTrustManager:          trustManagerEnabled,
+			EnableApproverPolicyManager: approverPolicyManagerEnabled,
 		})
 		if err != nil {
 			return fmt.Errorf("failed to create unified controller manager: %w", err)

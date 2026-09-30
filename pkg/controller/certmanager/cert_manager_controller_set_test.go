@@ -21,8 +21,8 @@ func TestToArrayConsoleControllerInclusion(t *testing.T) {
 		includeConsole bool
 		wantCount      int
 	}{
-		{name: "with console controller", includeConsole: true, wantCount: 9},
-		{name: "without console controller", includeConsole: false, wantCount: 8},
+		{name: "with console controller", includeConsole: true, wantCount: 10},
+		{name: "without console controller", includeConsole: false, wantCount: 9},
 	}
 
 	for _, tt := range tests {
@@ -36,6 +36,7 @@ func TestToArrayConsoleControllerInclusion(t *testing.T) {
 				certManagerCAInjectorDeploymentController:         stub,
 				certManagerNetworkPolicyStaticResourcesController: stub,
 				certManagerNetworkPolicyUserDefinedController:     stub,
+				certManagerAutoApproverController:                 stub,
 			}
 			if tt.includeConsole {
 				set.consoleResourcesController = stub

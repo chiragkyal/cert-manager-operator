@@ -25,6 +25,18 @@ const (
 	//   - Failed
 	//   - Ready: operand successfully deployed and ready
 	Ready string = "Ready"
+
+	// AutoApproverDisabled is the condition type set on the CertManager CR status to surface
+	// the effective state of cert-manager's built-in CertificateRequest auto-approver.
+	//   Status:
+	//   - True: the built-in auto-approver is disabled (an ApproverPolicyManager CR reported
+	//     Ready=True); approver-policy is expected to process CertificateRequest approvals.
+	//   - False: the built-in auto-approver is active (no ApproverPolicyManager CR found, or
+	//     it has not yet reported Ready=True).
+	//   Reason:
+	//   - ApproverPolicyReady
+	//   - AutoApprovalEnabled
+	AutoApproverDisabled string = "AutoApproverDisabled"
 )
 
 const (
@@ -33,6 +45,16 @@ const (
 	ReasonReady string = "Ready"
 
 	ReasonInProgress string = "Progressing"
+
+	// ReasonApproverPolicyReady is used on the AutoApproverDisabled condition when the
+	// built-in auto-approver has been disabled because the ApproverPolicyManager CR
+	// reported Ready=True.
+	ReasonApproverPolicyReady string = "ApproverPolicyReady"
+
+	// ReasonAutoApprovalEnabled is used on the AutoApproverDisabled condition when the
+	// built-in auto-approver is active, because no ApproverPolicyManager CR exists (or it
+	// has not yet reported Ready=True).
+	ReasonAutoApprovalEnabled string = "AutoApprovalEnabled"
 )
 
 func (c *ConditionalStatus) GetCondition(t string) *metav1.Condition {

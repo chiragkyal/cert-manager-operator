@@ -47,8 +47,12 @@ var (
 		"cert-manager-deployment/controller/cert-manager-tokenrequest-rb.yaml",
 		"cert-manager-deployment/controller/cert-manager-tokenrequest-role.yaml",
 		"cert-manager-deployment/controller/cert-manager-view-cr.yaml",
-		"cert-manager-deployment/cert-manager/cert-manager-controller-approve-cert-manager-io-cr.yaml",
-		"cert-manager-deployment/cert-manager/cert-manager-controller-approve-cert-manager-io-crb.yaml",
+		// NOTE: cert-manager-controller-approve-cert-manager-io-{cr,crb}.yaml are intentionally NOT
+		// listed here. They are managed conditionally by CertManagerAutoApproverController
+		// (see cert_manager_autoapprover.go), which creates them by default and deletes them only
+		// when the ApproverPolicyManager CR reports Ready=True (Story 10/11 of the
+		// approver-policy-controller enhancement), to avoid the built-in auto-approver racing with
+		// approver-policy.
 		"cert-manager-deployment/cert-manager/cert-manager-controller-certificatesigningrequests-cr.yaml",
 		"cert-manager-deployment/cert-manager/cert-manager-controller-certificatesigningrequests-crb.yaml",
 	}
@@ -73,6 +77,7 @@ func NewCertManagerControllerDeploymentController(operatorClient v1helpers.Opera
 	infraInformers utils.OptionalInformer[configinformers.SharedInformerFactory],
 	kubeClient kubernetes.Interface,
 	kubeInformersForTargetNamespace informers.SharedInformerFactory,
+	kubeInformersForNamespaces v1helpers.KubeInformersForNamespaces,
 	eventsRecorder events.Recorder, targetVersion string, versionRecorder status.VersionGetter, trustedCAConfigmapName, cloudCredentialsSecretName string) factory.Controller {
 	return newGenericDeploymentController(
 
@@ -84,6 +89,7 @@ func NewCertManagerControllerDeploymentController(operatorClient v1helpers.Opera
 		infraInformers,
 		kubeClient,
 		kubeInformersForTargetNamespace,
+		kubeInformersForNamespaces,
 		eventsRecorder,
 		versionRecorder,
 		trustedCAConfigmapName,

@@ -25,6 +25,7 @@ type CertManagerControllerSet struct {
 	certManagerCAInjectorDeploymentController         factory.Controller
 	certManagerNetworkPolicyStaticResourcesController factory.Controller
 	certManagerNetworkPolicyUserDefinedController     factory.Controller
+	certManagerAutoApproverController                 factory.Controller
 	consoleResourcesController                        factory.Controller
 }
 
@@ -45,13 +46,14 @@ func NewCertManagerControllerSet(
 ) *CertManagerControllerSet {
 	set := &CertManagerControllerSet{
 		certManagerControllerStaticResourcesController:    NewCertManagerControllerStaticResourcesController(operatorClient, kubeClientContainer, kubeInformersForNamespaces, eventRecorder),
-		certManagerControllerDeploymentController:         NewCertManagerControllerDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
+		certManagerControllerDeploymentController:         NewCertManagerControllerDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, kubeInformersForNamespaces, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
 		certManagerWebhookStaticResourcesController:       NewCertManagerWebhookStaticResourcesController(operatorClient, kubeClientContainer, kubeInformersForNamespaces, eventRecorder),
-		certManagerWebhookDeploymentController:            NewCertManagerWebhookDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
+		certManagerWebhookDeploymentController:            NewCertManagerWebhookDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, kubeInformersForNamespaces, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
 		certManagerCAInjectorStaticResourcesController:    NewCertManagerCAInjectorStaticResourcesController(operatorClient, kubeClientContainer, kubeInformersForNamespaces, eventRecorder),
-		certManagerCAInjectorDeploymentController:         NewCertManagerCAInjectorDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
+		certManagerCAInjectorDeploymentController:         NewCertManagerCAInjectorDeploymentController(operatorClient, certManagerOperatorInformers, infraInformers, kubeClient, kubeInformersForTargetNamespace, kubeInformersForNamespaces, eventRecorder, targetVersion, versionRecorder, trustedCAConfigmapName, cloudCredentialsSecretName),
 		certManagerNetworkPolicyStaticResourcesController: NewCertManagerNetworkPolicyStaticResourcesController(operatorClient, kubeClientContainer, kubeInformersForNamespaces, certManagerOperatorInformers, eventRecorder),
 		certManagerNetworkPolicyUserDefinedController:     NewCertManagerNetworkPolicyUserDefinedController(operatorClient, certManagerOperatorInformers, kubeClient, kubeInformersForNamespaces, eventRecorder),
+		certManagerAutoApproverController:                 NewCertManagerAutoApproverController(operatorClient, certManagerOperatorInformers, kubeClient, kubeInformersForNamespaces, eventRecorder),
 	}
 	if consoleClient != nil {
 		set.consoleResourcesController = NewConsoleResourcesController(operatorClient, consoleClient, eventRecorder)
@@ -69,6 +71,7 @@ func (c *CertManagerControllerSet) ToArray() []factory.Controller {
 		c.certManagerCAInjectorDeploymentController,
 		c.certManagerNetworkPolicyStaticResourcesController,
 		c.certManagerNetworkPolicyUserDefinedController,
+		c.certManagerAutoApproverController,
 	}
 	if c.consoleResourcesController != nil {
 		controllers = append(controllers, c.consoleResourcesController)

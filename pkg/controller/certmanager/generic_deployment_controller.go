@@ -25,6 +25,7 @@ func newGenericDeploymentController(
 	infraInformers utils.OptionalInformer[configinformers.SharedInformerFactory],
 	kubeClient kubernetes.Interface,
 	kubeInformersForTargetNamespace informers.SharedInformerFactory,
+	kubeInformersForNamespaces v1helpers.KubeInformersForNamespaces,
 	eventsRecorder events.Recorder,
 	versionRecorder status.VersionGetter,
 	trustedCAConfigmapName string,
@@ -70,6 +71,21 @@ func newGenericDeploymentController(
 
 		hooks = append(hooks, common.WithClusterTLSProfileFromAPIServer(infraInformerFactory.Config().V1().APIServers()))
 		informers = append(informers, infraInformerFactory.Config().V1().APIServers().Informer())
+	}
+
+	// The built-in CertificateRequest approver auto-disable hook only applies to the
+	// cert-manager controller Deployment (not webhook/cainjector). It must run before
+	// withUnsupportedArgsOverrideHook so that a break-glass operand arg override still wins.
+	if deployment.Name == certmanagerControllerDeployment {
+		clusterRoleInformer := kubeInformersForNamespaces.InformersFor("").Rbac().V1().ClusterRoles()
+		informers = append(informers,
+			clusterRoleInformer.Informer(),
+			certManagerOperatorInformers.Operator().V1alpha1().ApproverPolicyManagers().Informer(),
+		)
+		hooks = append(hooks, withAutoApproverDisableArgHook(
+			certManagerOperatorInformers.Operator().V1alpha1().ApproverPolicyManagers(),
+			clusterRoleInformer.Lister(),
+		))
 	}
 
 	// unsupportedConfigOverrides must run after cluster TLS so break-glass operand args win.

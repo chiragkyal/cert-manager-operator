@@ -199,6 +199,19 @@ metadata:
         },
         {
           "apiVersion": "operator.openshift.io/v1alpha1",
+          "kind": "ApproverPolicyManager",
+          "metadata": {
+            "name": "cluster"
+          },
+          "spec": {
+            "approverPolicyConfig": {
+              "logFormat": "text",
+              "logLevel": 1
+            }
+          }
+        },
+        {
+          "apiVersion": "operator.openshift.io/v1alpha1",
           "kind": "CertManager",
           "metadata": {
             "name": "cluster"
@@ -333,6 +346,14 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
+    - description: |-
+        ApproverPolicyManager describes the configuration and information about the managed approver-policy deployment.
+        The name must be `cluster` to make ApproverPolicyManager a singleton, allowing only one instance per cluster.
+        When an ApproverPolicyManager CR is created, approver-policy is deployed in the cert-manager namespace.
+      displayName: ApproverPolicyManager
+      kind: ApproverPolicyManager
+      name: approverpolicymanagers.operator.openshift.io
+      version: v1alpha1
     - description: A Bundle is used to distribute trust bundles across a Kubernetes
         cluster.
       displayName: Bundle
@@ -667,10 +688,10 @@ spec:
         - apiGroups:
           - operator.openshift.io
           resources:
-          - certmanagers
+          - approverpolicymanagers
+          - istiocsrs
+          - trustmanagers
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
@@ -679,6 +700,7 @@ spec:
         - apiGroups:
           - operator.openshift.io
           resources:
+          - approverpolicymanagers/finalizers
           - certmanagers/finalizers
           - istiocsrs/finalizers
           - trustmanagers/finalizers
@@ -687,6 +709,7 @@ spec:
         - apiGroups:
           - operator.openshift.io
           resources:
+          - approverpolicymanagers/status
           - certmanagers/status
           - istiocsrs/status
           - trustmanagers/status
@@ -697,9 +720,22 @@ spec:
         - apiGroups:
           - operator.openshift.io
           resources:
-          - istiocsrs
-          - trustmanagers
+          - certmanagers
           verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - policy.cert-manager.io
+          resources:
+          - certificaterequestpolicies
+          verbs:
+          - create
+          - delete
           - get
           - list
           - patch
@@ -836,12 +872,16 @@ spec:
                   value: quay.io/jetstack/cert-manager-istio-csr:v0.16.0
                 - name: RELATED_IMAGE_CERT_MANAGER_TRUST_MANAGER
                   value: quay.io/jetstack/trust-manager:v0.20.3
+                - name: RELATED_IMAGE_APPROVER_POLICY
+                  value: quay.io/jetstack/cert-manager-approver-policy:v0.27.0
                 - name: OPERAND_IMAGE_VERSION
                   value: 1.20.3
                 - name: ISTIOCSR_OPERAND_IMAGE_VERSION
                   value: 0.16.0
                 - name: TRUSTMANAGER_OPERAND_IMAGE_VERSION
                   value: 0.20.3
+                - name: APPROVERPOLICY_OPERAND_IMAGE_VERSION
+                  value: 0.27.0
                 - name: OPERATOR_IMAGE_VERSION
                   value: 1.20.0
                 - name: OPERATOR_LOG_LEVEL
@@ -958,5 +998,7 @@ spec:
     name: cert-manager-istiocsr
   - image: quay.io/jetstack/trust-manager:v0.20.3
     name: cert-manager-trust-manager
+  - image: quay.io/jetstack/cert-manager-approver-policy:v0.27.0
+    name: approver-policy
   replaces: cert-manager-operator.v1.19.0
   version: 1.20.0

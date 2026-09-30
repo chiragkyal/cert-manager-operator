@@ -16,6 +16,18 @@ import (
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
 	// Group=operator.openshift.io, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyConfig"):
+		return &operatorv1alpha1.ApproverPolicyConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyControllerConfig"):
+		return &operatorv1alpha1.ApproverPolicyControllerConfigApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyManager"):
+		return &operatorv1alpha1.ApproverPolicyManagerApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyManagerSpec"):
+		return &operatorv1alpha1.ApproverPolicyManagerSpecApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyManagerStatus"):
+		return &operatorv1alpha1.ApproverPolicyManagerStatusApplyConfiguration{}
+	case v1alpha1.SchemeGroupVersion.WithKind("ApproverPolicyWebhookConfig"):
+		return &operatorv1alpha1.ApproverPolicyWebhookConfigApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("CertManager"):
 		return &operatorv1alpha1.CertManagerApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("CertManagerConfig"):

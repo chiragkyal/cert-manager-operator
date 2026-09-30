@@ -65,6 +65,7 @@ var expectedDefaultFeatureState = map[bool][]featuregate.Feature{
 	// list of features which are expected to be disabled at runtime.
 	false: {
 		featuregate.Feature("TrustManager"),
+		featuregate.Feature("ApproverPolicyManager"),
 	},
 }
 
@@ -290,6 +291,45 @@ func TestIsTrustManagerFeatureGateEnabled(t *testing.T) {
 			cs := tt.prep(t)
 			st := NewFeatureGateState(t.Context(), cs)
 			tt.assert(t, st)
+		})
+	}
+}
+
+// TestIsApproverPolicyManagerFeatureGateEnabled covers the ApproverPolicyManager operator
+// featuregate (--unsupported-addon-features), which -- like TrustManager -- is gated solely by
+// the internal operator featuregate and does not consult the cluster FeatureSet.
+func TestIsApproverPolicyManagerFeatureGateEnabled(t *testing.T) {
+	defer func() {
+		_ = SetupWithFlagValue("ApproverPolicyManager=false")
+	}()
+
+	tests := []struct {
+		name       string
+		flagValue  string
+		featureSet ocpfeaturegate.FeatureSet
+		want       bool
+	}{
+		{
+			name:       "enabled when operator featuregate is on, regardless of cluster featureset",
+			flagValue:  "ApproverPolicyManager=true",
+			featureSet: ocpfeaturegate.Default,
+			want:       true,
+		},
+		{
+			name:       "disabled when operator featuregate is off even with a preview cluster featureset",
+			flagValue:  "ApproverPolicyManager=false",
+			featureSet: ocpfeaturegate.TechPreviewNoUpgrade,
+			want:       false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			require.NoError(t, SetupWithFlagValue(tt.flagValue))
+			cs := newFakeConfigClient(t, true, clusterFeatureGateObject(tt.featureSet))
+			st := NewFeatureGateState(t.Context(), cs)
+			assert.NoError(t, st.Err())
+			assert.Equal(t, tt.want, st.IsApproverPolicyManagerFeatureGateEnabled())
 		})
 	}
 }

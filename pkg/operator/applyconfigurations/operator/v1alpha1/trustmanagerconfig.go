@@ -46,6 +46,24 @@ type TrustManagerConfigApplyConfiguration struct {
 	// nodeSelector restricts which nodes the trust-manager pod can be scheduled on.
 	// ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+	// approverPolicy configures the integration with approver-policy for trust-manager's
+	// webhook TLS certificate approval.
+	//
+	// When the cert-manager operator automatically disables the built-in auto-approver
+	// (triggered by the ApproverPolicyManager CR becoming ready), trust-manager's webhook
+	// CertificateRequest will have no approver. Setting this field to Enabled instructs
+	// the trust-manager-controller to create a CertificateRequestPolicy, ClusterRole,
+	// and ClusterRoleBinding that allow approver-policy to approve trust-manager's
+	// webhook certificate.
+	//
+	// Resources are created or removed **solely** based on the value of this field:
+	// - Disabled (default): no policy resources are created.
+	// - Enabled: CertificateRequestPolicy + ClusterRole + ClusterRoleBinding are created.
+	// - Flipped from Enabled to Disabled: those three resources are deleted.
+	//
+	// This field does not depend on ApproverPolicyManager CR status, approver-policy
+	// Deployment availability, or approveSignerNames configuration.
+	ApproverPolicy *ApproverPolicyWebhookConfigApplyConfiguration `json:"approverPolicy,omitempty"`
 }
 
 // TrustManagerConfigApplyConfiguration constructs a declarative configuration of the TrustManagerConfig type for use with
@@ -139,5 +157,13 @@ func (b *TrustManagerConfigApplyConfiguration) WithNodeSelector(entries map[stri
 	for k, v := range entries {
 		b.NodeSelector[k] = v
 	}
+	return b
+}
+
+// WithApproverPolicy sets the ApproverPolicy field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the ApproverPolicy field is set to the value of the last call.
+func (b *TrustManagerConfigApplyConfiguration) WithApproverPolicy(value *ApproverPolicyWebhookConfigApplyConfiguration) *TrustManagerConfigApplyConfiguration {
+	b.ApproverPolicy = value
 	return b
 }

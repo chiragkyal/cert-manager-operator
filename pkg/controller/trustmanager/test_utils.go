@@ -102,6 +102,11 @@ func (b *trustManagerBuilder) WithSecretTargets(policy v1alpha1.SecretTargetsPol
 	return b
 }
 
+func (b *trustManagerBuilder) WithApproverPolicy(enabled v1alpha1.ApproverPolicyWebhookPolicy) *trustManagerBuilder {
+	b.Spec.TrustManagerConfig.ApproverPolicy = v1alpha1.ApproverPolicyWebhookConfig{Enabled: enabled}
+	return b
+}
+
 func (b *trustManagerBuilder) Build() *v1alpha1.TrustManager {
 	return b.TrustManager
 }

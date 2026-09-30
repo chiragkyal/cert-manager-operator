@@ -59,6 +59,7 @@ type Reconciler struct {
 // +kubebuilder:rbac:groups=trust.cert-manager.io,resources=bundles,verbs=get;list;watch
 // +kubebuilder:rbac:groups=trust.cert-manager.io,resources=bundles/finalizers,verbs=update
 // +kubebuilder:rbac:groups=trust.cert-manager.io,resources=bundles/status,verbs=patch
+// +kubebuilder:rbac:groups=policy.cert-manager.io,resources=certificaterequestpolicies,verbs=get;list;watch;create;update;patch;delete
 
 // New returns a new Reconciler instance.
 func New(mgr ctrl.Manager) (*Reconciler, error) {

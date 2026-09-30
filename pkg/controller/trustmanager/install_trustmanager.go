@@ -62,6 +62,11 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 		return err
 	}
 
+	if err := r.reconcileApproverPolicyIntegration(trustManager, resourceLabels, resourceAnnotations); err != nil {
+		r.log.Error(err, "failed to reconcile approver-policy integration resources")
+		return err
+	}
+
 	if err := r.updateStatusObservedState(trustManager); err != nil {
 		return common.FromClientError(err, "failed to update status observed state")
 	}

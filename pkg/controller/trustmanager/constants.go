@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 )
 
@@ -100,7 +101,32 @@ const (
 	trustManagerTLSSecretName   = trustManagerCommonResourceName + "-tls"
 
 	trustManagerWebhookConfigName = trustManagerCommonResourceName
+
+	// approverPolicyIntegration resource names (Story 12): created/deleted solely based on
+	// the value of spec.trustManagerConfig.approverPolicy.enabled, mirroring the upstream
+	// trust-manager Helm chart's `app.webhook.tls.approverPolicy.enabled` flag.
+	trustManagerPolicyName        = "trust-manager-policy"
+	trustManagerPolicyRoleName    = "trust-manager-policy-role"
+	trustManagerPolicyBindingName = "trust-manager-policy-binding"
+
+	// certManagerServiceAccountName and certManagerOperandNamespace are the hardcoded name
+	// and namespace of cert-manager's own ServiceAccount (see cert-manager-sa.yaml bindata),
+	// which is bound to the trust-manager-policy-role ClusterRole so cert-manager can "use"
+	// the trust-manager-policy CertificateRequestPolicy when creating CertificateRequests
+	// for trust-manager's webhook certificate.
+	certManagerServiceAccountName = "cert-manager"
+	certManagerOperandNamespace   = "cert-manager"
 )
+
+// certificateRequestPolicyGVK is the GroupVersionKind of the upstream approver-policy
+// CertificateRequestPolicy CRD (policy.cert-manager.io/v1alpha1). This type is not vendored
+// as a Go type in this repository (see Story 12 discussion), so it is handled as
+// *unstructured.Unstructured; the CRD itself is installed by the operator's OLM bundle.
+var certificateRequestPolicyGVK = schema.GroupVersionKind{
+	Group:   "policy.cert-manager.io",
+	Version: "v1alpha1",
+	Kind:    "CertificateRequestPolicy",
+}
 
 var (
 	trustManagerConfigFieldPath     = field.NewPath("spec", "trustManagerConfig")
@@ -138,4 +164,8 @@ const (
 	certificateAssetName = "trust-manager/resources/certificate_trust-manager.yml"
 
 	validatingWebhookConfigAssetName = "trust-manager/resources/validatingwebhookconfiguration_trust-manager.yml"
+
+	certificateRequestPolicyAssetName = "trust-manager/resources/certificaterequestpolicy_trust-manager-policy.yml"
+	policyClusterRoleAssetName        = "trust-manager/resources/clusterrole_trust-manager-policy-role.yml"
+	policyClusterRoleBindingAssetName = "trust-manager/resources/clusterrolebinding_trust-manager-policy-binding.yml"
 )

@@ -153,7 +153,65 @@ type TrustManagerConfig struct {
 	// +kubebuilder:validation:Optional
 	// +optional
 	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+
+	// approverPolicy configures the integration with approver-policy for trust-manager's
+	// webhook TLS certificate approval.
+	//
+	// When the cert-manager operator automatically disables the built-in auto-approver
+	// (triggered by the ApproverPolicyManager CR becoming ready), trust-manager's webhook
+	// CertificateRequest will have no approver. Setting this field to Enabled instructs
+	// the trust-manager-controller to create a CertificateRequestPolicy, ClusterRole,
+	// and ClusterRoleBinding that allow approver-policy to approve trust-manager's
+	// webhook certificate.
+	//
+	// Resources are created or removed **solely** based on the value of this field:
+	// - Disabled (default): no policy resources are created.
+	// - Enabled: CertificateRequestPolicy + ClusterRole + ClusterRoleBinding are created.
+	// - Flipped from Enabled to Disabled: those three resources are deleted.
+	//
+	// This field does not depend on ApproverPolicyManager CR status, approver-policy
+	// Deployment availability, or approveSignerNames configuration.
+	//
+	// +kubebuilder:validation:Optional
+	// +optional
+	ApproverPolicy ApproverPolicyWebhookConfig `json:"approverPolicy,omitempty"`
 }
+
+// ApproverPolicyWebhookConfig configures the approver-policy integration for
+// trust-manager's webhook TLS certificate.
+type ApproverPolicyWebhookConfig struct {
+	// enabled controls whether to create a CertificateRequestPolicy and RBAC
+	// resources that allow approver-policy to approve trust-manager's webhook
+	// TLS certificate.
+	//
+	// Enabled: The operator creates a CertificateRequestPolicy, ClusterRole, and
+	// ClusterRoleBinding. The ClusterRoleBinding is bound to the cert-manager
+	// ServiceAccount (always "cert-manager" in the "cert-manager" namespace --
+	// hardcoded by the operator, not configurable).
+	//
+	// Disabled (default): No policy or RBAC resources are created. If this field is
+	// flipped from Enabled to Disabled, any previously created CertificateRequestPolicy,
+	// ClusterRole, and ClusterRoleBinding are deleted.
+	//
+	// Resources are managed solely based on this field value -- no dependency on
+	// ApproverPolicyManager CR status, Deployment availability, or approveSignerNames.
+	//
+	// +kubebuilder:default:="Disabled"
+	// +kubebuilder:validation:Enum:=Enabled;Disabled
+	// +optional
+	Enabled ApproverPolicyWebhookPolicy `json:"enabled,omitempty"`
+}
+
+// ApproverPolicyWebhookPolicy defines the policy for the approver-policy webhook integration.
+// +kubebuilder:validation:Enum:=Enabled;Disabled
+type ApproverPolicyWebhookPolicy string
+
+const (
+	// ApproverPolicyWebhookEnabled enables the approver-policy webhook TLS integration.
+	ApproverPolicyWebhookEnabled ApproverPolicyWebhookPolicy = "Enabled"
+	// ApproverPolicyWebhookDisabled disables the approver-policy webhook TLS integration.
+	ApproverPolicyWebhookDisabled ApproverPolicyWebhookPolicy = "Disabled"
+)
 
 // SecretTargetsConfig configures whether and how trust-manager can write
 // trust bundles to Secrets.

@@ -1,0 +1,66 @@
+{
+  "time": "2026-10-05T12:09:41.898055+00:00",
+  "scope": "Consolidation and duplicate-file cleanup only; no live tests rerun.",
+  "report": "qa/PR-466-CONSOLIDATED-REPORT.md",
+  "report_sha256": "56679d18e339a8f887af469da1a87a51c5166b4f17dd4365df948f824816b7ab",
+  "evidence_directory": "qa/pr-466-evidence",
+  "checks": {
+    "unique_assertions": 761,
+    "counts": {
+      "PASS": 742,
+      "CORRECTED": 1,
+      "FAIL": 10,
+      "INTERRUPTED": 7,
+      "RESTORED": 1
+    },
+    "tls_cases": 5,
+    "failed_observations_traced": 10,
+    "monitoring_configurations": 2,
+    "source_files_preserved": 235,
+    "relative_links_checked": 786,
+    "archive_and_file_checksums": "PASS",
+    "main_report_uses_only_common_evidence_links": true,
+    "archived_source_files_and_original_reports_preserved_byte_for_byte": true,
+    "archive_only_rebuild": "PASS",
+    "manual_bash_blocks_syntax_checked": 15,
+    "consolidated_report_unchanged": true,
+    "duplicate_directories_absent_after_rebuild": true,
+    "active_operator_log_preserved_by_rename": true,
+    "credentials_runtime_and_python_caches_gitignored": true,
+    "git_diff_check": "PASS"
+  },
+  "cleanup": {
+    "before_files": 252,
+    "before_bytes": 97858121,
+    "after_shareable_files": 15,
+    "ignored_runtime_files": 1,
+    "common_evidence_bytes": 6612459,
+    "raw_archive_bytes": 5438801,
+    "removed_duplicate_directories": [
+      "qa/pr-466-2026-10-05",
+      "qa/pr-466-repro-2026-10-05"
+    ],
+    "discarded_python_caches": 2,
+    "active_operator_log": "qa/runtime/pr-466-operator.log",
+    "active_operator_pid_verified_with_lsof": 1316
+  },
+  "publication_checks": {
+    "candidate_files_scanned": 17,
+    "archive_members_scanned": 235,
+    "credential_pattern_matches": 0,
+    "kubernetes_secret_objects_with_data": 0,
+    "local_kubeconfigs_checked_without_disclosing_contents": 1,
+    "local_credential_matches": 0,
+    "unique_encoded_candidates_checked": 7,
+    "encoded_data_classifications": {
+      "public_certificate": 7
+    },
+    "excluded_from_publication": [
+      "kubeconfigs",
+      "qa/runtime/",
+      "operator binary",
+      "Python caches"
+    ],
+    "checksums": "PASS"
+  }
+}

@@ -1,0 +1,5 @@
+ok  	github.com/openshift/cert-manager-operator/pkg/tlsprofile	1.043s
+ok  	github.com/openshift/cert-manager-operator/pkg/controller/common	1.165s
+ok  	github.com/openshift/cert-manager-operator/pkg/controller/trustmanager	1.754s
+ok  	github.com/openshift/cert-manager-operator/pkg/controller/certmanager	2.453s
+?   	github.com/openshift/cert-manager-operator/pkg/cmd/operator	[no test files]

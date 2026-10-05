@@ -1,0 +1,616 @@
+{
+  "finding": "F1",
+  "unique_failing_checks": 5,
+  "failed_observations": 10,
+  "cases": [
+    {
+      "case_id": "F1.1",
+      "phase": "strict-modern",
+      "test": "operator-existing TLS1.2",
+      "expected": "reject",
+      "observations": [
+        {
+          "assertion_id": "QA-0161",
+          "time": "2026-10-05T07:06:42.206830+00:00",
+          "provenance": {
+            "environment": "gcp-ocp-5.0",
+            "source_assertion_id": "QA-161",
+            "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+            "source_line": 161
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0165",
+              "time": "2026-10-05T07:06:42.208008+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0162",
+              "time": "2026-10-05T07:06:42.206942+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+              }
+            }
+          ]
+        },
+        {
+          "assertion_id": "QA-0533",
+          "time": "2026-10-05T10:06:08.770244+00:00",
+          "provenance": {
+            "environment": "aws-ocp-5.1",
+            "source_assertion_id": "R-084",
+            "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+            "source_line": 79
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0537",
+              "time": "2026-10-05T10:06:08.773334+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0534",
+              "time": "2026-10-05T10:06:08.770596+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+              }
+            }
+          ]
+        }
+      ],
+      "repeated_comparison": {
+        "provenance": {
+          "environment": "aws-ocp-5.1",
+          "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json"
+        },
+        "measurement": {
+          "phase": "strict-modern",
+          "test": "operator-existing TLS1.2",
+          "first_observation_utc": "2026-10-05T10:06:08.770244+00:00",
+          "repeat_observation_utc": "2026-10-05T10:06:22.691063+00:00",
+          "protocol": "1.2",
+          "cipher_offer": null,
+          "existing": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "fresh": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "positive_control": {
+            "accepted": true,
+            "protocol": "TLSv1.3",
+            "cipher": "TLS_AES_128_GCM_SHA256",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "same_pid": 96017,
+          "reproduced": true
+        }
+      }
+    },
+    {
+      "case_id": "F1.2",
+      "phase": "strict-custom12",
+      "test": "operator-existing Custom excluded cipher",
+      "expected": "reject",
+      "observations": [
+        {
+          "assertion_id": "QA-0229",
+          "time": "2026-10-05T07:08:10.443691+00:00",
+          "provenance": {
+            "environment": "gcp-ocp-5.0",
+            "source_assertion_id": "QA-229",
+            "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+            "source_line": 229
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+            "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0231",
+              "time": "2026-10-05T07:08:10.448026+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0204",
+              "time": "2026-10-05T07:07:46.186108+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+              }
+            }
+          ]
+        },
+        {
+          "assertion_id": "QA-0603",
+          "time": "2026-10-05T10:07:59.077590+00:00",
+          "provenance": {
+            "environment": "aws-ocp-5.1",
+            "source_assertion_id": "R-154",
+            "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+            "source_line": 149
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0605",
+              "time": "2026-10-05T10:07:59.081370+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0578",
+              "time": "2026-10-05T10:07:40.836877+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+              }
+            }
+          ]
+        }
+      ],
+      "repeated_comparison": {
+        "provenance": {
+          "environment": "aws-ocp-5.1",
+          "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json"
+        },
+        "measurement": {
+          "phase": "strict-custom12",
+          "test": "operator-existing Custom excluded cipher",
+          "first_observation_utc": "2026-10-05T10:07:59.077590+00:00",
+          "repeat_observation_utc": "2026-10-05T10:08:02.090346+00:00",
+          "protocol": "1.2",
+          "cipher_offer": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384",
+          "existing": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "fresh": {
+            "accepted": false,
+            "error": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)"
+          },
+          "positive_control": {
+            "accepted": true,
+            "protocol": "TLSv1.3",
+            "cipher": "TLS_AES_128_GCM_SHA256",
+            "certificate_sha256": "31a1983a9df6848c125f9cd9923b1966d9bf66a5c51c056a63be4f01936e34d5"
+          },
+          "same_pid": 96017,
+          "reproduced": true
+        }
+      }
+    },
+    {
+      "case_id": "F1.3",
+      "phase": "strict-custom13",
+      "test": "operator-existing TLS1.2",
+      "expected": "reject",
+      "observations": [
+        {
+          "assertion_id": "QA-0263",
+          "time": "2026-10-05T07:10:47.352254+00:00",
+          "provenance": {
+            "environment": "gcp-ocp-5.0",
+            "source_assertion_id": "QA-263",
+            "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+            "source_line": 263
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0267",
+              "time": "2026-10-05T07:10:47.352723+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0264",
+              "time": "2026-10-05T07:10:47.352404+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "64c415e6359cb4b777077f14128c303dd545c68a2758006fbec996298f2d08d5"
+              }
+            }
+          ]
+        },
+        {
+          "assertion_id": "QA-0683",
+          "time": "2026-10-05T10:25:20.722313+00:00",
+          "provenance": {
+            "environment": "aws-ocp-5.1",
+            "source_assertion_id": "R-234",
+            "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+            "source_line": 228
+          },
+          "existing_operator": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0639",
+              "time": "2026-10-05T10:13:51.719646+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+              }
+            },
+            {
+              "assertion_id": "QA-0687",
+              "time": "2026-10-05T10:25:20.725611+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": false,
+                "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0684",
+              "time": "2026-10-05T10:25:20.722890+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+              }
+            }
+          ]
+        }
+      ],
+      "repeated_comparison": {
+        "provenance": {
+          "environment": "aws-ocp-5.1",
+          "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json"
+        },
+        "measurement": {
+          "phase": "strict-custom13",
+          "test": "operator-existing TLS1.2",
+          "first_observation_utc": "2026-10-05T10:25:20.722313+00:00",
+          "repeat_observation_utc": "2026-10-05T10:25:34.345513+00:00",
+          "protocol": "1.2",
+          "cipher_offer": null,
+          "existing": {
+            "accepted": true,
+            "protocol": "TLSv1.2",
+            "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+            "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+          },
+          "fresh": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "positive_control": {
+            "accepted": true,
+            "protocol": "TLSv1.3",
+            "cipher": "TLS_AES_128_GCM_SHA256",
+            "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+          },
+          "same_pid": 1316,
+          "reproduced": true
+        }
+      }
+    },
+    {
+      "case_id": "F1.4",
+      "phase": "strict-old",
+      "test": "operator-existing TLS1.0",
+      "expected": "accept",
+      "observations": [
+        {
+          "assertion_id": "QA-0323",
+          "time": "2026-10-05T07:35:33.814913+00:00",
+          "provenance": {
+            "environment": "gcp-ocp-5.0",
+            "source_assertion_id": "QA-323",
+            "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+            "source_line": 323
+          },
+          "existing_operator": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0327",
+              "time": "2026-10-05T07:35:33.816206+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1",
+                "cipher": "ECDHE-RSA-AES128-SHA",
+                "certificate_sha256": "57c530a78b8ea54987f5bf47228a7eaca0b97b3bf2804f389000cfa6a782342c"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0326",
+              "time": "2026-10-05T07:35:33.815524+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "0b003c3e9391cd4dc91a3579f336e46971bcb9659099e331e2f07d90c8c64df8"
+              }
+            }
+          ]
+        },
+        {
+          "assertion_id": "QA-0725",
+          "time": "2026-10-05T10:26:30.359756+00:00",
+          "provenance": {
+            "environment": "aws-ocp-5.1",
+            "source_assertion_id": "R-276",
+            "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+            "source_line": 270
+          },
+          "existing_operator": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0729",
+              "time": "2026-10-05T10:26:30.359948+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1",
+                "cipher": "ECDHE-RSA-AES128-SHA",
+                "certificate_sha256": "bd4669f9e9f00163f59885851cba175e0532b04604c502b849ea27d91c6cdaed"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0728",
+              "time": "2026-10-05T10:26:30.359903+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+              }
+            }
+          ]
+        }
+      ],
+      "repeated_comparison": {
+        "provenance": {
+          "environment": "aws-ocp-5.1",
+          "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json"
+        },
+        "measurement": {
+          "phase": "strict-old",
+          "test": "operator-existing TLS1.0",
+          "first_observation_utc": "2026-10-05T10:26:30.359756+00:00",
+          "repeat_observation_utc": "2026-10-05T10:26:43.316885+00:00",
+          "protocol": "1.0",
+          "cipher_offer": null,
+          "existing": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh": {
+            "accepted": true,
+            "protocol": "TLSv1",
+            "cipher": "ECDHE-RSA-AES128-SHA",
+            "certificate_sha256": "bd4669f9e9f00163f59885851cba175e0532b04604c502b849ea27d91c6cdaed"
+          },
+          "positive_control": {
+            "accepted": true,
+            "protocol": "TLSv1.3",
+            "cipher": "TLS_AES_128_GCM_SHA256",
+            "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+          },
+          "same_pid": 1316,
+          "reproduced": true
+        }
+      }
+    },
+    {
+      "case_id": "F1.5",
+      "phase": "strict-old",
+      "test": "operator-existing TLS1.1",
+      "expected": "accept",
+      "observations": [
+        {
+          "assertion_id": "QA-0324",
+          "time": "2026-10-05T07:35:33.815111+00:00",
+          "provenance": {
+            "environment": "gcp-ocp-5.0",
+            "source_assertion_id": "QA-324",
+            "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+            "source_line": 324
+          },
+          "existing_operator": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0328",
+              "time": "2026-10-05T07:35:33.816792+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.1",
+                "cipher": "ECDHE-RSA-AES128-SHA",
+                "certificate_sha256": "57c530a78b8ea54987f5bf47228a7eaca0b97b3bf2804f389000cfa6a782342c"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0326",
+              "time": "2026-10-05T07:35:33.815524+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "0b003c3e9391cd4dc91a3579f336e46971bcb9659099e331e2f07d90c8c64df8"
+              }
+            }
+          ]
+        },
+        {
+          "assertion_id": "QA-0726",
+          "time": "2026-10-05T10:26:30.359813+00:00",
+          "provenance": {
+            "environment": "aws-ocp-5.1",
+            "source_assertion_id": "R-277",
+            "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+            "source_line": 271
+          },
+          "existing_operator": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh_operator_controls": [
+            {
+              "assertion_id": "QA-0730",
+              "time": "2026-10-05T10:26:30.360007+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.1",
+                "cipher": "ECDHE-RSA-AES128-SHA",
+                "certificate_sha256": "bd4669f9e9f00163f59885851cba175e0532b04604c502b849ea27d91c6cdaed"
+              }
+            }
+          ],
+          "existing_operator_positive_controls": [
+            {
+              "assertion_id": "QA-0728",
+              "time": "2026-10-05T10:26:30.359903+00:00",
+              "result": "PASS",
+              "observed": {
+                "accepted": true,
+                "protocol": "TLSv1.3",
+                "cipher": "TLS_AES_128_GCM_SHA256",
+                "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+              }
+            }
+          ]
+        }
+      ],
+      "repeated_comparison": {
+        "provenance": {
+          "environment": "aws-ocp-5.1",
+          "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json"
+        },
+        "measurement": {
+          "phase": "strict-old",
+          "test": "operator-existing TLS1.1",
+          "first_observation_utc": "2026-10-05T10:26:30.359813+00:00",
+          "repeat_observation_utc": "2026-10-05T10:26:46.333376+00:00",
+          "protocol": "1.1",
+          "cipher_offer": null,
+          "existing": {
+            "accepted": false,
+            "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1082)"
+          },
+          "fresh": {
+            "accepted": true,
+            "protocol": "TLSv1.1",
+            "cipher": "ECDHE-RSA-AES128-SHA",
+            "certificate_sha256": "bd4669f9e9f00163f59885851cba175e0532b04604c502b849ea27d91c6cdaed"
+          },
+          "positive_control": {
+            "accepted": true,
+            "protocol": "TLSv1.3",
+            "cipher": "TLS_AES_128_GCM_SHA256",
+            "certificate_sha256": "ff51a800ec1ca69410e6f7ace8b11607f5b7c46a21e1963ba4835b6a8580de1c"
+          },
+          "same_pid": 1316,
+          "reproduced": true
+        }
+      }
+    }
+  ]
+}

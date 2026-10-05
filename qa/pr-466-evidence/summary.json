@@ -1,0 +1,19 @@
+{
+  "commit": "b116f756e5333645814aeabfc0569933111bc5be",
+  "assertions": 761,
+  "counts": {
+    "PASS": 742,
+    "FAIL": 10,
+    "INTERRUPTED": 7,
+    "CORRECTED": 1,
+    "RESTORED": 1
+  },
+  "unique_failing_tls_checks": 5,
+  "findings": [
+    "F1",
+    "F2"
+  ],
+  "first_assertion_utc": "2026-10-05T06:57:10.410711+00:00",
+  "last_assertion_utc": "2026-10-05T10:28:40.357565+00:00",
+  "note": "Counts include repeated observations. F2 expected-failure reproduction assertions are PASS. No new tests were executed to build this evidence set."
+}

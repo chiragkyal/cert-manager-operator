@@ -24,3 +24,10 @@ bin/
 
 # Test binaries
 testbin/
+
+# Local cluster credentials and QA runtime files
+/kubeconfig
+/*.kubeconfig
+/qa/runtime/
+/qa/**/__pycache__/
+/qa/**/*.pyc

@@ -1,0 +1,111 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "monitoring.coreos.com/v1",
+      "kind": "ServiceMonitor",
+      "metadata": {
+        "name": "cmo-pr466-https-controller",
+        "namespace": "cert-manager"
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app.kubernetes.io/instance": "cert-manager",
+            "app.kubernetes.io/component": "controller"
+          }
+        },
+        "endpoints": [
+          {
+            "honorLabels": false,
+            "interval": "15s",
+            "path": "/metrics",
+            "scrapeTimeout": "10s",
+            "targetPort": 9402,
+            "scheme": "https",
+            "tlsConfig": {
+              "ca": {
+                "secret": {
+                  "name": "cert-manager-metrics-ca",
+                  "key": "tls.crt"
+                }
+              },
+              "serverName": "cert-manager.cert-manager.svc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "monitoring.coreos.com/v1",
+      "kind": "ServiceMonitor",
+      "metadata": {
+        "name": "cmo-pr466-https-webhook",
+        "namespace": "cert-manager"
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app.kubernetes.io/instance": "cert-manager",
+            "app.kubernetes.io/component": "webhook"
+          }
+        },
+        "endpoints": [
+          {
+            "honorLabels": false,
+            "interval": "15s",
+            "path": "/metrics",
+            "scrapeTimeout": "10s",
+            "targetPort": 9402,
+            "scheme": "https",
+            "tlsConfig": {
+              "ca": {
+                "secret": {
+                  "name": "cert-manager-metrics-ca",
+                  "key": "tls.crt"
+                }
+              },
+              "serverName": "cert-manager-webhook.cert-manager.svc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "monitoring.coreos.com/v1",
+      "kind": "ServiceMonitor",
+      "metadata": {
+        "name": "cmo-pr466-https-cainjector",
+        "namespace": "cert-manager"
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app.kubernetes.io/instance": "cert-manager",
+            "app.kubernetes.io/component": "cainjector"
+          }
+        },
+        "endpoints": [
+          {
+            "honorLabels": false,
+            "interval": "15s",
+            "path": "/metrics",
+            "scrapeTimeout": "10s",
+            "targetPort": 9402,
+            "scheme": "https",
+            "tlsConfig": {
+              "ca": {
+                "secret": {
+                  "name": "cert-manager-metrics-ca",
+                  "key": "tls.crt"
+                }
+              },
+              "serverName": "cert-manager-cainjector.cert-manager.svc"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

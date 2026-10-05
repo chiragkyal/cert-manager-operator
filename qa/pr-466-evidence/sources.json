@@ -1,0 +1,1434 @@
+{
+  "created_utc": "2026-10-05T12:08:40.163803+00:00",
+  "commit": "b116f756e5333645814aeabfc0569933111bc5be",
+  "environments": [
+    {
+      "id": "gcp-ocp-5.0",
+      "cluster": "ci-ln-605hqdt-72292",
+      "openshift": "5.0.0-0.nightly-2026-09-29-171841",
+      "directory": "pr-466-2026-10-05",
+      "assertion_prefix": "QA-"
+    },
+    {
+      "id": "aws-ocp-5.1",
+      "cluster": "ci-op-32nzi86y-ea007-6xtww",
+      "openshift": "5.1.0-0.ci-2026-10-05-053659-test-ci-op-32nzi86y-latest",
+      "directory": "pr-466-repro-2026-10-05",
+      "assertion_prefix": "R-"
+    }
+  ],
+  "archive": "raw-evidence.tar.gz",
+  "files": [
+    {
+      "archive_member": "pr-466-2026-10-05/CHECKS.md",
+      "original_repo_path": "qa/pr-466-2026-10-05/CHECKS.md",
+      "bytes": 107102,
+      "sha256": "7d17cd7e3e5e651de6a4884362564df47b83d0dc1bf3d3f2890ae52260a4329a"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/README.md",
+      "original_repo_path": "qa/pr-466-2026-10-05/README.md",
+      "bytes": 19058,
+      "sha256": "48deb82d0f658965d57054214b7c365aff12f965378292cf80ca5c294259afc0"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/REPORT.md",
+      "original_repo_path": "qa/pr-466-2026-10-05/REPORT.md",
+      "bytes": 14487,
+      "sha256": "d1efa00ad50640b7df1e0689ae4155710c49f9c0e9cfcde8d6544728d64bbb1e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/artifact-verification.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/artifact-verification.json",
+      "bytes": 245,
+      "sha256": "6b03c3aee93c6f745370fbe220ce00887a74550f61d9313fd0b07aceb87fcb6e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/assertion-summary.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/assertion-summary.json",
+      "bytes": 86,
+      "sha256": "8842225787f90e99567d599a3ac42bd2915150dd1c4ec6c55a0939b4505e6b8f"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-deployments.json",
+      "bytes": 26986,
+      "sha256": "ff852494558e7a3bbb262763e8bd9d5b548c45e63aca443c43cddee53a259e05"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-forward-cert-manager-cainjector.log",
+      "bytes": 17296,
+      "sha256": "57855fbc59ad0c20d97d95c0712f75234e3340410a4802cde59098c1be296785"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-forward-cert-manager-webhook.log",
+      "bytes": 24305,
+      "sha256": "e80a2b6d0ea7390c9d6b67c9ecbdfc3f5d4c7e67711a5f454cd2251a700bd13e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-forward-cert-manager.log",
+      "bytes": 13344,
+      "sha256": "57e0ae83206d53be4e773d81766b6a3ff9146b922f0fd062a88e76edf978fadf"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-forward-trust-manager.log",
+      "bytes": 15883,
+      "sha256": "edc219b7d7b5907e8de19828fc487ee36c70408114ec8ec3f7f466b6ce75c59e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-handshakes.json",
+      "bytes": 5167,
+      "sha256": "45a2f433015db362dbcf01db146d06935a1f902b95e20ed87a7fe04ff8c8cb39"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline-operator-follower.log",
+      "bytes": 11653,
+      "sha256": "a3f680d7546bde77a874d3a63ec2ad77650b3691a20f92426d3f5913cc980ccf"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/baseline.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/baseline.json",
+      "bytes": 303505,
+      "sha256": "b639618a888b240a3b2bc30e3feba1761957e8b2faff15667de1ad086d51edc5"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/cleanup-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/cleanup-deployments.json",
+      "bytes": 27002,
+      "sha256": "59cdd5a8eca67eb6f2af3d184dd9983008068425ded67e0931b2b43cfaffb0f6"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/cleanup-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/cleanup-platform-stable.json",
+      "bytes": 193817,
+      "sha256": "0e2d0658937b72e4cfca1aa7d9c3ca0a1b89c89510c43e17ada238d6b6164e03"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/commands.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/commands.log",
+      "bytes": 56873689,
+      "sha256": "663988aa38f0638b75bece2da6d78ed12e4d9020ee4e6c94c40a470a51647120"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/extended-current-old-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/extended-current-old-platform-stable.json",
+      "bytes": 195382,
+      "sha256": "46139b72ea75c6bca8b13d2e7819c4d698799436a249b2ccb4492f6c17a24175"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/extended-default-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/extended-default-deployments.json",
+      "bytes": 29121,
+      "sha256": "49e67a90a35eb6c2143ed35bc932563ad6f307e33dd62bf7419d9dc53653eb9b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/extended-default-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/extended-default-platform-stable.json",
+      "bytes": 194426,
+      "sha256": "9e061665a2c73f1831094da0c6ea7c6cb69dc6b4a3f094d997091d27e145a531"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/extended-restore-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/extended-restore-deployments.json",
+      "bytes": 27002,
+      "sha256": "7953d1247d5e433d6942e6a2e095667f75e416d2e7e290b72aa5d60544405f6b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/final-certmanager-exact-restore.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/final-certmanager-exact-restore.json",
+      "bytes": 5158,
+      "sha256": "f6446ed09d571f550a35665b31815c5bfd7f812bec979c9ba5632798c12e330e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/final-exact-restore-time.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/final-exact-restore-time.json",
+      "bytes": 103,
+      "sha256": "dd7534c1bf796a8a5f6145fae46f8c7cf789b489ee59a7e3952a57672ce5d8ce"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/final-platform.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/final-platform.json",
+      "bytes": 351403,
+      "sha256": "f9378d196199310e223fbe628f2f28e27bd721aa5ab31159e5df238b830b7110"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/final-verification-time.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/final-verification-time.json",
+      "bytes": 74,
+      "sha256": "1bb413866762832d4dbbbd7b1b0d81ce2b4c51a3edd988718def293b6c5eba98"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/final.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/final.json",
+      "bytes": 303564,
+      "sha256": "f1d71827911bf838cc53835319ec55dab76959a0164d8f7e68dd243f419249eb"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/git-head.txt",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/git-head.txt",
+      "bytes": 135,
+      "sha256": "e2ae0226cecb315073cad1a7cb0db4a460f329aa5aeae4256b834dd11f65dd77"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-deployments.json",
+      "bytes": 27002,
+      "sha256": "784950156debe5748100249b4d2b522a4b43307e9a5e9a7d24bbb928d6a1cf03"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-0.log",
+      "bytes": 13344,
+      "sha256": "f8aa7647fc84b2eb48480a232fef7df89f69e3372a7c4f245a00d0842d976e2d"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-cainjector-0.log",
+      "bytes": 13344,
+      "sha256": "ca248cf0b81573a7499a6e7c9082e88ae21a34e63941d541fd6ce48150da362b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-forward-cert-manager-webhook-0.log",
+      "bytes": 26281,
+      "sha256": "bd9324b4e390c850be361a85708da1f8e959e25324a19b1239bfdb83577ba2fd"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-forward-trust-manager-0.log",
+      "bytes": 15152,
+      "sha256": "4e5788b9494f1370461e0695eae6e310657e54e60e1160813227b72423a6052c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-handshakes.json",
+      "bytes": 5167,
+      "sha256": "1e1691a486b0b5e660c2370e84e174f2dd2f6712c1fc6ce45ecfb47175531597"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-operator-follower.log",
+      "bytes": 11655,
+      "sha256": "302be3887cf19ee16518a459eb9f536ab9be92627f55ce9150111e1933493949"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern-platform-stable.json",
+      "bytes": 193531,
+      "sha256": "7974875b7f38bb1ad21c2a1a4b793e5bb219826ddcb4903ae1f6310b8244de17"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/legacy-modern.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/legacy-modern.json",
+      "bytes": 305488,
+      "sha256": "4757408f6126165ee6381e8c4d247d19f71bbd6d3818e8ce7482bcf1677e4e0c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/commands.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/commands.log",
+      "bytes": 15016357,
+      "sha256": "d12713d6ca47708ce3cf3d4ab94be836e1ae65bf627209a067524ea6bfe17828"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/monitoring-http-targets.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/monitoring-http-targets.json",
+      "bytes": 24053,
+      "sha256": "1a12c589b9908003329ec8fe25d081f0f2965e9d83024525102d9918f19e84e0"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/monitoring-https-targets.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/monitoring-https-targets.json",
+      "bytes": 24691,
+      "sha256": "7ba7d8ec0a7e0991ea9302e2ef35f7773fb8144478446468b45603c4742a57d5"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/monitoring-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/monitoring-platform-stable.json",
+      "bytes": 194426,
+      "sha256": "9e061665a2c73f1831094da0c6ea7c6cb69dc6b4a3f094d997091d27e145a531"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/monitoring-prometheus-forward.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/monitoring-prometheus-forward.log",
+      "bytes": 33260,
+      "sha256": "205658a850d3049c0cde19894d128256041da893f707333037cff4f42d31c294"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/original-cluster-monitoring-config.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/original-cluster-monitoring-config.json",
+      "bytes": 594,
+      "sha256": "5b114642cb1ab47e770baf5fa377a5c79d173f3c44652b69ae7a248a34d87962"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/monitoring/results.jsonl",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/monitoring/results.jsonl",
+      "bytes": 2358,
+      "sha256": "f8a08e3b4f979cf9d2a4df759b086ecfa309b84ddeff1322a1a4147d28e2bc64"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/notready-master.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/notready-master.json",
+      "bytes": 21667,
+      "sha256": "0b7d61cb7ab090bb9178e907cc5ea4f9832c904aeae7bac05408fbdcf29a44e2"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/original-apiserver.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/original-apiserver.json",
+      "bytes": 823,
+      "sha256": "04e43c7363a37f1d202daad831bc88c306b4bf2ce6861c37a78fce753aa823d1"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/original-certmanager.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/original-certmanager.json",
+      "bytes": 4248,
+      "sha256": "bb8bc9157a06671e7d5e6e0889aa0d99a292e8a026efae59e869d19e2648004a"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/override-precedence-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/override-precedence-deployments.json",
+      "bytes": 29121,
+      "sha256": "493954d990b4020f851e3b61bc297830b97e70e50f43ad022dea8706730cbb13"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-0.log",
+      "bytes": 5153,
+      "sha256": "33802d3eeb15d7d8826a9ee97c542cca255a956df93f9f8c90748a3bfcc24d57"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-cainjector-0.log",
+      "bytes": 1472,
+      "sha256": "257dd5a8200c9fde5df3e626b16d18347923362f935b5528418b658c0b296bcd"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/override-precedence-forward-cert-manager-webhook-0.log",
+      "bytes": 2946,
+      "sha256": "77b92ae9db49a04822d7011b69b310aafc6f6dec4291cac1081a4a11749f826a"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/override-precedence-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/override-precedence-forward-trust-manager-0.log",
+      "bytes": 4351,
+      "sha256": "03df85b99b90e10e918a49657c6df745e6b8955da2a4d166e8741209cbf932d3"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/pre-existing-local-changes.patch",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/pre-existing-local-changes.patch",
+      "bytes": 5109,
+      "sha256": "a50803a75d590f69cfd9b779aa53eccdc9b0b71b28228222e1531cd6231d4521"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/recovery-clusteroperators.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/recovery-clusteroperators.json",
+      "bytes": 257252,
+      "sha256": "53159c78976a6a298ca5b2ab2f3cc5d4785512cf57e3f1f3efda634ea6bf7267"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/restarted-local-operator.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/restarted-local-operator.json",
+      "bytes": 525,
+      "sha256": "295132b844658084ef0568984eeca83d60044c9c203a3b6290e4f141e6747456"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/restarted-local-operator.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/restarted-local-operator.log",
+      "bytes": 44283,
+      "sha256": "399c89281e59624a87f6eaaebb28fcea990ce33f083014995ea867dbd7556872"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/restore-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/restore-deployments.json",
+      "bytes": 27002,
+      "sha256": "784950156debe5748100249b4d2b522a4b43307e9a5e9a7d24bbb928d6a1cf03"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/results.jsonl",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/results.jsonl",
+      "bytes": 216161,
+      "sha256": "667f51b37abd76592071c7c69a4fa874ee726e59895983e56a053285ca32fe2c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/serving/commands.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/serving/commands.log",
+      "bytes": 13729,
+      "sha256": "5dbef64fc70f26ee33f81fb391075c1eb90599dfbc71dd6591bb06d00929c028"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/serving/operator-metrics-auth-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/serving/operator-metrics-auth-operator-follower.log",
+      "bytes": 12734,
+      "sha256": "a6d15cae5864fa01ee5598bf6c53eec471e25850cfa5803db8636d0e4d871b71"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/serving/operator-service-ca-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/serving/operator-service-ca-operator-follower.log",
+      "bytes": 7556,
+      "sha256": "c4351ffb9ed9b9a944ad59a702dbf505661e04d55e1f6db3ebaf6d69da74ab83"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/serving/results.jsonl",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/serving/results.jsonl",
+      "bytes": 2560,
+      "sha256": "f7af6525bfc8303b07ce668959c646979bdc50be85809469d74966731e08232a"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/stability-drift-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/stability-drift-deployments.json",
+      "bytes": 29121,
+      "sha256": "82d931b6f453dea709c89c2d487b5eadda3db77323adcc7f3a5e05617e1ccba5"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-0.log",
+      "bytes": 7220,
+      "sha256": "8482cd067f7942dea552ffd0460d1b55e20da9cb42a0951e1c79ef8126044b01"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-cainjector-0.log",
+      "bytes": 7220,
+      "sha256": "ab0fa2ccda7d9bb78f0c397bb53cb06a4ba5759f366815e59981c650e466fb61"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/stability-drift-forward-cert-manager-webhook-0.log",
+      "bytes": 14482,
+      "sha256": "2fad7d3779a097401d2c59bf581e24969193235b2a1c27676d325ce91fe26b90"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/stability-drift-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/stability-drift-forward-trust-manager-0.log",
+      "bytes": 8709,
+      "sha256": "9991872644e579544c3d90a8b4b1aaafadc03c24a9043c00ab2ed9924ca0f639"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-deployments.json",
+      "bytes": 27888,
+      "sha256": "dd3110e71687425226c59de09e2d3fd4f62bfa827a276b453bd7e8ef76f18c1e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager-cainjector.log",
+      "bytes": 19866,
+      "sha256": "15efe76f44ea03c02c5386290eaea1e488e16b4b930239a037687474d5a68e97"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager-webhook.log",
+      "bytes": 34632,
+      "sha256": "3a0f4e1e17478e44afbae95c6aac31508bc9ea4a4eb2231e92e9e68ffa5b9ede"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-forward-cert-manager.log",
+      "bytes": 17396,
+      "sha256": "fe843adb238001c5c35d4e20074f2ded1394c09eb36ce9a840b04f15bcfd365c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-forward-trust-manager.log",
+      "bytes": 19099,
+      "sha256": "de27d5e769a5d0f357c2efcd64607f448348bb95e0a407e3847bd14b4e49466d"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-handshakes.json",
+      "bytes": 5167,
+      "sha256": "dd00a9af1b76228745ff78811a67ec21ef4334fe0d77f04310920917581bb19b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12-operator-follower.log",
+      "bytes": 14500,
+      "sha256": "04de03fc0cfadb30aa60a77150c75b8834fbd9e3ed755cb1071a5582cdc3047e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom12.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom12.json",
+      "bytes": 307469,
+      "sha256": "686137d39addaf29337744d833cf37c9ead55aeeafcafaedeabac10bd432c5af"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-deployments.json",
+      "bytes": 27270,
+      "sha256": "e09f36acd0ddab0a1b1345c7b8bad34fb5b0bd3bf41d59d94726a12089cf696c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager-cainjector.log",
+      "bytes": 16720,
+      "sha256": "9c7f1730ea4cb08be71ed4255f098d8d58dda3667994c6ae54043cf8f542c872"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager-webhook.log",
+      "bytes": 23894,
+      "sha256": "6c43ec7e3eea970c2b9117e04b484450d1afd600e47db995a7d5b14e5336434e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-forward-cert-manager.log",
+      "bytes": 13015,
+      "sha256": "d6e7f896004649e8cc93b5711a5f396974ee9807a4a2eaf1dd62fe81fc880228"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-forward-trust-manager.log",
+      "bytes": 14794,
+      "sha256": "7da75ef9a1fd614ab6db84f6b41e9e53c80960fb8970be149e4bafeb44219e8e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-handshakes.json",
+      "bytes": 4715,
+      "sha256": "1f1ecc40e386434c1be2c5d8669680dfff2e7be4c0e7bdd220276e999c95a7ff"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13-operator-follower.log",
+      "bytes": 11787,
+      "sha256": "735ea46c617c3ae2d7cb5b0767ebe6fa4103308e66132cec598ebc766dbe9881"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-custom13.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-custom13.json",
+      "bytes": 307197,
+      "sha256": "98d20142955ff63108f354e10551a0cef8391b2663aea9aa3649d9e954b4133f"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-deployments.json",
+      "bytes": 29105,
+      "sha256": "c1d15a6b3b6911bd6cb6b43b8eeda1c315969a082b1a9aa35bc4efebd29e811c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-forward-cert-manager-cainjector.log",
+      "bytes": 16555,
+      "sha256": "7dd08871d35859545a384f767b7cf5ff00697eca314bb9f2a0bd5dcd3238b0d8"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-forward-cert-manager-webhook.log",
+      "bytes": 26034,
+      "sha256": "d6253428f0bb09c4103ec07c922a3001768758a44ec8143dff3e1db45fc9cc60"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-forward-cert-manager.log",
+      "bytes": 13344,
+      "sha256": "501bb918c798707210dd43f5522f07095ce3677f7829cfc4af767be389b87527"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-forward-trust-manager.log",
+      "bytes": 16320,
+      "sha256": "526a5d2107641bd9b94b82c66e24351013539c5e78d31de501703a8bce687e11"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-handshakes.json",
+      "bytes": 5167,
+      "sha256": "5171aabca01ad83bfdc0683ea1b3d6e66a40babde4e9aedffa513954b520f4d5"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default-operator-follower.log",
+      "bytes": 11786,
+      "sha256": "ca7901c958ecc8631dfd2a534f94c506cd1ef84c1be13a65591befc023b45088"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-default.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-default.json",
+      "bytes": 308365,
+      "sha256": "8ccaed9ea00fd0f41869bdc04617beaf131b7b5939df4c25314e9b4104bb050b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-deployments.json",
+      "bytes": 29105,
+      "sha256": "c1d15a6b3b6911bd6cb6b43b8eeda1c315969a082b1a9aa35bc4efebd29e811c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager-cainjector.log",
+      "bytes": 16555,
+      "sha256": "51002e301fc03e9cab22658f2174ee13bde360911558c30cd95b13219cfa421b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager-webhook.log",
+      "bytes": 25540,
+      "sha256": "cf7d5316bbbde64d96b527dcca8b3997a9d9f6a620126abc83657c67ec7d8ba8"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-forward-cert-manager.log",
+      "bytes": 13097,
+      "sha256": "2f5282e5f1b4019a0a227698616e88145f9b9001ced1beec7c0185a17cfcb86e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-forward-trust-manager.log",
+      "bytes": 16077,
+      "sha256": "8be9796d917647b9c486498c50e8cd67078d32ebe750a3d48d8f713825d48539"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-handshakes.json",
+      "bytes": 5167,
+      "sha256": "0b4d88f27362b2fd7743c61a269723ad1ef303821061a21bf2020f8733a6b32e"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate-operator-follower.log",
+      "bytes": 11786,
+      "sha256": "5d24fda2572c8c7d50dff196f0b9bf1839072e62c035c5485084b929b3630ebe"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-intermediate.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-intermediate.json",
+      "bytes": 308463,
+      "sha256": "899ccde1b2596705788c45349a3b2f4f6cc67b6544db5ac0c1018c70105c83ff"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-deployments.json",
+      "bytes": 27270,
+      "sha256": "9039490dd9d2ce389ed1255f997e36fedf2e9c502d9462ed2f57056d8559ec95"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager-cainjector.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager-cainjector.log",
+      "bytes": 15732,
+      "sha256": "8b96b0cd5d965acd8c4a31356761cd87d2716209afb90041035b31c620955fdb"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager-webhook.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager-webhook.log",
+      "bytes": 23894,
+      "sha256": "ab40d81213002252207efbbf8f3af3f9dcc215c516390ec41678782579fcfc28"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-forward-cert-manager.log",
+      "bytes": 13509,
+      "sha256": "40454830b169fd6399a78f0dae4c72f975792cf2edc733bb6efafdebf17b0ac4"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-forward-trust-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-forward-trust-manager.log",
+      "bytes": 15478,
+      "sha256": "eeddb49eac8ed0aa941d3b6fa44bd336b915e48840a7494c72fa23114b429f36"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-handshakes.json",
+      "bytes": 4715,
+      "sha256": "70dbd433bc38b7d0fcb78db0ed014cdc51f51c156addd8922e89bbec9f0a9979"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern-operator-follower.log",
+      "bytes": 11925,
+      "sha256": "a38d9853dd9c11fc69b5bee89d94b8f961bae39be8dc6a6030c069fb04695deb"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-modern.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-modern.json",
+      "bytes": 306089,
+      "sha256": "3455eb730564b3342d2f0882481800256b6c7c62fbc2f0f7db97fc1dc1060a1f"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-deployments.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-deployments.json",
+      "bytes": 31149,
+      "sha256": "040629761d39edbea416cd1b14d23187c331735620f314239f0a1c7132031c75"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-0.log",
+      "bytes": 14002,
+      "sha256": "0c97cdc7c6688414f9b6a24694197652da58cc85e2e701fbe26a0d7be7427f42"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-cainjector-0.log",
+      "bytes": 15978,
+      "sha256": "30dfe0d8dd9b9c00bf348e6f0dc4c83ae107dd9c9ca7c9c6ba5aa2634d747f36"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-forward-cert-manager-webhook-0.log",
+      "bytes": 28091,
+      "sha256": "5f936e8d50515fe723d375225899dd70ce04ddbd8c9aa8e99a9fb2f478b2e39f"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-forward-cert-manager.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-forward-cert-manager.log",
+      "bytes": 108,
+      "sha256": "53734b1caf8d6b1f287890eb044cb46ee3eaba8d455188d3098a8b58a532108b"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-forward-trust-manager-0.log",
+      "bytes": 16199,
+      "sha256": "cad764b46c3a08659d2cb296fa8949a9bf54b791863a6f16a6168d6d746a25d9"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-handshakes.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-handshakes.json",
+      "bytes": 5975,
+      "sha256": "7ce59c1bce0c9cf90f5581fe41698a670a99cc7bf6a03dad8c71fcc7632e7b23"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-operator-follower.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-operator-follower.log",
+      "bytes": 12743,
+      "sha256": "a53019a21641fda5297a2ea14b5a37283bec3429ed535cb48ef4cd29c98dbcc6"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old-platform-stable.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old-platform-stable.json",
+      "bytes": 193295,
+      "sha256": "5bb432355aae4b9916f9625945114415ea80987ffd97750e2daa38935cb12878"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/strict-old.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/strict-old.json",
+      "bytes": 313892,
+      "sha256": "aba8f1ec300686f9464d8ac0d4df1dfc7b4f031ee69be1d7df70d437b089c03a"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/unit-tests.log",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/unit-tests.log",
+      "bytes": 393,
+      "sha256": "53ece42bac27cef63a55ca1008c521c086af5310e2acf308e8d650eebc4e0865"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/evidence/worktree-status.txt",
+      "original_repo_path": "qa/pr-466-2026-10-05/evidence/worktree-status.txt",
+      "bytes": 236,
+      "sha256": "7b07092df757439034a113e94febb7f38139741775ce292ee5a4024061d28b48"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/extended_check.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/extended_check.py",
+      "bytes": 16111,
+      "sha256": "384c9fd022d34c175bcb022afd9788bdc0b1ed3f489212b0b11b9341ad45c24c"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/final_check.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/final_check.py",
+      "bytes": 6047,
+      "sha256": "b429a26c04bfaf62d6f40ed017479bf8d7e6e2848b0148f41f1fd219c48eeb22"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/https-servicemonitors.json",
+      "original_repo_path": "qa/pr-466-2026-10-05/https-servicemonitors.json",
+      "bytes": 2896,
+      "sha256": "a0ccd6d3c72fca9be464209125388ba2752ec0ddf563093826b1c4e316c1c14d"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/live_check.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/live_check.py",
+      "bytes": 23951,
+      "sha256": "e0eba1a6d28e7bf534b7e4a00094dbb03edae5ab268040ad67a72a5913ce3115"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/monitoring_check.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/monitoring_check.py",
+      "bytes": 6163,
+      "sha256": "6082148fb9b4927d50fbc68bf25ed8e57f6d545f538c54c3062efdfa0fb6a2a9"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/recover_operator.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/recover_operator.py",
+      "bytes": 1981,
+      "sha256": "1e12cd8f146e5ab6a488bd9f5466a6170a7a75cd26fca3ab614bff8d53033263"
+    },
+    {
+      "archive_member": "pr-466-2026-10-05/render_checks.py",
+      "original_repo_path": "qa/pr-466-2026-10-05/render_checks.py",
+      "bytes": 4744,
+      "sha256": "c2ee57974059c7d509dad916ab34b9a26c8cf2f42ba0fa183ecca96445336887"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/CHECKS.md",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/CHECKS.md",
+      "bytes": 81032,
+      "sha256": "ac2a0f148b80a23d17a2e71c7af14d5c6f22e875e4d13a309d3be8758390d5d0"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/README.md",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/README.md",
+      "bytes": 8191,
+      "sha256": "e1df8fcd327ac43b99880df968f46872644e2fc2404ea62c139c8203d028b86e"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/REPORT.md",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/REPORT.md",
+      "bytes": 38636,
+      "sha256": "88789efd6e0268c591ff1cac37adeb771b9a854de1a4cf28da477981348f4e06"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/active-listener-baseline.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/active-listener-baseline.json",
+      "bytes": 792,
+      "sha256": "0219226b73230b627743b402d3ed660bfe0f6efee8c77a7e2a21fabd6e0a32e5"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/artifact-verification.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/artifact-verification.json",
+      "bytes": 871,
+      "sha256": "894eabcd1aed594ab2119ce664c34ff8c12ea4d9ce6a4849d3a92f31c96a7943"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/assertion-summary.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/assertion-summary.json",
+      "bytes": 51,
+      "sha256": "703a947de88cc914dc9bf34a3967f27340fa209180a191792397b6cdcd7dc419"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-deployments.json",
+      "bytes": 26660,
+      "sha256": "ce5fa0f834866eb1ae0db6fb66e5682b6db9032b162d17a96fc1825074a3791b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-0.log",
+      "bytes": 13344,
+      "sha256": "3588501395221490ae1eebb81a1ff8b4b4d65570e37bebf03f0b649335161174"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-cainjector-0.log",
+      "bytes": 16802,
+      "sha256": "c25957e5266a78851c921cd269ccc56ee13205abf8039343e9a15cd0e6347c7e"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-forward-cert-manager-webhook-0.log",
+      "bytes": 26528,
+      "sha256": "1be468904a695f2e563cb746a89729a398ec8473ded375de6ea805bc70f4e50f"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-forward-trust-manager-0.log",
+      "bytes": 15807,
+      "sha256": "7df95810f9cd2f3a132e701430f62a9fe486542ae9bf13a461f1aa7e23f7ef31"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-handshakes.json",
+      "bytes": 5167,
+      "sha256": "5e0bc1db920ebf97eb8963d2380181b57b2bcfffba7cbd851e835cf527a60e1f"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline-operator-follower.log",
+      "bytes": 11776,
+      "sha256": "49913641f533bdecf0de64bdfbe6e52a302458c261f7a714cfb7c1af1bcf1578"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/baseline.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/baseline.json",
+      "bytes": 308344,
+      "sha256": "daa6b05d234f9ea3e9c75998311396968d7d324d263ef4c9a38a1f4c7e4cae29"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/binary-build-info.txt",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/binary-build-info.txt",
+      "bytes": 6606,
+      "sha256": "e3d08ef8abad0c02844b4828c3c0b72e99de0c519b51614e73a2a68a44dcebe1"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/binary.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/binary.json",
+      "bytes": 7406,
+      "sha256": "eee9560248ef4912d853e7b6beae0cdb85ad206fbb99e439f7bbf0e64a4e9673"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/cleanup-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/cleanup-deployments.json",
+      "bytes": 26660,
+      "sha256": "644c3507951b195d77835b83e3134a83f4b84d5153c0c156d9897ee0387bf5c5"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/cluster-version.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/cluster-version.json",
+      "bytes": 4402,
+      "sha256": "2f76ce34f5ae39a364df4221500fe258b1209b0df3a45ac32880695a8a51d001"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/commands.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/commands.log",
+      "bytes": 7579474,
+      "sha256": "20e0077c5df60821c83ca25ce929fda062521a160773fa0fa333a9b4553e744d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/final-observation.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/final-observation.json",
+      "bytes": 4288,
+      "sha256": "b23f21540fb1ac403872edea407a1ffbd9260cedc29ea74f84a41f74ff8c6d3d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/final.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/final.json",
+      "bytes": 310920,
+      "sha256": "7c6546aa46ee77b9ec388d180a5ab9ce329e277c66b56a1d2e1377324dbbb9e3"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/git-head.txt",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/git-head.txt",
+      "bytes": 41,
+      "sha256": "b2335ae5e582b8fededd1721334d4fb60f194c2e43ee9b4799f8ec5257a93aa4"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/infrastructure.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/infrastructure.json",
+      "bytes": 1093,
+      "sha256": "7c44a2dc0fc3918c42883ef8533e825a7c01bccdad81c8711d4ff4df3a0fdab2"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-apiserver.json",
+      "bytes": 824,
+      "sha256": "1dce847d0f7ef95d2a267f78ff1af81f01b4d98bb57b4588c71f43d968e46b0c"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-local-operator.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-local-operator.json",
+      "bytes": 495,
+      "sha256": "fa5d4ceceaa41be1a883af439a90c77b084bb067618bbae3f53e83aabdf127f7"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-local-operator.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-local-operator.log",
+      "bytes": 46369,
+      "sha256": "e9159c58dba2792d6df47223fe0c02f9b2333c15e467944b85ef289de123a199"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-operator-crs.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-operator-crs.json",
+      "bytes": 105,
+      "sha256": "90fc342f098745bb50dfae4c6eda65e986fd5a807cf01abdf668d8dd03bca0d6"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-operator-deployment.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-operator-deployment.json",
+      "bytes": 13142,
+      "sha256": "0f26168d423dde78692125cd2d4a1e2d10ad9c972375d659a39b72e331500251"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/initial-platform.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/initial-platform.json",
+      "bytes": 198355,
+      "sha256": "418fa68f1bb83dbfd8a475ad5d025a548213a86fa7accc4ca966b059481d79d9"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/installed.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/installed.json",
+      "bytes": 308344,
+      "sha256": "daa6b05d234f9ea3e9c75998311396968d7d324d263ef4c9a38a1f4c7e4cae29"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-before-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-before-apiserver.json",
+      "bytes": 1109,
+      "sha256": "69b136a0ae7ee12af6a95a5ee803f2c9acc62f6117243833abf0387a535e5c3d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-deployments.json",
+      "bytes": 26943,
+      "sha256": "720e9ea8da6f178558783c59d0692f88c8d5683c2f4d264f6fcc42212393f5f0"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-0.log",
+      "bytes": 13509,
+      "sha256": "7b3a6694f4f733f5f625781f823f2623deeebe99006c2ead796aa43d3823aae3"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-cainjector-0.log",
+      "bytes": 16226,
+      "sha256": "f5b4b906e146f152a17a399091e633ff9e3f8c5db952ed41dd21c3c9dfdcdc84"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-cert-manager-webhook-0.log",
+      "bytes": 25623,
+      "sha256": "5ff6b1fca0f352984ee321239bd2ca2aa38c6bab369fea95bc558df745a24b29"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-forward-trust-manager-0.log",
+      "bytes": 15932,
+      "sha256": "be151a08f905caeeb6d39fe9e096b8706e1190fd13323526607cd5fd134c92bf"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-handshakes.json",
+      "bytes": 4376,
+      "sha256": "048a07a969f81182fdf74d22cde4d099ac11a51b7692336b0582cc079f1d6d91"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-operator-follower.log",
+      "bytes": 11911,
+      "sha256": "ede0f8e70944acfbce511776f0a1033ca049a6e09524ebc71c9e8dec6a999774"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-repeat-comparisons.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13-repeat-comparisons.json",
+      "bytes": 453,
+      "sha256": "59767a44f1fcb6d290947913fd5579b45f267cbd1aab6b8f02c1556a73da67e1"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/interrupted-custom13/strict-custom13.json",
+      "bytes": 311784,
+      "sha256": "98fb641b61c5f952ed2559aa0fc62d39cf8827e48c003488c12425b839a4a937"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/manual-command-validation.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/manual-command-validation.json",
+      "bytes": 825,
+      "sha256": "47e94c2d489dd390681a956916c08579f1b465290df1ac3b2e572cc0b44e6311"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/commands.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/commands.log",
+      "bytes": 1102590,
+      "sha256": "6aa5115db1d10115dad9e63c946615d93e3eb3f04c839df5f0af2e07f97d73b0"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/monitoring-http-targets.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/monitoring-http-targets.json",
+      "bytes": 24668,
+      "sha256": "e1260aa2dd18f0c9405e29156ad682c0279805318a69ff053fd6fec6df00912b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/monitoring-https-targets.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/monitoring-https-targets.json",
+      "bytes": 24608,
+      "sha256": "a23e43d6f6252b25968bf1d2ab2215fe9915f9eb2c40e8ca392360836401274f"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/monitoring-platform-stable.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/monitoring-platform-stable.json",
+      "bytes": 198355,
+      "sha256": "418fa68f1bb83dbfd8a475ad5d025a548213a86fa7accc4ca966b059481d79d9"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/monitoring-prometheus-forward.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/monitoring-prometheus-forward.log",
+      "bytes": 58190,
+      "sha256": "dbdecfe85f2b0c82ffef33aef14cd4bcdfd25f6af782b70969ce4ebf38ebd2bc"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/original-cluster-monitoring-config.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/original-cluster-monitoring-config.json",
+      "bytes": 594,
+      "sha256": "31fc77c980962a4b930d152cb55d7fe8a0dd29bc25edaa98452c737b2e774921"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/monitoring/results.jsonl",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/monitoring/results.jsonl",
+      "bytes": 1697,
+      "sha256": "75a07607522615a566aa37839fc55ec021dc8a3093c652211c70cd4a926e669d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/original-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/original-apiserver.json",
+      "bytes": 824,
+      "sha256": "1dce847d0f7ef95d2a267f78ff1af81f01b4d98bb57b4588c71f43d968e46b0c"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/original-certmanager.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/original-certmanager.json",
+      "bytes": 4538,
+      "sha256": "7b6f5ea67b90fe8263ec2b45ca5f37029a77960897dd83af971aa4db117683bf"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/pre-existing-local-changes.patch",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/pre-existing-local-changes.patch",
+      "bytes": 5109,
+      "sha256": "a50803a75d590f69cfd9b779aa53eccdc9b0b71b28228222e1531cd6231d4521"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/recovery/commands.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/recovery/commands.log",
+      "bytes": 1476,
+      "sha256": "d6259424558c0a3e8514d95ce0eb7eaea116fdee70e2bc9004f34995075d0f1a"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/recovery/incident.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/recovery/incident.json",
+      "bytes": 392,
+      "sha256": "2eb76d47ee0f666a6a9ea4eeff1c493811ed9587bec54b70c16ddea5ff25961f"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/recovery/results.jsonl",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/recovery/results.jsonl",
+      "bytes": 817,
+      "sha256": "d81c52acd1d8acda45561af743466987e6e5b4411a73cd08fab6fd6127f3bff8"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/reproduction-summary.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/reproduction-summary.json",
+      "bytes": 4834,
+      "sha256": "7946bb6ee5b667bbc2e94a9e492f25b1c7151a4295ddbcfa8aaf41d30af6115b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/restarted-local-operator.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/restarted-local-operator.json",
+      "bytes": 494,
+      "sha256": "5f54477ed49eabf20fd9eaebfc0c3cd73bd564bb043bcbfe78ca02377b5c6898"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/restarted-local-operator.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/restarted-local-operator.log",
+      "bytes": 21112,
+      "sha256": "950a10bd002b03945ca659ec7d9af8f44d9b2d7b52018eda90259e8d2e7d3a79"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/restore-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/restore-deployments.json",
+      "bytes": 26660,
+      "sha256": "644c3507951b195d77835b83e3134a83f4b84d5153c0c156d9897ee0387bf5c5"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/results.jsonl",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/results.jsonl",
+      "bytes": 137903,
+      "sha256": "922cd288807795d7d3ca863e571f1f4355f35ef8b1e971e22ecd0455f41329ed"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/resume-baseline-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/resume-baseline-deployments.json",
+      "bytes": 26660,
+      "sha256": "8367fd61ee32e390e58f74d65e8cf369899567e3e6a8dc2dc82e5cee1acec464"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/setup-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/setup-deployments.json",
+      "bytes": 26660,
+      "sha256": "ce5fa0f834866eb1ae0db6fb66e5682b6db9032b162d17a96fc1825074a3791b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-before-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-before-apiserver.json",
+      "bytes": 947,
+      "sha256": "d9a32764c3a9e26e44f9b07d0969d6f5305de145d05125dd3a34e2ef35c10972"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-deployments.json",
+      "bytes": 27563,
+      "sha256": "3ab7eba4265e798cb4da8bcc48ab5bd3c42e634b13ab7239237ee4f74e1c7b31"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-0.log",
+      "bytes": 17149,
+      "sha256": "501fc2f9c1085b8e6a8155742a0e4f465dc53b8ddf31556a1b45c5950db010d3"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-cainjector-0.log",
+      "bytes": 20854,
+      "sha256": "aacf63f2d675b8dec32f055f3b14baf64fb6a65e9999ceb61db8fe0f2aed02e5"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-forward-cert-manager-webhook-0.log",
+      "bytes": 34138,
+      "sha256": "44beb43b3a647bd0b5aff0f070a20cc023ff3c5acca7547fcefbd6a986a15760"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-forward-trust-manager-0.log",
+      "bytes": 19612,
+      "sha256": "ad209f7491a885962cd1354fa065e3fd22925df0ca5e0daf581b1312f3524670"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-handshakes.json",
+      "bytes": 5167,
+      "sha256": "58bab2182c2a2656efbde3f027a0540934e5d1c9070064f91a99ea6bca76a037"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-operator-follower.log",
+      "bytes": 11782,
+      "sha256": "8bfdb428d9e5aadbda764447670d263f95a51977d632dd2a330e0a649c03f05c"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12-repeat-comparisons.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12-repeat-comparisons.json",
+      "bytes": 752,
+      "sha256": "d45540168d276280c88b2f5c14cbe82e62320eeff6df8e5eac52c164ab45ccfa"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom12.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom12.json",
+      "bytes": 312707,
+      "sha256": "7f89fb334a7e29032aa41d5f72068f94156d07fab649ea1d74ca3db0ac664969"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-before-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-before-apiserver.json",
+      "bytes": 878,
+      "sha256": "4b38db4531e50e1e3e018d875fa99fcbd0d861cd730fca0ea1775550c4f01a24"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-deployments.json",
+      "bytes": 26943,
+      "sha256": "c2c770afddb0929cd5f7ecd7cbe6a21bfa2d88d15828bf7031865d879e8b1a48"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-0.log",
+      "bytes": 13015,
+      "sha256": "85dd5c60c808450f9c5d27dacb40ce8e106ca0582fb92966bc8db5d7a8e7c0b9"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-cainjector-0.log",
+      "bytes": 15732,
+      "sha256": "7ee0e43b77bb2f1b2dea80e52f169b3e823d52fe8fdc28151afb78f41556077d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-forward-cert-manager-webhook-0.log",
+      "bytes": 25870,
+      "sha256": "fc280e844811b29bc1772a0c98e9616b6572d5583bcd08cd5b5be6bb813736af"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-forward-trust-manager-0.log",
+      "bytes": 14139,
+      "sha256": "a89596cc284b524b72c45d40bfddc01422c66a19d7bfa3ad7fff9c3d7e04bc47"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-handshakes.json",
+      "bytes": 4715,
+      "sha256": "78e13ddf69960e3d04ec726a1b10afc190c4c515ba26ac7ce2935660eeb18c38"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-operator-follower.log",
+      "bytes": 11785,
+      "sha256": "d6f9e2a0038a211d9237d91920cac561ce98646d4e905016205dfabd099d4855"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13-repeat-comparisons.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13-repeat-comparisons.json",
+      "bytes": 692,
+      "sha256": "ecd6bac5024d54e778e5f362df24bd21d96d76ec1b458c3f7860a40d59c69143"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-custom13.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-custom13.json",
+      "bytes": 310600,
+      "sha256": "5a3165aff0207414259452686c65dbd862ffb77312f5a934b9a960c5f27bef5a"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-before-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-before-apiserver.json",
+      "bytes": 824,
+      "sha256": "1dce847d0f7ef95d2a267f78ff1af81f01b4d98bb57b4588c71f43d968e46b0c"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-deployments.json",
+      "bytes": 26943,
+      "sha256": "2148910dd45413c3f81f3a558ebb84ddb8d04d25294a4a65a5a14c1f0624c6d5"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-0.log",
+      "bytes": 13509,
+      "sha256": "0a99977443b14ae01b01bcea9f73ce7892875bb5ca3ecb5e38cc66b8c107d5d2"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-cainjector-0.log",
+      "bytes": 15732,
+      "sha256": "00406f8d4b4f82104894b95160bf6facd7ed60430aa60dc39328f5bf1190673b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-forward-cert-manager-webhook-0.log",
+      "bytes": 27105,
+      "sha256": "731a4dd7befb308d729b9fb47a70b29b698bf67159cf0699b89c0c943675d44b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-forward-trust-manager-0.log",
+      "bytes": 16261,
+      "sha256": "6671e891abe8be44263225c73ae6e29d0f834657b7b3b4a56b77c444b785bf4e"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-handshakes.json",
+      "bytes": 4715,
+      "sha256": "2d19235e9b409cabf31ac722bfe962842113823512a1b83903cc60eb3ada8619"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-operator-follower.log",
+      "bytes": 14522,
+      "sha256": "7f277468e072bd46cda2a7ac1811b3c68a30764915fc220070a5cd77dff8f671"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern-repeat-comparisons.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern-repeat-comparisons.json",
+      "bytes": 693,
+      "sha256": "344c2168f3b61ce62d530f072df3b955e24685187f6c80ac6ba4775df87cf231"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-modern.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-modern.json",
+      "bytes": 311045,
+      "sha256": "55f88bcc3ecc796654f6c38f53d98f8ba76158015d5984027166115d3e45f106"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-before-apiserver.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-before-apiserver.json",
+      "bytes": 1017,
+      "sha256": "b135b04e1b87594f0cb401c92c3fb396e7c809f59bf201380a51938413555977"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-deployments.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-deployments.json",
+      "bytes": 30805,
+      "sha256": "16008819a3ea7e2407e41c61572bee1b891fd477072cd36bd6287be503a6ef1c"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-0.log",
+      "bytes": 14249,
+      "sha256": "43dadee1b31db71fa1bab877f6282441c419613a3bbbf564cdfaea24b06e4ff7"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-cainjector-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-cainjector-0.log",
+      "bytes": 15402,
+      "sha256": "aec65008518d07a5147521d5494593f088ea50af783f262f4a064a609f6c0f9b"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-webhook-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-forward-cert-manager-webhook-0.log",
+      "bytes": 27103,
+      "sha256": "a6442d92fad39f92cb6b503012a0c7963e6022e31f4e2161c5e0fec1ffc5c2f1"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-forward-trust-manager-0.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-forward-trust-manager-0.log",
+      "bytes": 16735,
+      "sha256": "81807f4ba30ec525e5fd2c7edbf0091b38c8ee5f7ab07bdcc1903c7537fe4aab"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-handshakes.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-handshakes.json",
+      "bytes": 5975,
+      "sha256": "3b2943e653383581393e53af35f7887f072a3167dc70d5f1566061061580a643"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-operator-follower.log",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-operator-follower.log",
+      "bytes": 12745,
+      "sha256": "6a52c84af057e5aed7554e1cc1dba9d8e2dc6520eefeb45b9c5d5e88079f7544"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old-repeat-comparisons.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old-repeat-comparisons.json",
+      "bytes": 1365,
+      "sha256": "4b60ae5c5c6f9cab160393c6c776829f628021041ff59c603db485bf893d6496"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/strict-old.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/strict-old.json",
+      "bytes": 319298,
+      "sha256": "d071c3f8b1b5ad92561ea956df966a673dfe17f9012790f42d0544d1f0ed8203"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/evidence/worktree-status.txt",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/evidence/worktree-status.txt",
+      "bytes": 206,
+      "sha256": "dd0194a3374745048f6e6d283b5a9c1c9270099120b54043802c37755ec11ffa"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/finish.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/finish.py",
+      "bytes": 4021,
+      "sha256": "029386be0884cf341dbabbae7e85d63962bcfc939f1650d7583a84cda7aacede"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/https-servicemonitors.json",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/https-servicemonitors.json",
+      "bytes": 2896,
+      "sha256": "a0ccd6d3c72fca9be464209125388ba2752ec0ddf563093826b1c4e316c1c14d"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/live_check.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/live_check.py",
+      "bytes": 24249,
+      "sha256": "051645b71634ed108a80c373c1f65a4025ea803c0dea6db956e00c7fd00a1c3a"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/monitoring_check.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/monitoring_check.py",
+      "bytes": 6163,
+      "sha256": "6082148fb9b4927d50fbc68bf25ed8e57f6d545f538c54c3062efdfa0fb6a2a9"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/recover_operator.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/recover_operator.py",
+      "bytes": 1981,
+      "sha256": "1e12cd8f146e5ab6a488bd9f5466a6170a7a75cd26fca3ab614bff8d53033263"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/render_checks.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/render_checks.py",
+      "bytes": 3551,
+      "sha256": "55f7064f6d48e77c86e79ef15a6ab24ec236f627fabf7148d69c6bcd3a9eaecf"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/reproduce.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/reproduce.py",
+      "bytes": 3745,
+      "sha256": "2c76b872dff21d7f34e2f8fd2e2ac04b9d78b823ab09eee415b01e84e193f553"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/resume_operator.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/resume_operator.py",
+      "bytes": 1833,
+      "sha256": "5be7d6e5ecc0bee3939e42978fad464a1bfb12c294ee4ef9a840917993f7ead1"
+    },
+    {
+      "archive_member": "pr-466-repro-2026-10-05/setup.py",
+      "original_repo_path": "qa/pr-466-repro-2026-10-05/setup.py",
+      "bytes": 1983,
+      "sha256": "7848d27a055c9f00485f8ec693fa8444c42440ee5475dd6d9ef48271a430498d"
+    }
+  ],
+  "note": "A point-in-time copy of the original reports, scripts and raw evidence. File bytes are unchanged; SHA-256 identifies each archived file. Credentials, operator binary and Python caches are excluded."
+}

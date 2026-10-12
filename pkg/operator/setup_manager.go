@@ -25,6 +25,7 @@ import (
 
 	configv1 "github.com/openshift/api/config/v1"
 	v1alpha1 "github.com/openshift/cert-manager-operator/api/operator/v1alpha1"
+	"github.com/openshift/cert-manager-operator/pkg/controller/approverpolicy"
 	"github.com/openshift/cert-manager-operator/pkg/controller/common"
 	"github.com/openshift/cert-manager-operator/pkg/controller/istiocsr"
 	"github.com/openshift/cert-manager-operator/pkg/controller/trustmanager"
@@ -113,8 +114,9 @@ type Manager struct {
 
 // ControllerConfig specifies which controllers to enable in the unified manager.
 type ControllerConfig struct {
-	EnableIstioCSR     bool
-	EnableTrustManager bool
+	EnableIstioCSR              bool
+	EnableTrustManager          bool
+	EnableApproverPolicyManager bool
 }
 
 // NewControllerManager creates a unified manager for all enabled operand controllers.
@@ -122,7 +124,7 @@ type ControllerConfig struct {
 func NewControllerManager(config ControllerConfig) (*Manager, error) {
 	setupLog.Info("setting up unified operator manager")
 	setupLog.Info("controller", "version", version.Get())
-	setupLog.Info("enabled controllers", "istioCSR", config.EnableIstioCSR, "trustManager", config.EnableTrustManager)
+	setupLog.Info("enabled controllers", "istioCSR", config.EnableIstioCSR, "trustManager", config.EnableTrustManager, "approverPolicyManager", config.EnableApproverPolicyManager)
 
 	cacheBuilder := newUnifiedCacheBuilder(config)
 
@@ -135,15 +137,8 @@ func NewControllerManager(config ControllerConfig) (*Manager, error) {
 		return nil, fmt.Errorf("failed to create manager: %w", err)
 	}
 
-	// Setup enabled controllers
-	if config.EnableIstioCSR {
-		if err := setupIstioCSRController(mgr); err != nil {
-			return nil, err
-		}
-	}
-
-	if config.EnableTrustManager {
-		if err := setupTrustManagerController(mgr); err != nil {
+	for _, setup := range enabledControllerSetups(config) {
+		if err := setup(mgr); err != nil {
 			return nil, err
 		}
 	}
@@ -151,6 +146,31 @@ func NewControllerManager(config ControllerConfig) (*Manager, error) {
 	return &Manager{
 		manager: mgr,
 	}, nil
+}
+
+func enabledControllerSetups(config ControllerConfig) []func(ctrl.Manager) error {
+	var setups []func(ctrl.Manager) error
+	if config.EnableIstioCSR {
+		setups = append(setups, setupIstioCSRController)
+	}
+	if config.EnableTrustManager {
+		setups = append(setups, setupTrustManagerController)
+	}
+	if config.EnableApproverPolicyManager {
+		setups = append(setups, setupApproverPolicyController)
+	}
+	return setups
+}
+
+func setupApproverPolicyController(mgr ctrl.Manager) error {
+	r, err := approverpolicy.New(mgr)
+	if err != nil {
+		return fmt.Errorf("failed to create %s reconciler: %w", approverpolicy.ControllerName, err)
+	}
+	if err := r.SetupWithManager(mgr); err != nil {
+		return fmt.Errorf("failed to create %s controller: %w", approverpolicy.ControllerName, err)
+	}
+	return nil
 }
 
 // setupIstioCSRController creates and registers the IstioCSR controller with the manager.
@@ -214,6 +234,16 @@ func buildCacheObjectList(config ControllerConfig) (map[client.Object]cache.ByOb
 		objectList[&v1alpha1.TrustManager{}] = cache.ByObject{}
 	}
 
+	if config.EnableApproverPolicyManager {
+		// Secrets remain unfiltered: other operands also consume user-owned Secrets.
+		resources := []client.Object{&appsv1.Deployment{}, &corev1.Service{}, &corev1.ServiceAccount{},
+			&rbacv1.Role{}, &rbacv1.RoleBinding{}, &rbacv1.ClusterRole{}, &rbacv1.ClusterRoleBinding{},
+			&admissionregistrationv1.ValidatingWebhookConfiguration{}}
+		if err := addControllerCacheConfig(objectList, approverpolicy.RequestEnqueueLabelValue, resources); err != nil {
+			return nil, fmt.Errorf("failed to configure ApproverPolicyManager cache: %w", err)
+		}
+		objectList[&v1alpha1.ApproverPolicyManager{}] = cache.ByObject{}
+	}
 	return objectList, nil
 }
 

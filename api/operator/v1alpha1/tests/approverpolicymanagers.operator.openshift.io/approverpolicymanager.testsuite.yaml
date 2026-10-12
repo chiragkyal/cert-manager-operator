@@ -1,0 +1,352 @@
+apiVersion: apiextensions.k8s.io/v1
+name: ApproverPolicyManager
+crdName: approverpolicymanagers.operator.openshift.io
+tests:
+  onCreate:
+  - name: Should create the singleton with default logging
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should reject a non-singleton name
+    resourceName: another-manager
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    expectedError: ApproverPolicyManager is a singleton, .metadata.name must be 'cluster'
+  - name: Should accept logLevel 1
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should accept logLevel 2
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 2
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 2
+          logFormat: text
+  - name: Should accept logLevel 3
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 3
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 3
+          logFormat: text
+  - name: Should accept logLevel 4
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 4
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 4
+          logFormat: text
+  - name: Should accept logLevel 5
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: text
+  - name: Should reject logLevel 0
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 0
+    expectedError: logLevel
+  - name: Should reject logLevel 6
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 6
+    expectedError: logLevel
+  - name: Should accept logFormat text
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: text
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should accept logFormat json
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: json
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: json
+  - name: Should reject logFormat ''
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: ''
+    expectedError: logFormat
+  - name: Should reject logFormat 'yaml'
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: yaml
+    expectedError: logFormat
+  - name: Should reject logFormat 'JSON'
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: JSON
+    expectedError: logFormat
+  - name: Should accept explicit logging together
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: json
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: json
+  - name: Should reject missing spec
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+    expectedError: spec
+  - name: Should reject missing approverPolicyConfig
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec: {}
+    expectedError: approverPolicyConfig
+  - name: Should reject null approverPolicyConfig
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: null
+    expectedError: approverPolicyConfig
+  - name: Should default null optional logging fields
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: null
+          logFormat: null
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  onUpdate:
+  - name: Should update logging to text
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: json
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: text
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: text
+  - name: Should update logging to json
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: json
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: json
+  - name: Should restore defaults when optional logging fields are omitted
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 5
+          logFormat: json
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should reject removing required configuration
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec: {}
+    expectedError: approverPolicyConfig
+  - name: Should reject updating logLevel to 0
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 0
+    expectedError: logLevel
+  - name: Should reject updating logLevel to 6
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 6
+    expectedError: logLevel
+  - name: Should reject an invalid logFormat update
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logFormat: yaml
+    expectedError: logFormat

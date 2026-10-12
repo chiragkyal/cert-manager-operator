@@ -43,6 +43,14 @@ var CloudCredentialSecret string
 // that the operator optionally enables, and is provided as a runtime arg.
 var UnsupportedAddonFeatures string
 
+func configuredOperandControllers(featureStatus *features.FeatureGateState) ControllerConfig {
+	return ControllerConfig{
+		EnableIstioCSR:              features.IsIstioCSRFeatureGateEnabled(),
+		EnableTrustManager:          featureStatus.IsTrustManagerFeatureGateEnabled(),
+		EnableApproverPolicyManager: features.IsApproverPolicyManagerFeatureGateEnabled(),
+	}
+}
+
 func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error {
 	// Set controller-runtime logger before any ctrl.Log usage (e.g. NewControllerManager).
 	// Uses klog so --v flag controls verbosity for both library-go and controller-runtime.
@@ -158,15 +166,10 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 	if err != nil {
 		return err
 	}
-	istioCSREnabled := features.IsIstioCSRFeatureGateEnabled()
-	trustManagerEnabled := featureStatus.IsTrustManagerFeatureGateEnabled()
-
-	if istioCSREnabled || trustManagerEnabled {
+	controllerConfig := configuredOperandControllers(featureStatus)
+	if controllerConfig.EnableIstioCSR || controllerConfig.EnableTrustManager || controllerConfig.EnableApproverPolicyManager {
 		// Create unified manager for all enabled operand controllers
-		manager, err := NewControllerManager(ControllerConfig{
-			EnableIstioCSR:     istioCSREnabled,
-			EnableTrustManager: trustManagerEnabled,
-		})
+		manager, err := NewControllerManager(controllerConfig)
 		if err != nil {
 			return fmt.Errorf("failed to create unified controller manager: %w", err)
 		}

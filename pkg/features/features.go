@@ -21,7 +21,6 @@ import (
 const (
 	// openshiftFeatureGateResource is the API resource name for cluster FeatureGate objects.
 	openshiftFeatureGateResource = "featuregates"
-
 )
 
 // allowedPreviewFeatureSets is the set of cluster featureset values that
@@ -158,6 +157,12 @@ func (f *FeatureGateState) IsTrustManagerFeatureGateEnabled() bool {
 	}
 	log.V(1).Info("TrustManager feature: enabled")
 	return true
+}
+
+// IsApproverPolicyManagerFeatureGateEnabled uses only the operator-local gate.
+// Cluster FeatureSet availability or discovery failures do not override this flag.
+func IsApproverPolicyManagerFeatureGateEnabled() bool {
+	return DefaultFeatureGate.Enabled(v1alpha1.FeatureApproverPolicyManager)
 }
 
 // Err returns the failure recorded during [NewFeatureGateState], or nil if none.

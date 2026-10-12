@@ -21,9 +21,14 @@ var (
 	// For more details,
 	// https://github.com/openshift/enhancements/blob/master/enhancements/cert-manager/trust-manager-controller.md
 	FeatureTrustManager featuregate.Feature = "TrustManager"
+
+	// FeatureApproverPolicyManager enables operator-managed approver-policy.
+	// https://github.com/openshift/enhancements/blob/master/enhancements/cert-manager/approver-policy-controller.md
+	FeatureApproverPolicyManager featuregate.Feature = "ApproverPolicyManager"
 )
 
 var OperatorFeatureGates = map[featuregate.Feature]featuregate.FeatureSpec{
-	FeatureIstioCSR:     {Default: true, PreRelease: featuregate.GA},
-	FeatureTrustManager: {Default: false, PreRelease: "TechPreview"},
+	FeatureIstioCSR:              {Default: true, PreRelease: featuregate.GA},
+	FeatureTrustManager:          {Default: false, PreRelease: "TechPreview"},
+	FeatureApproverPolicyManager: {Default: false, PreRelease: "TechPreview"},
 }

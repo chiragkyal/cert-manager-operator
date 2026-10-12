@@ -61,6 +61,7 @@ CERT_MANAGER_VERSION ?= v1.20.3
 ISTIO_CSR_VERSION ?= v0.16.0
 TRUST_MANAGER_VERSION ?= v0.20.3
 APPROVER_POLICY_VERSION ?= v0.27.0
+RELATED_IMAGE_APPROVER_POLICY ?= quay.io/jetstack/cert-manager-approver-policy:$(APPROVER_POLICY_VERSION)
 
 # --- Test Versions ---
 
@@ -330,6 +331,7 @@ local-run: build ## Run the operator locally against the cluster configured in ~
 	RELATED_IMAGE_CERT_MANAGER_ACMESOLVER=quay.io/jetstack/cert-manager-acmesolver:$(CERT_MANAGER_VERSION) \
 	RELATED_IMAGE_CERT_MANAGER_ISTIOCSR=quay.io/jetstack/cert-manager-istio-csr:$(ISTIO_CSR_VERSION) \
 	RELATED_IMAGE_CERT_MANAGER_TRUST_MANAGER=quay.io/jetstack/trust-manager:$(TRUST_MANAGER_VERSION) \
+	RELATED_IMAGE_APPROVER_POLICY="$(RELATED_IMAGE_APPROVER_POLICY)" \
 	OPERATOR_NAME=cert-manager-operator \
 	OPERAND_IMAGE_VERSION=$(BUNDLE_VERSION) \
 	ISTIOCSR_OPERAND_IMAGE_VERSION=$(ISTIO_CSR_VERSION) \

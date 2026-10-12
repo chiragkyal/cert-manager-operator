@@ -65,7 +65,31 @@ var expectedDefaultFeatureState = map[bool][]featuregate.Feature{
 	// list of features which are expected to be disabled at runtime.
 	false: {
 		featuregate.Feature("TrustManager"),
+		featuregate.Feature("ApproverPolicyManager"),
 	},
+}
+
+func TestIsApproverPolicyManagerFeatureGateEnabled(t *testing.T) {
+	t.Cleanup(func() { require.NoError(t, SetupWithFlagValue("ApproverPolicyManager=false")) })
+	for _, apiPresent := range []bool{false, true} {
+		for _, enabled := range []bool{false, true} {
+			t.Run(fmt.Sprintf("api=%t/enabled=%t", apiPresent, enabled), func(t *testing.T) {
+				require.NoError(t, SetupWithFlagValue(fmt.Sprintf("ApproverPolicyManager=%t", enabled)))
+				cs := newFakeConfigClient(t, apiPresent, clusterFeatureGateObject(ocpfeaturegate.Default))
+				_ = NewFeatureGateState(t.Context(), cs)
+				require.Equal(t, enabled, IsApproverPolicyManagerFeatureGateEnabled())
+			})
+		}
+	}
+	// The getter requires no FeatureGateState and therefore cannot fail closed
+	// merely because cluster FeatureSet discovery failed.
+	require.NoError(t, SetupWithFlagValue("ApproverPolicyManager=true"))
+	cs := newFakeConfigClient(t, true)
+	cs.AddReactor("get", "resource", func(clientgotesting.Action) (bool, runtime.Object, error) {
+		return true, nil, fmt.Errorf("discovery unavailable")
+	})
+	_ = NewFeatureGateState(t.Context(), cs)
+	require.True(t, IsApproverPolicyManagerFeatureGateEnabled())
 }
 
 func TestFeatureGates(t *testing.T) {

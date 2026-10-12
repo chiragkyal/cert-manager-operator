@@ -120,6 +120,14 @@ spec:
       name: certificaterequestpolicies.policy.cert-manager.io
       version: v1alpha1
     - description: |-
+        ApproverPolicyManager configures the managed approver-policy deployment in the existing cert-manager namespace.
+        The cluster-scoped instance must be named 'cluster'. Logging defaults to level 1 and text format.
+        The ApproverPolicyManager Tech Preview controller is disabled by default and requires the operator's unsupported-addon-features flag.
+      displayName: ApproverPolicyManager
+      kind: ApproverPolicyManager
+      name: approverpolicymanagers.operator.openshift.io
+      version: v1alpha1
+    - description: |-
         TrustManager describes the configuration and information about the managed trust-manager deployment.
         The name must be 'cluster' to make TrustManager a singleton, allowing only one instance per cluster.
         When a TrustManager is created, trust-manager is deployed in the cert-manager namespace.

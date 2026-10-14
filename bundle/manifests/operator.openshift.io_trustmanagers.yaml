@@ -1010,6 +1010,30 @@ spec:
                             x-kubernetes-list-type: atomic
                         type: object
                     type: object
+                  approverPolicy:
+                    default: {}
+                    description: |-
+                      approverPolicy configures approval of trust-manager's webhook certificate
+                      after the built-in cert-manager approver has been disabled.
+                    properties:
+                      managementState:
+                        allOf:
+                        - enum:
+                          - Managed
+                          - Unmanaged
+                        - enum:
+                          - Managed
+                          - Unmanaged
+                        default: Managed
+                        description: |-
+                          managementState controls maintenance of the certificate approval policy and
+                          its use permissions for the cert-manager service account in cert-manager.
+                          Managed creates these resources after CertManager confirms the approval
+                          handoff and removes them when completion is false or absent.
+                          Unmanaged preserves existing resources and performs no integration checks
+                          or maintenance. Returning to Managed resumes current-state reconciliation.
+                        type: string
+                    type: object
                   defaultCAPackage:
                     description: |-
                       defaultCAPackage configures the default CA package for trust-manager.

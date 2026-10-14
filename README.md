@@ -194,3 +194,5 @@ spec:
 ## Metrics and Monitoring
 
 The guide to [enable the cert-manager metrics and monitoring](https://github.com/openshift/cert-manager-operator/tree/master/docs/operand_metrics.md) will help you get started.
+
+For the optional approver-policy operand, see the [installation, policy configuration, removal, and troubleshooting guide](docs/approver_policy.md).

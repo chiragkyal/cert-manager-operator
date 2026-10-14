@@ -13,6 +13,7 @@ import (
 	"github.com/openshift/library-go/pkg/operator/v1helpers"
 
 	"github.com/openshift/cert-manager-operator/pkg/operator/assets"
+	operatorconfigclient "github.com/openshift/cert-manager-operator/pkg/operator/clientset/versioned/typed/operator/v1alpha1"
 	certmanoperatorinformers "github.com/openshift/cert-manager-operator/pkg/operator/informers/externalversions"
 	"github.com/openshift/cert-manager-operator/pkg/operator/utils"
 )
@@ -47,8 +48,6 @@ var (
 		"cert-manager-deployment/controller/cert-manager-tokenrequest-rb.yaml",
 		"cert-manager-deployment/controller/cert-manager-tokenrequest-role.yaml",
 		"cert-manager-deployment/controller/cert-manager-view-cr.yaml",
-		"cert-manager-deployment/cert-manager/cert-manager-controller-approve-cert-manager-io-cr.yaml",
-		"cert-manager-deployment/cert-manager/cert-manager-controller-approve-cert-manager-io-crb.yaml",
 		"cert-manager-deployment/cert-manager/cert-manager-controller-certificatesigningrequests-cr.yaml",
 		"cert-manager-deployment/cert-manager/cert-manager-controller-certificatesigningrequests-crb.yaml",
 	}
@@ -73,7 +72,9 @@ func NewCertManagerControllerDeploymentController(operatorClient v1helpers.Opera
 	infraInformers utils.OptionalInformer[configinformers.SharedInformerFactory],
 	kubeClient kubernetes.Interface,
 	kubeInformersForTargetNamespace informers.SharedInformerFactory,
-	eventsRecorder events.Recorder, targetVersion string, versionRecorder status.VersionGetter, trustedCAConfigmapName, cloudCredentialsSecretName string) factory.Controller {
+	eventsRecorder events.Recorder, targetVersion string, versionRecorder status.VersionGetter, trustedCAConfigmapName, cloudCredentialsSecretName string,
+	certManagerClient operatorconfigclient.OperatorV1alpha1Interface) factory.Controller {
+	handoff := newAutoApproverController(certManagerClient, kubeClient, certManagerOperatorInformers.Operator().V1alpha1().CertManagers().Lister(), eventsRecorder)
 	return newGenericDeploymentController(
 
 		certManagerControllerDeploymentControllerName,
@@ -88,5 +89,6 @@ func NewCertManagerControllerDeploymentController(operatorClient v1helpers.Opera
 		versionRecorder,
 		trustedCAConfigmapName,
 		cloudCredentialsSecretName,
+		handoff,
 	)
 }

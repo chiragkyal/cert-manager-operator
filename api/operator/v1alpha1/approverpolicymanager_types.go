@@ -1,6 +1,9 @@
 package v1alpha1
 
-import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+import (
+	corev1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+)
 
 func init() {
 	SchemeBuilder.Register(&ApproverPolicyManager{}, &ApproverPolicyManagerList{})
@@ -60,6 +63,11 @@ type ApproverPolicyManagerSpec struct {
 	// +kubebuilder:validation:Required
 	// +required
 	ApproverPolicyConfig ApproverPolicyConfig `json:"approverPolicyConfig"`
+
+	// controllerConfig configures the operator's behavior for resource creation.
+	// +kubebuilder:validation:Optional
+	// +optional
+	ControllerConfig ApproverPolicyControllerConfig `json:"controllerConfig,omitempty"`
 }
 
 // ApproverPolicyConfig configures the approver-policy operand's behavior.
@@ -79,6 +87,65 @@ type ApproverPolicyConfig struct {
 	// +kubebuilder:validation:Optional
 	// +optional
 	LogFormat string `json:"logFormat,omitempty"`
+
+	// approveSignerNames restricts which signers approver-policy may approve or deny.
+	// When omitted or empty, all signers are permitted, including external issuers.
+	// When specified, only these signer names are granted approval permission.
+	// This field accepts at most 50 unique entries of 1 to 825 characters each.
+	// +listType=set
+	// +kubebuilder:validation:MaxItems:=50
+	// +kubebuilder:validation:items:MinLength:=1
+	// +kubebuilder:validation:items:MaxLength:=825
+	// +kubebuilder:validation:Optional
+	// +optional
+	ApproveSignerNames []string `json:"approveSignerNames,omitempty"`
+
+	// resources defines the compute resource requirements for the approver-policy container.
+	// +kubebuilder:validation:Optional
+	// +optional
+	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
+
+	// affinity defines scheduling constraints for the approver-policy pod.
+	// +kubebuilder:validation:Optional
+	// +optional
+	Affinity *corev1.Affinity `json:"affinity,omitempty"`
+
+	// tolerations allows the approver-policy pod to be scheduled on tainted nodes.
+	// This field can have a maximum of 50 entries.
+	// +listType=atomic
+	// +kubebuilder:validation:MaxItems:=50
+	// +kubebuilder:validation:Optional
+	// +optional
+	Tolerations []corev1.Toleration `json:"tolerations,omitempty"`
+
+	// nodeSelector restricts which nodes the approver-policy pod can be scheduled on.
+	// This field can have a maximum of 50 entries.
+	// +mapType=atomic
+	// +kubebuilder:validation:MaxProperties:=50
+	// +kubebuilder:validation:Optional
+	// +optional
+	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+}
+
+// ApproverPolicyControllerConfig configures metadata on managed approver-policy resources.
+type ApproverPolicyControllerConfig struct {
+	// labels are applied in addition to required operator and operand labels.
+	// Required labels take precedence over conflicting user values.
+	// This field can have a maximum of 20 entries.
+	// +mapType=granular
+	// +kubebuilder:validation:MaxProperties:=20
+	// +kubebuilder:validation:Optional
+	// +optional
+	Labels map[string]string `json:"labels,omitempty"`
+
+	// annotations are applied in addition to required operator and operand annotations.
+	// Required annotations take precedence over conflicting user values.
+	// This field can have a maximum of 20 entries.
+	// +mapType=granular
+	// +kubebuilder:validation:MaxProperties:=20
+	// +kubebuilder:validation:Optional
+	// +optional
+	Annotations map[string]string `json:"annotations,omitempty"`
 }
 
 // ApproverPolicyManagerStatus defines the observed state of ApproverPolicyManager.

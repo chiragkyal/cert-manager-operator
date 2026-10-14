@@ -4,5 +4,23 @@ metadata:
   name: cluster
 spec:
   approverPolicyConfig:
+    # Optional: restrict approval to this Issuer in example-apps.
+    # Omit this field or set [] to permit all signers, including external issuers.
+    approveSignerNames:
+      - issuers.cert-manager.io/example-apps.app-ca
     logLevel: 1
     logFormat: text
+    # Example resource values; adjust for your workload.
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        memory: 128Mi
+    nodeSelector:
+      kubernetes.io/os: linux
+  controllerConfig:
+    labels:
+      example.com/team: platform
+    annotations:
+      example.com/owner: certificate-team

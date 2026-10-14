@@ -228,6 +228,1094 @@ tests:
         approverPolicyConfig:
           logLevel: 1
           logFormat: text
+  - name: Should accept 50 tolerations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+          logLevel: 1
+          logFormat: text
+  - name: Should reject 51 tolerations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+          - key: example.com/taint-50
+            operator: Exists
+    expectedError: tolerations
+  - name: Should accept 50 nodeSelector
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+          logLevel: 1
+          logFormat: text
+  - name: Should reject 51 nodeSelector
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+            example.com/key-50: value
+    expectedError: nodeSelector
+  - name: Should accept 20 labels
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+  - name: Should reject 21 labels
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+    expectedError: labels
+  - name: Should accept 20 annotations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+  - name: Should reject 21 annotations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+    expectedError: annotations
+  - name: Should accept empty optional configuration blocks
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources: {}
+          affinity: {}
+          tolerations: []
+          nodeSelector: {}
+        controllerConfig:
+          labels: {}
+          annotations: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources: {}
+          affinity: {}
+          tolerations: []
+          nodeSelector: {}
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          labels: {}
+          annotations: {}
+  - name: Should persist supported resources placement and metadata
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 50
+                preference:
+                  matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+          tolerations:
+          - key: dedicated
+            operator: Equal
+            value: certificates
+            effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+        controllerConfig:
+          labels:
+            example.com/team: platform
+          annotations:
+            example.com/owner: certificate team
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 50
+                preference:
+                  matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+          tolerations:
+          - key: dedicated
+            operator: Equal
+            value: certificates
+            effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          labels:
+            example.com/team: platform
+          annotations:
+            example.com/owner: certificate team
+  - name: Should accept empty signer scope
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames: []
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames: []
+          logLevel: 1
+          logFormat: text
+  - name: Should accept one character signer
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - a
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - a
+          logLevel: 1
+          logFormat: text
+  - name: Should accept built-in and external signers
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - clusterissuers.cert-manager.io/*
+          - googlecasissuers.cas-issuer.jetstack.io/*
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - clusterissuers.cert-manager.io/*
+          - googlecasissuers.cas-issuer.jetstack.io/*
+          logLevel: 1
+          logFormat: text
+  - name: Should accept 50 signers
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuer.example.test/0
+          - issuer.example.test/1
+          - issuer.example.test/2
+          - issuer.example.test/3
+          - issuer.example.test/4
+          - issuer.example.test/5
+          - issuer.example.test/6
+          - issuer.example.test/7
+          - issuer.example.test/8
+          - issuer.example.test/9
+          - issuer.example.test/10
+          - issuer.example.test/11
+          - issuer.example.test/12
+          - issuer.example.test/13
+          - issuer.example.test/14
+          - issuer.example.test/15
+          - issuer.example.test/16
+          - issuer.example.test/17
+          - issuer.example.test/18
+          - issuer.example.test/19
+          - issuer.example.test/20
+          - issuer.example.test/21
+          - issuer.example.test/22
+          - issuer.example.test/23
+          - issuer.example.test/24
+          - issuer.example.test/25
+          - issuer.example.test/26
+          - issuer.example.test/27
+          - issuer.example.test/28
+          - issuer.example.test/29
+          - issuer.example.test/30
+          - issuer.example.test/31
+          - issuer.example.test/32
+          - issuer.example.test/33
+          - issuer.example.test/34
+          - issuer.example.test/35
+          - issuer.example.test/36
+          - issuer.example.test/37
+          - issuer.example.test/38
+          - issuer.example.test/39
+          - issuer.example.test/40
+          - issuer.example.test/41
+          - issuer.example.test/42
+          - issuer.example.test/43
+          - issuer.example.test/44
+          - issuer.example.test/45
+          - issuer.example.test/46
+          - issuer.example.test/47
+          - issuer.example.test/48
+          - issuer.example.test/49
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuer.example.test/0
+          - issuer.example.test/1
+          - issuer.example.test/2
+          - issuer.example.test/3
+          - issuer.example.test/4
+          - issuer.example.test/5
+          - issuer.example.test/6
+          - issuer.example.test/7
+          - issuer.example.test/8
+          - issuer.example.test/9
+          - issuer.example.test/10
+          - issuer.example.test/11
+          - issuer.example.test/12
+          - issuer.example.test/13
+          - issuer.example.test/14
+          - issuer.example.test/15
+          - issuer.example.test/16
+          - issuer.example.test/17
+          - issuer.example.test/18
+          - issuer.example.test/19
+          - issuer.example.test/20
+          - issuer.example.test/21
+          - issuer.example.test/22
+          - issuer.example.test/23
+          - issuer.example.test/24
+          - issuer.example.test/25
+          - issuer.example.test/26
+          - issuer.example.test/27
+          - issuer.example.test/28
+          - issuer.example.test/29
+          - issuer.example.test/30
+          - issuer.example.test/31
+          - issuer.example.test/32
+          - issuer.example.test/33
+          - issuer.example.test/34
+          - issuer.example.test/35
+          - issuer.example.test/36
+          - issuer.example.test/37
+          - issuer.example.test/38
+          - issuer.example.test/39
+          - issuer.example.test/40
+          - issuer.example.test/41
+          - issuer.example.test/42
+          - issuer.example.test/43
+          - issuer.example.test/44
+          - issuer.example.test/45
+          - issuer.example.test/46
+          - issuer.example.test/47
+          - issuer.example.test/48
+          - issuer.example.test/49
+          logLevel: 1
+          logFormat: text
+  - name: Should reject 51 signers
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuer.example.test/0
+          - issuer.example.test/1
+          - issuer.example.test/2
+          - issuer.example.test/3
+          - issuer.example.test/4
+          - issuer.example.test/5
+          - issuer.example.test/6
+          - issuer.example.test/7
+          - issuer.example.test/8
+          - issuer.example.test/9
+          - issuer.example.test/10
+          - issuer.example.test/11
+          - issuer.example.test/12
+          - issuer.example.test/13
+          - issuer.example.test/14
+          - issuer.example.test/15
+          - issuer.example.test/16
+          - issuer.example.test/17
+          - issuer.example.test/18
+          - issuer.example.test/19
+          - issuer.example.test/20
+          - issuer.example.test/21
+          - issuer.example.test/22
+          - issuer.example.test/23
+          - issuer.example.test/24
+          - issuer.example.test/25
+          - issuer.example.test/26
+          - issuer.example.test/27
+          - issuer.example.test/28
+          - issuer.example.test/29
+          - issuer.example.test/30
+          - issuer.example.test/31
+          - issuer.example.test/32
+          - issuer.example.test/33
+          - issuer.example.test/34
+          - issuer.example.test/35
+          - issuer.example.test/36
+          - issuer.example.test/37
+          - issuer.example.test/38
+          - issuer.example.test/39
+          - issuer.example.test/40
+          - issuer.example.test/41
+          - issuer.example.test/42
+          - issuer.example.test/43
+          - issuer.example.test/44
+          - issuer.example.test/45
+          - issuer.example.test/46
+          - issuer.example.test/47
+          - issuer.example.test/48
+          - issuer.example.test/49
+          - issuer.example.test/50
+    expectedError: approveSignerNames
+  - name: Should reject duplicate signers
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuer.example.test/foo
+          - issuer.example.test/foo
+    expectedError: approveSignerNames
+  - name: Should reject empty signer entry
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - ''
+    expectedError: approveSignerNames
+  - name: Should accept 825 character signer
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          logLevel: 1
+          logFormat: text
+  - name: Should reject 826 character signer
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    expectedError: approveSignerNames
+  - name: Should accept 825 Unicode character signer
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé
+          logLevel: 1
+          logFormat: text
+  - name: Should reject 826 Unicode character signer
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé
+    expectedError: approveSignerNames
   onUpdate:
   - name: Should update logging to text
     resourceName: cluster
@@ -350,3 +1438,1028 @@ tests:
         approverPolicyConfig:
           logFormat: yaml
     expectedError: logFormat
+  - name: Should accept updating to 50 tolerations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+          logLevel: 1
+          logFormat: text
+  - name: Should reject updating to 51 tolerations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          tolerations:
+          - key: example.com/taint-0
+            operator: Exists
+          - key: example.com/taint-1
+            operator: Exists
+          - key: example.com/taint-2
+            operator: Exists
+          - key: example.com/taint-3
+            operator: Exists
+          - key: example.com/taint-4
+            operator: Exists
+          - key: example.com/taint-5
+            operator: Exists
+          - key: example.com/taint-6
+            operator: Exists
+          - key: example.com/taint-7
+            operator: Exists
+          - key: example.com/taint-8
+            operator: Exists
+          - key: example.com/taint-9
+            operator: Exists
+          - key: example.com/taint-10
+            operator: Exists
+          - key: example.com/taint-11
+            operator: Exists
+          - key: example.com/taint-12
+            operator: Exists
+          - key: example.com/taint-13
+            operator: Exists
+          - key: example.com/taint-14
+            operator: Exists
+          - key: example.com/taint-15
+            operator: Exists
+          - key: example.com/taint-16
+            operator: Exists
+          - key: example.com/taint-17
+            operator: Exists
+          - key: example.com/taint-18
+            operator: Exists
+          - key: example.com/taint-19
+            operator: Exists
+          - key: example.com/taint-20
+            operator: Exists
+          - key: example.com/taint-21
+            operator: Exists
+          - key: example.com/taint-22
+            operator: Exists
+          - key: example.com/taint-23
+            operator: Exists
+          - key: example.com/taint-24
+            operator: Exists
+          - key: example.com/taint-25
+            operator: Exists
+          - key: example.com/taint-26
+            operator: Exists
+          - key: example.com/taint-27
+            operator: Exists
+          - key: example.com/taint-28
+            operator: Exists
+          - key: example.com/taint-29
+            operator: Exists
+          - key: example.com/taint-30
+            operator: Exists
+          - key: example.com/taint-31
+            operator: Exists
+          - key: example.com/taint-32
+            operator: Exists
+          - key: example.com/taint-33
+            operator: Exists
+          - key: example.com/taint-34
+            operator: Exists
+          - key: example.com/taint-35
+            operator: Exists
+          - key: example.com/taint-36
+            operator: Exists
+          - key: example.com/taint-37
+            operator: Exists
+          - key: example.com/taint-38
+            operator: Exists
+          - key: example.com/taint-39
+            operator: Exists
+          - key: example.com/taint-40
+            operator: Exists
+          - key: example.com/taint-41
+            operator: Exists
+          - key: example.com/taint-42
+            operator: Exists
+          - key: example.com/taint-43
+            operator: Exists
+          - key: example.com/taint-44
+            operator: Exists
+          - key: example.com/taint-45
+            operator: Exists
+          - key: example.com/taint-46
+            operator: Exists
+          - key: example.com/taint-47
+            operator: Exists
+          - key: example.com/taint-48
+            operator: Exists
+          - key: example.com/taint-49
+            operator: Exists
+          - key: example.com/taint-50
+            operator: Exists
+    expectedError: tolerations
+  - name: Should accept updating to 50 nodeSelector
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+          logLevel: 1
+          logFormat: text
+  - name: Should reject updating to 51 nodeSelector
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          nodeSelector:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+            example.com/key-21: value
+            example.com/key-22: value
+            example.com/key-23: value
+            example.com/key-24: value
+            example.com/key-25: value
+            example.com/key-26: value
+            example.com/key-27: value
+            example.com/key-28: value
+            example.com/key-29: value
+            example.com/key-30: value
+            example.com/key-31: value
+            example.com/key-32: value
+            example.com/key-33: value
+            example.com/key-34: value
+            example.com/key-35: value
+            example.com/key-36: value
+            example.com/key-37: value
+            example.com/key-38: value
+            example.com/key-39: value
+            example.com/key-40: value
+            example.com/key-41: value
+            example.com/key-42: value
+            example.com/key-43: value
+            example.com/key-44: value
+            example.com/key-45: value
+            example.com/key-46: value
+            example.com/key-47: value
+            example.com/key-48: value
+            example.com/key-49: value
+            example.com/key-50: value
+    expectedError: nodeSelector
+  - name: Should accept updating to 20 labels
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+  - name: Should reject updating to 21 labels
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          labels:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+    expectedError: labels
+  - name: Should accept updating to 20 annotations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+  - name: Should reject updating to 21 annotations
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+        controllerConfig:
+          annotations:
+            example.com/key-0: value
+            example.com/key-1: value
+            example.com/key-2: value
+            example.com/key-3: value
+            example.com/key-4: value
+            example.com/key-5: value
+            example.com/key-6: value
+            example.com/key-7: value
+            example.com/key-8: value
+            example.com/key-9: value
+            example.com/key-10: value
+            example.com/key-11: value
+            example.com/key-12: value
+            example.com/key-13: value
+            example.com/key-14: value
+            example.com/key-15: value
+            example.com/key-16: value
+            example.com/key-17: value
+            example.com/key-18: value
+            example.com/key-19: value
+            example.com/key-20: value
+    expectedError: annotations
+  - name: Should update supported resources placement and metadata
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 50
+                preference:
+                  matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+          tolerations:
+          - key: dedicated
+            operator: Equal
+            value: certificates
+            effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+        controllerConfig:
+          labels:
+            example.com/team: platform
+          annotations:
+            example.com/owner: certificate team
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 50
+                preference:
+                  matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+          tolerations:
+          - key: dedicated
+            operator: Equal
+            value: certificates
+            effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+          logLevel: 1
+          logFormat: text
+        controllerConfig:
+          labels:
+            example.com/team: platform
+          annotations:
+            example.com/owner: certificate team
+  - name: Should remove optional configuration and restore logging defaults
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 50
+                preference:
+                  matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+          tolerations:
+          - key: dedicated
+            operator: Equal
+            value: certificates
+            effect: NoSchedule
+          nodeSelector:
+            kubernetes.io/os: linux
+        controllerConfig:
+          labels:
+            example.com/team: platform
+          annotations:
+            example.com/owner: certificate team
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should expand signer scope
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - googlecasissuers.cas-issuer.jetstack.io/*
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - googlecasissuers.cas-issuer.jetstack.io/*
+          logLevel: 1
+          logFormat: text
+  - name: Should contract signer scope
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - clusterissuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          logLevel: 1
+          logFormat: text
+  - name: Should clear signer scope to empty
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames: []
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames: []
+          logLevel: 1
+          logFormat: text
+  - name: Should remove optional signer scope
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          logLevel: 1
+          logFormat: text
+  - name: Should reject duplicate signers on update
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+          - issuers.cert-manager.io/*
+    expectedError: approveSignerNames
+  - name: Should reject signer overflow on update
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuers.cert-manager.io/*
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: ApproverPolicyManager
+      spec:
+        approverPolicyConfig:
+          approveSignerNames:
+          - issuer.example.test/0
+          - issuer.example.test/1
+          - issuer.example.test/2
+          - issuer.example.test/3
+          - issuer.example.test/4
+          - issuer.example.test/5
+          - issuer.example.test/6
+          - issuer.example.test/7
+          - issuer.example.test/8
+          - issuer.example.test/9
+          - issuer.example.test/10
+          - issuer.example.test/11
+          - issuer.example.test/12
+          - issuer.example.test/13
+          - issuer.example.test/14
+          - issuer.example.test/15
+          - issuer.example.test/16
+          - issuer.example.test/17
+          - issuer.example.test/18
+          - issuer.example.test/19
+          - issuer.example.test/20
+          - issuer.example.test/21
+          - issuer.example.test/22
+          - issuer.example.test/23
+          - issuer.example.test/24
+          - issuer.example.test/25
+          - issuer.example.test/26
+          - issuer.example.test/27
+          - issuer.example.test/28
+          - issuer.example.test/29
+          - issuer.example.test/30
+          - issuer.example.test/31
+          - issuer.example.test/32
+          - issuer.example.test/33
+          - issuer.example.test/34
+          - issuer.example.test/35
+          - issuer.example.test/36
+          - issuer.example.test/37
+          - issuer.example.test/38
+          - issuer.example.test/39
+          - issuer.example.test/40
+          - issuer.example.test/41
+          - issuer.example.test/42
+          - issuer.example.test/43
+          - issuer.example.test/44
+          - issuer.example.test/45
+          - issuer.example.test/46
+          - issuer.example.test/47
+          - issuer.example.test/48
+          - issuer.example.test/49
+          - issuer.example.test/50
+    expectedError: approveSignerNames

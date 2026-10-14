@@ -6,8 +6,10 @@ import (
 
 	certmanagerv1 "github.com/cert-manager/cert-manager/pkg/apis/certmanager/v1"
 	"github.com/stretchr/testify/require"
+	admissionv1 "k8s.io/api/admissionregistration/v1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
+	rbacv1 "k8s.io/api/rbac/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -20,7 +22,7 @@ import (
 )
 
 func TestOptionalControllerRegistrationAndCache(t *testing.T) {
-	for bits := 0; bits < 8; bits++ {
+	for bits := range 8 {
 		config := ControllerConfig{EnableIstioCSR: bits&1 != 0, EnableTrustManager: bits&2 != 0, EnableApproverPolicyManager: bits&4 != 0}
 		var expected []func(ctrl.Manager) error
 		if config.EnableIstioCSR {
@@ -45,8 +47,20 @@ func TestOptionalControllerRegistrationAndCache(t *testing.T) {
 			_, _, found := findExistingCacheEntry(objects, obj)
 			require.False(t, found, "%T must remain unfiltered", obj)
 		}
+		if config.EnableTrustManager {
+			for _, obj := range []client.Object{&v1alpha1.CertManager{}, &rbacv1.ClusterRole{}, &rbacv1.ClusterRoleBinding{}} {
+				_, _, found := findExistingCacheEntry(objects, obj)
+				require.False(t, found, "%T must expose unlabeled integration resources", obj)
+			}
+		}
 		_, deployment, found := findExistingCacheEntry(objects, &appsv1.Deployment{})
-		if bits == 0 {
+		if config.EnableApproverPolicyManager {
+			for _, obj := range []client.Object{&appsv1.Deployment{}, &corev1.Service{}, &corev1.ServiceAccount{}, &rbacv1.Role{}, &rbacv1.RoleBinding{}, &rbacv1.ClusterRole{}, &rbacv1.ClusterRoleBinding{}, &admissionv1.ValidatingWebhookConfiguration{}} {
+				_, _, filtered := findExistingCacheEntry(objects, obj)
+				require.False(t, filtered, "%T must expose unlabeled removal inventory", obj)
+			}
+		}
+		if bits == 0 || config.EnableApproverPolicyManager {
 			require.False(t, found)
 			continue
 		}

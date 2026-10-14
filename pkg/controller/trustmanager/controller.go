@@ -47,12 +47,15 @@ type Reconciler struct {
 // +kubebuilder:rbac:groups=operator.openshift.io,resources=trustmanagers,verbs=get;list;watch;update;patch
 // +kubebuilder:rbac:groups=operator.openshift.io,resources=trustmanagers/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups=operator.openshift.io,resources=trustmanagers/finalizers,verbs=update
+// +kubebuilder:rbac:groups=operator.openshift.io,resources=certmanagers,verbs=get;list;watch
+// +kubebuilder:rbac:groups=policy.cert-manager.io,resources=certificaterequestpolicies,verbs=get;list;watch;create
+// +kubebuilder:rbac:groups=policy.cert-manager.io,resources=certificaterequestpolicies,resourceNames=trust-manager-policy,verbs=update;patch;delete;use
 // +kubebuilder:rbac:groups="",resources=namespaces,verbs=get;list;watch
 // +kubebuilder:rbac:groups="",resources=configmaps,verbs=get;list;watch;create;update;patch
 // +kubebuilder:rbac:groups="",resources=serviceaccounts,verbs=get;list;watch;create;update;patch
 // +kubebuilder:rbac:groups="",resources=services,verbs=get;list;watch;create;update;patch
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch
-// +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=clusterroles;clusterrolebindings,verbs=get;list;watch;create;update;patch
+// +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=clusterroles;clusterrolebindings,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=roles;rolebindings,verbs=get;list;watch;create;update;patch
 // +kubebuilder:rbac:groups=cert-manager.io,resources=certificates;issuers,verbs=get;list;watch;create;update;patch
 // +kubebuilder:rbac:groups=admissionregistration.k8s.io,resources=validatingwebhookconfigurations,verbs=get;list;watch;create;update;patch
@@ -77,14 +80,19 @@ func New(mgr ctrl.Manager) (*Reconciler, error) {
 
 // SetupWithManager sets up the controller with the Manager.
 func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
-	// mapFunc unconditionally enqueues the singleton TrustManager CR.
-	// Filtering is handled by predicates attached to each Watch.
+	// Integration RBAC events additionally honor the management state.
 	mapFunc := func(ctx context.Context, obj client.Object) []reconcile.Request {
+		if isApproverPolicyResource(obj) {
+			return r.mapApproverPolicyEvent(ctx, obj)
+		}
 		r.log.V(4).Info("received reconcile event", "object", fmt.Sprintf("%T", obj), "name", obj.GetName(), "namespace", obj.GetNamespace())
 		return []reconcile.Request{{NamespacedName: types.NamespacedName{Name: trustManagerObjectName}}}
 	}
 
 	isManagedResource := func(object client.Object) bool {
+		if isApproverPolicyResource(object) {
+			return true
+		}
 		labels := object.GetLabels()
 		matches := labels != nil && labels[common.ManagedResourceLabelKey] == RequestEnqueueLabelValue
 		r.log.V(4).Info("predicate evaluation", "object", fmt.Sprintf("%T", object), "name", object.GetName(), "namespace", object.GetNamespace(), "labels", labels, "matches", matches)
@@ -133,6 +141,8 @@ func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&v1alpha1.TrustManager{}, builder.WithPredicates(predicate.GenerationChangedPredicate{})).
 		Named(ControllerName).
+		Watches(&v1alpha1.CertManager{}, handler.EnqueueRequestsFromMapFunc(r.mapApproverPolicyEvent), builder.WithPredicates(approverHandoffPredicate())).
+		Watches(approverPolicyObject(), handler.EnqueueRequestsFromMapFunc(r.mapApproverPolicyEvent), builder.WithPredicates(predicate.NewPredicateFuncs(isApproverPolicyResource))).
 		Watches(&corev1.ServiceAccount{}, handler.EnqueueRequestsFromMapFunc(mapFunc), controllerManagedResourcePredicates).
 		Watches(&appsv1.Deployment{}, handler.EnqueueRequestsFromMapFunc(mapFunc), withIgnoreStatusUpdatePredicates).
 		Watches(&corev1.Service{}, handler.EnqueueRequestsFromMapFunc(mapFunc), controllerManagedResourcePredicates).

@@ -20,6 +20,9 @@ func (r *Reconciler) reconcileTrustManagerDeployment(trustManager *v1alpha1.Trus
 	if err := r.validateTrustNamespace(trustNamespace); err != nil {
 		return common.NewIrrecoverableError(err, "trust namespace %q validation failed", trustNamespace)
 	}
+	if err := r.reconcileApproverPolicy(trustManager); err != nil {
+		return err
+	}
 
 	caBundleHash, err := r.createOrApplyDefaultCAPackageConfigMap(trustManager, resourceLabels, resourceAnnotations)
 	if err != nil {

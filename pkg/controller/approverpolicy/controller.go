@@ -3,6 +3,7 @@ package approverpolicy
 import (
 	"context"
 	"fmt"
+	"slices"
 	"time"
 
 	"github.com/go-logr/logr"
@@ -11,6 +12,8 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
@@ -19,6 +22,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/event"
 	"sigs.k8s.io/controller-runtime/pkg/handler"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
@@ -36,6 +40,7 @@ const (
 	operandNamespace         = "cert-manager"
 	managerName              = "cluster"
 	fieldOwner               = "approver-policy-controller"
+	cleanupFinalizer         = "operator.openshift.io/approver-policy-cleanup"
 	requeueInterval          = 30 * time.Second
 )
 
@@ -46,14 +51,16 @@ type Reconciler struct {
 	log logr.Logger
 }
 
-// +kubebuilder:rbac:groups=operator.openshift.io,resources=approverpolicymanagers,verbs=get;list;watch
+// +kubebuilder:rbac:groups=operator.openshift.io,resources=approverpolicymanagers,verbs=get;list;watch;update;patch
 // +kubebuilder:rbac:groups=operator.openshift.io,resources=approverpolicymanagers/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups=operator.openshift.io,resources=approverpolicymanagers/finalizers,verbs=update
 // +kubebuilder:rbac:groups="",resources=namespaces,verbs=get;list;watch
-// +kubebuilder:rbac:groups="",resources=secrets;services;serviceaccounts,verbs=get;list;watch;create;update;patch
-// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch
-// +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=roles;rolebindings;clusterroles;clusterrolebindings,verbs=get;list;watch;create;update;patch
-// +kubebuilder:rbac:groups=admissionregistration.k8s.io,resources=validatingwebhookconfigurations,verbs=get;list;watch;create;update;patch
+// +kubebuilder:rbac:groups="",resources=secrets;services;serviceaccounts,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=rbac.authorization.k8s.io,resources=roles;rolebindings;clusterroles;clusterrolebindings,verbs=get;list;watch;create;update;patch;delete
+// The operator must hold the signer permission it grants to the operand; no RBAC escalation exemption is needed.
+// +kubebuilder:rbac:groups=cert-manager.io,resources=signers,verbs=approve
+// +kubebuilder:rbac:groups=admissionregistration.k8s.io,resources=validatingwebhookconfigurations,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=policy.cert-manager.io,resources=certificaterequestpolicies,verbs=get;list;watch
 // +kubebuilder:rbac:groups=policy.cert-manager.io,resources=certificaterequestpolicies/status,verbs=patch
 // +kubebuilder:rbac:groups=authorization.k8s.io,resources=subjectaccessreviews,verbs=create
@@ -77,13 +84,22 @@ func operandResourcePredicate() predicate.Predicate {
 	})
 }
 
+func managerResourcePredicate() predicate.Predicate {
+	return predicate.Or(predicate.GenerationChangedPredicate{}, predicate.Funcs{
+		UpdateFunc: func(e event.UpdateEvent) bool {
+			return e.ObjectOld != nil && e.ObjectNew != nil &&
+				!e.ObjectOld.GetDeletionTimestamp().Equal(e.ObjectNew.GetDeletionTimestamp())
+		},
+	})
+}
+
 // SetupWithManager registers watches only when the operator enables this controller.
 func (r *Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 	enqueue := handler.EnqueueRequestsFromMapFunc(func(context.Context, client.Object) []reconcile.Request {
 		return []reconcile.Request{{NamespacedName: types.NamespacedName{Name: managerName}}}
 	})
 	b := ctrl.NewControllerManagedBy(mgr).Named(ControllerName).
-		For(&v1alpha1.ApproverPolicyManager{}, builder.WithPredicates(predicate.GenerationChangedPredicate{}))
+		For(&v1alpha1.ApproverPolicyManager{}, builder.WithPredicates(managerResourcePredicate()))
 	for _, obj := range []client.Object{&corev1.ServiceAccount{}, &corev1.Secret{}, &corev1.Service{},
 		&appsv1.Deployment{}, &rbacv1.Role{}, &rbacv1.RoleBinding{}, &rbacv1.ClusterRole{},
 		&rbacv1.ClusterRoleBinding{}, &admissionv1.ValidatingWebhookConfiguration{}} {
@@ -103,17 +119,39 @@ func (r *Reconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Resu
 	if err := r.Get(ctx, req.NamespacedName, manager); err != nil {
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
-	if !manager.DeletionTimestamp.IsZero() {
-		// Finalizer-driven uninstall is a later phase; never recreate resources
-		// for a manager already being removed.
-		return ctrl.Result{}, nil
-	}
 	original := manager.Status.DeepCopy()
-	reconcileErr := r.reconcileOperand(ctx, manager)
+	var reconcileErr error
+	lifecycle := !manager.DeletionTimestamp.IsZero() || !slices.Contains(manager.Finalizers, cleanupFinalizer)
+	switch {
+	case !manager.DeletionTimestamp.IsZero():
+		if !slices.Contains(manager.Finalizers, cleanupFinalizer) {
+			return ctrl.Result{}, nil
+		}
+		reconcileErr = r.removeOperand(ctx, manager)
+		if reconcileErr == nil {
+			reconcileErr = r.updateFinalizer(ctx, manager, false)
+			if reconcileErr == nil {
+				// Removing the last finalizer can delete the manager immediately.
+				return ctrl.Result{}, nil
+			}
+		}
+	case !slices.Contains(manager.Finalizers, cleanupFinalizer):
+		reconcileErr = r.updateFinalizer(ctx, manager, true)
+		if reconcileErr == nil {
+			// Observe the persisted finalizer before installing any resource.
+			return ctrl.Result{RequeueAfter: time.Second}, nil
+		}
+	default:
+		reconcileErr = r.reconcileOperand(ctx, manager)
+	}
 	// Accumulate conditions and image identity, then persist one coherent status.
 	// The shared helper may skip its callback when only the image changed.
 	result, _ := common.HandleReconcileResult(&manager.Status.ConditionalStatus, reconcileErr, r.log,
 		func(error) error { return nil }, requeueInterval)
+	if lifecycle && reconcileErr != nil {
+		// Permission corrections do not necessarily enqueue this manager.
+		result.RequeueAfter = requeueInterval
+	}
 	for i := range manager.Status.Conditions {
 		manager.Status.Conditions[i].ObservedGeneration = manager.Generation
 	}
@@ -132,6 +170,91 @@ func (r *Reconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Resu
 		}
 	}
 	return result, nil
+}
+
+func (r *Reconciler) updateFinalizer(ctx context.Context, manager *v1alpha1.ApproverPolicyManager, add bool) error {
+	err := retry.RetryOnConflict(retry.DefaultRetry, func() error {
+		current := &v1alpha1.ApproverPolicyManager{}
+		if err := r.Get(ctx, client.ObjectKeyFromObject(manager), current); err != nil {
+			return err
+		}
+		if current.UID != manager.UID || (add && !current.DeletionTimestamp.IsZero()) || (!add && current.DeletionTimestamp.IsZero()) {
+			return fmt.Errorf("ApproverPolicyManager changed during finalization; retry")
+		}
+		if slices.Contains(current.Finalizers, cleanupFinalizer) == add {
+			return nil
+		}
+		if add {
+			current.Finalizers = append(current.Finalizers, cleanupFinalizer)
+		} else {
+			current.Finalizers = slices.DeleteFunc(current.Finalizers, func(f string) bool { return f == cleanupFinalizer })
+		}
+		return r.Update(ctx, current)
+	})
+	if err != nil {
+		return common.FromClientError(err, "persist approver-policy cleanup finalizer")
+	}
+	return nil
+}
+
+func (r *Reconciler) removeOperand(ctx context.Context, manager *v1alpha1.ApproverPolicyManager) error {
+	objects, err := importedResources()
+	if err != nil {
+		return common.NewIrrecoverableError(err, "read approver-policy removal inventory")
+	}
+	// Stop the policy controller first. Foreground deletion keeps the Deployment
+	// present until its blocking ReplicaSet/Pod dependents have been removed.
+	for _, obj := range objects {
+		if obj.GetKind() == "Deployment" {
+			pending, err := r.removeOwnedResource(ctx, manager, obj, metav1.DeletePropagationForeground)
+			if err != nil {
+				return err
+			}
+			if pending {
+				return common.NewRetryRequiredError(fmt.Errorf("deployment or its dependents are still being removed"), "waiting for approver-policy shutdown")
+			}
+		}
+	}
+	pending := false
+	for _, obj := range slices.Backward(objects) {
+		if obj.GetKind() == "Deployment" {
+			continue
+		}
+		remaining, err := r.removeOwnedResource(ctx, manager, obj, metav1.DeletePropagationBackground)
+		if err != nil {
+			return err
+		}
+		pending = pending || remaining
+	}
+	if pending {
+		return common.NewRetryRequiredError(fmt.Errorf("owned resources are still being removed"), "waiting for approver-policy cleanup")
+	}
+	return nil
+}
+
+func (r *Reconciler) removeOwnedResource(ctx context.Context, manager *v1alpha1.ApproverPolicyManager, obj *unstructured.Unstructured, propagation metav1.DeletionPropagation) (bool, error) {
+	if err := r.Get(ctx, client.ObjectKeyFromObject(obj), obj); err != nil {
+		if apierrors.IsNotFound(err) {
+			return false, nil
+		}
+		return false, common.FromClientError(err, "observe %s %s for removal", obj.GetKind(), obj.GetName())
+	}
+	owner := metav1.GetControllerOf(obj)
+	if manager.UID == "" || owner == nil || owner.UID != manager.UID || owner.Name != manager.Name ||
+		owner.Kind != "ApproverPolicyManager" || owner.APIVersion != v1alpha1.SchemeGroupVersion.String() {
+		return false, nil // Never delete a foreign resource that reused an inventory name.
+	}
+	if obj.GetDeletionTimestamp().IsZero() {
+		uid, version := obj.GetUID(), obj.GetResourceVersion()
+		if uid == "" || version == "" {
+			return true, common.NewRetryRequiredError(fmt.Errorf("missing resource identity"), "cannot safely remove %s %s", obj.GetKind(), obj.GetName())
+		}
+		err := r.Delete(ctx, obj, client.PropagationPolicy(propagation), client.Preconditions{UID: &uid, ResourceVersion: &version})
+		if err != nil && !apierrors.IsNotFound(err) {
+			return true, common.FromClientError(err, "remove %s %s", obj.GetKind(), obj.GetName())
+		}
+	}
+	return true, nil // Confirm absence in a subsequent reconcile, including after Delete/NotFound.
 }
 
 func (r *Reconciler) updateStatus(ctx context.Context, desired *v1alpha1.ApproverPolicyManager) error {

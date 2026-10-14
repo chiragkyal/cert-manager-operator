@@ -175,6 +175,14 @@ type CertManagerScheduling struct {
 // CertManagerStatus defines the observed state of CertManager.
 type CertManagerStatus struct {
 	apiv1.OperatorStatus `json:",inline"`
+
+	// AutoApproverDisabled records completion of the initial handoff to
+	// approver-policy. False or absent means completion has not been confirmed;
+	// approval permissions may already have been removed. Once true, this stays
+	// true while ApproverPolicyManager exists, including during recovery from
+	// drift. It is cleared only after confirmed removal and restoration.
+	// +optional
+	AutoApproverDisabled bool `json:"autoApproverDisabled,omitempty"`
 }
 
 // +genclient

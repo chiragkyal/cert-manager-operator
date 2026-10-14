@@ -12,6 +12,9 @@ import (
 //
 // TrustManagerConfig configures the trust-manager operand's behavior.
 type TrustManagerConfigApplyConfiguration struct {
+	// approverPolicy configures approval of trust-manager's webhook certificate
+	// after the built-in cert-manager approver has been disabled.
+	ApproverPolicy *ApproverPolicyWebhookConfigApplyConfiguration `json:"approverPolicy,omitempty"`
 	// logLevel configures the verbosity of trust-manager logging.
 	// Follows [Kubernetes logging guidelines](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md#what-method-to-use).
 	LogLevel *int32 `json:"logLevel,omitempty"`
@@ -52,6 +55,14 @@ type TrustManagerConfigApplyConfiguration struct {
 // apply.
 func TrustManagerConfig() *TrustManagerConfigApplyConfiguration {
 	return &TrustManagerConfigApplyConfiguration{}
+}
+
+// WithApproverPolicy sets the ApproverPolicy field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the ApproverPolicy field is set to the value of the last call.
+func (b *TrustManagerConfigApplyConfiguration) WithApproverPolicy(value *ApproverPolicyWebhookConfigApplyConfiguration) *TrustManagerConfigApplyConfiguration {
+	b.ApproverPolicy = value
+	return b
 }
 
 // WithLogLevel sets the LogLevel field in the declarative configuration to the given value

@@ -128,6 +128,12 @@ rules:
   - watch
 - apiGroups:
   - cert-manager.io
+  resources:
+  - signers
+  verbs:
+  - approve
+- apiGroups:
+  - cert-manager.io
   resourceNames:
   - clusterissuers.cert-manager.io/*
   - issuers.cert-manager.io/*
@@ -247,9 +253,13 @@ rules:
   - operator.openshift.io
   resources:
   - approverpolicymanagers
+  - istiocsrs
+  - trustmanagers
   verbs:
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - operator.openshift.io
@@ -284,24 +294,25 @@ rules:
   - update
   - watch
 - apiGroups:
-  - operator.openshift.io
-  resources:
-  - istiocsrs
-  - trustmanagers
-  verbs:
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
   - policy.cert-manager.io
   resources:
   - certificaterequestpolicies
   verbs:
+  - create
   - get
   - list
   - watch
+- apiGroups:
+  - policy.cert-manager.io
+  resourceNames:
+  - trust-manager-policy
+  resources:
+  - certificaterequestpolicies
+  verbs:
+  - delete
+  - patch
+  - update
+  - use
 - apiGroups:
   - policy.cert-manager.io
   resources:

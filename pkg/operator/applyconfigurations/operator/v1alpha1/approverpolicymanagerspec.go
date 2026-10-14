@@ -9,6 +9,8 @@ package v1alpha1
 type ApproverPolicyManagerSpecApplyConfiguration struct {
 	// approverPolicyConfig configures the approver-policy operand's behavior.
 	ApproverPolicyConfig *ApproverPolicyConfigApplyConfiguration `json:"approverPolicyConfig,omitempty"`
+	// controllerConfig configures the operator's behavior for resource creation.
+	ControllerConfig *ApproverPolicyControllerConfigApplyConfiguration `json:"controllerConfig,omitempty"`
 }
 
 // ApproverPolicyManagerSpecApplyConfiguration constructs a declarative configuration of the ApproverPolicyManagerSpec type for use with
@@ -22,5 +24,13 @@ func ApproverPolicyManagerSpec() *ApproverPolicyManagerSpecApplyConfiguration {
 // If called multiple times, the ApproverPolicyConfig field is set to the value of the last call.
 func (b *ApproverPolicyManagerSpecApplyConfiguration) WithApproverPolicyConfig(value *ApproverPolicyConfigApplyConfiguration) *ApproverPolicyManagerSpecApplyConfiguration {
 	b.ApproverPolicyConfig = value
+	return b
+}
+
+// WithControllerConfig sets the ControllerConfig field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the ControllerConfig field is set to the value of the last call.
+func (b *ApproverPolicyManagerSpecApplyConfiguration) WithControllerConfig(value *ApproverPolicyControllerConfigApplyConfiguration) *ApproverPolicyManagerSpecApplyConfiguration {
+	b.ControllerConfig = value
 	return b
 }

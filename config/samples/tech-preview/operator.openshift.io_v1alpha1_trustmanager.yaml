@@ -4,9 +4,10 @@ metadata:
   name: cluster
 spec:
   trustManagerConfig:
+    approverPolicy:
+      managementState: Managed
     logLevel: 1
     logFormat: text
     trustNamespace: cert-manager
     defaultCAPackage:
       policy: Enabled
-

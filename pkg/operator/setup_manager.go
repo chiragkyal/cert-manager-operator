@@ -235,14 +235,29 @@ func buildCacheObjectList(config ControllerConfig) (map[client.Object]cache.ByOb
 	}
 
 	if config.EnableApproverPolicyManager {
-		// Secrets remain unfiltered: other operands also consume user-owned Secrets.
+		// Finalization must observe owned resources even after labels are removed.
+		// Keep the inventory unfiltered and use per-controller event predicates.
+		// Secrets already use the default unfiltered cache.
 		resources := []client.Object{&appsv1.Deployment{}, &corev1.Service{}, &corev1.ServiceAccount{},
 			&rbacv1.Role{}, &rbacv1.RoleBinding{}, &rbacv1.ClusterRole{}, &rbacv1.ClusterRoleBinding{},
 			&admissionregistrationv1.ValidatingWebhookConfiguration{}}
-		if err := addControllerCacheConfig(objectList, approverpolicy.RequestEnqueueLabelValue, resources); err != nil {
-			return nil, fmt.Errorf("failed to configure ApproverPolicyManager cache: %w", err)
+		for _, obj := range resources {
+			if key, _, found := findExistingCacheEntry(objectList, obj); found {
+				delete(objectList, key)
+			}
 		}
 		objectList[&v1alpha1.ApproverPolicyManager{}] = cache.ByObject{}
+	}
+	if config.EnableTrustManager {
+		// Integration RBAC can lose its label or collide with an unlabeled user
+		// resource. Keep it visible for ownership checks and event predicates.
+		// Apply this after merging all controller selectors. CertManager and
+		// CertificateRequestPolicy already use the default unfiltered cache.
+		for _, obj := range []client.Object{&rbacv1.ClusterRole{}, &rbacv1.ClusterRoleBinding{}} {
+			if key, _, found := findExistingCacheEntry(objectList, obj); found {
+				delete(objectList, key)
+			}
+		}
 	}
 	return objectList, nil
 }

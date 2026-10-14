@@ -73,6 +73,13 @@ type TrustManagerSpec struct {
 
 // TrustManagerConfig configures the trust-manager operand's behavior.
 type TrustManagerConfig struct {
+	// approverPolicy configures approval of trust-manager's webhook certificate
+	// after the built-in cert-manager approver has been disabled.
+	// +kubebuilder:default:={}
+	// +kubebuilder:validation:Optional
+	// +optional
+	ApproverPolicy ApproverPolicyWebhookConfig `json:"approverPolicy,omitempty"`
+
 	// logLevel configures the verbosity of trust-manager logging.
 	// Follows [Kubernetes logging guidelines](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md#what-method-to-use).
 	// +kubebuilder:default:=1
@@ -154,6 +161,32 @@ type TrustManagerConfig struct {
 	// +optional
 	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
 }
+
+// ApproverPolicyWebhookConfig configures approval of trust-manager's webhook certificate.
+type ApproverPolicyWebhookConfig struct {
+	// managementState controls maintenance of the certificate approval policy and
+	// its use permissions for the cert-manager service account in cert-manager.
+	// Managed creates these resources after CertManager confirms the approval
+	// handoff and removes them when completion is false or absent.
+	// Unmanaged preserves existing resources and performs no integration checks
+	// or maintenance. Returning to Managed resumes current-state reconciliation.
+	// +kubebuilder:default:="Managed"
+	// +kubebuilder:validation:Enum:=Managed;Unmanaged
+	// +kubebuilder:validation:Optional
+	// +optional
+	ManagementState ApproverPolicyManagementState `json:"managementState,omitempty"`
+}
+
+// ApproverPolicyManagementState defines whether the operator manages the integration.
+// +kubebuilder:validation:Enum:=Managed;Unmanaged
+type ApproverPolicyManagementState string
+
+const (
+	// ApproverPolicyManagementStateManaged maintains the policy and use permissions.
+	ApproverPolicyManagementStateManaged ApproverPolicyManagementState = "Managed"
+	// ApproverPolicyManagementStateUnmanaged preserves resources without maintaining them.
+	ApproverPolicyManagementStateUnmanaged ApproverPolicyManagementState = "Unmanaged"
+)
 
 // SecretTargetsConfig configures whether and how trust-manager can write
 // trust bundles to Secrets.

@@ -23,6 +23,9 @@ echo "---- Downloading trust-manager manifests ${TRUST_MANAGER_VERSION} ----"
   --version "${TRUST_MANAGER_VERSION}" \
   --set defaultPackage.enabled=false \
   --set namespace=cert-manager \
+  --set app.webhook.tls.approverPolicy.enabled=true \
+  --set app.webhook.tls.approverPolicy.certManagerNamespace=cert-manager \
+  --set app.webhook.tls.approverPolicy.certManagerServiceAccount=cert-manager \
   > ${MANIFESTS_PATH}/manifests.yaml
 
 echo "---- Patching manifest ----"
@@ -30,6 +33,12 @@ echo "---- Patching manifest ----"
 # remove non-essential fields from each resource manifests.
 ./bin/yq e 'del(.metadata.labels."helm.sh/chart")' -i ${MANIFESTS_PATH}/manifests.yaml
 ./bin/yq e 'del(.spec.template.metadata.labels."helm.sh/chart")' -i ${MANIFESTS_PATH}/manifests.yaml
+
+# Generate integration inputs only; the controller applies them conditionally.
+# Restrict the chart policy to the operand namespace and allow the two usages
+# that cert-manager defaults on the existing webhook Certificate.
+./bin/yq e '(select(.kind == "CertificateRequestPolicy").spec.selector.namespace.matchNames) = ["cert-manager"]' -i ${MANIFESTS_PATH}/manifests.yaml
+./bin/yq e '(select(.kind == "CertificateRequestPolicy").spec.allowed.usages) = ["digital signature", "key encipherment"]' -i ${MANIFESTS_PATH}/manifests.yaml
 
 # update all occurrences of standard labels using recursive descent
 # this finds and updates labels wherever they appear (metadata.labels, spec.template.metadata.labels, spec.selector.matchLabels, etc.)

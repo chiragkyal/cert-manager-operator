@@ -1194,6 +1194,14 @@ spec:
           status:
             description: CertManagerStatus defines the observed state of CertManager.
             properties:
+              autoApproverDisabled:
+                description: |-
+                  AutoApproverDisabled records completion of the initial handoff to
+                  approver-policy. False or absent means completion has not been confirmed;
+                  approval permissions may already have been removed. Once true, this stays
+                  true while ApproverPolicyManager exists, including during recovery from
+                  drift. It is cleared only after confirmed removal and restoration.
+                type: boolean
               conditions:
                 description: conditions is a list of conditions and their status
                 items:

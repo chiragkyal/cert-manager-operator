@@ -4,9 +4,29 @@ metadata:
   name: example-policy
 spec:
   allowed:
-    commonName:
-      value: "hello.world"
+    dnsNames:
+      values:
+        - "*.svc.cluster.local"
       required: true
+      validations:
+        - rule: self.endsWith('.' + cr.namespace + '.svc.cluster.local')
+          message: DNS names must belong to the request namespace
+    usages:
+      - digital signature
+      - key encipherment
+      - server auth
+  constraints:
+    minDuration: 1h
+    maxDuration: 24h
+    privateKey:
+      algorithm: RSA
+      minSize: 2048
+      maxSize: 4096
   selector:
-    # Select all IssuerRef
-    issuerRef: {}
+    issuerRef:
+      group: cert-manager.io
+      kind: Issuer
+      name: app-ca
+    namespace:
+      matchNames:
+        - example-apps

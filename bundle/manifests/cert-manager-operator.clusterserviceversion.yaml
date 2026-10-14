@@ -205,8 +205,31 @@ metadata:
           },
           "spec": {
             "approverPolicyConfig": {
+              "approveSignerNames": [
+                "issuers.cert-manager.io/example-apps.app-ca"
+              ],
               "logFormat": "text",
-              "logLevel": 1
+              "logLevel": 1,
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "resources": {
+                "limits": {
+                  "memory": "128Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "64Mi"
+                }
+              }
+            },
+            "controllerConfig": {
+              "annotations": {
+                "example.com/owner": "certificate-team"
+              },
+              "labels": {
+                "example.com/team": "platform"
+              }
             }
           }
         },
@@ -257,6 +280,9 @@ metadata:
           },
           "spec": {
             "trustManagerConfig": {
+              "approverPolicy": {
+                "managementState": "Managed"
+              },
               "defaultCAPackage": {
                 "policy": "Enabled"
               },
@@ -274,13 +300,44 @@ metadata:
           },
           "spec": {
             "allowed": {
-              "commonName": {
+              "dnsNames": {
                 "required": true,
-                "value": "hello.world"
+                "validations": [
+                  {
+                    "message": "DNS names must belong to the request namespace",
+                    "rule": "self.endsWith('.' + cr.namespace + '.svc.cluster.local')"
+                  }
+                ],
+                "values": [
+                  "*.svc.cluster.local"
+                ]
+              },
+              "usages": [
+                "digital signature",
+                "key encipherment",
+                "server auth"
+              ]
+            },
+            "constraints": {
+              "maxDuration": "24h",
+              "minDuration": "1h",
+              "privateKey": {
+                "algorithm": "RSA",
+                "maxSize": 4096,
+                "minSize": 2048
               }
             },
             "selector": {
-              "issuerRef": {}
+              "issuerRef": {
+                "group": "cert-manager.io",
+                "kind": "Issuer",
+                "name": "app-ca"
+              },
+              "namespace": {
+                "matchNames": [
+                  "example-apps"
+                ]
+              }
             }
           }
         },
@@ -323,8 +380,11 @@ metadata:
     operator.openshift.io/uninstall-message: The cert-manager Operator for Red Hat
       OpenShift will be removed from cert-manager-operator namespace. If your Operator
       configured any off-cluster resources, these will continue to run and require
-      manual cleanup. All operands created by the operator will need to be manually
-      cleaned up. Please refer to https://docs.openshift.com/container-platform/latest/security/cert_manager_operator/cert-manager-operator-uninstall.html
+      manual cleanup. Before removing the operator, delete ApproverPolicyManager with
+      its feature gate enabled and wait for managed operand cleanup and default approval
+      restoration. User-created CertificateRequestPolicies are retained. Other operands
+      created by the operator require their documented manual cleanup. Please refer
+      to https://docs.openshift.com/container-platform/latest/security/cert_manager_operator/cert-manager-operator-uninstall.html
       for additional steps.
     operatorframework.io/cluster-monitoring: "true"
     operatorframework.io/suggested-namespace: cert-manager-operator
@@ -349,6 +409,7 @@ spec:
     - description: |-
         ApproverPolicyManager configures the managed approver-policy deployment in the existing cert-manager namespace.
         The cluster-scoped instance must be named 'cluster'. Logging defaults to level 1 and text format.
+        Optional resource requirements, scheduling preferences, labels and annotations configure the managed deployment.
         The ApproverPolicyManager Tech Preview controller is disabled by default and requires the operator's unsupported-addon-features flag.
       displayName: ApproverPolicyManager
       kind: ApproverPolicyManager
@@ -583,6 +644,12 @@ spec:
           - watch
         - apiGroups:
           - cert-manager.io
+          resources:
+          - signers
+          verbs:
+          - approve
+        - apiGroups:
+          - cert-manager.io
           resourceNames:
           - clusterissuers.cert-manager.io/*
           - issuers.cert-manager.io/*
@@ -702,9 +769,13 @@ spec:
           - operator.openshift.io
           resources:
           - approverpolicymanagers
+          - istiocsrs
+          - trustmanagers
           verbs:
           - get
           - list
+          - patch
+          - update
           - watch
         - apiGroups:
           - operator.openshift.io
@@ -739,24 +810,25 @@ spec:
           - update
           - watch
         - apiGroups:
-          - operator.openshift.io
-          resources:
-          - istiocsrs
-          - trustmanagers
-          verbs:
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
           - policy.cert-manager.io
           resources:
           - certificaterequestpolicies
           verbs:
+          - create
           - get
           - list
           - watch
+        - apiGroups:
+          - policy.cert-manager.io
+          resourceNames:
+          - trust-manager-policy
+          resources:
+          - certificaterequestpolicies
+          verbs:
+          - delete
+          - patch
+          - update
+          - use
         - apiGroups:
           - policy.cert-manager.io
           resources:

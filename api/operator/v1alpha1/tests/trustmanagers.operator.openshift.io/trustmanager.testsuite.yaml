@@ -18,6 +18,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -48,6 +50,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 5
           logFormat: text
           trustNamespace: cert-manager
@@ -89,6 +93,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: json
           trustNamespace: cert-manager
@@ -120,6 +126,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: custom-namespace
@@ -141,6 +149,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -173,6 +183,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -211,6 +223,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -278,6 +292,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -311,6 +327,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -341,6 +359,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -364,6 +384,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -389,6 +411,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -412,6 +436,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -419,6 +445,62 @@ tests:
         controllerConfig:
           annotations:
             custom-annotation: custom-value
+
+  - name: Approver policy omitted
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy empty
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy null
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": null}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy Managed
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Managed"}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy Unmanaged
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Unmanaged"}}}}'
+  - name: Approver policy empty state
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": ""}}}}'
+    expectedError: managementState
+  - name: Approver policy Removed
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Removed"}}}}'
+    expectedError: managementState
+  - name: Approver policy lowercase
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "managed"}}}}'
+    expectedError: managementState
+  - name: Approver policy wrong type
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": true}}}}'
+    expectedError: managementState
 
   # ==========================================
   # Immutability Tests (onUpdate)
@@ -459,6 +541,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 3
           logFormat: text
           trustNamespace: cert-manager
@@ -483,6 +567,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: json
           trustNamespace: cert-manager
@@ -507,6 +593,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -533,6 +621,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -563,6 +653,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -598,6 +690,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -631,6 +725,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -706,6 +802,8 @@ tests:
       kind: TrustManager
       spec:
         trustManagerConfig:
+          approverPolicy:
+            managementState: Managed
           logLevel: 1
           logFormat: text
           trustNamespace: cert-manager
@@ -714,3 +812,56 @@ tests:
             policy: Custom
             authorizedSecrets:
               - secret-one
+
+  - name: Approver policy Managed to Unmanaged
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Managed"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Unmanaged"}}}}'
+  - name: Approver policy Unmanaged to Managed
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Managed"}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy reset by omission
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy reset by empty block
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {}}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy reset by null block
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Unmanaged"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": null}}}'
+    expected: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"logLevel": 1, "logFormat": "text", "trustNamespace": "cert-manager", "filterExpiredCertificates": "Disabled",
+      "approverPolicy": {"managementState": "Managed"}}}}'
+  - name: Approver policy invalid state
+    resourceName: cluster
+    initial: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Managed"}}}}'
+    updated: '{"apiVersion": "operator.openshift.io/v1alpha1", "kind": "TrustManager", "spec": {"trustManagerConfig":
+      {"approverPolicy": {"managementState": "Removed"}}}}'
+    expectedError: managementState

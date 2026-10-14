@@ -723,6 +723,92 @@ tests:
                 effect: "NoSchedule"
 
   onUpdate:
+  - name: Handoff status can record completion
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: true}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: true}
+  - name: Handoff status can restore false completion
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: true}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: false}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: false}
+  - name: Handoff status can omit completion
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: true}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {}
+    expected: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {}
+  - name: Handoff status can reject invalid completion
+    resourceName: cluster
+    initial: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {}
+    updated: |
+      apiVersion: operator.openshift.io/v1alpha1
+      kind: CertManager
+      spec:
+        logLevel: Normal
+        operatorLogLevel: Normal
+      status: {autoApproverDisabled: wrong}
+    expectedStatusError: must be of type boolean
   # ==========================================
   # defaultNetworkPolicy Immutability Tests
   # ==========================================

@@ -1,6 +1,8 @@
 package certmanager
 
 import (
+	"time"
+
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 
@@ -29,6 +31,7 @@ func newGenericDeploymentController(
 	versionRecorder status.VersionGetter,
 	trustedCAConfigmapName string,
 	cloudCredentialsSecretName string,
+	handoffControllers ...*autoApproverController,
 ) factory.Controller {
 	deployment := resourceread.ReadDeploymentV1OrDie(assets.MustAsset(deploymentFile))
 
@@ -74,8 +77,20 @@ func newGenericDeploymentController(
 
 	// unsupportedConfigOverrides must run after cluster TLS so break-glass operand args win.
 	hooks = append(hooks, withUnsupportedArgsOverrideHook)
+	var handoff *autoApproverController
+	if len(handoffControllers) != 0 {
+		handoff = handoffControllers[0]
+		hooks = append(hooks, handoff.prepareDeployment)
+		informers = append(informers,
+			certManagerOperatorInformers.Operator().V1alpha1().ApproverPolicyManagers().Informer(),
+			kubeInformersForTargetNamespace.Core().V1().Pods().Informer(),
+			kubeInformersForTargetNamespace.Apps().V1().ReplicaSets().Informer(),
+			kubeInformersForTargetNamespace.Rbac().V1().ClusterRoles().Informer(),
+			kubeInformersForTargetNamespace.Rbac().V1().ClusterRoleBindings().Informer(),
+		)
+	}
 
-	return deploymentcontroller.NewDeploymentController(
+	controller := deploymentcontroller.NewDeploymentController(
 		controllerName,
 		assets.MustAsset(deploymentFile),
 		eventsRecorder,
@@ -86,4 +101,15 @@ func newGenericDeploymentController(
 		[]deploymentcontroller.ManifestHookFunc{},
 		hooks...,
 	)
+	if handoff == nil {
+		return controller
+	}
+	// Run only this outer sync. The delegated DeploymentController retains its
+	// existing hooks, resourceapply behavior and generation/status accounting.
+	// No status-only predicates: readiness and old-pod termination must enqueue.
+	handoff.deploymentController = controller
+	return factory.New().WithInformers(append(informers,
+		operatorClient.Informer(), kubeInformersForTargetNamespace.Apps().V1().Deployments().Informer())...).
+		WithSync(handoff.sync).WithSyncDegradedOnError(operatorClient).
+		ResyncEvery(30*time.Second).ToController(controllerName, eventsRecorder)
 }

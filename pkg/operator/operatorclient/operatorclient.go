@@ -11,6 +11,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/tools/cache"
+	"k8s.io/client-go/util/retry"
 	"k8s.io/utils/clock"
 
 	operatorv1 "github.com/openshift/api/operator/v1"
@@ -182,9 +183,14 @@ func (c OperatorClient) UpdateOperatorSpec(ctx context.Context, resourceVersion 
 }
 
 func (c OperatorClient) UpdateOperatorStatus(ctx context.Context, resourceVersion string, status *operatorv1.OperatorStatus) (*operatorv1.OperatorStatus, error) {
-	original, err := c.Informers.Operator().V1alpha1().CertManagers().Lister().Get("cluster")
+	// The informer may lag a custom status update. Never combine its stale
+	// custom fields with a newer resourceVersion supplied by library-go.
+	original, err := c.Client.CertManagers().Get(ctx, "cluster", metav1.GetOptions{})
 	if err != nil {
 		return nil, err
+	}
+	if original.ResourceVersion != resourceVersion {
+		return nil, apierrors.NewConflict(v1alpha1.SchemeGroupVersion.WithResource("certmanagers").GroupResource(), "cluster", fmt.Errorf("operator status changed"))
 	}
 	updated := original.DeepCopy()
 	updated.ResourceVersion = resourceVersion
@@ -196,6 +202,38 @@ func (c OperatorClient) UpdateOperatorStatus(ctx context.Context, resourceVersio
 	}
 
 	return &ret.Status.OperatorStatus, nil
+}
+
+// UpdateCertManagerStatus merges a handoff status mutation into a fresh typed
+// object. Conflicts retry without discarding other controllers' status fields.
+// The expected identity and generation bind the mutation to the configuration
+// that was observed; a replacement or spec change requires fresh reconciliation.
+// mutate must only change fields owned by its caller and may run more than once.
+func (c OperatorClient) UpdateCertManagerStatus(ctx context.Context, expected *v1alpha1.CertManager, mutate func(*v1alpha1.CertManagerStatus)) (bool, error) {
+	if expected == nil || mutate == nil {
+		return false, fmt.Errorf("expected CertManager and status mutation are required")
+	}
+	changed := false
+	err := retry.RetryOnConflict(retry.DefaultRetry, func() error {
+		current, err := c.Client.CertManagers().Get(ctx, "cluster", metav1.GetOptions{})
+		if err != nil {
+			return err
+		}
+		if current.UID != expected.UID || current.Generation != expected.Generation {
+			return fmt.Errorf("CertManager identity or generation changed; reconcile again")
+		}
+		updated := current.DeepCopy()
+		mutate(&updated.Status)
+		if equality.Semantic.DeepEqual(current.Status, updated.Status) {
+			return nil
+		}
+		if _, err := c.Client.CertManagers().UpdateStatus(ctx, updated, metav1.UpdateOptions{}); err != nil {
+			return err
+		}
+		changed = true
+		return nil
+	})
+	return changed, err
 }
 
 func (c OperatorClient) EnsureFinalizer(ctx context.Context, finalizer string) error {

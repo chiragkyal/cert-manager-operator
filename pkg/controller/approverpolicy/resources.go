@@ -2,14 +2,21 @@ package approverpolicy
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/json"
 	"fmt"
+	"maps"
 	"os"
 	"reflect"
+	"slices"
 	"strings"
+	"unicode/utf8"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/apimachinery/pkg/util/validation/field"
 	"k8s.io/apimachinery/pkg/util/yaml"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
@@ -19,6 +26,12 @@ import (
 )
 
 const imageEnv = "RELATED_IMAGE_APPROVER_POLICY"
+
+const desiredStateAnnotation = "approver-policy.operator.openshift.io/desired-state-hash"
+
+const defaultLogFormat = "text"
+
+const secretKind = "Secret"
 
 // These are existing imported assets. Keep TLS data and injected CA bundles out
 // of apply payloads: they belong to the operand and cert-manager cainjector.
@@ -35,6 +48,28 @@ var resourceAssets = []string{
 	"deployment_cert-manager-approver-policy.yml",
 }
 
+// importedResources supplies the fixed inventory even when the current image or
+// user configuration is invalid. Removal must not depend on install validation.
+func importedResources() ([]*unstructured.Unstructured, error) {
+	objects := make([]*unstructured.Unstructured, 0, len(resourceAssets))
+	for _, name := range resourceAssets {
+		data, err := assets.Asset("approver-policy/resources/" + name)
+		if err != nil {
+			return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+		}
+		data, err = yaml.ToJSON(data)
+		if err != nil {
+			return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+		}
+		obj := &unstructured.Unstructured{}
+		if err := obj.UnmarshalJSON(data); err != nil {
+			return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+		}
+		objects = append(objects, obj)
+	}
+	return objects, nil
+}
+
 func desiredResources(manager *v1alpha1.ApproverPolicyManager) ([]*unstructured.Unstructured, error) {
 	image := strings.TrimSpace(os.Getenv(imageEnv))
 	if image == "" {
@@ -45,93 +80,217 @@ func desiredResources(manager *v1alpha1.ApproverPolicyManager) ([]*unstructured.
 		config.LogLevel = 1 // API defaults; also support objects before defaulting in unit clients.
 	}
 	if config.LogFormat == "" {
-		config.LogFormat = "text"
+		config.LogFormat = defaultLogFormat
 	}
-	if config.LogLevel < 1 || config.LogLevel > 5 || (config.LogFormat != "text" && config.LogFormat != "json") {
+	if config.LogLevel < 1 || config.LogLevel > 5 || (config.LogFormat != defaultLogFormat && config.LogFormat != "json") {
 		return nil, fmt.Errorf("invalid approverPolicyConfig logging: level must be 1–5 and format text or json")
 	}
-	var objects []*unstructured.Unstructured
-	for _, name := range resourceAssets {
-		data, err := assets.Asset("approver-policy/resources/" + name)
-		if err != nil {
-			return nil, err
-		}
-		data, err = yaml.ToJSON(data)
-		if err != nil {
-			return nil, err
-		}
-		obj := &unstructured.Unstructured{}
-		if err := obj.UnmarshalJSON(data); err != nil {
-			return nil, err
-		}
-		labels := obj.GetLabels()
-		if labels == nil {
-			labels = map[string]string{}
-		}
-		labels[common.ManagedResourceLabelKey] = RequestEnqueueLabelValue
-		obj.SetLabels(labels)
+	if err := validateConfiguration(manager); err != nil {
+		return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+	}
+	overlays, err := runtime.DefaultUnstructuredConverter.ToUnstructured(&config)
+	if err != nil {
+		return nil, fmt.Errorf("convert approverPolicyConfig: %w", err)
+	}
+	objects, err := importedResources()
+	if err != nil {
+		return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+	}
+	for _, obj := range objects {
+		applyMetadata(obj, manager.Spec.ControllerConfig)
 		obj.SetOwnerReferences([]metav1.OwnerReference{*metav1.NewControllerRef(manager,
 			schema.GroupVersionKind{Group: v1alpha1.SchemeGroupVersion.Group, Version: v1alpha1.SchemeGroupVersion.Version, Kind: "ApproverPolicyManager"})})
 		switch obj.GetKind() {
 		case "ClusterRole":
-			// The initial installation approves only cert-manager's built-in
-			// issuers. Keep this within the operator's existing signer grant;
-			// configurable external signers belong to a later phase.
+			// Signer scope is enforced by approval RBAC, not an operand flag.
+			// Sort a copy so set reordering does not cause unnecessary applies.
+			signerNames := slices.Clone(config.ApproveSignerNames)
+			slices.Sort(signerNames)
 			rules, _, err := unstructured.NestedSlice(obj.Object, "rules")
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 			for _, item := range rules {
-				rule := item.(map[string]interface{})
+				rule, ok := item.(map[string]interface{})
+				if !ok {
+					return nil, fmt.Errorf("expected object in approver-policy ClusterRole rules")
+				}
 				resources, _, err := unstructured.NestedStringSlice(rule, "resources")
 				if err != nil {
-					return nil, err
+					return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 				}
-				if len(resources) == 1 && resources[0] == "signers" {
-					if err := unstructured.SetNestedStringSlice(rule, []string{"issuers.cert-manager.io/*", "clusterissuers.cert-manager.io/*"}, "resourceNames"); err != nil {
-						return nil, err
+				groups, _, err := unstructured.NestedStringSlice(rule, "apiGroups")
+				if err != nil {
+					return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+				}
+				verbs, _, err := unstructured.NestedStringSlice(rule, "verbs")
+				if err != nil {
+					return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+				}
+				if len(groups) == 1 && groups[0] == "cert-manager.io" && len(resources) == 1 && resources[0] == "signers" && slices.Contains(verbs, "approve") {
+					if len(signerNames) == 0 {
+						unstructured.RemoveNestedField(rule, "resourceNames")
+					} else if err := unstructured.SetNestedStringSlice(rule, signerNames, "resourceNames"); err != nil {
+						return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 					}
 				}
 			}
 			if err := unstructured.SetNestedSlice(obj.Object, rules, "rules"); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
-		case "Secret":
+		case secretKind:
 			delete(obj.Object, "data")
 			delete(obj.Object, "stringData")
 		case "ValidatingWebhookConfiguration":
 			webhooks, _, err := unstructured.NestedSlice(obj.Object, "webhooks")
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 			for _, webhook := range webhooks {
-				unstructured.RemoveNestedField(webhook.(map[string]interface{}), "clientConfig", "caBundle")
+				fields, ok := webhook.(map[string]interface{})
+				if !ok {
+					return nil, fmt.Errorf("expected object in approver-policy webhooks")
+				}
+				unstructured.RemoveNestedField(fields, "clientConfig", "caBundle")
 			}
 			if err := unstructured.SetNestedSlice(obj.Object, webhooks, "webhooks"); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 		case "Deployment":
-			containers, _, err := unstructured.NestedSlice(obj.Object, "spec", "template", "spec", "containers")
-			if err != nil || len(containers) != 1 {
-				return nil, fmt.Errorf("unexpected approver-policy Deployment containers: %v", err)
+			podMetadata, _, err := unstructured.NestedMap(obj.Object, "spec", "template", "metadata")
+			if err != nil {
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
-			container := containers[0].(map[string]interface{})
+			pod := &unstructured.Unstructured{Object: map[string]interface{}{"metadata": podMetadata}}
+			applyMetadata(pod, manager.Spec.ControllerConfig)
+			podMetadata, _, err = unstructured.NestedMap(pod.Object, "metadata")
+			if err != nil {
+				return nil, fmt.Errorf("read overlaid approver-policy pod metadata: %w", err)
+			}
+			if err := unstructured.SetNestedMap(obj.Object, podMetadata, "spec", "template", "metadata"); err != nil {
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+			}
+			for _, key := range []string{"affinity", "tolerations"} {
+				if value, ok := overlays[key]; ok {
+					if err := unstructured.SetNestedField(obj.Object, value, "spec", "template", "spec", key); err != nil {
+						return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+					}
+				}
+			}
+			selectors, _, err := unstructured.NestedStringMap(obj.Object, "spec", "template", "spec", "nodeSelector")
+			if err != nil {
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+			}
+			if selectors == nil {
+				selectors = map[string]string{}
+			}
+			maps.Copy(selectors, config.NodeSelector)
+			if err := unstructured.SetNestedStringMap(obj.Object, selectors, "spec", "template", "spec", "nodeSelector"); err != nil {
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+			}
+			containers, _, err := unstructured.NestedSlice(obj.Object, "spec", "template", "spec", "containers")
+			if err != nil {
+				return nil, fmt.Errorf("read approver-policy containers: %w", err)
+			}
+			if len(containers) != 1 {
+				return nil, fmt.Errorf("expected one approver-policy container")
+			}
+			container, ok := containers[0].(map[string]interface{})
+			if !ok {
+				return nil, fmt.Errorf("expected object in approver-policy containers")
+			}
 			args, _, err := unstructured.NestedStringSlice(container, "args")
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 			args = common.MergeContainerArgs(args, []string{fmt.Sprintf("--log-level=%d", config.LogLevel), "--log-format=" + config.LogFormat})
 			if err := unstructured.SetNestedStringSlice(container, args, "args"); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 			container["image"] = image
+			if resources, ok := overlays["resources"]; ok {
+				container["resources"] = resources
+			}
 			if err := unstructured.SetNestedSlice(obj.Object, containers, "spec", "template", "spec", "containers"); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("construct approver-policy resources: %w", err)
 			}
 		}
-		objects = append(objects, obj)
+		// A subset comparison alone misses fields removed from the CR. Changing
+		// this fingerprint forces SSA to relinquish/prune previously owned fields.
+		// Hash only the desired projection, never server/TLS fields or the hash itself.
+		data, err := json.Marshal(obj.Object)
+		if err != nil {
+			return nil, fmt.Errorf("construct approver-policy resources: %w", err)
+		}
+		annotations := obj.GetAnnotations()
+		if annotations == nil {
+			annotations = map[string]string{}
+		}
+		annotations[desiredStateAnnotation] = fmt.Sprintf("%x", sha256.Sum256(data))
+		obj.SetAnnotations(annotations)
 	}
 	return objects, nil
+}
+
+func validateConfiguration(manager *v1alpha1.ApproverPolicyManager) error {
+	config, metadata := manager.Spec.ApproverPolicyConfig, manager.Spec.ControllerConfig
+	operandPath, controllerPath := field.NewPath("spec", "approverPolicyConfig"), field.NewPath("spec", "controllerConfig")
+	for _, limit := range []struct {
+		path *field.Path
+		size int
+		max  int
+	}{
+		{operandPath.Child("approveSignerNames"), len(config.ApproveSignerNames), 50},
+		{operandPath.Child("tolerations"), len(config.Tolerations), 50},
+		{operandPath.Child("nodeSelector"), len(config.NodeSelector), 50},
+		{controllerPath.Child("labels"), len(metadata.Labels), 20},
+		{controllerPath.Child("annotations"), len(metadata.Annotations), 20},
+	} {
+		if limit.size > limit.max {
+			return field.TooMany(limit.path, limit.size, limit.max)
+		}
+	}
+	seenSigners := make(map[string]bool, len(config.ApproveSignerNames))
+	for i, signer := range config.ApproveSignerNames {
+		path := operandPath.Child("approveSignerNames").Index(i)
+		if size := utf8.RuneCountInString(signer); size < 1 || size > 825 {
+			return field.Invalid(path, signer, "must contain between 1 and 825 characters")
+		}
+		if seenSigners[signer] {
+			return field.Duplicate(path, signer)
+		}
+		seenSigners[signer] = true
+	}
+	for _, err := range []error{
+		common.ValidateResourceRequirements(config.Resources, operandPath),
+		common.ValidateAffinityRules(config.Affinity, operandPath),
+		common.ValidateTolerationsConfig(config.Tolerations, operandPath),
+		common.ValidateNodeSelectorConfig(config.NodeSelector, operandPath),
+		common.ValidateLabelsConfig(metadata.Labels, controllerPath),
+		common.ValidateAnnotationsConfig(metadata.Annotations, controllerPath),
+	} {
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// Required imported metadata and the cache identity always override user values.
+// Apply the same contract to resource and Pod metadata without changing selectors.
+func applyMetadata(obj *unstructured.Unstructured, config v1alpha1.ApproverPolicyControllerConfig) {
+	labels := map[string]string{}
+	maps.Copy(labels, config.Labels)
+	maps.Copy(labels, obj.GetLabels())
+	labels[common.ManagedResourceLabelKey] = RequestEnqueueLabelValue
+	obj.SetLabels(labels)
+	annotations := map[string]string{}
+	maps.Copy(annotations, config.Annotations)
+	maps.Copy(annotations, obj.GetAnnotations())
+	delete(annotations, desiredStateAnnotation)
+	if len(annotations) > 0 {
+		obj.SetAnnotations(annotations)
+	}
 }
 
 func (r *Reconciler) applyResource(ctx context.Context, desired *unstructured.Unstructured) error {
@@ -151,6 +310,7 @@ func (r *Reconciler) applyResource(ctx context.Context, desired *unstructured.Un
 	}
 	// Patch mutates its input with the server response; retain the original desired
 	// projection for the readiness comparison and never re-apply server-owned fields.
+	//nolint:staticcheck // Shared CtrlClient exposes SSA through Patch, not the newer Apply method.
 	if err := r.Patch(ctx, desired.DeepCopy(), client.Apply, client.FieldOwner(fieldOwner), client.ForceOwnership); err != nil {
 		return common.FromClientError(err, "apply %s %s", desired.GetKind(), desired.GetName())
 	}

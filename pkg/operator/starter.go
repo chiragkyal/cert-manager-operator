@@ -135,6 +135,7 @@ func RunOperator(ctx context.Context, cc *controllercmd.ControllerContext) error
 		versionRecorder,
 		TrustedCAConfigMapName,
 		CloudCredentialSecret,
+		certManagerOperatorClient.OperatorV1alpha1(),
 	)
 	controllersToStart := certManagerControllerSet.ToArray()
 

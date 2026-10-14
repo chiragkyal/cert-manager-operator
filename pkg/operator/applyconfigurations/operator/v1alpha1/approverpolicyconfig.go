@@ -2,6 +2,10 @@
 
 package v1alpha1
 
+import (
+	v1 "k8s.io/api/core/v1"
+)
+
 // ApproverPolicyConfigApplyConfiguration represents a declarative configuration of the ApproverPolicyConfig type for use
 // with apply.
 //
@@ -12,6 +16,21 @@ type ApproverPolicyConfigApplyConfiguration struct {
 	// logFormat specifies the output format for approver-policy logging.
 	// Supported formats are text and json.
 	LogFormat *string `json:"logFormat,omitempty"`
+	// approveSignerNames restricts which signers approver-policy may approve or deny.
+	// When omitted or empty, all signers are permitted, including external issuers.
+	// When specified, only these signer names are granted approval permission.
+	// This field accepts at most 50 unique entries of 1 to 825 characters each.
+	ApproveSignerNames []string `json:"approveSignerNames,omitempty"`
+	// resources defines the compute resource requirements for the approver-policy container.
+	Resources *v1.ResourceRequirements `json:"resources,omitempty"`
+	// affinity defines scheduling constraints for the approver-policy pod.
+	Affinity *v1.Affinity `json:"affinity,omitempty"`
+	// tolerations allows the approver-policy pod to be scheduled on tainted nodes.
+	// This field can have a maximum of 50 entries.
+	Tolerations []v1.Toleration `json:"tolerations,omitempty"`
+	// nodeSelector restricts which nodes the approver-policy pod can be scheduled on.
+	// This field can have a maximum of 50 entries.
+	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
 }
 
 // ApproverPolicyConfigApplyConfiguration constructs a declarative configuration of the ApproverPolicyConfig type for use with
@@ -33,5 +52,55 @@ func (b *ApproverPolicyConfigApplyConfiguration) WithLogLevel(value int32) *Appr
 // If called multiple times, the LogFormat field is set to the value of the last call.
 func (b *ApproverPolicyConfigApplyConfiguration) WithLogFormat(value string) *ApproverPolicyConfigApplyConfiguration {
 	b.LogFormat = &value
+	return b
+}
+
+// WithApproveSignerNames adds the given value to the ApproveSignerNames field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the ApproveSignerNames field.
+func (b *ApproverPolicyConfigApplyConfiguration) WithApproveSignerNames(values ...string) *ApproverPolicyConfigApplyConfiguration {
+	for i := range values {
+		b.ApproveSignerNames = append(b.ApproveSignerNames, values[i])
+	}
+	return b
+}
+
+// WithResources sets the Resources field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the Resources field is set to the value of the last call.
+func (b *ApproverPolicyConfigApplyConfiguration) WithResources(value v1.ResourceRequirements) *ApproverPolicyConfigApplyConfiguration {
+	b.Resources = &value
+	return b
+}
+
+// WithAffinity sets the Affinity field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the Affinity field is set to the value of the last call.
+func (b *ApproverPolicyConfigApplyConfiguration) WithAffinity(value v1.Affinity) *ApproverPolicyConfigApplyConfiguration {
+	b.Affinity = &value
+	return b
+}
+
+// WithTolerations adds the given value to the Tolerations field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the Tolerations field.
+func (b *ApproverPolicyConfigApplyConfiguration) WithTolerations(values ...v1.Toleration) *ApproverPolicyConfigApplyConfiguration {
+	for i := range values {
+		b.Tolerations = append(b.Tolerations, values[i])
+	}
+	return b
+}
+
+// WithNodeSelector puts the entries into the NodeSelector field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, the entries provided by each call will be put on the NodeSelector field,
+// overwriting an existing map entries in NodeSelector field with the same key.
+func (b *ApproverPolicyConfigApplyConfiguration) WithNodeSelector(entries map[string]string) *ApproverPolicyConfigApplyConfiguration {
+	if b.NodeSelector == nil && len(entries) > 0 {
+		b.NodeSelector = make(map[string]string, len(entries))
+	}
+	for k, v := range entries {
+		b.NodeSelector[k] = v
+	}
 	return b
 }

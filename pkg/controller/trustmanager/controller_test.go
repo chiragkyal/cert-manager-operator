@@ -235,8 +235,10 @@ func TestProcessReconcileRequest(t *testing.T) {
 					switch obj.(type) {
 					case *corev1.Namespace:
 						return true, nil
+					case *corev1.ServiceAccount:
+						return false, errTestClient
 					}
-					return false, errTestClient
+					return false, nil
 				})
 			},
 			wantConditions: []metav1.Condition{

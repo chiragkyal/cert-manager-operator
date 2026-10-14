@@ -5,6 +5,10 @@ import (
 )
 
 const (
+	// AutoApproverDisableRequested is a CertManager OperatorStatus condition.
+	// True records durable intent before approval permissions are removed.
+	AutoApproverDisableRequested = "AutoApproverDisableRequested"
+
 	// Degraded is the condition type used to inform state of the operator when
 	// it has failed with irrecoverable error like permission issues.
 	// DebugEnabled has the following options:

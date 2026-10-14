@@ -1,0 +1,11 @@
+stage: code-generation
+artifact: fork working copy (code + tests)
+version: 1
+eval_count: 0
+oape_commands:
+  - api-generate
+  - api-generate-tests
+  - api-implement
+  - manual
+  - any
+evals: []

@@ -1,0 +1,30 @@
+.DS_Store
+*.env
+requirements.env
+
+# ─── Eval generation (local-only, never committed to operator repo) ───
+# The entire eval-generation/ directory is for running /eval-loop locally.
+# After review, manually copy refined templates to openspec/schemas/.../templates/
+# Eval results are synced to openspec/schemas/.../evals/ by the eval loop.
+# None of the eval-generation/ working artifacts should be committed.
+eval-generation/output-evals/
+eval-generation/output-refined-templates/
+eval-generation/eval-generation-workflow/outputs/
+eval-generation/eval-generation-workflow/rounds/
+eval-generation/eval-generation-workflow/template-gaps/
+eval-generation/eval-generation-workflow/refined-templates/
+eval-generation/eval-generation-workflow/round-state.yaml
+/home/skini/explore-openspec/new-openspec/openspec-operator-generic/openspec-ppt-prompt.md
+
+# ─── OpenSpec changes (per-ticket working artifacts — ephemeral) ───
+# Created by /opsx-new, used during /opsx-continue and /opsx-apply.
+# These are working artifacts for each change and should not be committed
+# to the operator repo after the workflow completes.
+openspec/changes/
+
+# ─── Dashboard runtime artifacts ───
+dashboard/data/
+dashboard/.venv/
+dashboard/web/node_modules/
+dashboard/web/dist/
+dashboard/web/tsconfig.tsbuildinfo

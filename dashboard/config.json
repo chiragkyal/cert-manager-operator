@@ -1,0 +1,64 @@
+{
+  "workspace": "/Users/ckyal/go/src/github.com/chiragkyal/cert-manager-operator",
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "cors_origins": [
+      "http://localhost:5173"
+    ],
+    "log_level": "info"
+  },
+  "database": {
+    "url": "sqlite+aiosqlite:///data/dashboard.db",
+    "echo": false
+  },
+  "sse": {
+    "retry_ms": 3000,
+    "heartbeat_interval_s": 15,
+    "max_connections": 50
+  },
+  "telemetry": {
+    "endpoint": "http://localhost:8000/api/v1/events",
+    "batch_size": 10,
+    "flush_interval_s": 5,
+    "bus_dir": "openspec/changes",
+    "poll_interval_s": 3.0
+  },
+  "metrics": {
+    "token_cost_per_million": {
+      "gemini-2.5-pro": {
+        "input": 1.25,
+        "output": 5.0
+      },
+      "gemini-2.5-flash": {
+        "input": 0.15,
+        "output": 0.6
+      },
+      "claude-sonnet-4": {
+        "input": 3.0,
+        "output": 15.0
+      },
+      "default": {
+        "input": 2.0,
+        "output": 8.0
+      }
+    },
+    "max_self_correction_loops": 5,
+    "phase_timeout_s": 600,
+    "phase5_close_on": "implementation_report"
+  },
+  "fallbacks": {
+    "default_compliance_index": 0,
+    "default_agent_success_rate": 0,
+    "default_gate_pass_rate": 0,
+    "default_fidelity_score": 0,
+    "empty_state_message": "No pipeline runs yet. Start a change with /opsx-new.",
+    "sse_reconnect_ms": 5000,
+    "max_log_entries": 500
+  },
+  "openspec": {
+    "changes_dir": "openspec/changes",
+    "schemas_dir": "openspec/schemas/openspec-agile-workflow",
+    "eval_results_pattern": "eval-results/*.yaml"
+  }
+}

@@ -1,0 +1,9 @@
+data/
+web/node_modules/
+web/dist/
+web/tsconfig.tsbuildinfo
+__pycache__/
+*.pyc
+.venv/
+venv/
+.dashboard.json

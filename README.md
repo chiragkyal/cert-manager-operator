@@ -2,6 +2,13 @@
 
 This repository contains Cert Manager Operator designed for OpenShift. The operator runs in `cert-manager-operator` namespace, whereas its operand in `cert-manager`. Both those namespaces are hardcoded.
 
+## Documentation
+
+- [Configuring an egress proxy](docs/proxy.md)
+- [Cloud credentials](docs/cloud_credentials.md)
+- [Operand metrics](docs/operand_metrics.md)
+- [Switching to approver-policy (draft)](docs/approver_policy.md)
+
 ## The operator architecture and design assumptions
 
 The Operator uses the [upstream deployment manifests](https://github.com/cert-manager/cert-manager/releases). It divides them into separate files and deploys using 3 controllers:
